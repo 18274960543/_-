@@ -1,0 +1,51 @@
+<view class="top">
+  <image src="/img/my.png" mode='aspectFill'></image>
+  <view class="centent">
+    <view class="pay">
+      <view>支付成功</view>
+      <view class="pay_top">实际付款￥{{totalMoney}}</view>
+    </view>
+    <view class="bt">
+      <view bindtap='go_home'>返回首页</view>
+      <view bindtap='go_myorder'>查看订单</view>
+    </view>
+  </view>
+</view>
+<view class="house" wx:for="{{list}}" wx:key="{{index}}" wx:if="{{list}}">
+  <view class="house-top">
+    <image src='/img/cart2.png' mode='aspectFill'></image>
+    <text>{{item.shop_name}}</text>
+    <image src='/img/rt.png' mode='aspectFill' style='height:25rpx;width:15rpx;margin-left:10rpx;'></image>
+  </view>
+  <view class="house-content" wx:for="{{item.order_goods}}" wx:key="{{index}}" wx:for-item="item1">
+    <view class="house-content-left">
+      <image src='{{item1.goods_image}}' mode='aspectFill'></image>
+    </view>
+    <view class="house-content-right">
+      <view class="house-content-top">{{item1.goods_name}}</view>
+      <view class="house-content-bt">
+        <view>共计{{item1.goods_num}}件商品,共计：￥{{item1.goods_price}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+  
+  <view class="title">猜你喜欢</view>
+<view class="guess">
+  <view class="guess-list" wx:for="{{guessLike}}" wx:key="{{index}}" bindtap='toInfo' data-id='{{item.id}}'>
+    <image class="list-goodsImg" src="{{item.image}}"></image>
+    <view class="list-2">{{item.name}}</view>
+    <view class="list-3">
+      <text>{{item.goods_sku[0].weight}}kg * 1 </text>
+      <text>成犬粮</text>
+    </view>
+    <view class="list-4">
+      <view class="list-4-1">
+        <text>￥</text>{{item.goods_sku[0].price}}
+      </view>
+      <view class="list-4-img">
+        <image src="/img/cat-1.png"></image>
+      </view>
+    </view>
+  </view>
+</view>

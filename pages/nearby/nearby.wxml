@@ -1,0 +1,16 @@
+<view class="content">
+   <view class="list">
+      <image src='/img/store-img.png'></image>
+      <view class="list-rt">
+         <view class="top">
+            <view>兽兽淘宠物门店芙蓉路店 </view>
+             <text></text>
+            <view>551m</view>
+         </view>
+         <view class="bt">
+            <image src='/im'></image>
+            <text>18975960354</text>
+         </view>
+      </view>
+   </view>
+</view>

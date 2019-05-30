@@ -1,0 +1,30 @@
+.content{
+  padding: 30rpx;
+}
+.list{
+  display: flex;
+  padding: 50rpx 25rpx;
+  background: #fff;
+  border-radius:10rpx;
+  justify-content: space-between
+}
+.list>image{
+  height: 140rpx;
+  width: 140rpx;
+  margin-right:25rpx;
+  display: block;
+}
+.top{
+  font-size:28rpx;
+  display: flex;
+  align-items: center;
+}
+.top text{
+  height:20rpx;
+  width: 1rpx;
+  background: #ccc;
+  margin:0 20rpx;
+}
+.list-rt{
+  width:480rpx;
+}

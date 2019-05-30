@@ -1,0 +1,110 @@
+/* pages/edit/editTele/editTele.wxss */
+
+.tele-box, .code-box {
+  height: 100rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin-top: 20rpx;
+}
+
+.code-box {
+  margin-top: 0rpx;
+}
+
+.tele-placeholder, .mima-placeholder{
+  font-size: 32rpx;
+  color: #ccc;
+}
+
+.send-code-text {
+  padding-left: 30rpx;
+  border-left: 1px solid #f4f4f4;
+  color: #fc4c4c;
+  font-size: 32rpx;
+}
+
+.send-code {
+  height: 100rpx;
+  width: 252rpx;
+  line-height: 98rpx;
+  background-color: white;
+  border-radius: 0;
+  padding-left: 10rpx
+}
+
+.tele-input {
+  width: 500rpx;
+  height: 100rpx;
+  background: rgba(255, 255, 255, 1);
+  caret-color: #ffc408;
+  color: #666;
+  /* direction: rtl; */
+  padding-right: 45rpx;
+}
+
+.code-input {
+  width: 300rpx;
+  padding-left: 236rpx;
+  padding-right: 0rpx;
+}
+
+.tele-text{
+  height: 100rpx;
+  width: 250rpx;
+  background-color: white;
+}
+.code-text{
+  font-size: 32rpx;
+   color: #666;
+   position: absolute;
+   top: 150rpx;
+   left: 47rpx;
+}
+
+.tele-text text, .code-placeholder {
+  font-size: 32rpx;
+  color: #666;
+  line-height: 100rpx;
+  padding-left: 47rpx;
+}
+
+.code-placeholder {
+  text-align: left;
+}
+
+.save-btn {
+  width: 690rpx;
+  height: 80rpx;
+  background: rgb(255, 196, 8);
+  opacity: 1;
+  border-radius: 44px;
+  text-align: center;
+  font-size: 32rpx;
+  color: #530b0b;
+  line-height: 80rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+  bottom: 30rpx;
+}
+.opacity{
+    opacity: 0.6;
+}
+button::after {
+  border: none;
+}
+
+.line {
+  height: 1rpx;
+  width: 650rpx;
+  background-color: rgb(244, 244, 244);
+  position: absolute;
+  top: 120rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+}
+.gray{
+  color: #ccc
+}

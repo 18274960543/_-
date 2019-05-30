@@ -1,0 +1,9 @@
+<form name='pushMsgFm' report-submit bindsubmit='orderSign'>  
+   <view> 单号: 0</view>
+   <view> 商家名称: 腾讯早餐店</view>
+    <view>实付金额:66元</view>
+    <view>物品名称：包子</view>
+    <view>付款金额：68元</view>
+    <view>付款时间： 2018年1月1日 </view>
+    <button form-type="submit">发送模板消息</button>  
+</form>

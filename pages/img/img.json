@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "托运须知",
+  "usingComponents": {
+    "calendar": "plugin://calendar/calendar"
+  }
+}

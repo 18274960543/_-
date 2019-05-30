@@ -1,0 +1,38 @@
+ <view class="top">
+  <view class="search">
+    <image src='/img/glass.png' mode="aspectFill"></image>
+    <input type='tex' placeholder='搜索需要查询的内容' placeholder-style="font-size:26rpx;min-height:28rpx" bindinput="bindKeyInput"></input>
+  </view>
+ </view>
+  <!-- 列表 -->
+  <scroll-view class="main" scroll-y>
+    <view class="mainList" wx:for="{{nav_bottomItems}}" wx:key="{{index}}">
+      <view class="mainList-lf" bindtap='toInfo' data-id='{{item.id}}'>
+        <image class="imgpro" src="{{item.image}}"></image>
+      </view>
+      <view class="mainList-rt" bindtap='toInfo' data-id='{{item.id}}'>
+        <view class="mainList-name">
+          {{item.name}}
+        </view>
+        <view class="mainList-price">
+          <view>
+            ￥
+            <text>{{item.goods_sku[0].price}}</text>
+          </view>
+        </view>
+        <view class='mainList-store'>
+          犬心犬意宠物店 进店
+        </view>
+      </view>
+      <view class="mainList-2-1" bindtap='bindcar' data-id='{{item.id}}'  data-index='{{index}}'>
+        <image class="imgpro" src="/img/che.png"></image>
+      </view>
+    </view>
+ 
+  </scroll-view>
+    <view class="kong" wx:if="{{nav_bottomItems.length==0}}">
+  <image src='/img/kong.png' ></image>
+  <text>非常抱歉</text>
+  <view>没有找到相关的宝贝</view>
+  </view>
+ 

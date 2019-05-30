@@ -1,0 +1,249 @@
+.top {
+  position: relative;
+}
+
+.top image {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 340rpx;
+  z-index: -1;
+}
+
+.centent {
+  padding: 50rpx 90rpx;
+}
+
+.pay {
+  color: #fff;
+  font-size: 32rpx;
+  margin-bottom: 50rpx;
+}
+
+.pay_top {
+  font-size: 26rpx;
+  margin-top: 5rpx;
+}
+
+.bt {
+  display: flex;
+  color: #fff;
+  justify-content: space-between;
+}
+
+.bt view {
+  width: 220rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  border-radius: 50rpx;
+  border: 1rpx solid #fff;
+  font-size: 28rpx;
+}
+
+/* 订单列表 */
+
+.house {
+  margin-bottom: 25rpx;
+  background: #fff;
+  border-radius: 10rpx;
+  margin: 0 30rpx;
+}
+
+.house-top {
+  display: flex;
+  align-items: center;
+  padding: 35rpx 30rpx;
+}
+
+.house-top text {
+  font-size: 32rpx;
+  color: #333;
+  font-weight: 600;
+}
+
+.house-top image {
+  width: 40rpx;
+  height: 35rpx;
+  margin-right: 10rpx;
+}
+
+.house-content-left {
+  height: 120rpx;
+  width: 120rpx;
+  background: #fff;
+  margin-right: 20rpx;
+}
+
+.house-content {
+  display: flex;
+  background: rgba(250, 250, 250, 1);
+  padding: 25rpx 30rpx 15rpx;
+}
+
+.house-content-left image {
+  width: 80rpx;
+  height: 80rpx;
+  margin: 20rpx auto;
+  display: block;
+}
+
+.house-content-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.house-content-top {
+  font-size: 24rpx;
+  color: #333;
+  font-weight: 600;
+  height: 68rpx;
+  overflow: hidden;
+  margin-bottom: 15rpx;
+}
+
+.house-content-bt {
+  display: flex;
+  justify-content: space-between;
+}
+
+.house-content-bt view {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.house-bt {
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx 0;
+  align-items: center;
+  margin: 0 20rpx;
+  font-size: 28rpx;
+  color: #333;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.house-bt-right {
+  display: flex;
+  align-items: center;
+}
+
+.house-bt-right image {
+  width: 14rpx;
+  height: 25rpx;
+  margin-left: 20rpx;
+}
+
+.house-bt-right textarea {
+  height: 40rpx;
+  width: 370rpx;
+}
+
+.house-top_rt {
+  font-size: 26rpx;
+  color: #999;
+  margin-left: 200rpx;
+}
+
+.payment {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10rpx 0;
+}
+
+.house-bt-left {
+  margin-right: 20rpx;
+}
+
+.payment view {
+  font-size: 23rpx;
+  color: #707070;
+  padding: 10rpx 20rpx;
+  border: 1px solid #eee;
+  border-radius: 50rpx;
+  margin-right: 50rpx;
+}
+
+/* */
+
+.like {
+  font-size: 36rpx;
+  color: #000;
+  padding-left: 5%;
+  font-weight: 600;
+  margin: 30rpx 0;
+}
+
+/* */
+
+.guess {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.guess-list {
+  background: #fff;
+  height: 412rpx;
+  width: 48%;
+  border-radius: 10rpx;
+  margin-bottom: 5%;
+  padding-top:30rpx
+}
+.list-goodsImg {
+  width:60%;
+  height: 232rpx;
+  margin:0 auto;
+  display: flex
+}
+.list-2 {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 2rpx;
+  width: 90%;
+  margin: 0 auto;
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+}
+.list-3 {
+  font-size: 22rpx;
+  color: #666;
+  margin-bottom: 20rpx;
+  width: 90%;
+  margin: 6rpx auto 30rpx;
+}
+
+.list-3 text:nth-child(2) {
+  margin-left: 10%;
+}
+
+.list-4 {
+  display: flex;
+  justify-content: space-between;
+  font-size: 32rpx;
+  color: #fc4c4c;
+  font-weight: bold;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.list-4-1 text:nth-child(1) {
+  font-size: 20rpx;
+}
+
+.list-4-img image {
+  width: 40rpx;
+  height: 40rpx;
+}
+.title{
+  font-size:36rpx;
+  color:#000;
+   margin-top:100rpx;
+  padding:0 5%;
+  margin-bottom:20rpx;
+  }

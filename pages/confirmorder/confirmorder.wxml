@@ -1,0 +1,119 @@
+<view class="content" wx:if="{{detail_list}}">
+  <view class="top" bindtap='goaddress'>
+    <view class="top-xm">
+      <text wx:if="{{address.name}}">{{address.name}} {{address.mobile}}</text>
+      <text wx:else>请填写地址</text>
+      <image src="/img/rt.png" mode='aspectFill' />
+
+    </view>
+    <view class="top-text">{{address.province}}{{address.city}}{{address.area}}{{address.address}}</view>
+    <image src='/img/bt.png' mode='aspectFill'></image>
+  </view>
+  <!-- 萌萌乐园宠物屋 -->
+  <view class="house" wx:for='{{detail_list}}' wx:key="{{index}}" wx:for-item="item">
+    <view class="house-top">
+      <image src='/img/merchant.png' mode='aspectFill'></image>
+      <text>{{item.goods_list[0]
+.shop_name}}-{{item.supplier_info.name}}</text>
+      <image src='/img/rt.png' mode='aspectFill' style='height:25rpx;width:15rpx;margin-left:4rpx;'></image>
+    </view>
+
+    <!-- 商品 LIST START -->
+    <view class="house-content" wx:for='{{item.goods_list}}' wx:key="{{index}}" wx:for-item="item1">
+      <view class="house-content-left">
+        <image src='{{item1.goods_image}}' mode='aspectFill'></image>
+      </view>
+      <view class="house-content-right">
+        <view class="house-content-top">{{item1.goods_name}}
+          <view style='color:#666;font-size:20rpx;'>{{item1.attr_name}}</view>
+        </view>
+        <view class="house-content-bt">
+          <view>￥{{item1.goods_price}}</view>
+          <text>x{{item1.goods_num}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="house-bt">
+      <view class="house-bt-left">配送方式</view>
+      <view class="house-bt-right">
+        <text style='margin-right:50rpx;' class="{{item.freightFee>0?'active':''}}">{{item.freightFee>0?'￥':''}}{{item.freightFee>0?item.freightFee:'全场免邮费'}}</text>
+        <!-- <image  src='/img/rt.png' mode='aspectFill'></image> -->
+      </view>
+    </view>
+
+    <view class="house-bt">
+      <view class="house-bt-left">买家留言：</view>
+      <view class="house-bt-right">
+        <textarea value="" bindblur="bindTextAreaBlur"></textarea>
+        <text style='margin-right:70rpx;color:#999'>选填</text>
+      </view>
+    </view>
+    <!-- <view class="house-bt">
+            <view class="house-bt-left">运费:</view>
+            <view  class="house-bt-right" style='margin-right:50rpx;'>
+               <text style='color:#FC4C4C;font-size:32rpx;margin-left:10rpx;'>￥{{item.freightFee}}</text>
+            </view>
+        </view> -->
+    <view class="house-bt">
+      <view class="house-bt-left">小计{{length}}件商品</view>
+      <view class="house-bt-right" style='margin-right:45rpx;'>
+        <text>小计:</text>
+        <view style='color:#FC4C4C;font-size:32rpx;margin-left:10rpx;'>
+          <text class="rmb">￥</text>{{item.goods_amount}}
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 优惠券 -->
+  <view class='coupon-item clear-f' style='padding:0;background:#fff'>
+    <view class="house-bt clear-f" data-index="{{index}}" bindtap="showCouponModel">
+      <view class="coupon-item-left">选择优惠券</view>
+      <view class="coupon-item-right" style='max-width:500rpx;display:block;text-align:right'>
+        <text class="coupon-text" wx:if="{{!selectCouponText}}">
+         请选择优惠券
+        </text>
+        <text wx:else class="coupon-text">
+          <!-- <text>{{selectCouponText}}</text> -->
+        <text wx:if="{{selectCouponDiscount}}" class="discount-price">优惠￥{{selectCouponDiscount}}</text>
+        </text>
+        <image style='margin-left:-20rpx' src='/img/rt.png' mode='aspectFill'></image>
+      </view>
+    </view>
+  </view>
+  <view class="height"></view>
+  <!-- 底部定位 -->
+  <view class="footer">
+    <view class="footer-bt">
+      <view class="footer-left">合计：
+        <text class="rmb" style='font-size:26rpx;'>￥</text>
+        <text>{{totalpriceAfterDiscount}}</text>
+      </view>
+      <view class="footer-rt replaceBackground " bindtap='payment'>立即支付</view>
+    </view>
+  </view>
+  <!-- 优惠券选择 -->
+  <view catchtouchmove='stopPageScroll'>
+    <view class='coupon-select-wraper' hidden="{{!couponVisible}}">
+      <view class='coupon-wraper' bindtap="clickCouponWrapper"></view>
+      <view class='coupon-content'>
+        <view class='coupon-title'>选择优惠</view>
+        <view wx:for="{{couponList}}" wx:key="{{index}}" wx:for-item="coupon">
+          <view class='coupon-item'>
+            <view>{{coupon.name}}
+              <text wx:if="{{coupon.type==1}}">(减{{coupon.discount}})</text>
+              <text wx:if="{{coupon.type==2}}">(满{{coupon.condition.condition}}减{{coupon.condition.discount}})</text>
+              <text wx:if="{{coupon.type==3}}">(<text wx:for="{{coupon.condition}}" wx:key="{{index}}">{{item.condition}}件{{item.discount}}折;</text>
+              <text>减{{coupon.discount}}</text>)</text>
+              <text wx:if="{{coupon.type==4}}">(减{{coupon.discount}})</text>
+            </view>
+            <view data-index="{{index}}" class='select-action' bindtap="choseCouponAction">
+              <image src="/img/switch_dp-3.png" mode='aspectFill' wx:if="{{selectCouponIndex!=='' && index==selectCouponIndex}}"></image>
+              <image src="/img/switch_dp-1.png" mode='aspectFill' wx:else></image>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- <view wx:else style='margin:200rpx;text-align:center;font-size:30rpx;'>订单空空如也，去下单吧</view> -->

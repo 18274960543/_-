@@ -1,0 +1,37 @@
+<!--pages/me/coupon/coupon.wxml-->
+ 
+<view class="{{actionDisabled?'cupon-item-container-disabled':''}} cupon-item-container">
+  <!-- <view class='cupon-item-container'> -->
+  <!-- 优惠券 item -->
+  <view class="coupon-item" wx:for="{{couponList}}" wx:key="{{index}}">
+    <view class='coupon-view'>
+      <view class='name'>{{item.name}}</view>
+      <!-- 品类 -->
+      <view wx:if="{{item.user_type==2}}" class='coupon-type coupon-type1'>新人优惠券</view>
+      <view wx:elif="{{item.user_range==2}}" class='coupon-type coupon-type2'>限品类优惠券</view>
+      <view wx:elif="{{item.user_range==1}}" class='coupon-type coupon-type3'>限品类优惠券</view>
+      <view class='discount'>{{item.discount +'元优惠券'}}</view>
+      <!-- <view class='use_way'>{{item.use_way}}</view> -->
+      <view class='minimum'>最低消费{{item.minimum }}元</view>
+      <view class='time'>{{item.start_time +' - '+item.end_time}}</view>
+    </view>
+    <view class='use-btn'>
+      <button data-id="{{item.id}}" bindtap="getCouponByIndex" class='use-btn-bn replaceBackground'>立即领取</button>
+    </view>
+
+    <view wx:if="{{currIndex==1}}" class='coupon-used-view'>
+      <image class='image' src="/img/coupon-used.png" mode="aspectFit">
+      </image>
+    </view>
+    <view wx:if="{{currIndex==2}}" class='coupon-disabled-view'>
+      <image class='image' src="/img/coupon-disabled.png" mode="aspectFit">
+      </image>
+    </view>
+    <!-- <view>{{item.num}}</view> -->
+  </view>
+ 
+</view>
+<view class="content" wx:if="{{!couponList.length}}">
+  <image src='/img/none.png' class="none-img"></image>
+  <view class='return-btn' bindtap='go_home'>返回首页</view>
+</view>

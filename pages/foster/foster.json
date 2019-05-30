@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "寄养",
+  "usingComponents": {
+    "rili": "../../component/component"
+  }
+}

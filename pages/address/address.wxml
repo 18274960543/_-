@@ -1,0 +1,17 @@
+
+<scroll-view class="content" scroll-y style='height:90%'>
+   <view class="list" wx:for="{{list}}" wx:key="index">
+    <view bindtap='is_selection' data-index="{{index}}" class="left">
+        <image src="/img/switch_dp-3.png" mode='aspectFill' wx:if="{{item.is_default}}"></image>
+        <image src="/img/switch_dp-1.png" mode='aspectFill' wx:else></image>
+         <view class="list_lf">
+           <text>{{item.name}} {{item.mobile}} <text style='color:#773ADF'>{{item.is_gaoL?'默认':''}}</text></text>
+           <view>{{item.province}}{{item.city}}{{item.area}}{{item.address}}</view>
+          
+        </view>
+    </view>
+        <view class="list_rt" bindtap='go_addresseditor1' data-list='{{item}}'>编辑</view>
+   </view>
+  
+</scroll-view>
+ <view bindtap='go_addresseditor' class='button replaceBackground'>添加新地址</view>

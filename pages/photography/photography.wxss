@@ -1,0 +1,245 @@
+.top{background:#fff;padding:30rpx 0 50rpx;border-top:1px solid #F3F3F3;margin-bottom:20rpx;}
+.top_title{padding:0 40rpx;display: flex;justify-content:space-between;align-items:center;}
+.top_title view{font-size:36rpx;color:#333;}
+.top_title text{font-size:24rpx;color:#3D6898;}
+ .scroll{margin-left:20rpx;margin-top:20rpx;white-space: nowrap;width:100%}
+ .scroll_left{height:120rpx; border:1rpx solid #F3F3F3;
+ box-sizing:border-box;width:345rpx;border-radius:10rpx;margin-right:20rpx;display:inline-block; padding:25rpx 20rpx;position:relative;}
+ .scroll_img{width:65rpx;height:65rpx;border-radius:50%;margin-right:10rpx; float:left;}
+ .scroll_img1{position:absolute;right:0;bottom:0;width:64rpx;height:55rpx;}
+ .scroll_text{display:flex;flex:1; flex-direction:column;}
+ .add{width:160rpx;height:116rpx;display:inline-block;border:2px dashed #F3F3F3;
+ box-sizing: border-box;text-align:center;padding:10rpx 20rpx 0;margin-right:40rpx;border-radius:10rpx;}
+
+ .add image{width:32rpx;height:32rpx;display: inline-block;margin:15rpx auto 0;}
+ .add text{font-size:26rpx;color:#666;float:left;}
+  .scroll_text view{font-size:32rpx;color:#000;}
+  .scroll_text text{font-size:18rpx;color:#666;display:block;overflow: hidden;
+white-space: nowrap;
+text-overflow: ellipsis; }
+  /* .service{ height:100rpx;line-height:100rpx;padding:0 40rpx;background:#fff;}
+  .service view{font-size:36rpx;color:#333;float:left;}
+  .service text{font-size:24rpx;color: #3D6898;float:right;} */
+  
+.foster {
+  background: #fff;
+}
+.foster_list {
+  background: #fff;
+  height: 90rpx;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1rpx solid #f3f3f3;
+  margin: 0 40rpx;
+  align-items: center;
+}
+.foster_list image {
+  height: 30rpx;
+  width: 30rpx;
+}
+.foster_list text {
+  font-size: 28rpx;
+  color: #333;
+}
+.service {
+  display: flex;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin: 0 40rpx;
+  background: #fff;
+  border-bottom: 1rpx solid #f3f3f3;
+  justify-content: space-between;
+  font-size: 36rpx;
+}
+.service-right {
+  display: flex;
+  align-items: center;
+  font-size: 26rpx;
+  color: #ffc408;
+}
+.arrow {
+  width: 15rpx;
+  height: 15rpx;
+  border-top: 2rpx solid #ffc408;
+  border-right: 2rpx solid #ffc408;
+  transform: rotate(45deg);
+}
+.scroll {
+  margin-left: 20rpx;
+  margin-top: 20rpx;
+  white-space: nowrap;
+  width: 100%;
+}
+.scroll_left {
+  height: 120rpx;
+  border: 1rpx solid #f3f3f3;
+  box-sizing: border-box;
+  width: 315rpx;
+  border-radius: 10rpx;
+  margin-right: 20rpx;
+  display: inline-block;
+  padding: 25rpx 20rpx;
+  position: relative;
+}
+.scroll_left-active{
+  border: 1rpx solid #FFC408;
+}
+.scroll_img {
+  width: 65rpx;
+  height: 65rpx;
+  border-radius: 50%;
+  margin-right: 10rpx;
+  float: left;
+}
+.scroll_img1 {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 64rpx;
+  height: 55rpx;
+}
+.scroll_text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+.setmeal {
+  display: flex;
+  padding: 30rpx;
+  justify-content: flex-start;
+  width: 100%;
+}
+.setmeal view {
+  border: 1rpx solid #ccc;
+  text-align: center;
+  border-radius: 10rpx;
+  padding: 10rpx 30rpx;
+  font-size: 26rpx;
+  color: #666;
+  margin-right: 25rpx;
+  width:130rpx;
+   
+}
+.setmeal view text {
+  margin-bottom: 5rpx;
+   text-align: center;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+.setmeal view.active {
+  background: #fffcf2;
+  border: 1rpx solid #ffc408;
+  color: #ffc408;
+}
+  /* 影藏滚动条 */
+::-webkit-scrollbar {
+ width: 0;
+ height: 0;
+ color: transparent;
+}
+.time{background:#fff;padding:0 0 30rpx;margin-top:20rpx;margin-bottom:166rpx;}
+.time-top{display:flex;justify-content:space-between;height:100rpx;line-height:100rpx;padding:0 40rpx;}
+.week{background:#F9F9F9;height:85rpx;display: flex;padding:0 27rpx;}
+.time-top view{font-size:36rpx;color:#333;}
+.time-top text{font-size:24rpx;color: #3D6898}
+.week-list{flex:1;display: flex;flex-direction: column;justify-content:center;align-items:center;}
+.week-list view{font-size:24rpx;color:#333;}
+.week-list text{font-size:24rpx;color:#666;}
+.week-list-active{background:#FFC408;border-radius:10rpx;}
+.week-list-active view{color:#fff;}
+.week-list-active text{color:#fff;}
+.time-container{padding:30rpx 14rpx 20rpx;display: flex;flex-wrap:wrap }
+.item{width:18%;margin-left:2%;border:1px solid #EEE;border-radius:10rpx;
+box-sizing: border-box;display: flex;flex-direction: column;justify-content:center;
+align-items:center;height:80rpx;margin-bottom:2%;padding:0;line-height:32rpx;margin-right:0;background:#fff;}
+.item view{font-size:24rpx;color:#666;}
+.item text{font-size:18rpx;color:#666;}
+.service1{background:#fff;height:100rpx;margin:20rpx auto;display: block;width:100%;line-height:100rpx}
+.footer{position:fixed;bottom:-2rpx;left:0;width:100%;display:flex;height:100rpx;line-height:100rpx;background-color:#FFC408; 
+box-shadow:2px 2px 5px 5px #eee;z-index: 20;}
+.footer-left{font-size:36rpx;color:#FC4C4C;width:400rpx;padding-left:25rpx;box-sizing:border-box;background-color:#fff;}
+.footer-rt{flex: 1;text-align:center;font-size:36rpx;color:#530B0B;}
+.time-bt{display: flex;justify-content:center;align-items:center;}
+.time-bt text{font-size:32rpx;color:#333;margin-right:10rpx}
+.time-bt image{width:25rpx;height:14rpx;}
+/* 精致洗澡弹框 */
+.shadow{width:100%;height:100%;background:#000;opacity:.8;position:fixed;top:0;left:0;z-index:21}
+.delicate {
+  width: 90%;
+  background: #fff;
+  position: fixed;
+  z-index: 22;
+  left: 5%;
+  top: 20%;
+  border-radius: 10rpx;
+  padding: 40rpx 35rpx;
+  box-sizing: border-box;
+}
+.delicate-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+.delicate-top text {
+  font-size: 32rpx;
+  color: #333;
+}
+.delicate-top image {
+  width: 32rpx;
+  height: 32rpx;
+}
+.delicate-content {
+  background: rgba(255, 196, 8, 0.05);
+  border-radius: 10rpx;
+  padding: 40rpx 20rpx;
+}
+.delicate_list {
+  font-size: 28rpx;
+  color: #333;
+}
+.delicate_list1 {
+  margin-bottom: 10rpx;
+}
+
+.delicate_list2 {
+  margin-bottom: 5rpx;
+}
+
+/* 完善信息 */
+.information{position: fixed;height:48%;left: 0;bottom:0;background:#fff;
+width:100%;z-index: 23;padding:30rpx;box-sizing: border-box;display:none;
+}
+.information-top{display: flex;justify-content: space-between; color:#000;}
+.information-top image{width:32rpx;height:32rpx;}
+.information-top text{margin-top:10rpx;font-size:42rpx;}
+.information-input{display: flex;border-bottom:1rpx solid #eee;padding-bottom:20rpx;margin-top:40rpx;color:#333;font-size:30rpx;align-items:center;}
+.information-input text{margin-right:50rpx;}
+.information-input view{background:#FFC408;height:50rpx;width: 200rpx;border-radius:50rpx;text-align:center;line-height:50rpx;color:#fff;font-size:24rpx;}
+.checklist{display:flex;align-items:center;margin-top:30rpx;}
+.checklist text{margin-left:10rpx;}
+.checklist icon{color:#eee}
+.information button{margin-top:30rpx;display: block;background:#FFC408;border-radius:100rpx;}
+.next{position:fixed;width:70%;height:20%;background:#fff;border-radius:10rpx;
+box-sizing:border-box;z-index:24;left:15%;top:40%;}
+.next view{font-size:30rpx;color:#666;width:80%;text-align:center;margin:60rpx auto 20rpx;}
+.next text{border-top:1rpx solid #ccc;display:block;font-size:32rpx; color:#333;text-align:center;padding-top:10rpx;}
+.varieties{position:fixed;width:70%;height:30%;background:#fff;border-radius:10rpx;
+box-sizing:border-box;z-index:1000;left:15%;top:35%;padding:50rpx 40rpx;}
+
+.varieties_text{font-size:36rpx;color:#333;}
+.varieties>view{display: flex;justify-content:space-around;margin-top:40rpx;}
+.varieties>view view{display: flex;align-items: center;flex-direction:column;font-size:28rpx;color:#666;}
+.varieties>view view image{height:160rpx;width:160rpx;border-radius:50%;border:1px solid #eee;margin-bottom:10rpx;}
+.yes{background:rgba(255,196,8,0.01);color:#FFC408; border:1px solid rgba(255,196,8,1);border-radius:13rpx;}
+.yes view{color:#FFC408}
+.yes text{color:#FFC408}
+.is_show{display: none}
+.isnext{display:none}
+.is_varieties{display: none}
+ 
+ 
+
+ 

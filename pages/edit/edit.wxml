@@ -1,0 +1,31 @@
+<view class='header'>
+  <view class='avatar-box'>
+    <view>
+      <image src='{{userInfo.avatar}}' class='avatar'></image>
+    </view>
+    <view class="text-box">
+      <text class="username">{{userInfo.nick_name}}</text>
+      <text class='userid'>手机号码:{{userInfo.mobile}}</text>
+    </view>
+  </view>
+  <view class="address-man" bindtap='onAdressTap'>
+    <text>宠物主人地址管理</text>
+    <image src="/img/return1.png" class='icon'></image>
+  </view>
+</view>
+<view class='line'></view>
+<view class='content'>
+  <view class='content1' bindtap='onTeleTap'>
+    <text class="text text1">修改手机号码</text>
+    <view>
+     <!-- <text class='tele'>{{telephone}}</text> -->
+    <image src="/img/return1.png" class=''></image>
+    </view>
+  </view>
+  <!-- <view  class='content2'>
+    <text class="text">密码修改</text>
+    <image src="/img/return1.png" class='icon icon2'></image>
+  </view> -->
+</view>
+
+<!-- <view class="exit-btn">退出登录</view> -->

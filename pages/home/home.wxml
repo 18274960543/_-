@@ -1,0 +1,110 @@
+
+<wxs src="../../filter/formatFr.wxs" module="formatFr"/>
+ <view wx:if="{{!isToken}}"> 
+ <!-- <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class="PhoneNumber"></button> -->
+<scroll-view class="home" scroll-y style='height:{{screenHeight}}px;' lower-threshold="150" bindscrolltolower="bindscrolltolower">
+  <!-- 当前地址地位 -->
+  <!-- <view class="position" wx:if="{{address}}">
+    <image src='/img/position.png' class="position-dw"></image>
+    <text bindtap='position'>{{address}}</text>
+    <image src='/img/rt.png' style='margin-left:-4rpx;margin-top:4rpx;' bindtap='position'></image>
+<view bindtap='goNearbyShops'>
+    <image src='/img/glass.png'></image>
+    附近店铺
+ </view> 
+  </view> -->
+  <view style='width:95%;margin:10rpx auto 0;'>
+    <scroll-view class="nav_top  {{istrue>410? 'float' : ''}} none" scroll-x="true">
+      <block wx:for="{{mergedata.category}}" wx:key="index">
+        <view class="nav_top_items {{curIndex == index ? 'nav_top_item-active' : ''}}" data-id="{{item.id}}" bindtap="switchRightTab">
+          {{item.name}}
+        </view>
+        <text></text>
+      </block>
+    </scroll-view>
+    <swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="{{8000}}" duration="{{500}}" circular="{{true}}" indicator-color="rgba(255, 255, 255, .3)" indicator-active-color="#fff" >
+      <block wx:for="{{mergedata.banner.banner.list}}" wx:key="index">
+        <swiper-item style="border-radius:10rpx;">
+          <image src="{{item.img.full_img_url}}" mode="scaleToFill" class="slide-image" />
+        </swiper-item>
+      </block>
+    </swiper>
+  <!-- 头部悬浮 -->
+    <view class="order" wx:if="{{mergedata}}">
+      <view class="order-top">
+        <view>快速预约服务 </view>
+        <!-- <text>更多服务敬请期待</text> -->
+        <!-- wx:for="{{order}}" wx:key="index" wx:for-index="index" wx:for-item="item" -->
+      </view>
+      <swiper class="swiper-box" indicator-dots="{{true}}" autoplay="{{false}}">
+        <swiper-item class="swiper-item">
+          <block wx:for="{{mergedata.service}}" wx:key="index1" wx:for-index="index1" wx:for-item="item1">
+            <view class="page-column" bindtap='goservice' data-id="{{index1}}" data-serviceid="{{item1.id}}" wx:if="{{item1.id!=13}}">
+              <image src="{{item1.img}}" mode="scaleToFill" />
+              <text>{{item1.name}}</text>
+            </view>
+          </block>
+        </swiper-item>
+      </swiper>
+    </view>
+    <!-- 养宠小课堂 -->
+    <view class="more" style='margin-bottom:0;'>
+      <image src='{{mergedata.banner.activity.list[0].img.full_img_url}}' bindtap='classroom'></image>
+    </view>
+    <view class="list1">
+      <scroll-view class="nav_top" scroll-x="true">
+        <block wx:for="{{mergedata.category}}" wx:key="index">
+          <view class="nav_top_items {{curIndex == index ? 'nav_top_item-active replaceColour' : ''}}" data-id="{{item.id}}" bindtap="switchRightTab" data-index="{{index}}">
+            {{item.name}}
+          </view>
+          <text></text>
+        </block>
+      </scroll-view>
+      <scroll-view class='nav_bottom'>
+        <view wx:if='{{nav_bottomItems.length>0}}' style='padding-bottom: 10px;'>
+          <block wx:for="{{nav_bottomItems}}" wx:for-item="item" wx:key="index">
+            <view class="item" bindtap='godetails' data-id="{{item.id}}">
+              <image class="item-img" src='{{item.image}}' mode="aspectFit"></image>
+              <text class="item-title padding">{{item.name}}</text>
+              <view class="item_text padding">
+                <text style='font-size:20rpx'>销量：{{item.sales+item.ficti}}</text>
+                <!-- <text>{{item.subTitle}}</text> -->
+              </view>
+              <view class="item_bottom padding">
+                <view><text class="rmb" style='font-size:22rpx'>¥</text>
+                {{item.goods_sku[0].price}}
+                <text class="ot_price_rmb">¥{{item.ot_price}} </text>
+                </view>
+                <image src='/img/che.png'></image>
+              </view>
+            </view>
+          </block>
+        </view>
+        <!-- <view wx:else  style='font-size:30rpx;padding:50rpx;'>
+          敬请期待 !!
+      </view> -->
+      </scroll-view>
+    </view>
+    <!-- <button open-type='contact'>点击进入客服会话</button> -->
+    <!-- 客服电话 -->
+    <image src='/img/kefu.png' mode="scaleToFill" class="kefu" bindtap='dianhua'></image>
+  </view>
+
+</scroll-view>
+<!-- 新人优惠劵 -->
+<view catchtouchmove='stopPageScroll'>
+<view wx:if="{{isCoupon}}">
+<view class="mask"></view>
+<view class="coupon">
+   <image src='/img/abc.png' bindtap='goCoupon'></image>
+  <image src='/img/acc.png' class="icon" bindtap='couponNone'></image>
+</view>
+</view>
+</view>
+</view>
+<view class="indexImages" wx:if="{{isToken}}">
+   <image src='/img/none.png' mode='widthFix'></image>
+   <view class='replaceBackground' bindtap='btnclick'>重新授权</view>
+</view>
+ 
+ 

@@ -1,0 +1,43 @@
+ 
+page {
+ background: #F3F3F3;
+  height:100%;
+ /* font-family: 'KaiTi' */
+}
+ 
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+.rmb{font-size:32rpx;padding-right:2rpx;display: inline-block}
+/* 版本颜色替换 */
+.replaceColour{
+  color: #773ADF!important
+}
+.replaceBackground{
+  background: #773ADF!important;
+  color: #fff!important;
+}
+.replaceBorder{
+  border:1rpx solid #773ADF !important
+}
+/* 购物车页面立即购买样式 随时替换 */
+.replaceCat{
+   background:#FC4C4C!important;
+  color: #fff!important;
+}
+ 
+/* lida */
+.clear-f {
+  zoom: 1;
+}
+
+.clear-f:after {
+  visibility: hidden;
+  clear: both;
+  display: block;
+  height: 0px;
+  content: ".";
+}

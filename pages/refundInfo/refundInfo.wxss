@@ -1,0 +1,255 @@
+/* pages/order/refundInfo.wxss */
+
+.top {
+  width: 90%;
+  background: #fff;
+  padding: 0 5% 10rpx;
+}
+
+.top-1 {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+/*  */
+
+.top-2, .top-3 {
+  background: #fafafa;
+  height: 150rpx;
+  margin: 20rpx 0;
+  display: flex;
+  position: relative;
+}
+
+.top-img {
+  width: 110rpx;
+  height: 110rpx;
+  margin: auto 0;
+  margin-left: 26rpx;
+  margin-right: 20rpx;
+}
+.top-img image{
+  height: 100%;
+  width: 100%;
+}
+.top-name {
+  margin: auto 0;
+  height: 110rpx;
+  width: 58%;
+}
+
+.top-name-1 {
+  font-size: 28rpx;
+}
+
+.top-price {
+  font-size: 24rpx;
+  text-align: right;
+  position: absolute;
+  top: 15%;
+  right: 3%;
+}
+
+.top-3 {
+  font-size: 28rpx;
+  display: block;
+  width: 90%;
+  padding: 0 5%;
+}
+
+.top-3 view:nth-child(1) {
+  padding: 26rpx 0 14rpx;
+}
+
+/*  */
+
+.main {
+  background: #fff;
+  margin: 20rpx 0 0;
+}
+
+.main-1 {
+  display: flex;
+  justify-content: space-between;
+  font-size: 30rpx;
+  height: 90rpx;
+  border-top: 1px solid #eee;
+}
+
+.main-1 .main-1-1 {
+  color: #333;
+  line-height: 90rpx;
+  font-weight: bold;
+  text-align: center;
+  width: 27%;
+  font-size: 30rpx
+}
+
+.main-1 .main-1-2 {
+  color: #999;
+  line-height: 90rpx;
+  display: flex;
+  justify-content: flex-end;
+  width: 67%;
+  margin-right: 6%;
+   
+}
+
+.main-1 .main-1-2 image {
+  width: 14rpx;
+  height: 20rpx;
+}
+
+.main-1 .main-1-2 view {
+  margin-left: 22rpx;
+}
+
+.main-2 {
+  display: flex;
+  font-size: 30rpx;
+  height: 90rpx;
+  border-top: 1px solid #eee;
+}
+
+.main-2-1 {
+  color: #333;
+  line-height: 90rpx;
+  font-weight: bold;
+  text-align: center;
+  width: 27%;
+}
+
+.main-2-2 {
+  line-height: 90rpx;
+  color: #FFC408;
+  font-weight: bold;
+}
+
+.main-3 {
+  display: flex;
+  font-size: 30rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  border: 1px solid #eee;
+  background: #f3f3f3;
+  padding-left: 5%;
+  width: 95%;
+  color: #999;
+}
+
+.main-3-2 {
+  color: #999;
+  width: 68%;
+}
+
+.main-3-2 input {
+  width: 100%;
+  height: 100%;
+}
+
+/*  */
+
+.showModal {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #fff;
+  z-index: 101;
+  padding-bottom: 30rpx;
+}
+
+.showModal-1 {
+  height: 140rpx;
+  line-height: 140rpx;
+  font-size: 36rpx;
+  font-weight: bold;
+  padding-left: 5%;
+  border-bottom: 1px solid #eee;
+}
+
+.showModal-2 {
+  font-size: 30rpx;
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.showModal-2 view:nth-child(1) {
+  height: 80rpx;
+  line-height: 80rpx;
+}
+
+.showModal-2 view:nth-child(2) {
+  width: 28rpx;
+  height: 28rpx;
+  border: 1px solid #333;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30rpx;
+}
+
+.proButtonBot{
+  width: 680rpx;
+  height: 85rpx;
+  line-height: 85rpx;
+  background: #FFC408;
+  border-radius:100rpx;
+  font-size:32rpx;
+  color: #fff;
+  text-align: center;
+  margin:50rpx auto
+}
+.shadow{
+  background:#000;
+  opacity: 0.6;
+  position: fixed;
+  top:0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  display: none
+}
+.show{
+  display: block
+}
+.main-4 {
+margin-left: 5%;
+color: #333;
+height: 90rpx;
+line-height: 90rpx;
+font-weight: bold;
+font-size: 30rpx;
+}
+
+.addImg {
+padding-left: 5%;
+}
+
+.addImg image {
+width: 154rpx;
+height: 154rpx;
+display: flex
+}
+.num-right{
+display: flex;
+align-items: center;
+}
+.num-right text{
+  background: #eee;
+  width: 30rpx;
+  height:35rpx;
+  display: flex;
+  align-items: center;
+  text-align: right;
+  padding-left:10rpx;
+}
+.num-right input{
+  width: 50rpx;
+  text-align: center;
+  font-size: 20rpx;
+  color: #000
+}

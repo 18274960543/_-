@@ -1,0 +1,9 @@
+.classroom{padding:30rpx;margin-top:-150rpx;}
+.list{background:#fff;border-radius:10rpx;display: flex;justify-content:space-between;
+padding:25rpx 30rpx;border-bottom:1rpx solid #F3F3F3;}
+.list image{height:148rpx;width:148rpx;border-radius:5rpx;}
+.left{display: flex;flex-direction:column;width:465rpx;}
+.left view{font-size:30rpx;color:#333;margin-bottom:40rpx;height:95rpx;}
+.left text{font-size:24rpx;color:#999;}
+.classroom_img{height:400rpx;width:100%;display: block;} 
+.dx{font-size:28rpx;color:#666;display:block;text-align:center;padding:30rpx 0;}

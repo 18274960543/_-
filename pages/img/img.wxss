@@ -1,0 +1,9 @@
+page{
+  background: #fff;
+}
+image{
+  display: flex;
+  height: 700rpx;
+  width: 600rpx;
+  margin:0 auto;
+}

@@ -1,0 +1,25 @@
+<block wx:for="{{store_list}}" wx:key="index" wx:for-item="item"  >
+  <view class="store_list" bindtap='gohome' data-index='{{index}}'>
+    <view>
+      <image src='{{item.img_url}}' class='storeImg'></image>
+    </view>
+    <view class="rt">
+      <text class="rt_top">{{item.name}}</text>
+      <view class="ri_bt">
+        <view class='text-img'>
+          <image src="/img/phone.png"></image>
+          <text>{{item.contact_number}}</text>
+        </view>
+        <view class='text-img' wx:if="{{item.wx}}">
+          <image src="/img/wx.png"></image>
+          <text>{{item.wx}}</text>
+        </view>
+        <view class='text-img'>
+          <image src="/img/address.png"></image>
+          <text>{{item.address}}</text>
+        </view>
+        <image src='/img/delete.png' class='delete-img' catchtap='onDeleteTap' data-id="{{index}}"></image>
+      </view>
+    </view>
+  </view>
+</block>

@@ -1,0 +1,60 @@
+<view class="content">
+  <text class="text">必填信息</text>
+  <form bindsubmit="formSubmit">
+    <view class="top">
+      <view class="list">
+        <view class="left">宠物名字
+          <image src='/img/list-left.png' mode='aspectFill'></image>
+        </view>
+        <view class="right">
+          <input type='text' value='{{fromdata.name}}' placeholder-style="color:#333;font-size:28rpx" name="name" bindinput='bindname' style='padding-right:5%'></input>
+        </view>
+      </view>
+      <view class="list">
+        <view class="left">宠物品种
+          <image src='/img/list-left.png' mode='aspectFill'></image>
+        </view>
+        <view class="right">
+          <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+             {{array[index]}}
+            <image src='/img/rt.png' mode='aspectFill'></image>
+          </picker>
+        </view>
+      </view>
+      <view class="list">
+        <view class="left">宠物体重
+          <image src='/img/list-left.png' mode='aspectFill'></image>
+        </view>
+        <view class="right">
+          <input type='text' value='{{fromdata.weight}}' placeholder-style="color:#333;font-size:28rpx;" style='' name="weight" bindinput='bindweight'></input>KG
+        </view>
+      </view>
+      <view class="list" wx:for="{{fromdata.attr}}" wx:key="{{index}}" wx:for-index="index" wx:for-item="item">
+        <view class="left">{{item.attr_name}}
+          <image src='/img/list-left.png' mode='aspectFill'></image>
+        </view>
+        <view class="right">
+          <view wx:for="{{item.values}}" wx:for-item="item1" wx:key="{{index1}}" class="{{item1.istrue?'replaceColour replaceBorder':''}}" bindtap='select' data-index="{{[index,index1]}}" wx:for-index="index1">{{item1.attr_value}}</view>
+        </view>
+      </view>
+    </view>
+    <text class="text">基础信息</text>
+    <view class="top">
+      <view class="list">
+        <view class="left">宠物年龄</view>
+        <view class="right">
+          <input type='text' value='{{fromdata.age}}' placeholder-style="color:#333;font-size:28rpx;" style='' name="age" bindinput='bindage'></input>岁
+        </view>
+      </view>
+      <view class="list">
+        <view class="left">宠物靓照</view>
+        <view class="right" bindtap='chooseImage'>
+          <image src='{{img?img:fromdata.avatar}}' mode='aspectFill' style='width:90rpx;height:90rpx;border-radius:50%;'></image>
+        </view>
+      </view>
+    </view>
+    <view class="top delet" wx:if="{{edit_id}}" bindtap='deletPets'>删除宠物</view>
+    <view class="bttom">注：*红色星号为必填项</view>
+    <button form-type="submit" class="replaceBackground ">保存</button>
+  </form>
+</view>

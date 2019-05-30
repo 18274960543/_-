@@ -1,0 +1,166 @@
+<!-- 头部共同区域 -->
+<image src="/img/my.png" class="order-bg" />
+<text class='statustext'>{{statustext}}</text>
+<view class='address-box'>
+  <view class='text-box'>
+    <image src='/img/address1.png'></image>
+    <text class='username'>{{detailsData.address[0].name}}</text>
+    <text class='usertele'>{{detailsData.address[0].mobile?detailsData.address[0].mobile:10086}}</text>
+  </view>
+  <text class='useraddress'>{{detailsData.address[0].full_address}}</text>
+</view>
+<!-- 服务订单详情 -->
+<view class=''>
+  <view class='service-box'>
+    <view class='service-box-header'>
+      <image src="/img/merchant.png" class='merchant-img'></image>
+      <text>{{detailsData.shop[0].name}}</text>
+      <image src='/img/return.png' class='merchant-icon'></image>
+    </view>
+    <view class='service-box-goods'>
+      <view class='img-bg'>
+        <image src='/img/service-1.png' class='goods-icon'></image>
+      </view>
+      <view class='service-goods-text'>
+        <view class='service-goods-title'>
+          <text>类型：<text>{{detailsData.service[0].name}}</text></text>
+          <text class='serveprice'>￥{{detailsData.base_fee}}</text>
+        </view>
+        <view class='service-goods-attr'>
+          <text>{{detailsData.member[0].specs}}</text>
+          <text>x1</text>
+        </view>
+        <view class='service-goods-time'>
+          <text>{{detailsData.date_time?detailsData.date_time:''}}</text>
+        </view>
+      </view>
+    </view>
+    <button class='after-sale'>申请售后</button>
+    <view class='service-line'></view>
+    <view class='coupon-box'>
+      <text class="coupon">券码<text class="couponstatus">未使用</text></text>
+      <image src="/img/unused.png" class='couponstatus-img'></image>
+    </view>
+    <view class='service-line'></view>
+    <view class='service-box-footer'>
+      <text>{{detailsData.shop[0].name}}</text>
+      <view class='service-box-right'>
+        <image src='/img/tele-icon.png' class="tele-icon"></image>
+        <text>联系</text>
+        <view class='service-line1'></view>
+        <image src='/img/nav-icon.png' class='nav-icon'></image>
+        <text>导航</text>
+      </view>
+    </view>
+  </view>
+  <view class='detail-box'>
+    <text class='footer-box2-title'>明细</text>
+    <view class='service-line'></view>
+    <view class='cost-box'>
+      <text>服务费用</text>
+      <text>￥{{detailsData.base_fee}}</text>
+    </view>
+    <view class='cost-box'>
+      <text>接送费用</text>
+      <text>￥{{detailsData.expenses?detailsData.expenses:0.00}}</text>
+    </view>
+    <view class='distance'>
+      <text class='distance-title'>距离约{{distance}}公里</text>
+      <view class='distance-detail'>
+        <image class='small-address-icon' src='/img/small.png' />
+        <text>{{detailsData.shop[0].name}}</text>
+        <image class='arrows-icon' src='/img/arrows.png' />
+        <image class='small-address-icon' src="/img/small.png" />
+        <text>{{useraddress1}}</text>
+      </view>
+    </view>
+    <image class='separator' src='/img/separator.png'/>
+    <view class='tatal-price-boc'>
+      <text class='actualpayment'>实付款：</text>
+      <text class='total-price'>￥<text class='big-total-price'>{{detailsData.total_fee}}</text></text>
+    </view>
+  </view>
+</view>
+<!-- 商品订单详情 -->
+<view class='goods-box hidden'>
+  <view class='service-box-header'>
+    <image src="/img/merchant.png" class='merchant-img'></image>
+    <text>{{storename}}</text>
+    <image src='/img/return.png' class='merchant-icon'></image>
+  </view>
+  <view class='goods-detail-box'>
+    <view class='goods-detail'>
+      <view class='img-title-box'>
+        <image src="/img/list1.png" class='goods-img'></image>
+        <text class='goods-title'>{{goodstitle}}</text>
+      </view>
+      <view class='price-num-box'>
+        <text class='goods-price'>￥{{goodsprice}}</text>
+        <text class='goods-number'>x1</text>
+      </view>
+    </view>
+    <button class="goods-aftersale">售后处理中</button>
+  </view>
+  <view class='goods-text-box' style='margin-top:40rpx'>
+    <text>商品总价</text>
+    <text>￥{{goodstotalprice}}</text>
+  </view>
+  <view class='goods-text-box'>
+    <text>运费(快递）</text>
+    <text>￥{{freightprice}}</text>
+  </view>
+  <view class='goods-text-box'>
+    <text>店铺优惠</text>
+    <text>￥{{storediscounts}}</text>
+  </view>
+  <view class='goods-total-box'>
+    <text >商品总价</text>
+    <text>￥{{goodstotalprice}}</text>
+  </view>
+  <image class='separator' src="/img/separator.png"/>
+  <view class='goods-total-box1' >
+    <text class='goods-actualpayment'>应付款:</text>
+    <text class='goods-total-price'>￥<text class="goods-total-price1">{{goodstotalprice}}</text></text>
+  </view>
+</view>
+<!-- 活体商品详情 -->
+
+<!-- 底部共同区域 -->
+<view class='footer'>
+  <view class='footer-box1'>
+    <view class='footer-box11'>
+      <image class='service-img' src="/img/service.png"></image>
+      <text class='service-text'>在线客服</text>
+      <image class='help-img' src="/img/help.png"></image>
+      <text class='help-text'>帮助手册</text>
+    </view>
+  </view>
+  <view class='footer-box2'>
+    <text class='footer-box2-title'>订单信息</text>
+    <view class='footer-text-box footer-text-box1'>
+      <text>订单编号：</text>
+      <text class='changetext'>{{detailsData.order_sn}}</text>
+      <view class='copy' bindtap='onCopyTap'>复制</view>
+    </view>
+    <view class='footer-text-box'>
+      <text>订单分类：</text>
+      <text class='changetext'>{{orderclassify}}</text>
+    </view>
+    <view class='footer-text-box'>
+      <text>付款方式：</text>
+      <text class='changetext'>{{payway}}</text>
+    </view>
+    <view class='footer-text-box'>
+      <text>下单时间：</text>
+      <text class='changetext'>{{ordertime}}</text>
+    </view>
+    <view class='footer-text-box'>
+      <text>付款时间：</text>
+      <text class='changetext'>{{paytime}}</text>
+    </view>
+  </view>
+  <view class='footer-box3'>
+    <!-- <button class='deleteorder-btn'>删除订单</button> -->
+    <button class='payagain-btn'>再次购买</button>
+  </view>
+</view>

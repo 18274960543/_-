@@ -1,0 +1,121 @@
+<wxs src="../../filter/formatFr.wxs" module="formatFr"/>
+<view class="top">
+  <text>{{orderData.state_desc}}</text>
+  <view class="top_bt">
+    <image src='/img/address1.png'></image>
+    <view class="top-lf">
+      <view>{{orderData.name}}{{orderData.mobile}}</view>
+      <view>{{orderData.address}}</view>
+    </view>
+  </view>
+</view>
+<image src='/img/my.png' class="imaDW"></image>
+<view class="center">
+<!-- <block wx:for="{{orderData}}" wx:key="{{index}}"> -->
+  <view class="center-top">
+    <image src='/img/cart2.png'></image>
+    <text>{{orderData.shop_name}}</text>
+    <image src='/img/rt.png' class="center-top-img"></image>
+  </view>
+  <view class='shoplist' wx:for="{{orderData.order_goods}}" wx:for-item="item1" wx:key="index" wx:for-index="index1">
+    <view class="shoplist-top">
+      <image src='{{item1.goods_image}}'></image>
+      <view class="shoplis-top-center">{{item1.goods_name}}</view>
+      <view>
+        <view>￥{{item1.goods_price}}</view>
+        <text>x{{item1.goods_num}}</text>
+      </view>
+    </view>
+    <view class="shoplist-bt" 
+      data-index='{{index1}}'
+    bindtap='add' 
+    wx:if="{{orderData.state==20||orderData.state==30||orderData.state==40}}"
+    >申请售后</view>
+  </view>
+<!-- </block> -->
+  <view class="center-bt">
+    <view class="center-bt-list">
+      <view>商品总价</view>
+      <view>￥{{orderData.goods_amount}}</view>
+    </view>
+    <view class="center-bt-list">
+      <view>运费（快递）</view>
+      <view>￥{{orderData.shipping_fee}}</view>
+    </view>
+    <view class="center-bt-list">
+      <view>店铺优惠</view>
+      <view>￥{{orderData.coupon}}</view>
+    </view>
+    <image src='/img/separator.png' class="center-img"></image>
+    <view class="center-bt-list active">
+      <view>应付款:</view>
+      <view style='color:red'>
+        <text>￥</text>{{formatFr.fixed2(orderData.total_amount)}}</view>
+    </view>
+  </view>
+</view>
+ <view class="kefu">
+  <!-- <view style='text-align: center;padding-left:20%'>
+  <image src='/img/service.png'></image> 
+    <text  >在线客服</text>
+  </view>
+  <view>
+    <image src='/img/help.png'></image>
+    <text>帮助手册</text>
+  </view>  -->
+</view> 
+<view class="orderinformation">
+  <view class="orderinformation-top">订单信息</view>
+  <view class="orderinformation-list">
+    <view>订单编号：</view>
+    <text>{{orderData.order_sn}}</text>
+    <view class="fuz" bindtap='onCopyTap'>复制</view>
+  </view>
+  <view class="orderinformation-list" style='margin-top:10rpx'>
+    <view>订单分类：</view>
+    <text>商品</text>
+  </view>
+  <view class="orderinformation-list">
+    <view>付款方式：</view>
+    <text>微信</text>
+  </view>
+  <view class="orderinformation-list">
+    <view>下单时间：</view>
+    <text>{{created_at}}</text>
+  </view>
+  <!-- <view class="orderinformation-list">
+    <view>付款时间：</view>
+    <text>2019-01-07 15:45</text>
+  </view> -->
+</view>
+<view class="footer">
+  <view bindtap='goExpress' wx:if="{{orderData.state==30||orderData.state==40}}">查看物流</view>
+  <!-- <view bindtap='goExpress'>查看物流</view> -->
+  <view wx:if="{{orderData.state==30}}" class="replaceColour replaceBorder">确认收货</view>
+  <view bindtap='gohome'>再次购买</view>
+</view>
+<!-- 选择售后 -->
+<view wx:if="{{showSerivce}}">
+  <view class="showStore">
+    <view class="showStore-1">选择服务类型</view>
+    <view class='showStore-2' bindtap='refund' data-types='0' >
+      <view>仅退款</view>
+      <view>
+        <view></view>
+      </view>
+    </view>
+    <view class='showStore-2' bindtap='refund' data-types='1'>
+      <view>退款退货</view>
+      <view>
+        <view></view>
+      </view>
+    </view>
+     <view class='showStore-2' bindtap='refund' data-types='2' >
+      <view>换货</view>
+      <view>
+        <view></view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="shadow {{showSerivce?'show':''}}" catchtouchmove='stopPageScroll'></view>

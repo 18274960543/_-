@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "驯养",
+  "usingComponents": {
+    "i-icon": "../../dist/icon/index"
+  }
+}

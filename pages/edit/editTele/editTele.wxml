@@ -1,0 +1,18 @@
+<!--pages/edit/editTele/editTele.wxml-->
+<view class='tele-box'>
+  <view class='tele-text'><text>手机号</text></view>
+  <input class="tele-input" type="number" auto-focus placeholder="请输入修改的手机号" placeholder-class="tele-placeholder" bindinput='bindTeleInput' />
+</view>
+<view class='line'></view>
+<view class='code-box'>
+  <label class='code-text'>验证码</label>
+  <input class="tele-input code-input" type="number" auto-focus  bindinput='bindCodeInput'/>
+  <button class='send-code' bindtap="{{isdisabled?'onSendcodeTap':''}}"><text class="send-code-text {{isdisabled ? '' : 'gray' }}">{{btnText}}</text></button>
+</view>
+
+<!-- <view class='tele-box'>
+  <view class='tele-text'><text>设置新密码</text></view>
+  <input class="tele-input" password="true"  auto-focus placeholder="请输入新密码" placeholder-class="mima-placeholder" bindinput='bindPasswordInput'/>
+</view> -->
+
+<button class="save-btn {{isSavebtn?'':'opacity'}} replaceBackground" bindtap="onSaveTap" >保存</button>

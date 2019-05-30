@@ -1,0 +1,16 @@
+.content{padding:30rpx;box-sizing: border-box}
+.list{background:#fff;padding:40rpx 30rpx;border-radius:10rpx;display:flex;align-items:center;margin-bottom:20rpx;}
+.list image{width:30rpx;height:30rpx;margin-right:30rpx;}
+.list_lf{display: flex;font-size:24rpx;color:#333;flex-direction: column;width:400rpx;margin-right:20rpx;}
+.list_rt{font-size:28rpx;color:#666;flex: 1;border-left:2px solid #F3F3F3;padding-left:30rpx;}
+.list_lf view{margin-top:5rpx;}
+ .button{position: fixed;width:90%;
+ border-radius:100rpx;background:#FFC408;
+ color: #530B0B;
+ bottom:50rpx;
+ left:5%;
+  height:80rxp;
+  line-height:80rpx;
+  text-align: center
+ }
+.left{display: flex;justify-content: space-between;align-items: center;width:80%}

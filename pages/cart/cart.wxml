@@ -1,0 +1,69 @@
+
+<view wx:if="{{car_list}}">
+  <view class="top">
+   <image src='/img/my.png' mode='aspectFill'></image>
+    <view class="top-text">
+       <view>共{{totalCount}}件商品</view>
+       <text bindtap='edit_finish'>{{edit_finish?'编辑':'完成'}}</text>
+    </view>
+</view>
+<scroll-view scroll-y class="center">
+     <view class="cart-list" wx:for="{{car_list}}" wx:key="index1" wx:for-item="item" wx:for-index="index1">
+        <view class="center-top" bindtap='all_selection' data-index="{{index1}}">
+               <image src='/img/switch_dp-3.png' mode='aspectFill' wx:if="{{item.all_select}}"   data-index="{{index1}}"></image>
+               <image src='/img/switch_dp-1.png' mode='aspectFill' wx:else    data-index="{{index1}}"></image>
+               <view>
+                    <image src='/img/cart2.png' mode='aspectFill' class="center-top-lf"></image>
+                    <text>{{item.shop.shop_name}}-{{item.supplier.supplier_name}}</text>
+                     <image src='/img/rt.png' mode='aspectFill' class="center-top-rt"></image>           
+               </view>
+        </view>
+<block wx:for="{{item.goods}}" wx:key="index" wx:for-item="item1" wx:for-index="index"  >
+        <view class="center-list"   >
+            <image src='/img/switch_dp-3.png' mode='aspectFill' wx:if="{{item1.selected=='1'}}"  bindtap="is_selection" wx:for-index="index" data-index="{{[index1,index]}}"></image>
+            <image src='/img/switch_dp-1.png' mode='aspectFill' wx:else  bindtap="is_selection" wx:for-index="index" data-index="{{[index1,index]}}"></image>
+           <view class="center-list-rt" bindtap='godetails' data-index="{{[index1,index]}}" data-id='{{item1.goods_id}}'>
+                <view class="center-list-rt-lf">
+                   <image src='{{item1.img}}' mode='aspectFill'></image>
+                </view>
+                 <view class="center-list-rt-rt">
+                    <text class="{{item1.is_del?'active':''}}">{{item1.goods_name}}</text>
+                    <view class="specs" wx:if="{{item1.attr_name}}">{{item1.attr_name}}</view>
+                    <view class="center-list-rt-bt">
+                        <text class="{{item1.is_del?'active':''}}">￥{{item1.goods_price}}</text>
+                        <text wx:if="{{item1.is_del}}" style='color:#999;font-size:18rpx'>已下架</text>
+                        <view catchtap='stop'>
+                            <button catchtap='reduce' data-index="{{[index1,index]}}" disabled='{{item1.num<=1||item1.is_del}}'>-</button>
+                            <input type="number" placeholder="1" placeholder-style="font-size:20rpx;color:#666;line-height:30rpx;" value="{{item1.num>=1?item1.num:'1'}}" bindblur='inputChangeHandle' data-index="{{[index1,index]}}" disabled="{{item1.is_del}}"/>
+                            <button catchtap='add'data-index="{{[index1,index]}}" disabled="{{item1.is_del}}">+</button>
+                        </view>
+                    </view>
+                 </view>
+           </view>
+        </view>
+        </block>
+     </view>
+     
+     <view style='margin-top:100rpx;height:10rpx;'></view>  
+</scroll-view>
+</view>
+
+ <view wx:else   class='kong'>
+ <image src='/img/kong.png'></image>
+ <text>购物车空空如也，去逛逛吧</text>
+  </view>
+<!-- 底部立即购买 -->
+<view class="footer" wx:if="{{car_list}}">
+      <view class="footer-left" bindtap='all'>
+          <image src='/img/switch_dp-3.png' mode='aspectFill' wx:if="{{all}}"></image>
+          <image src='/img/switch_dp-1.png' mode='aspectFill' wx:else></image>
+          <text>全选</text>
+      </view>
+      <view class="footer-right " wx:if="{{edit_finish}}">
+           <text>合计￥{{totalMoney}}</text>
+           <view bindtap='goconfirmorder' class="replaceBackground">立即购买</view>
+      </view>
+      <view class="footer-right1" wx:else bindtap='car_delete'>删除</view>
+</view>
+ 
+ 

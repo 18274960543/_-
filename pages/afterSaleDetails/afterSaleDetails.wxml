@@ -1,0 +1,193 @@
+<view class="top">
+  <text wx:if="{{pageorder.allCheck == 0}}">{{stateComment}}</text>
+  <text wx:if="{{pageorder.allCheck == 1}}">审核通过</text>
+  <text wx:if="{{pageorder.allCheck == 2}}">审核拒绝</text>
+  <text style='font-size:26rpx'>{{clock}}</text>
+  <text style='font-size:28rpx;margin-bottom:0rpx'></text>
+  <view class="top_bt">
+    <view class="top-lf">
+      <view>退款金额：
+        <text style='color:red;display: inline-block'>{{pageorder.refund_amount}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- orderInfo.refund_check == 0 || orderInfo.express.length && orderInfo.finance_check != 1 -->
+<image src='/img/my.png' class="imaDW"></image>
+<view class="Notice">
+  <!-- <text>服务须知</text>
+   <image src='/img/return1.png' class="imaDW"></image> -->
+</view>
+<view class="orderinformation active" style='margin-bottom:0' wx:if="{{!pageorder.express.supplier.length && pageorder.refund_state != 0 && pageorder.refund_check == 3}}">
+  <view class="orderinformation-top">平台收货信息</view>
+  <view class="orderinformation-list">
+    <view>收货人:</view>
+    <text>{{pageorder.refund_address.person}}</text>
+  </view>
+  <view class="orderinformation-list" style='margin-top:10rpx'>
+    <view>收货电话:</view>
+    <text>{{pageorder.refund_address.phone}}</text>
+  </view>
+  <view class="orderinformation-list">
+    <view>收货地址：</view>
+    <text>{{pageorder.refund_address.address}}</text>
+  </view>
+  <view class="orderinformation-list">
+    <view>快递公司：</view>
+    <text bindtap='displayLogistics'>{{expressName?expressName:'请填快递公司'}}</text>
+  </view>
+  <view class="orderinformation-list">
+    <view>快递单号：</view>
+    <input type='text' placeholder-style='color:#666' placeholder='请填写快递单号' bindinput="bindKeyInput" value='{{pageorder.express.user.express_code}}'></input>
+  </view>
+  <view class="orderinformation-list">
+    <view class="but replaceBorder replaceColour" bindtap='submit' wx:if='{{!pageorder.express.user}}'>提交数据</view>
+    <view class="but replaceBorder replaceColour" bindtap='modify' wx:if="{{pageorder.express.user}}">修改数据</view>
+  </view>
+</view>
+<!-- 确认收货 -->
+<view class="orderinformation active"  wx:if="{{pageorder.express.supplier[0].express_name&&pageorder.confirm_receive==0}}">
+  <view class="orderinformation-top">平台已发货</view>
+  <view class="orderinformation-list">
+    <view>快递公司：</view>
+    <text bindtap='displayLogistics'>{{pageorder.express.supplier[0].express_name}}</text>
+  </view>
+  <view class="orderinformation-list">
+    <view>快递单号：</view>
+   <text>{{pageorder.express.supplier[0].express_code}}</text>
+  </view>
+  <view class="orderinformation-list">
+    <view class="but replaceBorder replaceColour" bindtap='confirm'>确认收货</view>
+  </view>
+</view>
+
+<!-- 买家 和平台物流信息-->
+<view class="orderinformation active" wx:if="{{pageorder.express.user.express_name&&pageorder.confirm_receive==1}}">
+  <view class="orderinformation-top">买家物流信息</view>
+  <view class="orderinformation-list">
+    <view>快递公司：</view>
+    <text bindtap='displayLogistics'>{{pageorder.express.user.express_name}}</text>
+  </view>
+  <view class="orderinformation-list">
+    <view>快递单号：</view>
+   <text>{{pageorder.express.user.express_code}}</text>
+  </view>
+</view>
+<view class="orderinformation active"  wx:if="{{pageorder.express.supplier[0].express_name&&pageorder.confirm_receive==1}}">
+  <view class="orderinformation-top">平台物流信息</view>
+  <view class="orderinformation-list">
+    <view>快递公司：</view>
+    <text bindtap='displayLogistics'>{{pageorder.express.supplier[0].express_name}}</text>
+  </view>
+  <view class="orderinformation-list">
+    <view>快递单号：</view>
+   <text>{{pageorder.express.supplier[0].express_code}}</text>
+  </view>
+</view>
+
+<!-- 拒绝理由 -->
+<view class="orderinformation active" wx:if="{{pageorder.state_comment==6}}">
+  <view class="orderinformation-top">拒绝了理由</view>
+  <view class="orderinformation-list">
+    <view>{{pageorder.refund_reason}}</view>
+  </view>
+</view>
+
+<!-- 快递物流 -->
+<view wx:if="{{showCourier}}" catchtouchmove='stopPageScroll'>
+  <view class='mask' bindtap='clickCour'></view>
+  <view class='showCourier'>
+    <!-- <view class="showCourier-status">
+<view bindtap='clickCour' data-types='show'>取消</view>
+<view bindtap='clickCour' data-types='succ'>确定</view>
+</view> -->
+    <!-- <view class='showCourier-1'>
+<input bindinput='bindinput' data-types="1" value='{{courierInfo.name}}' placeholder='请搜索或选择快递公司'></input>
+</view> -->
+    <view class='showCourier-2'>
+      <scroll-view scroll-y class=''>
+        <view class='scrollItem' wx:for="{{courierList}}" wx:key="" bindtap='selectCour' data-index='{{index}}' data-code='{{item.code}}' data-name='{{item.name}}' data-id='{{item.id}}'>
+          <view>{{item.name}}</view>
+          <view class='scrollItem-quan' wx:if="{{item.status ==1}}">
+            <view></view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+</view>
+
+<view class="center">
+  <view class="center-top">
+    <text>商品信息</text>
+  </view>
+  <view class='shoplist'>
+    <view class="shoplist-top">
+      <image src='{{pageorder.refund_goods.goods_image}}'></image>
+      <view class="shoplis-top-center">{{pageorder.refund_goods.goods_name}}</view>
+      <view>
+        <view>￥{{pageorder.refund_goods.goods_pay_price}}</view>
+        <text>x{{pageorder.refund_goods.goods_num}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="kefu">
+  <text bindtap='kefu'>联系卖家客服</text>
+  <text bindtap='platformIntervention'>平台介入</text>
+</view>
+<view class="orderinformation">
+  <view class="orderinformation-top">订单信息</view>
+ 
+  <!-- <view class="orderinformation-list" style='margin-bottom:-5rpx;'>
+=======
+  <view class="orderinformation-list" style='margin-bottom: -15rpx;'>
+>>>>>>> 95a9eef28d172bd583040879eb1983e6564ea4ae
+    <view>订单编号：</view>
+    <text>{{pageorder.order_sn}}</text>
+    <view class="fuz" bindtap='onCopyTap' data-text='{{pageorder.order_sn}}'>复制</view>
+  </view> -->
+    <view class="orderinformation-list">
+    <view>退款编号：</view>
+    <text>{{pageorder.refund_sn}}</text>
+    <view class="fuz" bindtap='onCopyTap' data-text='{{pageorder.refund_sn}}'>复制</view>
+  </view>
+  <view class="orderinformation-list" style='margin-top:10rpx'>
+    <view>申请时间：</view>
+    <text>{{created_at}}</text>
+  </view>
+  <view class="orderinformation-list">
+    <view>服务类型：</view>
+    <text>{{pageorder.refund_state==0?'仅退款':pageorder.refund_state==1?'退款退货':pageorder.refund_state==2?'换货':''}}</text>
+  </view>
+
+  <view class="orderinformation-list">
+    <view>联系人：</view>
+    <text>{{pageorder.name}}</text>
+  </view>
+  <view class="orderinformation-list">
+    <view>联系电话：</view>
+    <text>{{pageorder.mobile}}</text>
+  </view>
+</view>
+<!-- 联系卖家客服 -->
+<view wx:if="{{showServicePopups}}">
+  <view class='mask' bindtap="isswitch"></view>
+  <view class='ServicePopups'>
+    <image bindtap='clickService' data-types='1' class='ServicePopups-close' src="/img/x.png"></image>
+    <view class='ServicePopups-1'>联系客服</view>
+    <view class='ServicePopups-3'>微信客服</view>
+    <view class='ServicePopups-2' wx:for="{{pageorder.custom.wechat}}" wx:key="">
+      <view>微信号：{{item.number}}</view>
+      <view>（售前客服 上午 {{item.info}}）</view>
+      <view bindtap='onCopyTap' data-text='{{item.number}}'>复制</view>
+    </view>
+    <view class='ServicePopups-3' style='margin-top:38rpx;'>电话客服</view>
+    <view class='ServicePopups-2' wx:for="{{pageorder.custom.mobile}}" wx:key="">
+      <view>电话：{{item.number}}</view>
+      <view>（售前客服 上午 {{item.info}}）</view>
+      <view bindtap='onCopyTap' data-text='{{item.number}}'>复制</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,162 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"nodeModules": false,
+		"autoAudits": false,
+		"uglifyFileName": false,
+		"checkInvalidKey": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.6.0",
+	"appid": "wxcf91d8e1deb04418",
+	"projectname": "sstao_xiaochengxu",
+	"cloudfunctionTemplateRoot": "",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"scripts": {},
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"miniprogram": {
+			"current": 15,
+			"list": [
+				{
+					"id": -1,
+					"name": "宠物信息",
+					"pathName": "pages/order/order",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "2",
+					"pathName": "pages/serviceTemplate/serviceTemplate",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "商品详情",
+					"pathName": "pages/details/details",
+					"query": "share=share&id=477&shop_id=141",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "v",
+					"pathName": "pages/refundInfo/refundInfo",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "vv",
+					"pathName": "pages/refund/refund",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "地址调试",
+					"pathName": "pages/newaddress/newaddress",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 6,
+					"name": "地址编辑",
+					"pathName": "pages/addresseditor/addresseditor",
+					"query": "name=测试地址&&mobile=18273162027&&province=湖南省&&city=长沙市&&area=天心区&&address=地址输入&&is_default=1&&id=12",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "寄养",
+					"pathName": "pages/fosterTemplate/fosterTemplate",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "退款",
+					"pathName": "pages/refundInfo/refundInfo",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 9,
+					"name": "订单详情",
+					"pathName": "pages/orderdetails/orderdetails",
+					"query": "pay_sn=3RQVUGS58N&id=755&state=10",
+					"scene": null
+				},
+				{
+					"id": 10,
+					"name": "商品列表",
+					"pathName": "pages/commodity/commodity",
+					"query": "pay_sn=3RQVUGS58N&id=755&state=10",
+					"scene": null
+				},
+				{
+					"id": 11,
+					"name": "优惠券商品列表",
+					"pathName": "pages/couponShopList/couponShopList",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "优惠券商品列表",
+					"pathName": "pages/couponShopList/couponShopList",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "优惠券商品列表",
+					"pathName": "pages/couponShopList/couponShopList",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "确定订单优惠券",
+					"pathName": "pages/order/order",
+					"query": "price=120.00&service_id=2&name=dd&specs=小公主,短毛,小型犬&weight=1&time=2019-05-15 16:00:00&member_pets_id=288&service_specs_id=5093&date_time=2019-05-15 16:00:00&mername=美容&exes=bath/expenses,bath/add,bath/store&service_product_id=249&is_distribution=0&shop_id=4527",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "供应商详情",
+					"pathName": "pages/supplierdetails/supplierdetails",
+					"query": "supplier_id=1",
+					"scene": null
+				}
+			]
+		}
+	}
+}

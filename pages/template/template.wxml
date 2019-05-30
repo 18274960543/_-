@@ -1,0 +1,112 @@
+<block wx:if="{{setmeal}}">
+<!-- 顶部店铺、地址 -->
+<view class="position">
+   <text wx:if="{{shopName}}">店铺：{{shopName}}</text>
+   <view bindtap='gomap'>
+     <image src="/img/position.png" mode="aspectFill" />
+     <text>{{setmeal[indexI].shop[0].address}}</text>
+   </view>
+</view>
+<!-- 顶部图片 -->
+ <swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="{{8000}}" duration="{{500}}" circular="{{true}}" indicator-color="rgba(255, 255, 255, .3)" indicator-active-color="#fff" class="picture">
+      <block wx:for="{{setmeal[indexI].imag}}" wx:key="index">
+        <swiper-item>
+          <image src="{{item.img_key.full_img_url}}" mode="aspectFill" class="slide-image"   bindtap='bigimage' 
+     data-src='{{item.img_key.full_img_url}}'/>
+        </swiper-item>
+      </block>
+</swiper>
+ <!-- 选择宠物 -->
+  <view class="Choosingpets">
+    <view class="top">
+      <view class="top_title">
+        <view>选择宠物</view>
+        <text>{{pet_list[index].is_select?pet_list[index].specs:''}},{{pet_list[index].is_select?pet_list[index].weight:''}}KG</text>
+      </view>
+      <scroll-view scroll-x="true" class="scroll">
+        <block wx:for="{{pet_list}}" wx:key="index">
+          <view class="scroll_left {{item.is_select?'bac':''}}" bindtap='is_select' data-index="{{index}}">
+            <image src='{{item.avatar}}' mode='aspectFill' class="scroll_img"></image>
+            <view class="scroll_text">
+              <view class="{{item.is_select?'replaceColour':''}}">{{item.name}}</view>
+            </view>
+          </view>
+        </block>
+        <view class="scroll_left" bindtap='addPets'>
+          <image src='/img/a.png' mode='aspectFill' class="scroll_img" style='width:40rpx;height:40rpx;margin-top:14rpx'></image>
+          <view class="scroll_text">
+              <view style='font-size:28rpx;color:#666;'>添加宠物</view>
+            </view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+  <!-- 选择时间 -->
+     <view class="selectionTime">
+    <view class="selectionTimetext">
+    <text>预约时间</text> 
+    <text class="selectionTimetextRt" wx:if="{{selectDate}}">已选：{{selectDate}}</text> 
+    </view>
+    <view class="week">
+      <view class="week-list {{curIndex == index ? 'week-list-active replaceBackground  ' : ''}}" wx:for="{{week}}" wx:key="index" bindtap='switchRightTab' data-index="{{index}}">
+        <view>{{item.week}}</view>
+        <text>{{item.month}}-{{item.day}}</text>
+      </view>
+    </view>
+    <view class="time-container">
+      <button class="item {{item.istime?'replaceColour replaceBackground':''}}" disabled="{{!item.status}}" wx:for="{{time}}" wx:key="index" bindtap='select_time' data-index='{{index}}'>
+        <view class="{{item.istime?'replaceColour replaceBackground':''}}">{{item.date_time}}</view>
+        <text class="{{item.istime?'replaceColour replaceBackground':''}}">{{item.status?"可预约":"不可预约"}}</text>
+      </button>
+    </view>
+  </view>
+<!-- 服务内容 -->
+<view class="content">
+  <text class="content-text">服务内容</text>
+  <view>{{setmeal[indexI].content}}</view>
+ 
+</view>
+<view class="Remarks">
+  <text class="content-text">服务备注</text>
+  <view class="RemarksLi">
+    <view class="RemarksLi-list">
+       <text></text>
+      <view>本服务预约后提供一次修改预约服务时间，过期不予退款。</view>
+    </view>
+  </view>
+  <view class="RemarksLi" wx:if="{{setmeal[indexI].remark}}">
+    <view class="RemarksLi-list">
+      <text></text>
+      <view>{{setmeal[indexI].remark}}</view>
+    </view>
+  </view>
+</view>
+<!-- 底部 -->
+<view class="footer">
+  <view class="footerLf">
+    总计：
+    <text>￥{{setmeal[indexI].price?setmeal[indexI].price:setmeal[indexI].wholesale_price}}</text>
+  </view>
+  <view class="footerRt replaceBackground" bindtap='goorder'>立即预约</view>
+</view>
+
+ 
+<view catchtouchmove='stopPageScroll'>
+  <!--遮罩层弹框 -->
+  <view class="mask {{is_varieties?'show':''}}" bindtap='mask'></view>
+  <!-- 选择宠物品种弹框 -->
+  <view class="varieties {{is_varieties?'show':''}}">
+    <text class="varieties_text">选择您宠物品种</text>
+    <view>
+      <view bindtap='go_petinformation' data-id="1">
+        <image src='/img/dog.png' mode='aspectFill' style='width:100rpx;height:100rpx;border-radius:50%;'></image>
+        <text>汪星人</text>
+      </view>
+      <view bindtap='go_petinformation' data-id="2">
+        <image src='/img/cat.png' mode='aspectFill' style='width:100rpx;height:100rpx'></image>
+        <text>喵星人</text>
+      </view>
+    </view>
+  </view>
+</view>
+</block>

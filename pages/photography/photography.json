@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "摄影",
+  "usingComponents": {
+    "calendar": "plugin://calendar/calendar"
+  }
+}

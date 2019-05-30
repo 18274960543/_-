@@ -1,0 +1,32 @@
+<view class="top">
+  <view class="search">
+    <image src='/img/glass.png' class="galss"></image>
+    <input type='text' placeholder='请输入您要搜索的内容' placeholder-style='font-size:28rpx;color:#ccc' bindinput="shoplist"></input>
+  </view>
+  <view class="text">
+    搜索
+  </view>
+</view>
+<!-- 历史记录 -->
+<view class="History">
+   <view class="History-top">
+      <view class="text-top">历史搜索</view>
+      <image src='/img/delet.png'></image>
+   </view>
+   <view class="delet-list">
+     <!-- <view class="list">萌萌乐园宠物屋</view>
+     <view class="list">萌萌乐园宠物屋</view>
+     <view class="list">萌萌乐园宠物屋</view>
+     <view class="list">萌萌乐园宠物屋</view> -->
+   </view>
+</view>
+<!-- 店铺列表 -->
+<view class="search-list">
+    <view class="list1" wx:for="{{addresslist}}" wx:key="{{index}}" bindtap='listTOhome' data-index='{{index}}'>
+       <view>{{item.name}}</view>
+       <view class="list1-rt">
+        <image src='/img/position.png'></image>
+         {{item.s}}km
+       </view>
+    </view>
+</view>

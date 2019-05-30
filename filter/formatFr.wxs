@@ -1,0 +1,10 @@
+var formatFr = {
+  fixed2:function(val){
+    if(val){
+      return parseFloat(val).toFixed(2);
+    }
+    return "";
+  }
+}
+
+module.exports = formatFr

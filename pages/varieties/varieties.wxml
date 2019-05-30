@@ -1,0 +1,42 @@
+
+<view class="container log-list">
+<view style='height:20%'> 
+<!--热门宠物品种-->
+<text class="title">热门宠物品种</text>
+<scroll-view scroll-x="true" class="scroll-x"> 
+ <block wx:for="{{logs}}" wx:for-item="group" wx:key="index" wx:for-index="index" data-index='{{index}}' wx:if="{{group.title=='热'}}">
+    <view class="list" wx:for="{{group.items}}" wx:for-item="user" wx:key="index1" wx:for-index="index1"  bindtap='selectedVarieties' data-index='{{[index,index1]}}'>
+       <image src='{{user.avatar1}}' class="{{user.avatar?'image1':''}}"></image>
+       <text>{{user.name}}</text>
+    </view>
+  </block>
+</scroll-view>
+</view>
+<scroll-view scroll-y style="height:70%;white-space:nowrap;padding-bottom:150rpx;" scroll-into-view="{{toView}}" enable-back-to-top bindscroll="scroll" scroll-with-animation scroll-top="{{scrollTop}}">
+  <view class="list-group" wx:for="{{logs}}" wx:for-item="group" wx:key="index" wx:for-index="index" data-index='{{index}}' wx:if="{{group.title!='热'}}">
+    <view class="title" id="{{group.title}}">{{group.title}}</view>
+    <block wx:for="{{group.items}}" wx:for-item="user" wx:key="index1" wx:for-index="index1">
+      <view id="" class="list-group-item" bindtap='selectedVarieties' data-index='{{[index,index1]}}'   >
+        <image class="icon" src="/img/switch_dp-3.png" lazy-load="true" wx:if="{{user.avatar}}"></image>
+         <image class="icon" src="/img/switch_dp-1.png" lazy-load="true" wx:else></image>
+        <text class="log-item">{{user.name}}</text>
+      </view>
+    </block>
+  </view>
+</scroll-view>
+  <!-- 侧边字母导航 -->
+  <view class="list-shortcut">
+    <block wx:for="{{logs}}" wx:key="index"  wx:if="{{item.title!='热'}}">
+      <text class="{{currentIndex===index-1?'current':''}}" data-id="{{[item.title,index-1]}}" bindtap='scrollToview'>{{item.title}}</text>
+    </block>
+  </view>
+  <!-- 固定在顶部的字母导航 -->
+  <!-- <view class="list-fixed {{fixedTitle=='' ? 'hide':''}}" style="transform:translate3d(0,{{fixedTop}}px,0);">
+    <view class="fixed-title">
+      {{fixedTitle}}
+    </view>
+  </view> -->
+   
+</view>
+
+<button>保存</button>

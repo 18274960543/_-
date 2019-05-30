@@ -1,0 +1,110 @@
+<view class="container">
+  <view class="top">
+    <view class="top_title">
+      <view>选择服务的宠物</view>
+      <text>{{pet_list[index1].is_select?pet_list[index1].name:''}}</text>
+    </view>
+    <scroll-view scroll-x="true" class="scroll">
+      <block wx:for="{{pet_list}}" wx:key="index">
+        <view class="scroll_left" bindtap='is_select' data-index="{{index}}">
+          <image src='{{item.avatar}}' mode='aspectFill' class="scroll_img"></image>
+          <view class="scroll_text">
+            <view>{{item.name}}</view>
+            <text>{{item.breed.name}},{{item.specs}},{{item.weight}}kg</text>
+          </view>
+          <image src='/img/xz-dw.png' mode='aspectFill' class="scroll_img1" wx:if='{{item.is_select}}'></image>
+        </view>
+      </block>
+      <view class="add" bindtap='addPets'>
+        <image src='/img/a.png' mode='aspectFill'></image>
+        <text>添加宠物</text>
+      </view>
+    </scroll-view>
+  </view>
+  <!-- 服务内容 -->
+  <!-- <view class="service" bindtap='is_show'>
+    <view>服务内容</view>
+    <text>洗护项目</text>
+  </view> -->
+  <!-- 服务内容 -->
+  <view class="foster">
+    <view class="service">
+      <view>选择套餐</view>
+      <view class="service-right" bindtap='is_show'>
+        套餐详情
+        <text class="arrow"></text>
+      </view>
+    </view>
+    <scroll-view scroll-x="true" class="scroll" style='margin:0'>
+      <view class="setmeal">
+        <view class="{{item.is_select?'active':''}}" wx:for="{{setmeal.product}}" data-index='{{index}}' bindtap='taocan' wx:key="{{index}}"><text>{{item.service_product_name}}</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <!-- 预约时间 -->
+  <view class="time">
+    <view class="time-top">
+      <view>预约时间</view>
+      <text> {{hour}}</text>
+    </view>
+    <view class="week">
+      <view class="week-list {{curIndex == index ? 'week-list-active' : ''}}" wx:for="{{week}}" wx:key="index" bindtap='switchRightTab' data-index="{{index}}">
+        <view>{{item.week}}</view>
+        <text>{{item.month}}-{{item.day}}</text>
+      </view>
+    </view>
+    <view class="time-container">
+      <button class="item {{item.istime?'yes':''}}" disabled="{{!item.status}}" wx:for="{{time1}}" wx:key="index" bindtap='select_time' data-index='{{index}}'>
+        <view>{{item.date_time}}</view>
+        <text>{{item.status?"可预约":"不可预约"}}</text>
+      </button>
+    </view>
+    <view class="time-bt" wx:if="{{istrue}}" bindtap='show'>
+      <text>更多时间</text>
+      <image src='/img/btn.png'></image>
+    </view>
+    <view class="time-bt" wx:else bindtap='hide'>
+      <text>收起</text>
+      <image src="/img/top.png"></image>
+    </view>
+  </view>
+  <!-- 底部提交 -->
+  <view class="footer">
+    <view class="footer-left">￥{{delicate.specs.price?delicate.specs.price:'0.00'}}</view>
+    <view class="footer-rt" bindtap='go_confirmorder'>提交</view>
+  </view>
+  <!-- 套餐详情 -->
+  <view class="shadow {{is_shadow?'':'is_show'}}" bindtap='shadow'></view>
+  <view class="delicate {{is_show?'':'is_show'}}">
+  <view class="delicate-top">
+      <text>服务内容</text>
+      <image src="/img/xz-1.png" mode='aspectFill' bindtap='ishide'></image>
+    </view>
+    <view class="delicate-content">
+      <view class="delicate_list">
+        <!-- <view class="delicate_list1">宠物摄影体验套系：999元</view> -->
+        <view class="delicate_list2">{{setmeal.product[index].content}}</view>
+      </view>
+    </view>
+  </view>
+  <!-- 下一步弹框 -->
+  <view class="next {{is_next?'':'isnext'}}">
+    <view>添加宠物信息才可以进行预约服务哦~</view>
+    <text bindtap='go_varieties'>下一步</text>
+  </view>
+  <!-- 选择宠物品种弹框 -->
+  <view class="varieties {{is_varieties?'':'is_varieties'}}">
+    <text class="varieties_text">选择您宠物品种</text>
+    <view>
+      <view bindtap='go_petinformation' data-id="1">
+        <image src='/img/dog.png' mode='aspectFill' style='width:100rpx;height:100rpx;border-radius:50%;'></image>
+        <text>狗</text>
+      </view>
+      <view bindtap='go_petinformation' data-id="2">
+        <image src='/img/cat.png' mode='aspectFill' style='width:100rpx;height:100rpx'></image>
+        <text>猫</text>
+      </view>
+    </view>
+  </view>
+</view>

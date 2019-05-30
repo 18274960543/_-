@@ -1,0 +1,120 @@
+{
+  "pages": [
+      
+    "pages/home/home",  
+    "pages/img/img", 
+    "pages/timecontrol/timecontrol",
+    "pages/peripheryTemplate/peripheryTemplate",
+    "pages/template/template",
+    "pages/selectCity/selectCity",
+    "pages/supplierdetails/supplierdetails",
+    "pages/afterSaleDetails/afterSaleDetails",
+    "pages/refund/refund",
+    "pages/refundInfo/refundInfo",
+    "pages/serviceTemplateTwo/serviceTemplateTwo",
+    "pages/fosterTemplate/fosterTemplate",
+    "pages/serviceTemplate/serviceTemplate",
+    "pages/shopdetails/shopdetails",
+    "pages/nearby/nearby",
+    "pages/nearbyShops/nearbyShops",
+    "pages/authorize/authorize",
+    "pages/photography/photography",
+    "pages/city/city",
+    "pages/position/position",
+    "pages/inspect/inspect",
+    "pages/sterilization/sterilization",
+    "pages/commodity/commodity",
+    "pages/domestication/domestication",
+    "pages/mes/mes",
+    "pages/pay_success/pay_success",
+    "pages/me/me",
+    "pages/search/search",
+    "pages/shop_list/shop_list",
+    "pages/medical/medical",
+    "pages/edit/edit",
+    "pages/foster/foster",
+    "pages/edit/editTele/editTele",
+    "pages/news/news",
+    "pages/freshgrain/freshgrain",
+    "pages/myorder/myorder",
+    "pages/cosmetology/cosmetology",
+    "pages/Peteditor/Peteditor",
+    "pages/classroomdetails/classroomdetails",
+    "pages/petsClassroom/petsClassroom",
+    "pages/Aboutus/Aboutus",
+    "pages/follow_store/follow_store",
+    "pages/hospital/hospital",
+    "pages/petinformation/petinformation",
+    "pages/cart/cart",
+    "pages/mypet/mypet",
+    "pages/xizao/xizao",
+    "pages/order/order",
+    "pages/newaddress/newaddress",
+    "pages/addresseditor/addresseditor",
+    "pages/details/details",
+    "pages/confirmorder/confirmorder",
+    "pages/varieties/varieties",
+    "pages/switchcity/switchcity",
+    "pages/address/address",
+    "pages/orderdetails/orderdetails",
+    "pages/finish/finish",
+    "pages/map/map",
+    "pages/coupon/coupon",
+    "pages/coupon_center/coupon_center",
+    "pages/couponShopList/couponShopList",
+    "pages/orderexpress/orderexpress"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "navigateToMiniProgramAppIdList": [
+    "wx1fff2a2ffd4afd95"
+  ],
+  "tabBar": {
+    "color": "#666",
+    "selectedColor": "#773ADF",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "iconPath": "img/home.png",
+        "selectedIconPath": "img/home-hl.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/commodity/commodity",
+        "iconPath": "img/category.png",
+        "selectedIconPath": "img/category-hl.png",
+        "text": "商品"
+      },
+      {
+        "pagePath": "pages/cart/cart",
+        "iconPath": "img/cart.png",
+        "selectedIconPath": "img/cart-hl.png",
+        "text": "购物车"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "iconPath": "img/me.png",
+        "selectedIconPath": "img/me-hl.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于地图展示"
+    }
+  },
+  "plugins": {
+    "calendar": {
+      "version": "1.1.0",
+      "provider": "wx92c68dae5a8bb046"
+    }
+  },
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,16 @@
+.content{margin:30rpx;}
+.list{background:#fff;padding:35rpx 30rpx;display: flex;border-radius:10rpx;margin-bottom: 20rpx;}
+.list image{height:83rpx;width:83rpx;margin-right:44rpx;}
+.top{font-size:38rpx;color:#000;font-weight:600;}
+.right text{font-size:24rpx;color:#999;margin-bottom:10rpx;display: block}
+.bt{font-size:28rpx;color:#000;}
+
+/* 获取手机号码 */
+/* .bt{
+background:#FFC408;
+font-size:26rpx;
+line-height:80rpx;
+height:80rpx;
+border-radius:5%;
+color: #fff;
+}    */

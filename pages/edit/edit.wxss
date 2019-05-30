@@ -1,0 +1,154 @@
+/* pages/edit/edit.wxss */
+
+.header {
+  width: 750rpx;
+  height: 280rpx;
+  background: rgba(255, 255, 255, 1);
+  margin-top: 18rpx;
+  position: relative;
+}
+
+.avatar-box {
+  display: flex;
+  flex-direction: row;
+}
+
+.avatar {
+  width: 108rpx;
+  height: 108rpx;
+  border-radius: 50%;
+  margin-left: 34rpx;
+  margin-top: 40rpx;
+}
+
+.username {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: rgba(51, 51, 51, 1);
+  /* display: block; */
+  margin-top: 55rpx;
+  margin-left: 20rpx;
+}
+
+.userid {
+  font-size: 22rpx;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  margin-left: 20rpx;
+  margin-top: 10rpx;
+}
+
+.text-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.line, .line1 {
+  width: 650rpx;
+  height: 1px;
+  background: rgb(238, 238, 238);
+  position: absolute;
+  top: 198rpx;
+  left: 50rpx;
+}
+
+.line1 {
+  top: 438rpx;
+}
+
+.address-man {
+  width: 749rpx;
+  height: 100rpx;
+  background: rgba(255, 255, 255, 1);
+  position: absolute;
+  left: 0;
+  top: 198rpx;
+}
+
+.address-man text {
+  font-size: 32rpx;
+  font-weight: 400;
+  line-height: 90rpx;
+  color: rgba(102, 102, 102, 1);
+  margin-top: 33rpx;
+  margin-left: 47rpx;
+}
+
+.icon {
+  width: 14rpx;
+  height: 25rpx;
+  margin-left: 400rpx;
+}
+
+.content {
+  width: 100%;
+  height: 200rpx;
+  margin-top: 45rpx;
+}
+
+ .content2 {
+  height: 100rpx;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  
+}
+.content1{
+  padding:30rpx 35rpx;
+  display: flex;
+  justify-content: space-between;
+  background: #fff;
+  align-items: center;
+  font-size:32rpx;
+  color:#666;
+}
+.content1 view{
+  display: flex;
+  align-items:center;
+  }
+.content1 image{ 
+  margin-left:20rpx;
+  width: 14rpx;
+  height: 25rpx;
+  }
+/* .text {
+  display: inline-block;
+  font-size: 32rpx;
+  font-weight: 400;
+  color: rgba(102, 102, 102, 1);
+   
+  margin-left: 47rpx;
+  line-height:100rpx
+} */
+
+/* .tele {
+  font-size: 32rpx;
+  font-weight: 400;
+  line-height: 100rpx;
+  color: rgba(51, 51, 51, 1);
+  margin-left: 260rpx;
+} */
+
+.icon1 {
+  margin-top: 42rpx;
+  margin-left: 25rpx;
+}
+
+.icon2 {
+  margin-top: 38rpx;
+  margin-left: 520rpx;
+}
+
+.exit-btn {
+  width: 749rpx;
+  height: 90rpx;
+  background: rgba(255, 255, 255, 1);
+  font-size: 32rpx;
+  font-weight: 500;
+  line-height: 90rpx;
+  text-align: center;
+  color: #FC4C4C;
+  position: absolute;
+  bottom: 0;
+}

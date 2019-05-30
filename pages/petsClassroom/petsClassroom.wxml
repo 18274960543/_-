@@ -1,0 +1,11 @@
+<image src='{{list.category_img_url}}' mode="scaleToFill" class="classroom_img"></image>
+<view class="classroom">
+  <view class="list" wx:for="{{list.data.data}}" wx:key="{{index}}" bindtap='classroomdetails' data-index='{{index}}'>
+     <view class="left">
+       <view>{{item.title}}</view>
+       <text>{{item.created_at}}</text>
+     </view>
+     <image src='{{item.img.full_img_url}}' mode="scaleToFill"></image>
+  </view>
+  <!-- <text class="dx">我是有底线的</text> -->
+</view>  

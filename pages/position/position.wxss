@@ -1,0 +1,167 @@
+.top {
+  background: #fff;
+  padding: 40rpx 30rpx;
+}
+
+.search {
+  display: flex;
+  background: #f3f3f3;
+  width: 630rpx;
+  height: 30rpx;
+  border-radius: 100rpx;
+  align-items: center;
+  padding: 20rpx 30rpx;
+  font-size: 28rpx;
+  color: #ccc;
+}
+
+.city-img {
+  height: 10rpx;
+  width: 18rpx;
+  margin-left: 10rpx;
+}
+
+.galss {
+  height: 30rpx;
+  width: 30rpx;
+}
+
+.Line {
+  height: 30rpx;
+  width: 2rpx;
+  background: #ccc;
+  margin: 0 15rpx;
+}
+
+.city {
+  display: flex;
+  align-items: center;
+}
+
+.search input {
+  width: 430rpx;
+  text-align: left;
+  padding-left: 20rpx;
+  color: #333;
+}
+
+.city text {
+  color: #333;
+}
+
+.dw {
+  font-size: 28rpx;
+  color: #666;
+  margin: 35rpx 20rpx 30rpx;
+}
+
+.wz {
+  display: flex;
+  margin: 0 20rpx;
+  justify-content: space-between;
+}
+
+.wz_left {
+  display: flex;
+  align-items: center;
+}
+
+.wz_left image {
+  height: 29rpx;
+  width: 24rpx;
+}
+
+.wz_left text {
+  font-size: 28rpx;
+  color: #333;
+  padding-left: 10rpx;
+  width: 300rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.wz_right {
+  font-size: 28rpx;
+  color: #ffc408;
+  display: flex;
+  align-items: center;
+}
+
+.wz_right image {
+  height: 28rpx;
+  width: 28rpx;
+  margin-right: 10rpx;
+}
+
+.address {
+  padding: 35rpx 50rpx;
+  background: #fff;
+  margin-top: 30rpx;
+}
+
+.address-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 28rpx;
+  color: #666;
+  padding-bottom: 25rpx;
+}
+
+.address-top view {
+  display: flex;
+  align-items: center;
+  color: #ffc408;
+}
+
+.address-top view image {
+  height: 28rpx;
+  width: 28rpx;
+  margin-right: 10rpx;
+}
+
+.address-list {
+  border-top: 1rpx solid #eee;
+  padding: 30rpx 0 20rpx;
+}
+.address-list text {
+  font-size: 28rpx;
+  color: #000;
+  padding-bottom:15rpx;
+  display: flex;
+}
+.address-list view {
+  font-size: 26rpx;
+  color: #666;
+  width: 490rpx;
+}
+.active {
+  animation: All 2s;
+}
+@keyframes All {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/* 地址列表 */
+.search-list{
+  background: #fff;
+  position: absolute;
+  top:130rpx;
+  left:0;
+  width: 100%;
+}
+.list{
+  padding:25rpx 50rpx;
+  border-bottom:1rpx solid #eee;
+  font-size:28rpx;
+  color:#000;
+}
+.list text{
+  font-size:22rpx;
+  color: #333
+}

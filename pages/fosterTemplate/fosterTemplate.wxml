@@ -1,0 +1,195 @@
+<block>
+<view class="picture">
+  <view>服务图片</view>
+  <view class="picture-img">
+    <image wx:if="{{setmeal[indexI].imag}}" 
+    src="{{item.img_key.full_img_url}}" 
+    wx:for="{{setmeal[indexI].imag}}" 
+    wx:key="{{index}}" bindtap='bigimage'  
+    data-src='{{item.img_key.full_img_url}}'
+ 
+    mode="{{aspectFill}}"
+    ></image>
+    <image wx:if="{{!setmeal[indexI].imag}}" src="/img/sst.png"></image>
+  </view>
+</view>
+<view class='shop-name'>
+  店铺：{{shopName}}
+</view>
+<!-- 定位 -->
+<view class="position">
+  <image src='/img/position.png'></image>
+  <text>{{setmeal[indexI].shop[0].address}}</text>
+</view>
+<!-- 选择宠物 、时间 -->
+<view class="Choice">
+  <view bindtap='choosingpets'>
+     <view class="imgPets">
+   <image src='{{pet_list[index].avatar}}' class="" wx:if="{{choosingpets}}"></image>
+    <text class="{{choosingpets?'selectcolor':''}}"> {{choosingpets?'':''}}{{choosingpets?choosingpets:'切换宠物'}}</text>
+   </view>
+    <image src="/img/return1.png"></image>
+  </view>
+  <view style='border:none' bindtap='selectiontime'>
+    <text class="{{leaveDate?'selectcolor':''}}">{{leaveDate?'已选':''}}{{leaveDate?fosterDate:'请选择寄养离店时间'}}{{leaveDate?'至':''}}{{leaveDate}}{{leaveDate?'离店':''}}</text>
+    <image src="/img/return1.png"></image>
+  </view>
+</view>
+<!-- 选择套餐 -->
+<view class="setMeal">
+  <view class="setMeal-text">选择套餐</view>
+  <scroll-view class="setMealSlide" scroll-x>
+    <view class="setMealSlideLi {{item.is_select?'replaceColour replaceBorder':''}}" wx:for="{{setmeal}}" wx:key="{{index}}" bindtap='setmeal' data-index="{{index}}">
+      <view>{{item.service_product_name}}</view>
+      <view> ￥{{index2==1?item.price:item.grain_price}}</view>
+    </view>
+  </scroll-view>
+  <view class="foodstuff">
+     <view wx:for="{{foodstuff}}" wx:key="index" bindtap='fosterContent' data-index='{{index}}'>
+       <text>{{item.text}}</text>
+       <image src="/img/switch_dp-3.png" wx:if="{{item.state}}"/>
+     </view>
+  </view>
+</view>
+<!-- 服务内容 -->
+<view class="content">
+  <text class="content-text">服务内容</text>
+  <view>{{setmeal[indexI].content}}</view>
+</view>
+<view class="Remarks">
+  <text class="content-text">服务备注</text>
+  <view class="RemarksLi">
+    <!-- <view class="RemarksLiText">有效期</view> -->
+    <view class="RemarksLi-list">
+      <text></text>
+      <view>本服务预约后提供一次修改预约服务时间，过期不予退款。</view>
+    </view>
+  </view>
+  <!-- <view class="RemarksLi">
+    
+    <view class="RemarksLi-list">
+      <text></text>
+      <view>请在购买前确保宠物已注射过相关防疫疫苗及没有传染性疾病</view>
+    </view>
+  </view> -->
+  <view class="RemarksLi" wx:if="{{setmeal[indexI].remark}}">
+    <!-- <view class="RemarksLiText">温馨提示</view> -->
+    <view class="RemarksLi-list">
+      <text></text>
+      <view>{{setmeal[indexI].remark}}</view>
+    </view>
+  </view>
+  <!-- <view class="contentBt">
+         <view>查看更多</view>
+         <image src='/img/btn.png'></image>
+      </view> -->
+</view>
+<!-- 底部 -->
+<view class="footer">
+  <view class="footerLf">
+    总计：
+    <text>￥{{price?price:setmeal[indexI].price}}</text>
+  </view>
+  <view class="footerRt replaceBackground  " bindtap='goorder'>提交</view>
+  <!-- <view class="footerRt" bindtap='goorder'>立即预约</view> -->
+</view>
+
+<view catchtouchmove='stopPageScroll'>
+  <!--遮罩层弹框 -->
+  <view class="mask {{maskstate?'show':''}}" bindtap='mask'></view>
+  <!-- 选择宠物 -->
+  <view class="Choosingpets {{maskstate?'show':'screeningShow'}}">
+    <view class="top">
+      <view class="top_title">
+        <view>选择服务的宠物</view>
+        <!-- <text>{{pet_list[index].is_select?pet_list[index].name:''}}</text> -->
+        <image src='/img/x.png' bindtap='determine'></image>
+      </view>
+      <scroll-view scroll-x="true" class="scroll">
+        <block wx:for="{{pet_list}}" wx:key="index">
+          <view class="scroll_left {{item.is_select?'active replaceBorder':''}}" bindtap='is_select' data-index="{{index}}">
+            <image src='{{item.avatar}}' mode='aspectFill' class="scroll_img"></image>
+            <view class="scroll_text">
+              <view>{{item.name}}</view>
+              <text>{{item.specs}},{{item.weight}}kg</text>
+            </view>
+            <image src='/img/xz-dw.png' mode='aspectFill' class="scroll_img1" wx:if='{{item.is_select}}'></image>
+          </view>
+        </block>
+        <view class="add" bindtap='addPets'>
+          <image src='/img/a.png' mode='aspectFill'></image>
+          <text>添加宠物</text>
+        </view>
+      </scroll-view>
+    </view>
+    <view class="ChoosingpetsBT">
+      <view class="ChoosingpetsBTRt replaceBackground" bindtap='determine'>确定</view>
+    </view>
+  </view>
+</view>
+<!-- 选择时间 -->
+<view catchtouchmove='stopPageScroll'>
+  <!--遮罩层弹框 -->
+  <view class="mask {{selectiontime?'show':''}}" bindtap='mask'></view>
+  <view class="selectionTime {{height?'height':''}} {{selectiontime?'show':'screeningShow'}}">
+    <view class="selectionTimetext">{{rebook.isrebook==1?'改签时间':'选择时间'}}</view>
+    <image src='/img/x.png' class="x" bindtap='selectiontimeDisappear'></image>
+  <view class="dates">
+      <view class="dateb">
+        <view class="flx yearMonth">
+          <view bindtap="{{(nowYear == year && nowMonth < month) || (nowYear < year) ? 'prev' : ''}}">{{lt}} {{month==1?12:month-1}}月</view>
+          <view class="bold">{{year}}年{{month}}月</view>
+          <view bindtap="next">{{month==12?1:month+1}}月 {{gt}} </view>
+        </view>
+        <view class="padding">
+          <view class="flx week">
+            <text class="text">一</text>
+            <text class="text">二</text>
+            <text class="text">三</text>
+            <text class="text">四</text>
+            <text class="text">五</text>
+            <text class="text">六</text>
+            <text class="text">日</text>
+          </view>
+          <view class="days">
+            <block wx:for="{{dayList}}" wx:key="{{index}}">
+              <view class="text {{item.residue == '寄养' ||item.residue == '离店' ? 'replaceBackground ':''}} {{item.moren == 1? 'cen_back':''}}" bindtap="{{(year >= nowYear && item.month > nowMonth) || (nowYear == year && item.month ==month && item.day >= nowDay) ? 'getDay' : ''}}" data-day="{{item.day}}"
+                data-residue="{{item.residue}}" data-month="{{item.month}}" data-index="{{index}}">
+                <view class="tt {{item.month != month ? 'gray' : ''}} {{item.day == nowDay && year == nowYear && month == nowMonth ? 'now' : ''}} {{item.residue? 'active ' : ''}}">
+                  <view class="{{item.day < nowDay && month == nowMonth && nowYear == year ? 'gray' : ''}}">{{item.day}}</view>
+                  <view wx:if="{{item.residue}}" class="residue">{{item.residue}}</view>
+                </view>
+              </view>
+            </block>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="ChoosingpetsBT">
+      <view class="ChoosingpetsBTRt replaceBackground  " bindtap='timeSure'>确定</view>
+    </view>
+  </view>
+</view>
+<view catchtouchmove='stopPageScroll'>
+  <!--遮罩层弹框 -->
+  <view class="mask {{is_varieties?'show':''}}" bindtap='mask'></view>
+  <!-- 选择宠物品种弹框 -->
+  <view class="varieties {{is_varieties?'show':''}}">
+    <text class="varieties_text">选择您宠物品种</text>
+    <view>
+      <view bindtap='go_petinformation' data-id="1">
+        <image src='/img/dog.png' mode='aspectFill' style='width:100rpx;height:100rpx;border-radius:50%;'></image>
+        <text>汪星人</text>
+      </view>
+      <view bindtap='go_petinformation' data-id="2">
+        <image src='/img/cat.png' mode='aspectFill' style='width:100rpx;height:100rpx'></image>
+        <text>喵星人</text>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- <view class="remind" wx:if="{{remind}}">
+    <image src='/img/remind.png'></image>
+    <text>已为您甄选匹配附近最近店铺服务</text>
+</view> -->
+</block>

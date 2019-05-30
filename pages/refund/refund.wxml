@@ -1,0 +1,105 @@
+<!--pages/order/refund.wxml-->
+<view class="vaeView">
+  <view class='vae-1'>
+    <view wx:for="{{topList}}" wx:key="" style="{{item.status == 1?'color:#F55A00':''}}" bindtap='bindSelect' data-index='{{index}}'>{{item.text}}
+      <view wx:if="{{item.status == 1}}"></view>
+    </view>
+  </view>
+  <!-- <view class='vae-2'>
+    <input placeholder='搜索需要查询的内容'></input>
+  </view> -->
+</view>
+<view class='main'>
+  <block wx:if="{{topList[0].status == 1}}">
+  <!-- 售后申请 -->
+  <view class='mainList' wx:for="{{list}}" wx:key="{{index}}"  >
+    <view class='mainList-1'>订单号：{{item.order_sn}}</view>
+    <view class='mainList-2'>
+      <view class='mainList-img'>
+        <image class='imgPro' src="{{item.goods_image}}"></image>
+      </view>
+      <view class='mainList-name'>
+        <view class="mainList-name-1">{{item.goods_name}}</view>
+      </view>
+      <view class='mainList-price'>
+        <view>￥{{item.goods_price}}</view>
+        <view>x {{item.goods_num}}</view>
+      </view>
+    </view>
+    <view class='mainList-3'>
+      <view class='mainList-3-1 replaceBorder replaceColour'  bindtap='add' data-index='{{index}}'>售后申请</view>
+    </view>
+  </view>
+  </block>
+  <!-- 处理中 -->
+  <block wx:if="{{topList[1].status == 1}}">
+   <view class='mainList' wx:for="{{list}}" wx:key="{{index}}"  bindtap='gorefundInfo' data-index='{{index}}'>
+    <view class='mainList-1'>订单号：{{item.order_sn}}</view>
+    <view class='mainList-2'>
+      <view class='mainList-img'>
+        <image class='imgPro' src="{{item.refund_goods.goods_image}}"></image>
+      </view>
+      <view class='mainList-name'>
+        <view class="mainList-name-1">{{item.refund_goods.goods_name}}</view>
+      </view>
+      <view class='mainList-price'>
+        <view>￥{{item.refund_goods.goods_price}}</view>
+        <view>x {{item.refund_goods.goods_num}}</view>
+      </view>
+    </view>
+    <view class='mainList-3'>
+      <view class='mainList-3-2'>待第三方处理</view>
+    </view>
+  </view>
+  </block>
+  <!-- 申请记录 -->
+  <block wx:if="{{topList[2].status == 1}}">
+   <view class='mainList' wx:for="{{list}}" wx:key="{{index}}"  bindtap='gorefundInfo' data-index='{{index}}'>
+    <view class='mainList-1'>订单号：{{item.order_sn}}</view>
+    <view class='mainList-2'>
+      <view class='mainList-img'>
+        <image class='imgPro' src="{{item.refund_goods.goods_image}}"></image>
+      </view>
+      <view class='mainList-name'>
+        <view class="mainList-name-1">{{item.refund_goods.goods_name}}</view>
+      </view>
+      <view class='mainList-price'>
+        <view>￥{{item.refund_goods.goods_price}}</view>
+        <view>x {{item.refund_goods.goods_num}}</view>
+      </view>
+    </view>
+    <!-- <view class='mainList-3'>
+      <view class='mainList-3-2'>待第三方处理</view>
+    </view> -->
+  </view>
+  </block>
+</view>
+ 
+<!-- 选择售后 -->
+<view wx:if="{{showSerivce}}">
+  <view class="mask" bindtap='add' ></view>
+  <view class="showStore">
+    <view class="showStore-1">选择服务类型</view>
+    <view class='showStore-2' bindtap='refund' data-types='1'>
+      <view>仅退款</view>
+      <view>
+        <view></view>
+      </view>
+    </view>
+    <view class='showStore-2' bindtap='refund' data-types='2'>
+      <view>退款退货</view>
+      <view>
+        <view></view>
+      </view>
+    </view>
+     <view class='showStore-2' bindtap='refund' data-types='3'>
+      <view>换货</view>
+      <view>
+        <view></view>
+      </view>
+    </view>
+  </view>
+</view>
+ 
+<view class="shadow {{showSerivce?'show':''}}" catchtouchmove='stopPageScroll'></view>
+ 

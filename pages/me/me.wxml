@@ -1,0 +1,79 @@
+<view>
+  <image src='/img/my.png' class='me-bg'></image>
+  <view class="header-box">
+    <image src='{{userInfo.avatar}}'class="avater-img"></image>
+    <view class="name-box">
+      <text  class="text1">{{userInfo.nick_name}}</text>
+      <text  class="text2">{{userInfo.mobile?'ID:':'' }}{{userInfo.mobile?userInfo.mobile:''}}</text>
+    </view>
+    <view class='text-bg'>
+      <text class="text3">成为分销商</text>
+      <image src='/img/return.png' class='return-icon'></image>
+    </view>
+  </view>
+</view>
+<view class="part2">
+  <view class='reservationCenter'>
+    <image src="/img/alarmClock.png" class="alarmClock"></image>
+    <text class='p2-text1'>预约中心</text>
+  </view>
+  <view class='line'></view>
+  <text  class='p2-text2'>轻便快捷的预约服务，为你爱犬提供全方位爱的呵护！</text>
+  <image src='/img/return1.png' class='rt-icon'></image>
+</view>
+<view class="part3">
+  <view class='line1'></view>
+  <view class='line2'></view>
+  <view class='p3-title-box'>
+    <text class='p3-title'>我的常用</text>
+  </view>
+  <view class='content-box'>
+    <view class='content1'>
+      <view class='part3-content-box' bindtap="my_order" hover='true'>
+        <image src='/img/order.png'></image>
+        <text>我的订单</text>
+      </view>
+      <view class='part3-content-box' bindtap="onTap_pet">
+        <image src='/img/mypet.png'></image>
+        <text>我的宠物</text>
+      </view>
+      <!-- <view class='part3-content-box' hover="true">
+        <image src='/img/mywallet.png'></image>
+        <text>我的钱包</text>
+      </view> -->
+       <view class='part3-content-box' bindtap="onTap_coupon">
+        <image src='/img/coupon.png'></image>
+        <text>优惠券</text>
+      </view>
+    </view>
+    <view class='content2'>
+      <!-- <view class='part3-content-box' bindtap="onTap_coupon">
+        <image src='/img/coupon.png'></image>
+        <text>优惠券</text>
+      </view> -->
+      <view class='part3-content-box' bindtap='go_news'>
+        <image src='/img/message.png'></image>
+        <text>我的消息</text>
+      </view>
+      <view class='part3-content-box' bindtap='go_edit'>
+        <image src='/img/setting.png'></image>
+        <text>设置</text>
+      </view>
+      <view class='part3-content-box' bindtap='go_follow_store' >
+        <image src='/img/store.png'></image>
+        <text>关注门店</text>
+      </view>
+    </view>
+    <view class='content3'>
+       
+      <view class='part3-content-box' bindtap='go_Aboutus'>
+        <image src='/img/about.png'></image>
+        <text>关于我们</text>
+      </view>
+      <navigator class='part3-content-box' target="miniProgram" app-id="wx1fff2a2ffd4afd95">
+        <image src='/img/enter.png'></image>
+        <text>商家端</text>
+      </navigator>
+    </view>
+  </view>
+</view>

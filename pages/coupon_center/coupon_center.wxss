@@ -1,0 +1,227 @@
+/* pages/me/coupon/coupon.wxss */
+
+.tap {
+  width: 750rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: rgba(255, 255, 255, 1);
+  display: flex;
+  justify-content: space-around;
+}
+
+.tap-tex {
+  font-size: 30rpx;
+  font-weight: 400;
+  color: rgba(102, 102, 102, 1);
+}
+
+.tap-this {
+  color: rgba(255, 196, 8, 1);
+}
+
+.tap-this::after {
+  content: "";
+  display: block;
+  width: 40rpx;
+  height: 8rpx;
+  background-color: #ffc408;
+  border-radius: 10rpx;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  margin-top: -15rpx;
+}
+
+.none-img {
+  width: 360rpx;
+  height: 360rpx;
+  margin-left: 195rpx;
+  margin-top: 205rpx;
+}
+
+.return-btn {
+  width: 200rpx;
+  height: 78rpx;
+  line-height: 78rpx;
+  border: 1px solid rgba(102, 102, 102, 1);
+  border-radius: 100px;
+  font-size: 30rpx;
+  font-weight: 400;
+  color: #666;
+  text-align: center;
+  margin: 145rpx auto 0 auto;
+}
+
+/* .content{
+  width: 690rpx;
+  height: 272rpx;
+  background-color: white;
+} */
+
+/* lida start*/
+
+.coupon-item-container {
+}
+
+.coupon-item {
+  position: relative;
+  height: 240 rpx;
+  margin: 20rpx 20rpx 0 20rpx;
+  border-radius: 10rpx;
+}
+
+.coupon-view {
+  background: #fff;
+  height: 240rpx;
+  width: 500rpx;
+  border-radius: 10rpx 30rpx 30rpx 10rpx;
+}
+
+.get-coupon-action {
+  position: fixed;
+  width: 100%;
+  background: #f5f5f5;
+  bottom: 0rpx;
+  z-index: 100;
+}
+
+.get-coupon-btn {
+  width: 95%;
+  margin: 20rpx auto;
+  line-height: 100rpx;
+  height: 100rpx;
+  border: none;
+  border-radius: 60rpx;
+}
+
+.use-btn {
+  background: #fff;
+  position: absolute;
+  width: 220rpx;
+  height: 240rpx;
+  right: 0;
+  top: 0;
+  border-radius: 30rpx 10rpx 10rpx 30rpx;
+  border-left: 2px dashed #f5f5f5;
+}
+
+.use-btn-bn {
+  border-radius: 40rpx;
+  border: none;
+  height: 80rpx;
+  line-height: 80rpx;
+  width: 200rpx;
+  font-size: 32rpx;
+  position: absolute;
+  top: 80rpx;
+  right: 10rpx;
+}
+
+.coupon-type {
+  position: absolute;
+  top: 10rpx;
+  left: 0rpx;
+  font-size: 12px;
+  height: 48rpx;
+  line-height: 48rpx;
+  padding-left: 20rpx;
+  width: 220rpx;
+  color: #fff;
+}
+
+.coupon-type:after {
+  height: 0rpx;
+  width: 0rpx;
+  content: '';
+  border: 25rpx solid transparent;
+  border-right: 25rpx solid #fff;
+  position: absolute;
+  right: -0rpx;
+}
+
+/* 新人 */
+
+.coupon-type1 {
+  background: red;
+}
+
+/* 全品种 */
+
+.coupon-type2 {
+  background: red;
+}
+
+/* 限品种 */
+
+.coupon-type3 {
+  background: #773adf !important;
+}
+
+.name {
+  position: absolute;
+  top: 10rpx;
+  line-height: 48rpx;
+  left: 260rpx;
+  color: #666;
+  font-size: 12px;
+}
+
+.discount {
+  position: absolute;
+  top: 60rpx;
+  left: 20rpx;
+  color: #333;
+  font-size: 18px;
+}
+
+.minimum {
+  position: absolute;
+  top: 120rpx;
+  color: #999;
+  left: 20rpx;
+  font-size: 14px;
+}
+
+.time {
+  position: absolute;
+  top: 175rpx;
+  left: 20rpx;
+  font-size: 12px;
+  color: #ccc;
+}
+
+.coupon-used-view, .coupon-disabled-view {
+  position: absolute;
+  top: 40rpx;
+  right: 140rpx;
+}
+
+.coupon-used-view .image, .coupon-disabled-view .image {
+  width: 160rpx;
+  height: 160rpx;
+}
+
+/* disabled 遮罩*/
+
+.cupon-item-container-disabled .coupon-type {
+  background: #ddd !important;
+}
+
+.cupon-item-container-disabled .use-btn-bn {
+  background: #ddd !important;
+  color: #aaa !important;
+}
+
+.cupon-item-container-disabled .discount {
+  color: #ddd !important;
+}
+
+.cupon-item-container-disabled .get-coupon-btn {
+  background: #ddd !important;
+  color: #999 !important;
+}
+
+/* 
+'discount'>{{item.discount}}</view>
+    <view class='use_way'>{{item.use_way}}</view>
+    <view class='condition'>{{item.condition}}</view>
+    <view class='time'>{{ite */

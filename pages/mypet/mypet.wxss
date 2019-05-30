@@ -1,0 +1,164 @@
+/* pages/me/mypet/mypet.wxss */
+
+.pet-box {
+  width: 690rpx;
+  height: 175rpx;
+  background-color: white;
+  border-radius: 10px;
+  margin-top: 24rpx;
+  margin-left: 30rpx;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.pet-img {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  margin-top: 35rpx;
+  margin-left: 41rpx;
+}
+
+.text-box {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50rpx;
+  margin-left: 40rpx;
+}
+
+.pet-name {
+  font-size: 32rpx;
+  font-weight: 400;
+  /* line-height:54px; */
+  color: rgba(0, 0, 0, 1);
+}
+
+.pet-detail {
+  font-size: 24rpx;
+  font-weight: 400;
+  /* line-height:41px; */
+  color: rgba(102, 102, 102, 1);
+}
+
+.add-btn {
+  width: 690rpx;
+  height: 80rpx;
+  background: rgba(255, 196, 8, 1);
+  border-radius: 44px;
+  margin-left: 30rpx;
+  margin-top: 50rpx;
+  line-height:80rpx;
+  margin-bottom:100rpx;
+}
+
+.edit-box {
+  position: absolute;
+  top: 50rpx;
+  left: 550rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  width: 100rpx;
+}
+
+.line {
+  display: inline-block;
+  width: 1px;
+  height: 30rpx;
+  background-color: #ccc;
+}
+
+.edit {
+  font-size: 28rpx;
+  font-weight: 400;
+  color: rgba(102, 102, 102, 1);
+  position: absolute;
+  left: 35rpx;
+}
+
+.add-text {
+  font-size: 36rpx;
+  font-weight: 400;
+  line-height: 68rpx;
+  color: rgba(83, 11, 11, 1);
+  margin-left: 273rpx;
+}
+
+/* 选择宠物品种弹窗 */
+
+.shadow {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.8;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 21;
+}
+
+.varieties {
+  position: fixed;
+  width: 70%;
+  height: 30%;
+  background: #fff;
+  border-radius: 10rpx;
+  box-sizing: border-box;
+  z-index: 1000;
+  left: 15%;
+  top: 35%;
+  padding: 50rpx 40rpx;
+}
+
+.varieties_text {
+  font-size: 36rpx;
+  color: #333;
+}
+
+.varieties>view {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 40rpx;
+}
+
+.varieties>view view {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-size: 28rpx;
+  color: #666;
+}
+
+.varieties>view view image {
+  height: 160rpx;
+  width: 160rpx;
+  border-radius: 50%;
+  border: 1px solid #eee;
+  margin-bottom: 10rpx;
+}
+
+.yes {
+  background: rgba(255, 196, 8, 0.01);
+  color: #ffc408;
+  border: 1px solid rgba(255, 196, 8, 1);
+  border-radius: 13rpx;
+}
+
+.is_show {
+  display: none;
+}
+
+.is_varieties {
+  display: none;
+}
+
+/* .yes view {
+  color: #ffc408;
+}
+
+.yes text {
+  color: #ffc408;
+}
+.isnext {
+  display: none;
+} */

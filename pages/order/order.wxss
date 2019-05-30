@@ -1,0 +1,510 @@
+.content {
+ margin: 30rpx;
+}
+
+.top {
+  background: #fff;
+  margin-bottom: 25rpx;
+  border-radius: 10rpx;
+  display: flex;
+  flex-direction: column;
+  padding: 35rpx 30rpx;
+  position: relative;
+}
+
+.top-xm {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top-xm text {
+  font-size: 28rpx;
+  color: #333;
+  font-weight: 700;
+}
+
+.top-xm image {
+  width: 14rpx;
+  height: 25rpx;
+}
+
+.top-text {
+  font-size: 28rpx;
+  color: #333;
+  padding: 8rpx 0;
+}
+
+.top>image {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 8rpx;
+}
+
+.house {
+  margin-bottom: 25rpx;
+  background: #fff;
+  border-radius: 10rpx;
+}
+
+.house-top {
+  display: flex;
+  align-items: center;
+  padding: 35rpx 30rpx;
+}
+
+.house-top text {
+  font-size: 32rpx;
+  color: #333;
+  font-weight: 600;
+}
+
+.house-top image {
+  width: 40rpx;
+  height: 35rpx;
+}
+
+.house-content {
+  display: flex;
+  background: rgba(250, 250, 250, 1);
+  padding: 35rpx 30rpx;
+}
+
+.house-content image {
+  width: 95rpx;
+  height: 80rpx;
+  margin-right: 20rpx;
+}
+
+.house-content>view {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.house-content view view {
+  font-size: 28rpx;
+  color: #333;
+  font-weight: 600;
+}
+
+.house-content view text {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.house-bt {
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx 0;
+  align-items: center;
+  margin: 0 20rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.house-bt image {
+  width: 35rpx;
+  height: 35rpx;
+}
+
+.detailed {
+  background: #fff;
+  border-radius: 10rpx;
+  padding: 20rpx 30rpx;
+}
+
+.detailed-text {
+  font-size: 32rpx;
+  color: #333;
+  font-weight: 600;
+  border-bottom: 1rpx solid #f3f3f3;
+  padding-bottom: 20rpx;
+}
+
+.detailed-fw {
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx 0;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.detailed-js>view {
+  display: flex;
+  justify-content: space-between;
+  padding: 5rpx 0;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.detailed-js>view text {
+  color: #fc4c4c;
+}
+
+.detailed-js>text {
+  display: flex;
+  font-size: 24rpx;
+  color: #999;
+  padding: 10rpx 0;
+}
+
+.detailed_bt {
+  background: #fafafa;
+  padding: 20rpx 30rpx;
+}
+
+.detailed_bt_top {
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 30rpx;
+}
+
+.detailed_bt_bt {
+  display: flex;
+  font-size: 20rpx;
+  color: #999;
+}
+.detailed_bt_bt view{
+  display: flex;
+  align-items: center;
+}
+.detailed_bt_bt view image {
+  width: 18rpx;
+  height: 20rpx;
+  margin-right: 10rpx;
+}
+
+.detailed_bt_bt>image {
+  width: 35rpx;
+  height: 30rpx;
+  margin: 0 20rpx;
+}
+.detailed_bt_bt view text{
+  width: 350rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: inline-block
+}
+/* 底部定位 */
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer-top {
+  display: flex;
+  background: rgba(255, 243, 205, 1);
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  color: #333;
+  height: 70rpx;
+}
+
+.footer-top image {
+  width: 20rpx;
+  height: 25rpx;
+  margin-left: 10rpx;
+}
+
+.footer-top text {
+  color: #fc4c4c;
+}
+
+.footer-bt {
+  height: 100rpx;
+  line-height: 100rpx;
+  background-color: #ffc408;
+  z-index: 20;
+  display: flex;
+}
+
+.footer-left {
+  font-size: 36rpx;
+  color: #fc4c4c;
+  width: 400rpx;
+  padding-left: 25rpx;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+.footer-rt {
+  flex: 1;
+  text-align: center;
+  font-size: 36rpx;
+  color: #530b0b;
+}
+
+.shadow {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.8;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 21;
+}
+
+.shuttle {
+  width: 90%;
+  background: #fff;
+  border-radius: 10rpx;
+  position: fixed;
+  left: 5%;
+  top: 30%;
+  z-index: 26;
+  padding: 40rpx;
+  box-sizing: border-box;
+}
+
+.shuttle-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.shuttle-top image {
+  height: 32rpx;
+  width: 32rpx;
+}
+
+.shuttle-top text {
+  font-size: 36rpx;
+  color: #333;
+  font-weight: 600;
+  margin-top: 10rpx;
+}
+
+.shuttle-centent {
+  margin-top: 8rpx;
+}
+
+.shuttle-centent text {
+  font-size: 28rpx;
+  color: #ffc408;
+}
+
+.shuttle-centent>view {
+  font-size: 28rpx;
+  color: #333;
+  margin-top: 5rpx;
+  display: flex;
+}
+
+.shuttle-centent view text {
+  width: 15rpx;
+  height: 15rpx;
+  background: #999;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 10rpx;
+  margin-top: 12rpx;
+}
+
+.none {
+  display: none;
+}
+
+.shuttle-centent view view {
+  flex: 1;
+}
+
+.switch_dp {
+  position: fixed;
+  background: #fff;
+  width: 80%;
+  left: 10%;
+  border-radius: 10rpx;
+  z-index: 27;
+  top: 30%;
+  padding: 30rpx;
+  box-sizing: border-box;
+  height:500rpx;
+}
+
+.switch_dp-top {
+  font-size: 36rpx;
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 10rpx;
+}
+
+.switch_dp-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 30rpx;
+  color: #333;
+  padding: 20rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.switch_dp-list image {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.switch_dp button {
+  width: 100%;
+ margin-top:15rpx;
+  display: block;
+  border-radius: 100rpx;
+  background: #ffc408;
+  height:65rpx;
+  line-height:65rpx;
+}
+
+.content {
+  padding-bottom: 200rpx;
+}
+
+/* 切换店铺 */
+
+.scroll-view {
+  height:305rpx;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+/* 法律声明 */
+.statement{
+  background: #fff;
+  margin-top:40rpx;
+  padding: 35rpx;
+  font-size: 30rpx;
+  color: #333;
+  display: flex;
+   align-items: center;
+}
+.statement image{
+  height: 30rpx;
+  width: 30rpx;
+  margin-right: 20rpx;
+}
+.statement view text{
+  color: #F55F4B
+}
+/* 选择接送费用 */
+.Shuttleservice{
+  display: flex;
+  align-items: center;
+  padding-bottom:180rpx; 
+  font-size: 24rpx;
+  color: #333;
+  margin-top: 25rpx;
+}
+.Shuttleservice image{
+  height:30rpx;
+  width:30rpx;
+  margin-right:15rpx;
+}
+.active{
+  background: #999;
+  color: #f3f3f3
+}
+ 
+/* 底部匹配最近店铺提示 */
+.remind{
+  position: fixed;
+  left: 0;
+  bottom: 100rpx;
+  width: 100%;
+  padding: 20rpx 30rpx;
+  box-sizing: border-box;
+  background: #F9F2FF;
+  font-size: 24rpx;
+  display: flex;
+  align-items: center;
+  z-index: 1
+}
+.remind image{
+  height: 35rpx;
+  width: 35rpx;
+}
+
+/* lida */
+/* lida start */
+.coupon-item{
+  min-height: 75rpx;
+  background: #fff;
+  margin-top: 30rpx;
+  margin-bottom: -20rpx;
+  font-size:30rpx;
+}
+.coupon-text{
+  display: inline-block;
+  line-height: 0rpx;
+  color: #999;
+  margin-right:35rpx;
+}
+.coupon-select-wraper{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  bottom:0;
+  left: 0;
+  z-index:9;
+}
+.coupon-wraper{
+  width: 100%;
+  height:100%; 
+  z-index: 999; 
+}
+.coupon-content{
+  padding-bottom:30rpx;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background: #fff;
+  /* height: 586rpx; */
+  overflow: auto;
+}
+.coupon-title{
+  text-align: center;
+  line-height: 80rpx;
+}
+.select-action image{
+  width: 40rpx;
+  height: 40rpx;
+}
+.coupon-item{
+  position: relative;
+  padding: 0 20rpx;
+}
+.select-action{
+  position: absolute;
+  right: 20rpx;
+  top: 10rpx;
+}
+.discount-price{
+  color: red;
+  margin-left: 20rpx;
+}
+.coupon-item-left{
+  float: left;
+  width: 28%;
+}
+.coupon-item-right{
+  display: flex;
+  justify-content: flex-end;
+  width: 72%;
+}
+.coupon-item-right image{
+  width: 24rpx;
+  height: 24rpx;
+  position: absolute;
+  right: 20rpx;
+  top: 26rpx;
+}

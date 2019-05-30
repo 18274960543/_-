@@ -1,0 +1,40 @@
+<view class="content">
+  <form bindsubmit="formSubmit">
+    <view class="top">
+      <view class="list">
+        <view class="left">宠物主人姓名</view>
+        <view class="right">
+          <input placeholder='请输入真实的姓名' type='text' placeholder-style="color:#999" name="name"></input>
+          <image src='/img/rt.png'></image>
+        </view>
+      </view>
+      <view class="list">
+        <view class="left">手机号码</view>
+        <view class="right">
+          <input placeholder='请输入电话号码' type='number' placeholder-style="color:#999;text-align:right" name="mobile"></input>
+          <image src='/img/rt.png'></image>
+        </view>
+      </view>
+      <view class="list">
+        <view class="left">
+          <view class="section__title">所在地区</view>
+          <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}" name="region">
+            <view class="picker">
+              {{region[0]}}，{{region[1]}}，{{region[2]}}
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class="text">
+        <textarea placeholder="详细地址：如道路、门牌号、小区楼栋号、单元室等" placeholder-style="color:#666;" name="address" maxlength="30"/>
+      </view>
+    </view>
+    <view class="bt" bindtap="switch1">
+      <view>默认地址</view>
+      <image src="/img/switch_dp-3.png" mode='aspectFill' wx:if="{{switch1}}"></image>
+      <image src="/img/switch_dp-1.png" mode='aspectFill' wx:else></image>
+    </view>
+
+    <button form-type="submit" class="replaceBackground">保存</button>
+  </form>
+</view>

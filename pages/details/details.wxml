@@ -1,0 +1,180 @@
+<view class="{{is_show?'content':''}}">
+  <!-- <import src="../../wxParse/wxParse.wxml" /> -->
+  <view  style="background: #fff;">
+    <image src="{{list.image}}" mode="aspectFill" wx:if="{{list.goods_img.length==0}}" class="slide-image" style='padding-bottom:40rpx'></image>
+    <swiper
+  indicator-dots="{{true}}"
+  autoplay="{{true}}"
+  interval="{{6000}}"
+  duration="{{1000}}"
+  circular="{{true}}"
+  indicator-active-color="#fff"
+  class="top"
+  wx:if="{{list.goods_img.length>0}}"
+>
+  <block wx:for="{{listImag}}" wx:key="{{index}}"  >
+    <swiper-item style="height:350rpx!impotant;">
+      <image src="{{item}}" class="slide-image"  mode="aspectFill"/>
+    </swiper-item>
+  </block>
+    
+</swiper>
+  </view>
+  <view class="center">
+    <view class="price">
+      <text class="rmb">¥{{list.goods_sku[index_a].price}}</text> 
+    </view>
+     <view class="ot_price" wx:if="{{list.ot_price}}">
+     <!-- <view class="ot_price"> -->
+      <text class='ot_price_rmb'>¥{{list.ot_price}}</text> 
+    </view>
+    <view class="share">
+      <view class="share-left">{{list.name}}</view>
+      <image src="/img/share.png" class="share-right" mode='aspectFill' bindtap='onShareTap'></image>
+      <!-- <button open-type="share" class="share-right"> <image src="/img/share.png"   mode='aspectFill' ></image></button> -->
+    </view>
+    <view class="text_bt" style='border-bottom:1rpx solid #eee;padding-left:60rpx;'>
+      <view class="text_bt_right" wx:if="{{!list.postage}}">
+        <text>快递：包邮</text>
+      </view>
+      <view class="text_bt_right" wx:else>
+        <text>满{{list.postage.value}}{{list.postage.type==1?'件':'元'}}包邮</text>
+      </view>
+      <view class="text_bt_right">
+        <text>总销量：{{list.sales+list.ficti}}</text>
+      </view>
+      <view class="text_bt_right">
+        <text>{{list.address?list.address:'湖南长沙'}}</text>
+      </view>
+    </view>
+    <view class="text_bt" style='color：#666'>
+      <view class="text_bt_right">
+        <image src='/img/renz.png' mode='aspectFill'></image>
+        <text>品牌优选</text>
+      </view>
+      <view class="text_bt_right">
+        <image src='/img/renz.png' mode='aspectFill'></image>
+        <text>品牌保障</text>
+      </view>
+      <view class="text_bt_right">
+        <image src='/img/renz.png' mode='aspectFill'></image>
+        <text>店铺认证</text>
+      </view>
+    </view>
+  </view>
+  <!-- 供应商介绍 -->
+  <!-- <view class="supplier">
+    <view class="supplier-img">
+      <image src="{{supplierLogo}}"></image>
+    </view>
+
+    <view class="supplier-content">
+      <view>{{supplierName}}</view>
+      <text>{{supplierGoodsNumb}}件商品</text>
+    </view>
+    <view class="supplierText" bindtap='gosupplierdetails'>了解供应商</view>
+  </view> -->
+  <view class="norms" bindtap='show'>
+    <view class="norms-left">产品规格</view>
+    <view class="norms-right">
+      <view>
+      {{selected?'':'请选择规格'}} 
+          <text wx:for="{{selected}}" wx:key="" style='padding-right:10rpx;line-height:0rpx;'>
+          {{item}} 
+          </text>
+      </view>
+      <image src='/img/rt.png' mode='aspectFill'></image>
+    </view>
+  </view>
+  <view class="norms">
+    <view class="norms-left">产品详情</view>
+  </view>
+  <!-- html转wxml -->
+  <view class="details_cp">
+    <!-- <template is="wxParse" data="{{wxParseData:aHrefHrefData.nodes}}" /> -->
+    <image wx:for="{{list.detail}}" wx:key="{{index}}" mode="widthFix" src='{{item}}'></image>
+  </view>
+  <!-- 底部悬浮 -->
+  <view class="footer">
+    <view class="footer-left" bindtap='go_home'>
+      <text class='badge' wx:if='{{badgeCount > 0}}'>{{badgeCount}}</text>
+      <image src='/img/cart-hl.png' mode='aspectFill' />
+      <text>购物车</text>
+    </view>
+    <view class="footer-left" bindtap='goshoplist' data-id='{{list.category_id}}' data-name='{{list.keyword}}'>
+      <image src='/img/gd.png' mode='aspectFill' style='margin-top:6rpx;' />
+      <text>更多</text>
+    </view>
+    <view class="footer-right replaceBackground">
+      <view class="footer-right_1" bindtap='gocart'>加入购物车</view>
+      <view class="footer-right_2 replaceCat" bindtap="purchase">立即购买</view>
+    </view>
+  </view>
+  <!--黑色弹框遮罩层 -->
+  <view class="shadow {{is_switch?'show':'hide'}}" bindtap='hide'></view>
+  <!-- 规格弹框 -->
+  <view class="spec_shadow {{is_switch?'show':'hide'}}">
+    <view class="spec_shadow-top">
+      <view class="spec_shadow-img">
+        <image src='{{selectSpecImg}}' mode='aspectFit'></image>
+      </view>
+      <view class="spec_shadow-top">
+        <view class="spec_shadow-top-center">
+          <view>
+            <text class="rmb" style='color:#FC4C4C'>¥</text>{{selectSpecPrice}}
+
+          </view>
+          <view class="guige">
+            <text style='width:23%'>已选：</text>
+            <view class="text1">
+            <text wx:for="{{selected}}" wx:key=""  >{{item}},</text>
+            </view>
+             
+          </view>
+        </view>
+        <image src='/img/xz-1.png' mode='aspectFill' class="spec_shadow-x" bindtap='hide'></image>
+      </view>
+    </view>
+    <!-- <view class="spec_shadow_list" wx:for="{{list.sku}}" wx:key="{{index}}" wx:for-index="index">
+      <view class="spec_shadow_list_title">{{item.categoryName}}</view>
+      <view class="spec_shadow_list_1">
+        <text wx:for="{{item.checks}}" wx:key="index" wx:for-item="item1" class="{{item.sort==item1?'replaceColour replaceBorder':''}}" bindtap='color' data-index="{{[index,index1]}}" wx:for-index="index1">{{item1}}</text>
+      </view>
+    </view> -->
+    <view class="specModal-2" wx:for="{{attrValueList}}" wx:key="" wx:for-item="attrValueObj" wx:for-index="attrIndex">
+      <view class="specModal-2-1">{{attrValueObj.attrKey}}</view>
+      <view class="specModal-select">
+        <view class="attr_value {{attrIndex==firstIndex || attrValueObj.attrValueStatus[valueIndex]?(value==attrValueObj.selectedValue?'attr_value_active':''):'attr_value_disabled'}}" wx:for="{{attrValueObj.attrValues}}" wx:key="" wx:for-item="value" wx:for-index="valueIndex"
+          bindtap="selectAttrValue" data-status="{{attrValueObj.attrValueStatus[valueIndex]}}" data-value="{{value}}" data-key="{{attrValueObj.attrKey}}" data-code="{{attrCode}}" data-index="{{attrIndex}}" data-selectedvalue="{{attrValueObj.selectedValue}}"
+          wx:for="{{attrValueObj.attrValues}}" wx:key="" wx:for-item="value" wx:for-index="valueIndex" wx:if="{{attrValueList}}" wx:if="{{value}}">{{value}}</view>
+      </view>
+    </view>
+    <view class="num">
+      <view class="num-left">购买数量</view>
+      <view class="num-right">
+        <text catchtap='reduce' disabled="{{formatdata.num<=1}}">-</text>
+        <input type="number" placeholder-style="color:#000;font-size:30rpx;" value='{{formatdata.num}}' bindinput='inputChangeHandle' />
+        <text catchtap='add'>+</text>
+      </view>
+    </view>
+    <view catchtap='goconfirmorder' class="button replaceBackground " wx:if="{{ispurchase}}">立即购买</view>
+    <view catchtap='sure' class="button replaceBackground" wx:else>加入购物车</view>
+
+  </view>
+  <!--分享弹窗 -->
+  <view class="{{is_show?'show':'hide'}} " catchtouchmove='stopPageScroll'>
+    <view class="shadow " bindtap='hide'></view>
+    <view class="share_list_box">
+      <view class="share_list share_list1" bindtap='onCreatPoster'>生成海报</view>
+      <button class="share_list share_list2" open-type="share">转发给好友</button>
+      <view class="share_list share_list3" bindtap='onCancelTap'>取消</view>
+    </view>
+  </view>
+  <!-- 生成海报 -->
+  <view class="{{is_poster?'show':'hide'}}" catchtouchmove='stopPageScroll'>
+    <view class="shadow shadow1 " bindtap='hide'></view>
+    <canvas canvas-id='share' style='width:528rpx;height:755rpx;position: absolute;left:50%;transform: translateX(-50%);top:114rpx;background-color:white;z-index:999;'></canvas>
+    <image src='/img/closed.png' class="close-img " bindtap='onCloseTap'></image>
+    <view class="save_picture replaceBackground" bindtap='savePic'>保存图片</view>
+  </view>
+</view>

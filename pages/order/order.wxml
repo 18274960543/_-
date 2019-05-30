@@ -1,0 +1,203 @@
+<wxs src="../../filter/formatFr.wxs" module="formatFr"/>
+
+<view class="content">
+  <view class="top"  wx:if="{{spec.mername=='托运'}}">
+  <block>
+    <view class="top-xm">
+      <text>寄宠人：{{checkAddress1.sender_name}} {{checkAddress1.sender_mobile}}</text>
+      <!-- <image src="/img/rt.png" mode='aspectFill' /> -->
+    </view>
+    <view class="top-text" style='padding-bottom:10rpx'>{{checkAddress1.sender_address}}</view>
+    </block>
+    <block wx:if="{{address}}">
+    <view class="top-xm" style='border-top:1rpx solid #eee;padding-top:10rpx'>
+      <text>收宠人：{{checkAddress1.recipient_name}} {{checkAddress1.recipient_mobile}}</text>
+      <!-- <image src="/img/rt.png" mode='aspectFill' /> -->
+    </view>
+    <view class="top-text">{{checkAddress1.recipient_address}}</view>
+    </block>
+    <view wx:else class="top-text">点击这里请先添加地址！！</view>
+    <image src='/img/bt.png' mode='aspectFill'></image>
+  </view>
+    <view class="top" bindtap='goaddress' wx:else>
+  <block wx:if="{{address}}">
+    <view class="top-xm">
+      <text>{{address.name}} {{address.mobile}}</text>
+      <image src="/img/rt.png" mode='aspectFill' />
+    </view>
+    <view class="top-text">{{address.province}}{{address.city}}{{address.area}}{{address.address}}</view>
+    </block>
+    <view wx:else class="top-text">点击这里请先添加地址！！</view>
+    <image src='/img/bt.png' mode='aspectFill'></image>
+  </view>
+  <!-- 萌萌乐园宠物屋 -->
+  <view class="house">
+    <view class="house-top">
+      <image src='/img/cart2.png' mode='aspectFill'></image>
+      <text>{{shop_info.shop_name}}</text>
+    </view>
+    <view class="house-content">
+      <image src='{{dis_img}}' mode='aspectFill'></image> 
+      <view>
+        <view>类型：{{spec.mername}}</view>
+        <text>宠物：{{spec.name}}；{{spec.specs}}；{{spec.weight}}kg；{{spec.time}}</text>
+      </view>
+    </view>
+    <view class="house-bt" style='border-bottom:1px solid #F5F5F5' bindtap='gomap'>
+      <view>{{shop_info.shop_name}}</view>
+      <image src='/img/house-bt1.png' mode='aspectFill'></image>
+    </view>
+    <view class="house-bt">
+      <view>联系电话：{{shop_info.shop[0].contact_number}}</view>
+      <image src='/img/house-bt2.png' mode='aspectFill' bindtap='dianhua'></image>
+    </view>
+  </view>
+  <!-- 明细 -->
+  <view class="detailed">
+    <view class="detailed-text">明细</view>
+    <block wx:if='{{cost1}}'>
+      <view class="detailed-fw">
+        <view>寄养费用</view>
+        <text>￥{{spec.price}}</text>
+      </view>
+      <view class="detailed-fw">
+        <view>{{spec.start_time}}至{{spec.end_time}}</view>
+        <text>{{iDays}}x{{spec.price2}}</text>
+      </view>
+    </block>
+    <view wx:else>
+      <view class="detailed-fw">
+        <view>服务费用</view>
+        <text>￥{{price?price:grain_price}}</text>
+      </view>
+      <view class="detailed-js" wx:if="{{total_fee}}">
+        <view>
+          <view>接送费用</view>
+          <text>￥{{expenses}}</text>
+        </view>
+        <text wx:if="{{show}}">{{shop_info.deliver_free}}公里内免费上门接送，{{shop_info.deliver_free}}公里外收费每公里{{shop_info.kilometer_fee}}元收费。</text>
+        <text style='color:#3D6898' bindtap='is_show' wx:else>{{shop_info.deliver_free}}公里内免费上门接送，{{shop_info.deliver_free}}公里外收费每公里{{shop_info.kilometer_fee}}元收费 ></text>
+      </view>
+    </view>
+  </view>
+  <view class="detailed_bt" wx:if="{{total_fee}}">
+    <view class="detailed_bt_top">距离约{{cost.distance}}公里</view>
+    <view class="detailed_bt_bt">
+      <view>
+        <image src='/img/detailed_bt.png' mode='aspectFill'></image>
+        <text style='width:150rpx;'>{{shopName?shopName:shop_info.shop_name}}</text>
+      </view>
+      <image src='/img/detailed_bt1.png' mode='aspectFill'></image>
+      <view>
+        <image src='/img/detailed_bt.png' mode='aspectFill'></image>
+        <text>{{address.province}}{{address.city}}{{address.area}}{{address.address}}</text>
+      </view>
+    </view>
+  </view>
+
+    <view class='coupon-item clear-f' style='padding:0;background:#fff'>
+    <view class="house-bt clear-f" data-index="{{index}}" bindtap="showCouponModel">
+      <view class="coupon-item-left">选择优惠券</view>
+      <view class="coupon-item-right" style='max-width:500rpx;display:block;text-align:right'>
+        <text class="coupon-text" wx:if="{{!selectCouponText}}">
+         请选择优惠券
+        </text>
+        <text wx:else class="coupon-text">
+          <!-- <text>{{selectCouponText}}</text> -->
+          <text wx:if="{{selectCouponDiscount}}" class="discount-price">优惠￥{{selectCouponDiscount}}</text>
+        </text>
+        <image style='margin-left:-20rpx' src='/img/rt.png' mode='aspectFill'></image>
+      </view>
+    </view>
+  </view>
+
+  <!-- 选择接送服务 开关 -->
+  <!-- <view class="Shuttleservice" bindtap='isReceiveCost' wx:if="{{exes[0]=='bath/expenses'}}">
+    <image src='/img/switch_dp-3.png' mode='aspectFill' wx:if="{{isReceiveCost}}"></image>
+    <image src='/img/switch_dp-1.png' mode='aspectFill' wx:else></image>
+    <text>选择接送费用</text>
+  </view> -->
+  <!-- 法律声明 -->
+  <view class="statement" wx:if="{{spec.mername=='托运'}}">
+        <image src='/img/switch_dp-3.png' wx:if="{{ismername}}" bindtap='ismername'></image>
+        <image src='/img/switch_dp-1.png' wx:else bindtap='ismername'></image>
+        <view> 我已经同意<text   catchtap='downloadFile'>托运须知内容</text></view>
+    </view>
+    <!-- 优惠券选择 -->
+  <view catchtouchmove='stopPageScroll'>
+    <view class='coupon-select-wraper' hidden="{{!couponVisible}}">
+      <view class='coupon-wraper' bindtap="clickCouponWrapper"></view>
+      <view class='coupon-content'>
+        <view class='coupon-title'>选择优惠</view>
+        <view wx:for="{{couponList}}" wx:key="{{index}}" wx:for-item="coupon">
+          <view class='coupon-item'>
+            <view>{{coupon.name}}
+              <text wx:if="{{coupon.type==1}}">(减{{coupon.discount}})</text>
+              <text wx:if="{{coupon.type==2}}">(满{{coupon.condition.condition}}减{{coupon.condition.discount}})</text>
+              <text wx:if="{{coupon.type==3}}">(<text wx:for="{{coupon.condition}}" wx:key="{{index}}">{{item.condition}}件{{item.discount}}折;</text>
+              <text>减{{coupon.discount}}</text>)</text>
+              <text wx:if="{{coupon.type==4}}">(减{{coupon.discount}})</text>
+            </view>
+            <view data-index="{{index}}" class='select-action' bindtap="choseCouponAction">
+              <image src="/img/switch_dp-3.png" mode='aspectFill' wx:if="{{selectCouponIndex!=='' && index==selectCouponIndex}}"></image>
+              <image src="/img/switch_dp-1.png" mode='aspectFill' wx:else></image>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部定位 -->
+  <view class="footer">
+    <!-- <view class="footer-top" wx:if="{{!show}}">
+             不在服务范围内，<text bindtap='switch_dp'>切换店铺</text>
+             <image src='/img/bt2.png'></image>
+          </view> -->
+    <view class="footer-bt">
+      <view class="footer-left">￥{{formatFr.fixed2(totalpriceAfterDiscount)}}</view>
+      <view class="footer-rt replaceBackground" bindtap='payment' wx:if="{{isReceiveCost1}}">立即付款</view>
+       <view class="footer-rt active" wx:else>立即付款</view>
+    </view>
+  </view>
+  <!-- 阴影弹框 -->
+  <view class="shadow {{isclose?'':'none'}}" bindtap='{{shadow}}'></view>
+  <!-- 接送费用弹框 -->
+  <view class="shuttle {{isshuttle?'':'none'}}">
+    <view class="shuttle-top">
+      <text>接送费用计算</text>
+      <image src="/img/xz-1.png" mode='aspectFill' bindtap='close'></image>
+    </view>
+    <view class="shuttle-centent">
+      <text>免费范畴</text>
+      <view>
+        <text></text>
+        <view>{{shop_info.deliver_free}}公里内免费上门接送，包含内容.....</view>
+      </view>
+    </view>
+    <view class="shuttle-centent">
+      <text>付费范畴</text>
+      <view>
+        <text></text>
+        <view>{{shop_info.deliver_free}}公里外将上门接送，是需要有一个付费的标准，按照每公里{{shop_info.kilometer_fee}}元进行收费....</view>
+      </view>
+    </view>
+  </view>
+  <!-- 切换店铺 -->
+  <view class="switch_dp {{iswitch==false?'none':''}}">
+    <view class="switch_dp-top">切换店铺</view>
+    <scroll-view scroll-y class="scroll-view">
+      <view class="switch_dp-list" wx:for="{{switch_dp}}" bindtap='switch_dp1' data-index="{{index}}" wx:key="index">
+        <text>{{item.name}}</text>
+        <image src="/img/switch_dp-2.png" mode='aspectFill' wx:if="{{item.switch1}}"></image>
+        <image src="/img/switch_dp-1.png" mode='aspectFill' wx:else></image>
+      </view>
+    </scroll-view>
+    <button bindtap="switch_bt">确定</button>
+
+  </view>
+<view class="remind" wx:if="{{remind}}">
+    <image src='/img/remind.png'></image>
+    <text>门店智慧平台已为您匹配附近最优店铺</text>
+</view>
+</view>

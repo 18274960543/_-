@@ -1,0 +1,100 @@
+/* pages/service/logs.wxss */
+page{height:100%;}
+.log-list {
+  display: flex;
+  flex-direction: column;
+  /* padding-bottom:60rpx; */
+   
+}
+.log-item {
+  margin: 10rpx;
+  font-size:26rpx;color: #333;
+}
+.title {
+  height: 60rpx;
+  line-height: 60rpx;
+  padding-left: 40rpx;
+  font-size: 22rpx;
+  background: #F3F3F3;
+  margin-top:60rpx;
+  color: #999
+}
+.title:first-child {
+  margin-top:0;
+}
+.list-group{ background:#fff;}
+.list-group-item {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  /* padding: 20rpx 0; */
+  margin:0 40rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  
+  border-bottom:1px solid #F3F3F3
+}
+/* .list-group-item:last-child {
+  padding-bottom: 60rpx;
+} */
+.list-group-item .icon {
+  width:30rpx;
+  height:30rpx;
+  border-radius: 50%;
+  margin-right:10rpx;
+}
+::-webkit-scrollbar{
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+.list-shortcut {
+  position: fixed;
+  z-index: 30;
+  right: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 20px;
+  padding: 20px 0;
+  border-radius: 10px;
+  text-align: center;
+  background: rgba(0,0,0,.3);
+  font-family: Helvetica;
+}
+.list-shortcut text {
+  display: block;
+  padding: 3px;
+  line-height: 1;
+  color: #fff;
+  font-size: 12px;
+}
+.current{
+  color: #ffcd32 !important;
+}
+.list-fixed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.fixed-title {
+  height:60rpx;
+  line-height:60rpx;
+  padding-left:40rpx;
+  font-size:12px;
+  color:rgba(255, 255, 255, 1);
+  background:#ccc;
+}
+button{background: #FFC408;position: fixed;bottom:20rpx;width:90%;left:5%;border-radius:100rpx;outline: none;color: #530B0B}
+.scroll-x{ background: #fff;padding:30rpx 40rpx;white-space: nowrap;width: 100%;}
+.list{display: inline-block;width:80rpx;margin-right:50rpx;height:130rpx;}
+.list image{width: 80rpx;height:80rpx;border-radius:50%;display: block;box-sizing: border-box;border:1px solid #ccc}
+.list text{font-size:24rpx;color:#333;display: inline-block;text-align:center;width:80rpx;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+  /* 影藏滚动条 */
+/* ::-webkit-scrollbar {
+ width: 5rpx;
+ height: 5rpx;
+ color: #FFC408;
+} */
+.list image.image1{border:1px solid #FFC408}

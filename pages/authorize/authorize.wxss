@@ -1,0 +1,32 @@
+.header {
+    margin:20rpx auto;
+    text-align: center;
+    width: 650rpx;
+    height: 300rpx;
+    line-height: 450rpx;
+}
+
+.header image {
+    width: 200rpx;
+    height: 200rpx;
+}
+
+.content {
+    margin-left: 50rpx;
+    margin-bottom: 50rpx;
+}
+.content view{text-align: center}
+.content text {
+    display: block;
+    color: #9d9d9d;
+    margin-top: 40rpx;
+    text-align: center
+}
+
+.bottom {
+    border-radius: 80rpx;
+    margin: 0 auto;
+    font-size: 35rpx;
+    width:80%
+}
+ 

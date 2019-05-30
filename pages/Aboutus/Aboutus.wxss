@@ -1,0 +1,9 @@
+.img{height:100%;width:100%;display:block}
+.aboutus{position:absolute;width:90%;height:80;left:5%;top:18%;}
+.h1{font-size:42rpx;color:#000;font-weight:700;margin-bottom:50rpx;}
+.center{font-size:28rpx;color:#333;line-height:48rpx;}
+.center text{padding-left:50rpx;}
+.h2{margin-top:100rpx;font-size:28rpx;color:#333;text-align:center}
+.bt{margin-top:25rpx;background:#fff;}
+.bt view{display: flex;justify-content: space-between;padding:10rpx 30rpx;align-items: center;font-size:28rpx;}
+.bt>text{height:1rpx;width:100%;display: block;background:#F3F3F3}

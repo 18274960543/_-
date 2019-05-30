@@ -1,0 +1,30 @@
+<!--pages/me/mypet/mypet.wxml-->
+<view class='pet-box' wx:for="{{pet_list}}" wx:key="{{index}}" >
+  <image src='{{item.avatar}}' class='pet-img'></image>
+  <view class='text-box'>
+    <text class='pet-name'>{{item.name}}</text>
+    <text class='pet-detail'>{{item.breed.name}},{{item.specs}}</text>
+  </view>
+  <view class='edit-box'>
+    <view class='line'></view>
+    <text class='edit' bindtap='edit' data-id='{{item.id}}'>编辑</text>
+  </view>   
+</view>
+<view class='add-btn replaceBackground' bindtap='add_pet'>
+  <text class="add-text replaceBackground">添加宠物</text>
+</view>
+  <!-- 选择宠物品种弹框 -->
+     <view class="shadow {{is_shadow?'':'is_show'}}" bindtap='shadow'></view>
+     <view class="varieties {{is_varieties?'':'is_varieties'}}">
+       <text class="varieties_text">选择您宠物品种</text>
+       <view>
+           <view bindtap='go_petinformation' data-id='1'> 
+         <image src='/img/dog.png' mode='aspectFill' style='width:100rpx;height:100rpx;border-radius:50%;'></image>
+          <text>汪星人</text>
+       </view>
+       <view  bindtap='go_petinformation' data-id='2'>
+           <image src='/img/cat.png' mode='aspectFill' style='width:100rpx;height:100rpx' ></image>
+           <text>喵星人</text>
+       </view>
+       </view>
+     </view>

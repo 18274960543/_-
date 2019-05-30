@@ -1,0 +1,91 @@
+<wxs src="../../filter/formatFr.wxs" module="formatFr"/>
+<!--pages/order/refundInfo.wxml-->
+<block>
+<view class="top">
+  <view class="top-1" wx:if="{{options.refund_state==2}}">退货商品</view>
+  <view class="top-1" wx:if="{{options.refund_state==1}}">退款退货</view>
+  <view class="top-1" wx:if="{{options.refund_state==0}}">退款</view>
+  <view class='top-2'>
+    <view class='top-img'>
+      <image class='imgPro' src="{{orderData.order_goods.goods_image}}"></image>
+    </view>
+    <view class='top-name'>
+      <view class="top-name-1">{{orderData.order_goods.goods_name}}</view>
+    </view>
+    <view class='top-price'>
+      <view>￥{{orderData.order_goods.goods_pay_price}}</view>
+      <view>x {{orderData.order_goods.goods_num}}</view>
+    </view>
+  </view>
+  <block wx:if="{{refund_state}}">
+  <view class='top-1'>退货邮寄地址</view>
+  <view class="top-3">
+    <view>{{orderData.name}} {{orderData.mobile}}</view>
+    <view>{{orderData.address}}</view>
+  </view>
+  </block>
+</view>
+
+<view class='main'>
+  <view class='main-1'>
+    <view class='main-1-1'>货物状态</view>
+    <view class='main-1-2' bindtap='bindSelect' data-types='1'>
+      {{is_text}}
+      <view>
+        <image src="/img/return1.png"></image>
+      </view>
+    </view>
+  </view>
+  <view class='main-1'>
+    <view class='main-1-1'>退货原因</view>
+    <view class='main-1-2' bindtap='bindSelect' data-types='2'>
+      {{is_text2}}
+      <view>
+        <image src="/img/return1.png"></image>
+      </view>
+    </view>
+  </view>
+   <view class='main-1'>
+    <view class='main-1-1'>退货数量</view>
+    <view class='main-1-2'>
+       <view class="num-right">
+<text catchtap='reduce' disabled="{{num<1}}">-</text>
+<input type="number" placeholder-style="color:#000;font-size:30rpx;" value='{{num}}' bindinput='inputChangeHandle' />
+<text catchtap='add'>+</text>
+</view>
+    </view>
+  </view>
+  <view class='main-2'>
+    <view class='main-2-1'>退货金额</view>
+    <view class='main-2-2'>
+      <view>￥{{formatFr.fixed2(money)}}</view>
+    </view>
+  </view>
+  <!-- <view class='main-3'>最多￥{{orderData.total_amount}}，含发货邮费￥{{orderData.shipping_fee}}</view> -->
+  <view class='main-1'>
+    <view class='main-2-1'>退货说明</view>
+    <view class='main-2-2 main-3-2'>
+      <input placeholder='选填' bindinput="bindKeyInput"></input>
+    </view>
+  </view>
+ 
+</view>
+<!-- 退货图片 -->
+<view class="main-4">退货图片：</view>
+<view class="addImg">
+<image bindtap='addImg' src="{{img}}" ></image>
+</view>
+<view class='proButtonBot proButtonBotTure replaceBackground' bindtap='apply'>提交</view>
+<view class='mask' wx:if="{{showModal}}"></view>
+<view class='showModal' wx:if="{{showModal}}">
+  <view class='showModal-1'>货物状态</view>
+  <view class='showModal-2' bindtap='bindList' data-index='{{index}}' wx:for="{{list}}" wx:key="">
+    <view>{{item.text}}</view>
+    <view>
+      <icon wx:if="{{item.status==1}}" color="#773ADF" type="success" size="20" />
+    </view>
+  </view>
+  <view class='proButtonBot proButtonBotTure replaceBackground' style='position: relative;margin-top:30rpx;' bindtap='bindSelect' data-types='3'>{{is_select?'确定':'关闭'}}</view>
+</view>
+<view class="shadow {{showModal?'show':''}}" catchtouchmove='stopPageScroll'></view>
+</block>

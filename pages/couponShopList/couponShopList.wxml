@@ -1,0 +1,136 @@
+<scroll-view scroll-y style='height:{{systemInfo.screenHeight}}px;background:#fff' lower-threshold="150" bindscrolltolower="bindscrolltolower" catchtouchmove='{{catchtouchmove}}'>
+  <view style='border-top:0.1rpx solid #fff'></view>
+  <view class="top">
+    <view class="search">
+      <image src='/img/glass.png' mode="aspectFill"></image>
+      <input type='tex' class='search-input' placeholder='搜索需要查询的内容' placeholder-style="font-size:26rpx;min-height:28rpx" bindinput="bindSearchInput" value="{{searchText}}"></input>
+    </view>
+  </view>
+  <!--  -->
+  <view class='selectView'>
+    <view class="selectViewList" wx:for="{{selectView}}" wx:key="" bindtap='bindSelect' data-id='{{item.id}}'>
+      <view class="selectViewList-text">
+        {{item.text}}
+      </view>
+      <view class="selectViewList-icon" wx:if="{{item.icon}}">
+        <image src="{{item.icon}}"></image>
+      </view>
+    </view>
+  </view>
+  <!-- 综合 -->
+  <view class="comprehensive" wx:if="{{showComprehensive}}">
+    <view wx:for="{{comprehensiveList}}" wx:key="" bindtap='selectCompre' data-index='{{index}}' style="{{item.status == 1?'color:#FFC408':''}}">
+      <view>{{item.text}}</view>
+      <view>
+        <image class="imgpro" wx:if="{{item.status == 1}}" src="/img/gou.png"></image>
+      </view>
+    </view>
+  </view>
+  <!-- 列表 -->
+
+  <scroll-view class="main" scroll-y wx:if="{{proList.length>0}}">
+    <view class="mainList" wx:for="{{proList}}" wx:key="{{index}}">
+      <image wx:if="{{item.is_select}}" class='select-image' data-index="{{index}}" bindtap="selectItem" mode="aspectFill" src="/img/switch_dp-3.png"></image>
+      <image wx:else class='select-image' bindtap="selectItem" mode="aspectFill" data-index="{{index}}" src="/img/switch_dp-1.png"></image>
+      <view class="mainList-lf" bindtap='toInfo' data-id='{{item.goods_id}}'>
+        <image class="imgpro" src="{{item.img}}"></image>
+      </view>
+      <view class="mainList-rt" bindtap='toInfo' data-id='{{item.goods_id}}'>
+        <view class="mainList-name">
+          {{item.goods_name}}
+        </view>
+        <view class="mainList-price">
+          <view>
+            ￥
+            <text>{{item.price}}</text>
+          </view>
+        </view>
+        <view class='mainList-store'>
+          销量：{{item.sales}}
+        </view>
+      </view>
+      <view class="mainList-2-1" bindtap='toInfo' data-id='{{item.id}}' data-index='{{index}}'>
+        <image class="imgpro" src="/img/che.png"></image>
+      </view>
+    </view>
+    <!-- 底部立即购买 -->
+    <view class="footer">
+      <view class='footer-left'>
+
+        <text class='total'>合计￥ <text class="price">{{totalMoney|| '0.00'}}</text> </text>
+        <text class='coupon-text'>{{couponText }}</text>
+      </view>
+      <view class="footer-right">
+        <view bindtap='go_cart' class="go_cart replaceBackground {{selectIds.length?'':'disabled'}}">去购物车</view>
+      </view>
+    </view>
+  </scroll-view>
+  <!-- <view wx:else style='font-size:28rpx;padding:20rpx 60rpx;'> 
+      敬请期待 !!
+  </view> -->
+  <!-- <view wx:else>商品列表空空如也</view> -->
+  <!-- 筛选  -->
+  <view catchtouchmove='stopPageScroll'>
+    <view class="mask" wx:if="{{showScreening == 1 || showScreening == 2}}" bindtap='mask'></view>
+  </view>
+  <scroll-view scroll-y class="screening {{showScreening == 1 ? 'screeningShow' :''}} {{showScreening == 2 ? 'screeningHide' :''}}" wx:if="{{showScreening == 1 || showScreening == 2}}">
+    <!-- 类型 -->
+    <view class="screening-pro">
+      <view class="screening-pro-1">
+        类型
+      </view>
+    </view>
+    <view class='category-box clear-f'>
+      <scroll-view class="cate-scroll" scroll-x="true">
+        <view wx:for="{{category}}" wx:key="{{index}}" data-id="{{item.id}}" bindtap="selectCategory" class="filter-category-item {{categoryId==item.id?'active':''}}">
+          {{item.name}}
+        </view>
+      </scroll-view>
+    </view>
+    <!-- 价格区间 -->
+    <view class="screening-pro">
+      <view class="screening-pro-1">
+        价格区间
+      </view>
+    </view>
+    <view class="screening-minmax">
+      <view class="screening-min">
+        <input placeholder='最低价' bindinput="bindKeyInput1" value='{{priceStart}}'></input>
+      </view>
+      <view>-</view>
+      <view class='screening-max '>
+        <input placeholder='最高价' bindinput="bindKeyInput2" value='{{priceEnd}}'></input>
+      </view>
+    </view>
+    <view class="hengpro" style='margin-top:10rpx; '></view>
+    <view wx:for="{{shuaixuan}}" wx:key="">
+      <view class="screening-pro">
+        <view class="screening-pro-1">
+          {{item.attr_name}}
+        </view>
+        <!-- <view class="screening-pro-2">
+        全部
+      </view> -->
+      </view>
+      <view class="screening-all">
+        <view class="screening-list" wx:for="{{item.attr_mx}}" wx:key="" data-attr_key_id='{{item.attr_key_id}}' data-id='{{item.id}}' data-index='{{index}}' bindtap='clickSelect' style="{{item.status?'background:rgba(244, 230, 255, 1);border:1px solid #773ADF;color:#773ADF ':' '}}">{{item.att_value}}</view>
+      </view>
+    </view>
+    <!--  -->
+    <view class='screening-bottom '>
+      <view bindtap='chongzhi'>
+        重置
+      </view>
+      <view class="replaceBackground" bindtap='bindScreening' data-types='queding'>
+        确定
+      </view>
+    </view>
+  </scroll-view>
+  <view class="kong" wx:if="{{proList.length==0}}">
+    <image src='/img/kong.png'></image>
+    <text>非常抱歉</text>
+    <view>没有找到相关的宝贝</view>
+  </view>
+
+
+</scroll-view>

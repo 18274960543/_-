@@ -1,0 +1,72 @@
+<!-- 供应商详情 -->
+<!-- <view class="carousel">
+<swiper
+  indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}"
+  interval="{{interval}}"
+  duration="{{duration}}"
+  indicator-color="rgba(243, 243, 243, 1)"
+  indicator-active-color="rgba(255, 196, 8, 1)"
+  circular="false"
+>
+  <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+    <swiper-item>
+      <image src="{{item}}" class="slide-image" width="355" height="150" />
+    </swiper-item>
+  </block>
+</swiper>
+</view>  -->
+<view class="top">
+  <scroll-view class="nav_top  {{istrue>410? 'float' : ''}} none" scroll-x="true">
+      <block wx:for="{{store_banners}}" wx:key="index">
+        <view class="nav_top_items {{curIndex == index ? 'nav_top_item-active' : ''}}" data-id="{{item.goods_id}}" bindtap="switchRightTab">
+          {{item.name}}
+        </view>
+        <text></text>
+      </block>
+    </scroll-view>
+    <swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="{{8000}}" duration="{{500}}" circular="{{true}}" indicator-color="rgba(255, 255, 255, .3)" indicator-active-color="#fff">
+      <block wx:for="{{store_banners}}" wx:key="index">
+        <swiper-item style="border-radius:10rpx;" data-id="{{item.goods_id}}" bindtap ="toInfo">
+          <image src="{{item.img}}" mode="scaleToFill" class="slide-image" />
+        </swiper-item>
+      </block>
+    </swiper>
+</view>
+
+<view class="nav">
+  <view class="{{item.status?'active':''}}" wx:for="{{arr}}" wx:key="index" bindtap='switchRightTab' data-index='{{index}}'>{{item.text}}</view>
+</view>
+
+<!--简介-->
+<view wx:if="{{index==1}}">
+<view class="introduction">
+  <view style='margin-bottom:20rpx'>{{sup_intro}}</view>
+    <view class="details_cp_intro"> 
+    <image wx:for="{{sup_intro_img}}" wx:key="{{index}}" mode="widthFix" src='{{item}}'></image>
+  </view>
+</view>
+ 
+</view>
+<!-- 品牌推荐 -->
+<view class="guess" wx:if="{{index==0}}">
+  <view wx:if='{{goods.length>0}}' style='padding-bottom: 10px;'>
+          <block wx:for="{{goods}}" wx:for-item="item" wx:key="index">
+            <view class="item" bindtap='toInfo' data-id="{{item.id}}">
+              <image class="item-img" src='{{item.image}}' mode="aspectFit"></image>
+              <text class="item-title padding">{{item.name}}</text>
+              <view class="item_text padding">
+                <text style='font-size:20rpx'>销量：{{item.sales+item.ficti}}</text>
+                <!-- <text>{{item.subTitle}}</text> -->
+              </view>
+              <view class="item_bottom padding">
+                 
+                <view><text class="rmb" style='font-size:22rpx'>¥</text>
+                {{item.price}}
+                </view>
+                <image src='/img/che.png'></image>
+              </view>
+            </view>
+          </block>
+        </view>
+</view>

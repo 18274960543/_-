@@ -1,0 +1,10 @@
+<!-- 引用组件 -->
+<rili bindmyevent="onMyEvent" id='rili'></rili>
+
+<!-- 条件点击方法 -->
+<view bindtap='dianji'>点击</view>
+
+<!-- 显示获取的值 -->
+<view>{{starTime}}</view>
+<view>{{day}}</view>
+<view>{{endTime}}</view>

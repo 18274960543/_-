@@ -1,0 +1,12 @@
+<view class="content">
+  <view class="list" wx:for="{{news}}" wx:key="{{index}}">
+    <image src="/img/news.png" mode='aspectFill'></image>
+    <view class="right">
+      <view class="top">消息通知</view>
+      <text>{{item.date}}</text>
+      <view class="bt">{{item.content}}</view>
+    </view>
+  </view>
+  <!-- <button plain="true" open-type='getPhoneNumber' bindgetphonenumber="getPhoneNumber" class="bt">获取手机号码</button> -->
+
+</view>           

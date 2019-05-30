@@ -1,0 +1,91 @@
+.top {
+  background: #fff;
+  padding: 30rpx 40rpx 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.search {
+  display: flex;
+  background: #f3f3f3;
+  width:530rpx;
+  height: 30rpx;
+  border-radius: 100rpx;
+  align-items: center;
+  padding: 20rpx 30rpx;
+  font-size: 28rpx;
+  color: #ccc;
+}
+.galss {
+  height: 30rpx;
+  width: 30rpx;
+}
+.search input {
+  width: 430rpx;
+  text-align: left;
+  padding-left: 20rpx;
+  color: #333;
+}
+.text{
+  font-size:28rpx;
+  color: #333;
+}
+.History{
+  padding:30rxp 5%;
+  height: 500rpx;
+}
+.History-top{
+  padding: 30rpx 40rpx 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.History-top image{
+  height:30rpx;
+  width:30rpx;
+}
+.text-top{
+  font-size:28rpx;
+  color: #666;
+}
+.delet-list{
+  display: flex;
+  flex-wrap:wrap;
+  padding:10rpx 30rpx;
+}
+.list{
+  font-size:24rpx;
+  color: #666;
+  background: #EBEBEB;
+  border-radius: 100rpx;
+  padding: 10rpx 20rpx;
+  margin: 10rpx 20rpx;
+}
+.search-list{
+  background: #fff;
+  position: absolute;
+  top:120rpx;
+  left:0;
+  width: 100%;
+}
+.list1{
+  display: flex;
+  padding:25rpx 55rpx;
+  border-bottom:1rpx solid #eee;
+  font-size:28rpx;
+  color:#000;
+  justify-content:space-between;
+  align-items: center;
+}
+.list1-rt{
+  display: flex;
+  justify-content: flex-start;
+  font-size:22rpx;
+  color: #333;
+  align-items: center;
+}
+.list1-rt image{
+  height: 20rpx;
+  width: 19rpx;
+  margin-right: 10rpx;
+}
