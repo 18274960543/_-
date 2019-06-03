@@ -1,0 +1,12 @@
+<view class="content">
+   <text class="text">Membership Card</text>
+   <view class="bac">
+        <image src='{{codeData.background}}' class="img"></image>
+        <view class="bacContent">
+            <view>我的会员码</view>
+            <image src='{{codeData.qr_code}}' bindtap='bigimage' ></image>
+            <text>商家扫描二维码</text>
+            <text>即可成为该店会员</text>
+        </view>
+   </view>
+</view>

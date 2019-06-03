@@ -1,0 +1,12 @@
+<image src='/img/xf.png' class="img"></image>
+<view>
+    <view>
+        <view>1000.00</view>
+        <text>本月消费</text>
+    </view>
+    <view></view>
+    <view>
+        <view>3000.00</view>
+        <text>总消费</text>
+    </view>
+</view>

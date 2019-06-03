@@ -27,7 +27,7 @@ Page({
       data: {
         likeWhere: likeWhere
       },
-      method: "post",
+      method: "post",   
       success: (res) => {
         console.log(res.data)
         this.setData({

@@ -1,0 +1,63 @@
+
+
+
+.bottomDw{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: #fff;
+  display: flex;
+  justify-content: space-around;
+  height: 130rpx;
+  align-items: center;
+}
+.bottomDw view{
+  width: 320rpx;
+  height: 88rpx;
+  font-size:36rpx;
+  color: #773ADF;
+  border-radius:100rpx;
+  border: 1rpx solid #773ADF;
+  text-align: center;
+  line-height: 88rpx;
+   
+}
+.bottomDw view.active{
+  background: #773ADF;
+  color: #fff;
+}
+.list{
+  padding: 40rpx 30rpx;
+}
+.list>view{
+  padding: 40rpx 30rpx;
+  box-sizing: border-box;
+  width: 100%;
+  height:300rpx;
+  border-radius: 10rpx;
+  margin-bottom: 20rpx;
+  position: relative;
+  color: #fff;
+  font-size: 36rpx;
+}
+.list view image.imgDw{
+  position: absolute;
+  top: 0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  z-index: -1
+}
+.list view image{
+  display: flex;
+  height: 55rpx;
+  width: 55rpx;
+  margin-bottom: 20rpx;
+}
+.list view view{
+  margin-bottom: 30rpx;
+}
+.list view text{
+  font-size: 26rpx;
+}

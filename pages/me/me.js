@@ -62,6 +62,16 @@ Page({
       url: "/pages/edit/edit",
     })
   },
+  gomember(){
+    wx.navigateTo({
+      url: "/pages/member/member",
+    })
+  },
+  gocomplaint(){
+    wx.navigateTo({
+      url: "/pages/complaint/complaint",
+    })
+  },
   //获取用户信息接口
   queryUsreInfo: function() {
     var that=this

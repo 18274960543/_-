@@ -1,0 +1,12 @@
+<view class="content">
+   <textarea  placeholder="请输入您的建议"  placeholder-style="color:#999;font-size:32rpx"  bindinput='bindTextAreaBlur'></textarea>
+   <view class="image">
+     <view class="lf" bindtap='chooseImage'>
+          <image src='/img/xz-add.png'></image>
+     </view>
+     <block wx:for="{{src}}" wx:key="index"> 
+     <image src='{{item}}'></image>
+     </block>
+   </view>
+</view>
+<view class="bt" bindtap='submit'>提交</view> 

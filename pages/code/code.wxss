@@ -1,0 +1,45 @@
+.content{
+  background: #ECECEC;
+  width: 100%;
+  height: 100%;
+  padding: 30rpx 40rpx 0;
+  box-sizing: border-box
+}
+.text{
+  font-size: 30rpx;
+  color: #fff;
+}
+.bac{
+  width: 100%;
+  height: 1057rpx;
+  margin-top:50rpx;
+  position: relative
+}
+.img{
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1
+}
+.bacContent{
+  position: absolute;
+  width: 460rpx;
+  display: flex;
+  flex-wrap:wrap;
+  font-size: 46rpx;
+  color: #000;
+  z-index: 2;
+  top:100rpx;
+  left:100rpx;
+}
+.bacContent image{
+  height: 460rpx;
+  width: 100%;
+}
+.bacContent text{
+  font-size: 32rpx;
+  margin-bottom: 20rpx;
+  color: #333;
+}

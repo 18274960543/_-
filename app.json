@@ -1,7 +1,10 @@
 {
   "pages": [
-      
-    "pages/home/home",  
+    "pages/consumption/consumption",
+    "pages/home/home",   
+    "pages/code/code",
+    "pages/member/member", 
+    "pages/complaint/complaint",
     "pages/img/img", 
     "pages/timecontrol/timecontrol",
     "pages/peripheryTemplate/peripheryTemplate",

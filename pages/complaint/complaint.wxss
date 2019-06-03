@@ -1,0 +1,46 @@
+ .content{
+   background: #fff;
+   padding: 30rpx 25rpx
+ }
+ .content textarea{
+   width: 100%;
+   font-size: 32rpx;
+   color: #666;
+ }
+ .bt{
+   background: #773ADF;
+   width: 590rpx;
+   height: 88rpx;
+   line-height: 88rpx;
+   font-size: 36rpx;
+   color: #fff;
+   border-radius: 100rpx;
+   text-align: center;
+  position: fixed;
+  bottom: 40rpx;
+  left: 80rpx;
+ }
+ .image{
+    display: flex;
+    flex-wrap:wrap;
+     
+ }
+ .image>image{
+   height:210rpx;
+   width: 210rpx;
+   margin-right:  20rpx;
+   margin-bottom: 20rpx;
+ }
+ .lf{
+  height: 60rpx;
+   width: 60rpx;
+   background: #F2F2F2;
+   padding: 75rpx;
+   margin-bottom: 20rpx;
+   margin-right: 20rpx;
+ }
+  .lf image{
+    height: 60rpx;
+    width: 60rpx;
+  }
+ 

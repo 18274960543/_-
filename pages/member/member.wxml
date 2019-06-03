@@ -1,0 +1,15 @@
+<view class="content" wx:if="list">
+    <view class="list">
+        <view wx:for="{{list}}" wx:key="index">
+             <image src='{{item.shop.img_url}}' style=' border-radius:50%;'></image>
+             <view>{{item.shop.name}}会员专享</view>
+             <text>会员卡余额￥{{item.balance}}</text>
+             <image src='{{item.image}}' class="imgDw"></image>
+        </view>
+    </view>
+    <!-- 底部定位 -->
+    <view class="bottomDw">
+         <view class="active" bindtap='gocode'>我的会员码</view>
+         <view>会员消费记录</view>
+    </view>
+</view>
