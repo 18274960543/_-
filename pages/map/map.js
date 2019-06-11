@@ -1,3 +1,4 @@
+const Page = require('../../utils/ald-stat.js').Page;
 Page({
   data: {
   },

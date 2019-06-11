@@ -1,4 +1,4 @@
-// pages/commodity/commodity.js
+const Page = require('../../utils/ald-stat.js').Page;
 const query = wx.createSelectorQuery();
 const app = getApp()
 let url = require('../../utils/config.js')

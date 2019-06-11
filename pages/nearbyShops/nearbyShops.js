@@ -1,6 +1,7 @@
 var app = getApp()
 let url = require('../../utils/config.js')
 var QQMapWX = require('../../utils/qqmap-wx-jssdk.min.js')
+const Page = require('../../utils/ald-stat.js').Page;
 Page({
 
   /**

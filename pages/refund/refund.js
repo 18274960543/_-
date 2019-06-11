@@ -1,7 +1,8 @@
-// pages/order/refund.js
+const Page = require('../../utils/ald-stat.js').Page;
 const util = require('../../utils/util.js'),
-  url = require('../../utils/config.js'),
-  app = getApp()
+  url = require('../../utils/config.js');
+ 
+  const app = getApp()
 Page({
   data: {
     vaeTypes: 1,

@@ -1,6 +1,7 @@
 // pages/edit/edit.js
 const app = getApp()
 let url = require('../../utils/config.js')
+const Page = require('../../utils/ald-stat.js').Page;
 Page({
   /**
    * 页面的初始数据

@@ -1,4 +1,4 @@
-// pages/me/coupon/coupon.js
+const Page = require('../../utils/ald-stat.js').Page;
 
 const app = getApp()
 let url = require('../../utils/config.js')

@@ -1,4 +1,4 @@
-<view class="content">
+<view class="content" wx:if="{{codeData}}">
    <text class="text">Membership Card</text>
    <view class="bac">
         <image src='{{codeData.background}}' class="img"></image>

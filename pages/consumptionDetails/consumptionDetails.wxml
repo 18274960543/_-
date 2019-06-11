@@ -1,0 +1,22 @@
+<view class="top">
+      <view class="content">
+             <image src='{{consumptionDetails.shop.img_url}}'></image>
+             <view>{{consumptionDetails.shop.name}}会员</view>
+             <text>{{consumptionDetails.change_type==1?'+':consumptionDetails.change_type==2?'-':''}}{{consumptionDetails.change_amount}}</text>
+      </view>
+      <view class="bt">
+         <view>
+             <text>消费时间</text>
+             <text class="text">{{consumptionDetails.created_at}}</text>
+         </view>
+         <view>
+             <text>支付方式</text>
+             <text  class="text">会员卡消费</text>
+         </view>
+      </view>
+</view>
+<view class=""></view>
+<view class="reason">
+     <text>调整理由</text>
+     <view>{{consumptionDetails.comment}}</view>
+</view>

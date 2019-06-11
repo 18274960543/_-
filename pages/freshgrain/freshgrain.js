@@ -1,4 +1,4 @@
-// pages/freshgrain/freshgrain.js
+const Page = require('../../utils/ald-stat.js').Page;
 Page({
 
   /**

@@ -2,7 +2,7 @@ const app = getApp()
 let url = require('../../utils/config.js')
 //  经纬度sdk文件
 var QQMapWX = require('../../utils/qqmap-wx-jssdk.js');
-
+const Page = require('../../utils/ald-stat.js').Page;
 
 var qqmapsdk = new QQMapWX({
   key: url.key

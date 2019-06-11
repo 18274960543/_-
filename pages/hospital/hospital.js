@@ -1,4 +1,4 @@
-// pages/hospital/hospital.js
+const Page = require('../../utils/ald-stat.js').Page;
 Page({
 
   /**

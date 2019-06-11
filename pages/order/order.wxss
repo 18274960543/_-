@@ -96,6 +96,7 @@
 }
 
 .house-bt {
+   background: #fff;
   display: flex;
   justify-content: space-between;
   padding: 20rpx 0;
@@ -103,6 +104,7 @@
   margin: 0 20rpx;
   font-size: 28rpx;
   color: #333;
+ 
 }
 
 .house-bt image {
@@ -437,7 +439,7 @@
 /* lida start */
 .coupon-item{
   min-height: 75rpx;
-  background: #fff;
+  
   margin-top: 30rpx;
   margin-bottom: -20rpx;
   font-size:30rpx;
@@ -507,4 +509,70 @@
   position: absolute;
   right: 20rpx;
   top: 26rpx;
+}
+.memberPayment{
+ margin-top:10rpx;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 32rpx;
+  background: #fff;
+  padding: 10rpx 20rpx;
+  box-sizing: border-box;
+  bottom: 100rpx;
+  /* color: #fc4c4c; */
+  border-bottom: 1rpx solid #eee;
+  padding-bottom: 20rpx
+}
+.Payment view{
+  display: flex;
+  align-items: center;
+}
+.memberPayment view image{
+  margin-right: 10rpx;
+   height: 50rpx;
+  width: 50rpx;
+}
+.memberPayment image{
+  height: 40rpx;
+  width: 40rpx;
+  border-radius: 50%;
+}
+.Payment{
+  padding: 30rpx;
+  position: fixed;
+  left:0;
+  bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
+  background: #fff;
+  z-index: 100
+}
+.show{
+  display: none
+}
+.mask{
+  background: #000;
+  opacity: 0.5;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+.Payment  .promptly{
+  background: #773ADF;
+  border-radius: 100rpx;
+  width: 500rpx;
+  height: 70rpx;
+  font-size: 32rpx;
+  color: #fff;
+  line-height: 70rpx;
+  margin:0 auto;
+  text-align: center;
+  display: block;
+  margin-top:20rpx;
 }

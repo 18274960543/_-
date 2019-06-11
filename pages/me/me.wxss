@@ -182,17 +182,20 @@
   display: flex;
   flex-wrap:wrap;
    width: 690rpx;
-  background: #fff;
+   
   margin:0 auto;
 }
 .box view{
-  width: 170rpx;
+  width:33.33%;
   /* height: 150rpx; */
   padding: 30rpx 0;
   display: flex;
  flex-direction:column;
  align-content: center;
  align-items: center;
+ margin-bottom: 10rpx;
+ background: #fff;
+ box-sizing: border-box
  
 }
 .box view image{
@@ -210,4 +213,84 @@
  flex-direction:column;
  align-content: center;
  align-items: center;
+}
+
+/* 添加宠物 */
+.scroll{margin-left:2%;margin-top:35rpx;white-space: nowrap;width:98%;
+display: flex;
+align-items: center;
+box-sizing: border-box
+}
+.scroll_left{height:100rpx; border:1rpx solid #eee;
+box-sizing:border-box;width:220rpx;border-radius:10rpx;margin-right:30rpx;display:inline-block; padding:15rpx 20rpx;position:relative;align-items: center;
+line-height: 65rpx;
+}
+.bac{
+background: #ede2f7
+}
+.scroll_img{width:65rpx;height:65rpx;border-radius:50%;margin-right:10rpx; float:left;}
+.scroll_img1{position:absolute;right:0;bottom:0;width:64rpx;height:55rpx;}
+.scroll_text{display:flex;flex:1; flex-direction:column;}
+
+.scroll_text view{font-size:32rpx;color:#000;
+width:120rpx;
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis;
+
+}
+.scroll_text text{font-size:20rpx;color:#666; 
+word-wrap:break-word;
+word-break: normal;
+white-space:pre-wrap ;
+height: 55rpx;
+padding-top:10rpx;
+overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 2;
+}
+.mask{
+background: #000;
+opacity: 0.5;
+position: fixed;
+left: 0;
+bottom: 0;
+right: 0;
+top: 0;
+width: 100%;
+}
+/* 添加宠物 */
+.varieties{position:fixed;width:70%;height:30%;background:#fff;border-radius:10rpx;
+box-sizing:border-box;z-index:1000;left:15%;top:35%;padding:50rpx 40rpx;}
+.varieties_text{font-size:36rpx;color:#333;}
+.varieties>view{display: flex;justify-content:space-around;margin-top:40rpx;}
+.varieties>view view{display: flex;align-items: center;flex-direction:column;font-size:28rpx;color:#666;}
+.varieties>view view image{height:160rpx;width:160rpx;border-radius:50%;border:1px solid #eee;margin-bottom:10rpx;}
+.yes{background:rgba(255,196,8,0.01);color:#FFC408; border:1px solid rgba(255,196,8,1);border-radius:13rpx;}
+.yes view{color:#FFC408}
+.yes text{color:#FFC408}
+.is_show{display: none}
+.isnext{display:none}
+.is_varieties{display: none}
+.iscolor{
+color:#fff;
+background:#773ADF;
+}
+button[disabled]{
+background-color:#eee!important;
+}
+.imgPets{
+display: flex;
+align-items: center;
+}
+.imgPets image{
+height: 60rpx!important;
+width: 60rpx!important;
+border-radius: 50%;
+margin-right: 8rpx;
+}
+.show{
+  display: none;
 }

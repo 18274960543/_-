@@ -1,5 +1,69 @@
+page{
+  background: #fff;
+}
 .img{
   width: 100%;
   height: 180rpx;
   display: flex;
 }
+.top{
+  display: flex;
+  align-items: center;
+  background: #fff;
+  width: 690rpx;
+  border-radius: 10rpx;
+ position: absolute;
+ top: 50rpx;
+ left:30rpx;
+ padding: 40rpx 114rpx 35rpx;
+ box-sizing: border-box;
+ box-shadow:2rpx 5rpx 10rpx #773ADF;
+}
+.line{
+  height: 35rpx;
+  width: 2rpx;
+  background: #ccc;
+  margin:0 80rpx;
+}
+.top view{
+  font-size: 36rpx;
+  color: #000;
+  text-align: center;
+}
+.top view text{
+  font-size: 26rpx;
+  color: #666;
+}
+.content{
+  padding: 70rpx 45rpx 45rpx;
+}
+.list{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 1rpx solid #eee;
+  padding: 40rpx 0;
+}
+.lf{
+  display: flex;
+  align-items: center;
+}
+.lf image{
+  height: 80rpx;
+  width: 80rpx;
+  margin-right: 20rpx;
+  border-radius: 50%;
+}
+.lf view{
+  font-size: 32rpx;
+  color: #333;
+  width: 320rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow:ellipsis;
+}
+.lf view text{
+  padding-top:10rpx;
+  color: #666;
+  font-size:24rpx;
+  }

@@ -1,5 +1,6 @@
 let url = require('../../utils/config.js')
 const app = getApp()
+const Page = require('../../utils/ald-stat.js').Page;
 Page({
   /**
    * 页面的初始数据

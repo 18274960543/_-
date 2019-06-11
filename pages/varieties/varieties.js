@@ -1,4 +1,4 @@
-// pages/service/logs.js
+const Page = require('../../utils/ald-stat.js').Page;
 let url = require('../../utils/config.js')
 const app = getApp()
 const TITLE_HEIGHT = 30

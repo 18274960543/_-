@@ -95,8 +95,8 @@
     </view>
   </view>
 
-    <view class='coupon-item clear-f' style='padding:0;background:#fff'>
-    <view class="house-bt clear-f" data-index="{{index}}" bindtap="showCouponModel">
+    <view class='coupon-item clear-f' style='padding:0;'>
+    <view class="house-bt clear-f" data-index="{{index}}" bindtap="showCouponModel" style='margin:0;padding:20rpx 20rpx;'>
       <view class="coupon-item-left">选择优惠券</view>
       <view class="coupon-item-right" style='max-width:500rpx;display:block;text-align:right'>
         <text class="coupon-text" wx:if="{{!selectCouponText}}">
@@ -109,8 +109,8 @@
         <image style='margin-left:-20rpx' src='/img/rt.png' mode='aspectFill'></image>
       </view>
     </view>
+    
   </view>
-
   <!-- 选择接送服务 开关 -->
   <!-- <view class="Shuttleservice" bindtap='isReceiveCost' wx:if="{{exes[0]=='bath/expenses'}}">
     <image src='/img/switch_dp-3.png' mode='aspectFill' wx:if="{{isReceiveCost}}"></image>
@@ -194,10 +194,33 @@
       </view>
     </scroll-view>
     <button bindtap="switch_bt">确定</button>
-
   </view>
 <view class="remind" wx:if="{{remind}}">
     <image src='/img/remind.png'></image>
     <text>门店智慧平台已为您匹配附近最优店铺</text>
 </view>
 </view>
+
+<!-- 微信和会员卡支付 -->
+<view catchtouchmove='stopPageScroll' wx:if="{{is_varieties}}">
+ <!--遮罩层弹框 -->
+  <view class="mask {{is_varieties?'':'show'}}" bindtap='mask'></view>
+<view class="Payment">
+   <view class="memberPayment">
+       <text style='color:#000;font-size:36rpx'>支付方式</text>
+       <image src='/img/x.png' bindtap='mask'></image>
+   </view>
+    <view class="memberPayment" bindtap='switchImg' wx:for="{{memberPayment}}" wx:key="{{index}}" data-index='{{index}}'>
+    <view>
+        <image src='{{item.img}}'></image>
+        <text>{{item.text}}</text>
+    </view>
+     <image src="/img/switch_dp-3.png" mode='aspectFill' wx:if="{{item.status}}"></image>
+      <image src="/img/switch_dp-1.png" mode='aspectFill' wx:else></image>
+    </view>
+    <view class="promptly" bindtap='promptly'>立即支付</view>
+</view>
+</view>
+ 
+ 
+ 

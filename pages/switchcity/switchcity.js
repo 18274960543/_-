@@ -1,5 +1,6 @@
 var city = require('../../utils/city.js');
 var server = require('../../utils/server');
+const Page = require('../../utils/ald-stat.js').Page;
 var app = getApp()
 Page({
   data: {

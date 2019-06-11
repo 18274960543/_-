@@ -1,12 +1,24 @@
 <image src='/img/xf.png' class="img"></image>
-<view>
+<view class="top">
     <view>
-        <view>1000.00</view>
+        <view>{{statistics.monthConsume}}</view>
         <text>本月消费</text>
     </view>
-    <view></view>
+    <view class="line"></view>
     <view>
-        <view>3000.00</view>
+        <view>{{statistics.consume}}</view>
         <text>总消费</text>
+    </view>
+</view>
+<view class="content">
+    <view class="list" wx:for="{{list}}" wx:key="index">
+        <view class="lf" bindtap='goConsumptionDetails' data-index='{{index}}'>
+           <image src='{{item.shop.img_url}}'></image>
+           <view>
+                <view>{{item.shop.name}}会员消费</view>
+                <text>{{item.created_at}}</text>
+           </view>
+        </view>
+        <view class="rt">{{item.change_type==1?'+':item.change_type==2?'-':''}}{{item.change_amount}}</view>
     </view>
 </view>

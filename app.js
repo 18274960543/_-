@@ -1,6 +1,8 @@
 
 //app.js
-let url = require('./utils/config.js');
+const App = require('./utils/ald-stat.js').App;
+let url = require('./utils/config.js')
+ 
 App({
   
   onLaunch: function() {

@@ -1,5 +1,6 @@
 var app = getApp()
 let url = require('../../utils/config.js')
+const Page = require('../../utils/ald-stat.js').Page;
 Page({
   data: {
     maskstate: true,
@@ -353,27 +354,27 @@ Page({
              wx.setStorageSync('shop', setmeal[0].shop)
             wx.setStorageSync('setmeal', setmeal[this.data.indexI])
           // 判断是不是分销订单  返回的shop_id 和用户进来的店铺shop_id是不是相等
-          // if (setmeal[0].shop_id != wx.getStorageSync('shop_id')) {
-          //   this.setData({
-          //     is_distribution: 1,
-          //     shop_id: setmeal[0].shop_id,
-          //     remind: true
-          //   })
-          //   setTimeout(res => {
-          //     this.setData({
-          //       remind: false
-          //     })
-          //   }, 10000)
-          //   console.log(this.data.is_distribution);
+          if (setmeal[0].shop_id != wx.getStorageSync('shop_id')) {
+            this.setData({
+              is_distribution: 1,
+              shop_id: setmeal[0].shop_id,
+              remind: true
+            })
+            setTimeout(res => {
+              this.setData({
+                remind: false
+              })
+            }, 10000)
+            console.log(this.data.is_distribution);
           
-          // } else {
-          //   wx.setStorageSync('shop', setmeal[0].shop)
-          //   wx.setStorageSync('setmeal', setmeal[this.data.indexI])
-          //   this.setData({
-          //     is_distribution: 0,
-          //     shop_id: ''
-          //   })
-          // }
+          } else {
+            wx.setStorageSync('shop', setmeal[0].shop)
+            wx.setStorageSync('setmeal', setmeal[this.data.indexI])
+            this.setData({
+              is_distribution: 0,
+              shop_id: ''
+            })
+          }
           this.setData({
             setmeal
           })
@@ -419,16 +420,15 @@ Page({
         icon: 'none'
       })
     } else {
-    
      
       if (this.data.setmeal[this.data.indexI].price) {
         wx.navigateTo({
-          url: '/pages/order/order?price=' + this.data.setmeal[this.data.indexI].price + '&service_id=' + this.data.service_id + '&name=' + this.data.pet_list[this.data.index].name + '&specs=' + this.data.pet_list[this.data.index].specs + '&weight=' + this.data.pet_list[this.data.index].weight + '&time=' + this.data.selectDate + '&member_pets_id=' + this.data.pet_list[this.data.index].id + '&service_specs_id=' + this.data.setmeal[this.data.indexI].specs_id + '&date_time=' + this.data.selectDate + '&mername=' + this.data.mername + '&exes=' + ['bath/expenses', 'bath/add', 'bath/store'] + '&service_product_id=' + this.data.setmeal[this.data.indexI].id + '&is_distribution=' + 0 + '&shop_id=' + this.data.setmeal[this.data.indexI].shop_id  + '&price1=' + this.data.setmeal[this.data.indexI].price
+          url: '/pages/order/order?price=' + this.data.setmeal[this.data.indexI].price + '&service_id=' + this.data.service_id + '&name=' + this.data.pet_list[this.data.index].name + '&specs=' + this.data.pet_list[this.data.index].specs + '&weight=' + this.data.pet_list[this.data.index].weight + '&time=' + this.data.selectDate + '&member_pets_id=' + this.data.pet_list[this.data.index].id + '&service_specs_id=' + this.data.setmeal[this.data.indexI].specs_id + '&date_time=' + this.data.selectDate + '&mername=' + this.data.mername + '&exes=' + ['bath/expenses', 'bath/add', 'bath/store'] + '&service_product_id=' + this.data.setmeal[this.data.indexI].id + '&is_distribution=' + this.data.is_distribution + '&shop_id=' + this.data.setmeal[this.data.indexI].shop_id  + '&price1=' + this.data.setmeal[this.data.indexI].price
         })
       }
       if (this.data.setmeal[this.data.indexI].wholesale_price) {
         wx.navigateTo({
-          url: '/pages/order/order?price=' + this.data.setmeal[this.data.indexI].wholesale_price + '&service_id=' + this.data.service_id + '&name=' + this.data.pet_list[this.data.index].name + '&specs=' + this.data.pet_list[this.data.index].specs + '&weight=' + this.data.pet_list[this.data.index].weight + '&time=' + this.data.selectDate + '&member_pets_id=' + this.data.pet_list[this.data.index].id + '&service_specs_id=' + this.data.setmeal[this.data.indexI].specs_id + '&date_time=' + this.data.selectDate + '&mername=' + this.data.mername + '&exes=' + ['bath/expenses', 'bath/add', 'bath/store'] + '&service_product_id=' + this.data.setmeal[this.data.indexI].id + '&is_distribution=' + 0 + '&shop_id=' + this.data.setmeal[this.data.indexI].shop_id + '&price1=' + this.data.setmeal[this.data.indexI].price
+          url: '/pages/order/order?price=' + this.data.setmeal[this.data.indexI].wholesale_price + '&service_id=' + this.data.service_id + '&name=' + this.data.pet_list[this.data.index].name + '&specs=' + this.data.pet_list[this.data.index].specs + '&weight=' + this.data.pet_list[this.data.index].weight + '&time=' + this.data.selectDate + '&member_pets_id=' + this.data.pet_list[this.data.index].id + '&service_specs_id=' + this.data.setmeal[this.data.indexI].specs_id + '&date_time=' + this.data.selectDate + '&mername=' + this.data.mername + '&exes=' + ['bath/expenses', 'bath/add', 'bath/store'] + '&service_product_id=' + this.data.setmeal[this.data.indexI].id + '&is_distribution=' + this.data.is_distribution + '&shop_id=' + this.data.setmeal[this.data.indexI].shop_id + '&price1=' + this.data.setmeal[this.data.indexI].price
         })
       }
     }

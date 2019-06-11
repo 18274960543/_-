@@ -1,12 +1,13 @@
 var app = getApp()
 let url = require('../../utils/config.js')
+const Page = require('../../utils/ald-stat.js').Page;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    list:''
   },
 
   /**
@@ -36,6 +37,12 @@ Page({
       success: (res) => {
          console.log(res.data);
           let list=res.data.data;
+          // if(res.data.data.length==0){
+          //     wx.showToast({
+          //       title: '您的会员卡暂无数据',
+          //       icon:'none'
+          //     })
+          // }
           this.setData({
             list
           })
@@ -47,6 +54,10 @@ Page({
     wx.navigateTo({
       url: '/pages/code/code',
     })
+  },
+  goconsumption(){
+    wx.navigateTo({
+      url: '/pages/consumption/consumption',
+    })
   }
- 
 })

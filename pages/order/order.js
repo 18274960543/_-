@@ -4,6 +4,7 @@ const app = getApp()
 //  经纬度sdk文件
 var QQMapWX = require('../../utils/qqmap-wx-jssdk.js');
 var qqmapsdk = new QQMapWX({ key: 'J73BZ-TLPCX-BJ74R-7BMIU-I6V65-3YFLM' });
+const Page = require('../../utils/ald-stat.js').Page;
 Page({
   /**
    * 页面的初始数据
@@ -38,7 +39,22 @@ Page({
     selectCouponText: '',
     selectCouponDiscount: '',
     totalpriceAfterDiscount:'',
-    ismername:true
+    ismername:true,
+    switchImg:true,
+    is_varieties:false,
+    memberPayment:[
+      {
+        img:'/img/WeChat.png',
+        text:'微信支付',
+        status:true
+      },
+      {
+        img: '/img/memberPayment.png',
+        text: '会员卡支付',
+        status: false
+      }
+    ],
+    index:0
   },
   /**
    * 生命周期函数--监听页面加载
@@ -52,6 +68,79 @@ Page({
     wx.navigateTo({
       url: '../img/img',
     })
+  },
+  promptly(){
+    // 判断是微信支付
+    let order_id = this.data.order_id;
+    let pay_info = this.data.pay_info;
+    let pay_sn = this.data.pay_sn;
+    console.log(pay_sn)
+    if (this.data.index == 0) {
+      wx.requestPayment({
+        timeStamp: pay_info.timestamp,
+        nonceStr: pay_info.nonceStr,
+        package: pay_info.package,
+        signType: pay_info.signType,
+        paySign: pay_info.paySign,
+        success: res => {
+          wx.redirectTo({
+            url: '/pages/orderdetails/orderdetails?pay_sn=' + pay_sn
+          })
+        },
+        fail: err => {
+          wx.redirectTo({
+            url: '/pages/myorder/myorder?pay_sn1' + pay_sn
+          })
+        }
+      })
+    } else {
+      wx.request({
+        url: url.api + `/ucs/v1/pay/club_pay/${order_id}`,
+        method: "post",
+         
+        header: {
+          'content-type': 'application/json',
+          "Authorization": app.token
+        },
+        success: (res) => {
+          console.log(res.data)
+          if(res.data.code==200){
+            wx.redirectTo({
+              url: '/pages/orderdetails/orderdetails?pay_sn=' + pay_sn
+            })
+          }else{
+            wx.showToast({
+              title:res.data.message,
+              icon:'none'
+            })
+          }
+        }
+      })
+    }
+  },
+  // 会员支付切换
+  switchImg(e){
+    let index = e.currentTarget.dataset.index;
+    let memberPayment = this.data.memberPayment;
+    console.log(memberPayment)
+    memberPayment.map(item=>{
+      item.status=false
+    })
+    memberPayment[index].status=true;
+     
+   
+
+    this.setData({
+      memberPayment,
+      index,
+    })
+  },
+  // 点击遮罩层 遮罩层消失  弹框消失
+  mask() {
+      this.setData({
+        is_varieties: false,
+      })
+     
   },
   onLoad: function (options) {
     console.log(options)
@@ -102,7 +191,6 @@ Page({
     // this.info(uuid) 
   },
   onShow: function (options) {
-   
     if (!this.data.isFirst){
       console.log(0)
       this.setData({
@@ -419,24 +507,36 @@ Page({
           console.log(res.data)
           if (res.data.code == 200) {
             var pay_info = res.data.pay_info;
-            let pay_sn = res.data.pay_sn
-            wx.requestPayment({
-              timeStamp: pay_info.timestamp,
-              nonceStr: pay_info.nonceStr,
-              package: pay_info.package,
-              signType: pay_info.signType,
-              paySign: pay_info.paySign,
-              success: res => {
-                wx.redirectTo({
-                  url: '/pages/orderdetails/orderdetails?pay_sn=' + pay_sn
-                })
-              },
-              fail: err => {
-                wx.redirectTo({
-                  url: '/pages/myorder/myorder?pay_sn1' + pay_sn
-                })
-              }
+            let pay_sn = res.data.pay_sn;
+            let order_id = res.data.order_id
+            this.setData({
+              pay_info,
+              pay_sn,
+              order_id,
             })
+            if (res.data.isClubPay){
+              this.setData({
+                is_varieties:true
+              })
+            }else{
+              wx.requestPayment({
+                timeStamp: pay_info.timestamp,
+                nonceStr: pay_info.nonceStr,
+                package: pay_info.package,
+                signType: pay_info.signType,
+                paySign: pay_info.paySign,
+                success: res => {
+                  wx.redirectTo({
+                    url: '/pages/orderdetails/orderdetails?pay_sn=' + pay_sn
+                  })
+                },
+                fail: err => {
+                  wx.redirectTo({
+                    url: '/pages/myorder/myorder?pay_sn1' + pay_sn
+                  })
+                }
+              })
+            }
           } else {
             wx.showToast({
               title: res.data.message,
@@ -484,24 +584,36 @@ Page({
             console.log(res.data)
             if (res.data.code == 200) {
               var pay_info = res.data.pay_info;
-              let pay_sn = res.data.pay_sn
-              wx.requestPayment({
-                timeStamp: pay_info.timestamp,
-                nonceStr: pay_info.nonceStr,
-                package: pay_info.package,
-                signType: pay_info.signType,
-                paySign: pay_info.paySign,
-                success: res => {
-                  wx.redirectTo({
-                    url: '/pages/orderdetails/orderdetails?pay_sn=' + pay_sn
-                  })
-                },
-                fail: err => {
-                  wx.redirectTo({
-                    url: '/pages/myorder/myorder?pay_sn1' + pay_sn
-                  })
-                }
+              let pay_sn = res.data.pay_sn;
+              let order_id = res.data.order_id
+              this.setData({
+                pay_info,
+                pay_sn,
+                order_id,
               })
+              if (res.data.isClubPay) {
+                this.setData({
+                  is_varieties: true
+                })
+              } else {
+                wx.requestPayment({
+                  timeStamp: pay_info.timestamp,
+                  nonceStr: pay_info.nonceStr,
+                  package: pay_info.package,
+                  signType: pay_info.signType,
+                  paySign: pay_info.paySign,
+                  success: res => {
+                    wx.redirectTo({
+                      url: '/pages/orderdetails/orderdetails?pay_sn=' + pay_sn
+                    })
+                  },
+                  fail: err => {
+                    wx.redirectTo({
+                      url: '/pages/myorder/myorder?pay_sn1' + pay_sn
+                    })
+                  }
+                })
+              }
             } else {
               wx.showToast({
                 title: res.data.message,
@@ -511,7 +623,6 @@ Page({
           }
         }) 
       }else{
- 
         // 判断是不是托运 是托运 闲阅读托运须知
         if (this.data.spec.mername == '托运') {
           if (!this.data.ismername) {
@@ -521,9 +632,8 @@ Page({
             })
             return
           }
- 
         }
- 
+        console.log(this.data.is_distribution)
         wx.request({
           url: url.api + `/ucs/v1/service/${b}`, 
           data: {
@@ -533,7 +643,6 @@ Page({
             expenses: this.data.expenses ? this.data.expenses:0,
             date_time: this.data.spec.date_time,
             address_id: this.data.address.id,
-
             convey_address_id: this.data.checkAddress1.convey_product_id ? this.data.checkAddress1.convey_product_id : 0,
             total_fee: this.data.total_fee ? this.data.total_fee : this.data.spec.price,//零售价
             price: this.data.spec.price1 ? this.data.spec.price1 : 0,
@@ -560,25 +669,37 @@ Page({
             console.log(res.data)
             if (res.data.code == 200) {
               var pay_info = res.data.pay_info;
-              let pay_sn = res.data.pay_sn
-              wx.requestPayment({
-                timeStamp: pay_info.timestamp,
-                nonceStr: pay_info.nonceStr,
-                package: pay_info.package,
-                signType: pay_info.signType,
-                paySign: pay_info.paySign,
-                success: res => {
-                  wx.redirectTo({
-                    url: '/pages/orderdetails/orderdetails?pay_sn=' + pay_sn
-                  })
-                },
-                fail: err => {
-                  wx.redirectTo({
-                    url: '/pages/myorder/myorder?pay_sn1' + pay_sn
-                  })
-                }
+              let pay_sn = res.data.pay_sn;
+              let order_id = res.data.order_id
+              this.setData({
+                pay_info,
+                pay_sn,
+                order_id,
               })
-            } else {
+              if (res.data.isClubPay) {
+                this.setData({
+                  is_varieties: true
+                })
+              } else {
+                wx.requestPayment({
+                  timeStamp: pay_info.timestamp,
+                  nonceStr: pay_info.nonceStr,
+                  package: pay_info.package,
+                  signType: pay_info.signType,
+                  paySign: pay_info.paySign,
+                  success: res => {
+                    wx.redirectTo({
+                      url: '/pages/orderdetails/orderdetails?pay_sn=' + pay_sn
+                    })
+                  },
+                  fail: err => {
+                    wx.redirectTo({
+                      url: '/pages/myorder/myorder?pay_sn1' + pay_sn
+                    })
+                  }
+                })
+              }
+            }else {
               wx.showToast({
                 title: res.data.message,
                 icon: 'none',
@@ -608,7 +729,6 @@ Page({
       }
     })
   },
- 
   // lida
   getCounponList(){ 
     if (!this.checkAddress()) return;
@@ -643,7 +763,6 @@ Page({
       }
     } else {
       // 判断是不是周边服务下单支付
-      
       if (b == 'periphery') { 
         console.log(b)
         //周边服务没有service_specs_id
@@ -673,13 +792,11 @@ Page({
           expenses: this.data.expenses ? this.data.expenses : 0,
           date_time: this.data.spec.date_time,
           address_id: this.data.address.id,
-
           convey_address_id: this.data.checkAddress1.convey_product_id ? this.data.checkAddress1.convey_product_id : 0,
           total_fee: this.data.total_fee ? this.data.total_fee : this.data.spec.price,//零售价
           price: this.data.spec.price1 ? this.data.spec.price1 : 0,
           wholesale_price: this.data.spec.price ? this.data.spec.price : 0,//零售价
           retail_price: this.data.spec.price1 ? this.data.spec.price1 : 0,//批发价
-
           pay_type: 'WeChat',
           service_id: this.data.spec.service_id,
           service_product_id: this.data.spec.service_product_id,

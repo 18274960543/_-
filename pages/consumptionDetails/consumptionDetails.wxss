@@ -1,0 +1,53 @@
+ page{
+   background: #F8F8F8;
+ }
+ .top{
+   background: #fff;
+   margin:20rpx 0;
+   padding:60rpx 30rpx 0;
+ }
+ .content image{
+   height: 80rpx;
+   width: 80rpx;
+   border-radius:50%;
+   margin:0 auto;
+   margin-bottom: 18rpx;
+ }
+ .content{
+   text-align: center;
+   font-size: 32rpx;
+   color: #000;
+ }
+ .content text{
+   font-size: 46rpx;
+   color: #333;
+   padding:40rpx 0;
+ }
+ .bt{
+   border-top: 1rpx solid #ddd;
+   padding-bottom: 40rpx;
+   margin-top:40rpx;
+ }
+ .bt view{
+    display: flex;
+    justify-content: space-between;
+    font-size: 32rpx;
+    color: #333;
+    padding-top:40rpx;
+ }
+ .bt view .text{
+   color: #000;
+ }
+ .reason{
+   background: #fff;
+   padding:40rpx;
+   font-size: 32rpx;
+   color: #000;
+   
+ }
+ .reason text{
+   color: #666;
+    display: flex;
+   margin-bottom: 20rpx;
+ }
+ 

@@ -1,5 +1,6 @@
 var app = getApp()
 let url = require('../../utils/config.js')
+const Page = require('../../utils/ald-stat.js').Page;
 Page({
   data: {
     selectView: [{

@@ -1,10 +1,15 @@
 const app = getApp(),
   url = require('../../utils/config.js')
+const Page = require('../../utils/ald-stat.js').Page;
 Page({
   data: {
-    userInfo: null
+    userInfo: null,
+    maskstate: true,
+    is_select: true,
+    is_varieties: true,
   },
   onLoad: function(options) {
+     
     // 查看是否授权
     wx.getSetting({
       success: function (res) {
@@ -24,8 +29,62 @@ Page({
       })
     }
   },
+  // 选择服务的宠物列表接口数据
+  pet_list() {
+    wx.request({
+      url: url.api + `/ucs/v1/member/pet`, // 仅为示例，并非真实的接口地址
+      method: "get",
+      header: {
+        'content-type': 'application/json', // 默认值
+        "Authorization": app.token
+      },
+      success: (res) => {
+        //  console.log(res.data.data);
+        let pet_list = res.data.data;
+       
+
+        this.setData({
+          pet_list: pet_list
+        })
+       
+        console.log(this.data.pet_list)
+      }
+    })
+  },
+  // 点击去选择宠物信息
+  go_petinformation(e) {
+    let id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '/pages/petinformation/petinformation?id=' + id,
+    })
+    this.setData({
+      is_varieties: true
+    })
+  },
+  stopPageScroll: function () {
+    return
+  },
+  
+  // 点击遮罩层 遮罩层消失 弹框消失
+  mask() {
+    
+      this.setData({
+        maskstate: true,
+        selectiontime: true,
+        is_varieties: true
+      })
+    
+  },
+  // 添加宠物
+  addPets() {
+    this.setData({
+      is_varieties: false,
+      maskstate: true
+    })
+  },
   onShow(){
     this.queryUsreInfo()
+    this.pet_list()
   },
   my_order: function() {
     wx.navigateTo({

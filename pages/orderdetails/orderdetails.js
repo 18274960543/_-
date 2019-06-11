@@ -1,5 +1,6 @@
 let url = require('../../utils/config.js')
 const app = getApp()
+const Page = require('../../utils/ald-stat.js').Page;
 Page({
   /**
    * 页面的初始数据
@@ -52,6 +53,7 @@ Page({
     })
   },
   orderDetails(pay_sn){
+    console.log(pay_sn)
     wx.showLoading({
       title: '加载中...',
     })

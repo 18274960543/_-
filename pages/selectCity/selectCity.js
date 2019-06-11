@@ -1,5 +1,6 @@
 var city = require('../../utils/city.js');
 var app = getApp()
+const Page = require('../../utils/ald-stat.js').Page;
 Page({
   data: {
     searchLetter: [],

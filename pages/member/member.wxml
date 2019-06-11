@@ -1,4 +1,4 @@
-<view class="content" wx:if="list">
+<view class="content" >
     <view class="list">
         <view wx:for="{{list}}" wx:key="index">
              <image src='{{item.shop.img_url}}' style=' border-radius:50%;'></image>
@@ -10,6 +10,6 @@
     <!-- 底部定位 -->
     <view class="bottomDw">
          <view class="active" bindtap='gocode'>我的会员码</view>
-         <view>会员消费记录</view>
+         <view bindtap='goconsumption'>会员消费记录</view>
     </view>
 </view>

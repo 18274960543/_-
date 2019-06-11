@@ -1,5 +1,6 @@
 // pages/addresseditor/addresseditor.js
 let url = require('../../utils/config.js')
+const Page = require('../../utils/ald-stat.js').Page;
  const app = getApp()
 //  经纬度sdk文件
 var QQMapWX = require('../../utils/qqmap-wx-jssdk.js');
