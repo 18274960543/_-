@@ -133,10 +133,11 @@
           <view class='coupon-item'>
             <view>{{coupon.name}}
               <text wx:if="{{coupon.type==1}}">(减{{coupon.discount}})</text>
-              <text wx:if="{{coupon.type==2}}">(满{{coupon.condition.condition}}减{{coupon.condition.discount}})</text>
+              <text wx:if="{{coupon.type==2||coupon.type==5}}">(满{{coupon.condition}}减{{coupon.discount}})</text>
               <text wx:if="{{coupon.type==3}}">(<text wx:for="{{coupon.condition}}" wx:key="{{index}}">{{item.condition}}件{{item.discount}}折;</text>
               <text>减{{coupon.discount}}</text>)</text>
               <text wx:if="{{coupon.type==4}}">(减{{coupon.discount}})</text>
+               
             </view>
             <view data-index="{{index}}" class='select-action' bindtap="choseCouponAction">
               <image src="/img/switch_dp-3.png" mode='aspectFill' wx:if="{{selectCouponIndex!=='' && index==selectCouponIndex}}"></image>

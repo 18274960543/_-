@@ -53,7 +53,7 @@
             <view  class="house-bt-right" style='margin-right:50rpx;'>
                <text style='color:#FC4C4C;font-size:32rpx;margin-left:10rpx;'>￥{{item.freightFee}}</text>
             </view>
-        </view> -->
+    </view> -->
     <view class="house-bt">
       <view class="house-bt-left">小计{{length}}件商品</view>
       <view class="house-bt-right" style='margin-right:45rpx;'>
@@ -65,7 +65,7 @@
     </view>
   </view>
   <!-- 优惠券 -->
-  <view class='coupon-item clear-f' style='padding:0;background:#fff'>
+  <view wx:if="{{!options.bulk == 1}}" class='coupon-item clear-f' style='padding:0;background:#fff'>
     <view class="house-bt clear-f" data-index="{{index}}" bindtap="showCouponModel">
       <view class="coupon-item-left">选择优惠券</view>
       <view class="coupon-item-right" style='max-width:500rpx;display:block;text-align:right'>
@@ -80,13 +80,25 @@
       </view>
     </view>
   </view>
+  <view wx:else class='coupon-item clear-f' style='padding:0;background:#fff'>
+    <view class="house-bt clear-f">
+      <view class="coupon-item-left">拼单规则</view>
+      <view class="coupon-item-right" style='max-width:500rpx;display:block;text-align:right'>
+        <text class="coupon-text">
+         好友拼团-满员发货-不满退款
+        </text>
+        <image style='margin-left:-20rpx' src='/img/rt.png' mode='aspectFill'></image>
+      </view>
+    </view>
+  </view>
   <view class="height"></view>
   <!-- 底部定位 -->
   <view class="footer">
     <view class="footer-bt">
       <view class="footer-left">合计：
         <text class="rmb" style='font-size:26rpx;'>￥</text>
-        <text>{{totalpriceAfterDiscount}}</text>
+        <text wx:if="{{options.bulk ==1}}">{{options.price}}</text>
+        <text wx:else>{{totalpriceAfterDiscount}}</text>
       </view>
       <view class="footer-rt replaceBackground " bindtap='payment'>立即支付</view>
     </view>

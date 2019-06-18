@@ -1,5 +1,8 @@
+page{
+  background:#773ADF
+}
 .content{
-  background: #ECECEC;
+  /* background: #ECECEC; */
   width: 100%;
   height: 100%;
   padding: 30rpx 40rpx 0;
@@ -11,7 +14,7 @@
 }
 .bac{
   width: 100%;
-  height: 1057rpx;
+  height: 800rpx;
   margin-top:50rpx;
   position: relative
 }

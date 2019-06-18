@@ -97,7 +97,6 @@ Page({
       wx.request({
         url: url.api + `/ucs/v1/pay/club_pay/${order_id}`,
         method: "post",
-         
         header: {
           'content-type': 'application/json',
           "Authorization": app.token
@@ -111,7 +110,8 @@ Page({
           }else{
             wx.showToast({
               title:res.data.message,
-              icon:'none'
+              icon:'none',
+              duration:2000
             })
           }
         }
@@ -127,9 +127,6 @@ Page({
       item.status=false
     })
     memberPayment[index].status=true;
-     
-   
-
     this.setData({
       memberPayment,
       index,
@@ -140,7 +137,6 @@ Page({
       this.setData({
         is_varieties: false,
       })
-     
   },
   onLoad: function (options) {
     console.log(options)

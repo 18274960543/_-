@@ -8,11 +8,13 @@
   font-size: 36rpx;
   justify-content: center;
 }
-.PhoneNumber{
+
+.PhoneNumber {
   height: 100rpx;
   width: 500rpx;
   background: #eee;
 }
+
 .title image {
   width: 60rpx;
   height: 60rpx;
@@ -27,7 +29,7 @@ swiper {
   width: 100%;
   height: 220rpx;
   margin: 0 auto 0rpx;
-  z-index: 112
+  z-index: 112;
 }
 
 swiper image {
@@ -227,12 +229,12 @@ swiper image {
   position: fixed;
   right: 10rpx;
   bottom: 60rpx;
-  width: 50rpx;
-  height: 50rpx;
+  width: 100rpx;
+  height:100rpx;
   z-index: 200;
-  background: #fff;
+  /* background: #fff; */
   border-radius: 50%;
-  box-shadow: 1rpx 1rpx 5rpx #ccc;
+  /* box-shadow: 1rpx 1rpx 5rpx #ccc; */
   padding: 10rpx;
 }
 
@@ -327,7 +329,7 @@ swiper image {
   padding: 5rpx 5% 80rpx;
   border-radius: 0 0 50px 50px;
   justify-content: flex-start;
-  z-index: 111
+  z-index: 111;
 }
 
 .position image {
@@ -363,62 +365,297 @@ swiper image {
 }
 
 /*阴影弹框*/
+
 .mask {
-background:#000;
-opacity:0.5;
-position:fixed;
-left:0;
-bottom:0;
-right:0;
-top:0;
-width:100%;
-z-index:201;
-}
-.none{
-  display: none
-}
-.coupon{
+  background: #000;
+  opacity: 0.5;
   position: fixed;
-  width:560rpx;
-  left:82rpx;
-  height: 700rpx;
-  top:10%;
-  z-index: 202;
-  }
-  .coupon image{
-    height: 660rpx;
-    display: flex;
-    width: 100%;
-  }
-  .coupon image.icon{
-    height: 60rpx;
-    width: 60rpx;
-    margin:0 auto;
-    margin-top:80rpx;
-  }
-.ot_price_rmb{
-  margin-left: 10rpx;
-  text-decoration:line-through;
-  font-size: 20rpx;
-  color: #666
+  left: 0;
+  bottom: 0;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 201;
 }
-.indexImages{
+
+.none {
+  display: none;
+}
+
+.coupon {
+  position: fixed;
+  width: 560rpx;
+  left: 82rpx;
+  height: 700rpx;
+  top: 10%;
+  z-index: 202;
+}
+
+.coupon image {
+  height: 660rpx;
+  display: flex;
+  width: 100%;
+}
+
+.coupon image.icon {
+  height: 60rpx;
+  width: 60rpx;
+  margin: 0 auto;
+  margin-top: 80rpx;
+}
+
+.ot_price_rmb {
+  margin-left: 10rpx;
+  text-decoration: line-through;
+  font-size: 20rpx;
+  color: #666;
+}
+
+.indexImages {
   height: 300rpx;
   width: 500rpx;
-  margin:0 auto;
-  padding-top:300rpx 
+  margin: 0 auto;
+  padding-top: 300rpx;
 }
-.indexImages image{
-  height:500rpx!important;
+
+.indexImages image {
+  height: 500rpx !important;
   width: 100%;
   display: block;
 }
-.indexImages view{
+
+.indexImages view {
   width: 200rpx;
   height: 60rpx;
   line-height: 60rpx;
-  margin:50rpx auto;
+  margin: 50rpx auto;
   text-align: center;
   border-radius: 10rpx;
-  font-size:26rpx;
+  font-size: 26rpx;
+}
+
+/* 限量抢购  */
+
+.limited {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.limited-lf {
+  width: 49%;
+  background: #fff;
+  height: 390rpx;
+  border-top-left-radius: 10rpx;
+}
+
+.limited-rt {
+  width: 49%;
+}
+
+.limited-time {
+  font-size: 28rpx;
+  display: flex;
+  padding-top: 18rpx;
+  margin: 0 0 50rpx 7%;
+}
+
+.limited-time-1 {
+  font-size: 20rpx;
+  display: flex;
+  margin-left: 18rpx;
+  margin-top: -1rpx;
+}
+
+.limited-time-1 view:nth-child(odd) {
+  background: #000;
+  color: #fff;
+  width: 40rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  border-radius: 100rpx;
+  text-align: center;
+}
+
+.limited-time-1 view:nth-child(even) {
+  margin: 0 10rpx;
+}
+
+.limited-lf-goods {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  font-size: 24rpx;
+}
+
+.limited-lf-goodsList {
+  width: 50%;
+  text-align: center;
+}
+
+.limited-lf-goods-img image {
+  width: 155rpx;
+  height: 155rpx;
+}
+
+.limited-lf-goods-info {
+  text-align: center;
+}
+
+.limited-lf-goods-info view:nth-child(1) {
+  color: #fc4c4c;
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 12rpx;
+}
+
+.limited-lf-goods-info view:nth-child(2) {
+  color: #999;
+}
+
+.limited-lf-goods-info view:nth-child(2) text {
+  color: #333;
+}
+
+.limited-top {
+  width: 100%;
+  background: #fff;
+  height: 190rpx;
+  border-top-right-radius: 10rpx;
+}
+
+.limited-bot {
+  width: 100%;
+  background: #fff;
+  height: 190rpx;
+  margin-top: 10rpx;
+}
+
+.limited-bot view:nth-child(1) text {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.limited-top view:nth-child(1), .limited-bot view:nth-child(1) {
+  font-size: 28rpx;
+  font-weight: bold;
+  padding-top: 16rpx;
+  margin-left: 9%;
+  margin-bottom: 10rpx;
+}
+
+.limited-top view:nth-child(2) image, .limited-bot view:nth-child(2) image {
+  width: 116rpx;
+  height: 124rpx;
+  margin: 0 6%;
+}
+
+/*  */
+
+.bulk {
+  width: 100%;
+  margin:20rpx auto;
+  /* background: #fff; */
+  border-bottom-left-radius: 10rpx;
+  border-bottom-right-radius: 10rpx;
+  padding: 30rpx 0 25rpx;
+   position: relative;
+   height:708rpx;
+   background-repeat:no-repeat;
+   background-position: left top;
+   background-size: 100% 100%;
+   box-sizing: border-box
+}
+.bulk-1 {
+  font-size: 28rpx;
+  font-weight: bold;
+   padding-left:40rpx;
+   display: flex;
+   align-items: center;
+   margin-bottom: 10rpx;
+   color: #fff
+}
+.bulk-2{
+  padding-left:40rpx;
+  font-size: 28rpx;
+  color: #fff;
+}
+.bulk-1 view:nth-child(1) {
+   margin-right: 25rpx;
+}
+
+.bulk-1 image {
+  width: 68rpx;
+  height: 30rpx;
+  margin-top:10rpx;
+}
+
+.bulkImg {
+ display: flex;
+ /* justify-items: center; */
+ background: #fff;
+  /* height: 580rpx; */
+ width: 690rpx;
+ margin:0 auto;
+ margin-top:30rpx;
+ padding: 20rpx 8rpx 10rpx;
+ box-sizing: border-box;
+flex-wrap:wrap ;
+border-radius: 10rpx;
+}
+.bulkImgCenter{
+  display: flex;
+ flex-direction: column;
+ text-align: center;
+width:210rpx;
+ margin: 0 8rpx 10rpx;
+}
+.bulkImg image {
+  width:100%;
+  height: 210rpx;
+   margin-bottom: 15rpx;
+  border: 1rpx solid #EDEDED
+}
+.bulkImg>view view{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.assemble{
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 700rpx;
+}
+/* 赠送服务 */
+.give{
+  margin-top:20rpx;
+  /* background: #fff; */
+  /* padding: 15rpx 18rpx 35rpx;
+  border-radius: 10rpx; */
+  font-size: 28rpx;
+  color: #333;
+}
+/* .give text{
+  font-size: 24rpx;
+  color: #0783FF;
+  margin-left:20rpx;
+} */
+.give image{
+  width: 100%;
+  height:390rpx;
+}
+.free{
+  background: #fff;
+  color: #FC4C4C;
+  padding: 3rpx 12rpx;
+  font-size: 22rpx;
+  border-radius: 5rpx;
+  /* width: 70rpx; */
+  height: 35rpx;
+  text-align: center;
+  box-sizing: border-box;
+  border-top-left-radius:15rpx;
+  border-bottom-right-radius:15rpx;
 }

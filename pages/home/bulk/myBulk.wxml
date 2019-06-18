@@ -1,0 +1,41 @@
+<!--pages/home/bulk/myBulk.wxml-->
+<view class="vae">
+  <view wx:for="{{list}}" wx:key="" class="{{index==curList?'top_bt_active':''}}" bindtap='bindVae' data-index="{{index}}">{{item}}
+    <view wx:if="{{index==curList}}"></view>
+  </view>
+</view>
+<view class='main'>
+  <view class="list" wx:for="{{orderList}}" wx:key="">
+    <view class='list-1'>
+      <view>订单号：{{item.activity_sn}}</view>
+      <view>
+        <text wx:if="{{item.state == 0 && item.is_collage_success != 2}}">已取消</text>
+        <text wx:if="{{item.is_collage_success == 0 && item.state !=0}}">拼单中</text>
+        <text wx:if="{{item.is_collage_success == 1 }}">拼单成功</text>
+        <text wx:if="{{item.is_collage_success == 2 }}">拼单失败</text>
+      </view>
+    </view>
+    <view class='list-2'>
+      <view>
+        <image src="{{item.groupbuy.post_image}}"></image>
+      </view>
+      <view class='list-goodsInfo'>
+        <view>{{item.groupbuy.goods_name}}</view>
+        <view>
+          数量：1
+        </view>
+        <view>￥{{item.groupbuy.goods_price}}</view>
+      </view>
+    </view>
+    <view class='list-3'>
+      <view wx:if="{{item.state == 10}}" bindtap='operation' data-groupbuy_id='{{item.groupbuy_id}}' data-types='1' data-index="{{index}}" data-activity_sn='{{item.activity_sn}}'>去支付</view>
+      <view bindtap='operation' data-groupbuy_id='{{item.groupbuy_id}}' data-types='2' data-index="{{index}}" data-activity_sn='{{item.activity_sn}}'>查看详情</view>
+    </view>
+  </view>
+  <view wx:if="{{!orderList.length}}" class="noData">
+    <view>
+      <image src="/img/kong.png"></image>
+    </view>
+    <view>暂无订单</view>
+  </view>
+</view>

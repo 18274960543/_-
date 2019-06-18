@@ -1,0 +1,168 @@
+/* pages/home/bulk/bulk.wxss */
+
+.scroll-view {
+  width: 100%;
+  height: 100%;
+}
+
+.nodata {
+  font-size: 28rpx;
+  text-align: center;
+}
+
+.bj {
+  width: 100%;
+  height: 406rpx;
+  position: absolute;
+  top: -10%;
+  left: 0;
+  z-index: -1;
+}
+
+.selectTab {
+  width: 516rpx;
+  height: 66rpx;
+  color: #fff;
+  border-radius: 100rpx;
+  border: 1px solid #fff;
+  display: flex;
+  margin: 36rpx auto 0;
+}
+
+.selectTab view {
+  text-align: center;
+  width: 261rpx;
+  line-height: 66rpx;
+}
+
+.selectTabCur {
+  background: #fff;
+  border-radius: 100rpx;
+  color: #ff2a8f;
+}
+
+/*  */
+
+.coupon-scrol {
+  position: fixed;
+  top: 0;
+  background: linear-gradient(#ff1d97, #ff6a6a);
+  z-index: 9;
+  animation: showtop 1s;
+}
+
+@keyframes showtop {
+  from {
+    transform: translateY(-80rpx);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+.coupon-scroll-view_x {
+  width: 100%;
+  height: 80rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  box-sizing: border-box;
+  font-size: 26rpx;
+}
+
+.flow-items {
+  width: 18%;
+  line-height: 80rpx;
+  box-sizing: border-box;
+  display: inline-block;
+  position: relative;
+  color: #fff;
+  text-align: center;
+}
+
+.flow-items-selected {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.flow-items view {
+  width: 30rpx;
+  height: 6rpx;
+  background: #fff;
+  border-radius: 10rpx;
+  position: absolute;
+  bottom: 10%;
+  left: 39%;
+}
+
+/*  */
+
+.main {
+  width: 90%;
+  margin: 26rpx auto 0;
+}
+
+.mainList {
+  width: 90%;
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 50rpx 5%;
+  margin-bottom: 20rpx;
+}
+
+.mainList-img {
+  width: 100%;
+  text-align: center;
+  height: 284rpx;
+}
+
+.mainList-img image {
+  width: 305rpx;
+  height: 284rpx;
+}
+
+.mainList-name {
+  font-size: 34rpx;
+  font-weight: bold;
+  margin-top: 18rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.mainList-num {
+  background: #ffebeb;
+  font-size: 22rpx;
+  padding: 0 10rpx;
+  width: 100rpx;
+  text-align: center;
+  color: #fc4c4c;
+  margin: 30rpx 0;
+  border-radius: 100rpx;
+}
+
+.mainList-bot {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.mainList-bot view:nth-child(1) {
+  font-size: 24rpx;
+}
+
+.mainList-bot view:nth-child(1) text {
+  font-size: 46rpx;
+}
+
+.mainList-bot view:nth-child(2) {
+  width: 186rpx;
+  height: 66rpx;
+  line-height: 66rpx;
+  border-radius: 66rpx;
+  text-align: center;
+  background: linear-gradient(#ff6a6a, #ff1d97);
+  color: #fff;
+}

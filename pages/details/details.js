@@ -1,12 +1,7 @@
 const app = getApp()
 let url = require('../../utils/config.js')
 const Page = require('../../utils/ald-stat.js').Page;
-// 解析html
-// let WxParse = require('../../wxParse/wxParse.js');      
 Page({
-  /**
-   * 页面的初始数据
-   */
   data: {
     ewmPath: "",
     goodsPath: "",
@@ -41,12 +36,12 @@ Page({
       num: 1
     },
     img: '/img/sst.png',
-    goods_sku:[],//规格列表
-    selectSpecPrice:'',
-    supplierLogo:'',
-    supplierName:'',
-    supplierGoodsNumb:0,
-    supplier_id:'',
+    goods_sku: [], //规格列表
+    selectSpecPrice: '',
+    supplierLogo: '',
+    supplierName: '',
+    supplierGoodsNumb: 0,
+    supplier_id: '',
   },
   onShareAppMessage(res) {
     var goodsInfo = this.data.list
@@ -232,12 +227,12 @@ Page({
       is_poster: false
     })
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function(options) {
     console.log(options)
     var that = this
+    that.setData({
+      options
+    })
     if (options.share) {
       console.log('分享进来')
       wx.login({
@@ -265,16 +260,55 @@ Page({
         }
       })
     } else {
+      if (options.bulk == '1') {
+        wx.request({
+          url: url.api + '/ucs/v1/groupbuy/goods/info', // 仅为示例，并非真实的接口地址
+          data: {
+            id: options.id
+          },
+          header: {
+            'content-type': 'application/json',
+            "Authorization": app.token
+          },
+          success(res) {
+            console.log('团购详情', res)
+            var bulkInfo = res.data.data,
+              list = bulkInfo.goods
+            var goods_sku = [{
+              price: bulkInfo.goods_price
+            }]
+            list.goods_sku = goods_sku
+            list.ot_price = bulkInfo.origin_price
+            list.name = bulkInfo.goods_name
+            list.goods_img = bulkInfo.goods_img
+
+          
+            let listImag = [];
+            // listImag.push(bulkInfo.image)
+            bulkInfo.goods_img.map(item => {
+              if (item.img_url != bulkInfo.image) {
+                listImag.push(item.img_url)
+              }
+            })
+            that.setData({
+              bulkInfo,
+              list,
+              listImag
+            })
+          }
+        })
+        return
+      }
       abc()
     }
 
-    function abc(shop_id) {
+    function abc(hostname, shop_id) {
       var scene = decodeURIComponent(options.scene)
       that.car_list()
       //获取用户设备信息，屏幕宽度
       wx.getSystemInfo({
         success: res => {
-          console.log("111", res);
+          // console.log("111", res);
           that.setData({
             screenWidth: res.screenWidth,
             screenHeight: res.screenHeight
@@ -287,7 +321,7 @@ Page({
         title: '加载中...',
       })
       wx.request({
-        url: url.api + `/ucs/v1/shop/goods`, // 仅为示例，并非真实的接口地址
+        url: url.api + '/ucs/v1/shop/goods', // 仅为示例，并非真实的接口地址
         method: "post",
         data: {
           shop_id: url.store_id ? url.store_id : shop_id,
@@ -315,20 +349,21 @@ Page({
           let list = res.data.data;
           let listImag = [];
           listImag.push(list.image)
-         list.goods_img.map(item=>{
-           if (item.img_url!=list.image){
-             listImag.push(item.img_url)
-           }
-         })
-          console.log(listImag)
-          console.log(list)
+          list.goods_img.map(item => {
+            if (item.img_url != list.image) {
+              listImag.push(item.img_url)
+            }
+          })
+          // console.log(listImag)
+          // console.log(list)
           that.setData({
             listImag,
             list,
             goods_sku: list.goods_sku,
             selectSpecImg: list.image,
-            selectSpecPrice: list.goods_sku[0].price,
+            selectSpecPrice: list.goods_sku[0].price
           })
+          console.log(that.data.listImag) 
           // that.loadingimg(list, that)
           wx.hideLoading()
           // console.log(this.data.list)
@@ -483,9 +518,9 @@ Page({
     console.log(2)
     // let goods_sku_id = list.goods_sku[0].id
     console.log(goods_sku_id)
-  
+
     if (list.sku.length != 0) {
-      if(list.goods_sku[0].attr_name != ''){
+      if (list.goods_sku[0].attr_name != '') {
         if (!this.data.goods_sku_id) {
           wx.showToast({
             title: '请选择规格',
@@ -493,11 +528,11 @@ Page({
           })
           return
         }
-      }else{
+      } else {
         goods_sku_id = list.goods_sku[0].id
       }
     } else {
-       goods_sku_id = list.goods_sku[0].id
+      goods_sku_id = list.goods_sku[0].id
     }
     wx.request({
       url: url.api + `/ucs/v1/cart/operate`, // 仅为示例，并非真实的接口地址
@@ -545,7 +580,7 @@ Page({
   // 点击立即购买去 订单页面
   goconfirmorder() {
     let list = this.data.list;
-    let goods_sku_id = this.data.goods_sku_id;
+    let goods_sku_id = this.data.goods_sku_id
     if (list.sku.length != 0) {
       if (list.goods_sku[0].attr_name != '') {
         if (!this.data.goods_sku_id) {
@@ -561,21 +596,6 @@ Page({
     } else {
       goods_sku_id = list.goods_sku[0].id
     }
-
-    // if (list.sku.length!=0){
-    //   if (!goods_sku_id) {
-    //     wx.showToast({
-    //       title: '请选择规格',
-    //       icon: 'none'
-    //     })
-    //     return
-    //   }
-    //   var goods_sku_id = this.data.goods_sku_id
-    // }else{
-    //   var goods_sku_id = this.data.list.goods_sku[0].id
-    //   console.log(goods_sku_id)
-    // }
-     
     wx.navigateTo({
       url: '/pages/confirmorder/confirmorder?goods_sku_id=' + goods_sku_id + '&shop_id=' + url.store_id + '&num=' + this.data.formatdata.num
     })
@@ -638,7 +658,7 @@ Page({
   // 去供应商xiangq
   gosupplierdetails() {
     wx.navigateTo({
-      url: '/pages/supplierdetails/supplierdetails?supplier_id=' + this.data.supplier_id     
+      url: '/pages/supplierdetails/supplierdetails?supplier_id=' + this.data.supplier_id
     })
   },
   // ***************************/
@@ -873,7 +893,7 @@ Page({
         if (num == attrValueList.length) {
           console.log(goodsInfo.goods_sku, arr)
           abc(goodsInfo.goods_sku, arr)
-        }else{
+        } else {
           that.setData({
             goods_sku_id: ''
           })
@@ -899,16 +919,28 @@ Page({
     }
 
     let goods_sku = that.data.goods_sku;
-    for(let i=0;i<goods_sku.length;i++){
-      if (goods_sku[i].attr_name == arr.toString()){
+    for (let i = 0; i < goods_sku.length; i++) {
+      if (goods_sku[i].attr_name == arr.toString()) {
         that.setData({
-          index_a:i
+          index_a: i
         })
         break;
       }
     }
     that.setData({
       selected: arr
-    }) 
+    })
   },
+  // 拼团
+  goBack() {
+    wx.navigateBack({
+      delta: 1
+    })
+  },
+  gobuy() {
+    var bulkInfo = this.data.bulkInfo
+    wx.navigateTo({
+      url: '/pages/confirmorder/confirmorder?bulk=1&goods_sku_id=' + bulkInfo.goods_sku_id + '&shop_id=' + url.store_id + '&num=1' + '&groupbuy_id=' + bulkInfo.id + '&price=' + bulkInfo.goods_price
+    })
+  }
 })

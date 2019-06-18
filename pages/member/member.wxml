@@ -1,5 +1,5 @@
 <view class="content" >
-    <view class="list">
+    <view class="list" wx:if="{{list.length}}">
         <view wx:for="{{list}}" wx:key="index">
              <image src='{{item.shop.img_url}}' style=' border-radius:50%;'></image>
              <view>{{item.shop.name}}会员专享</view>
@@ -7,6 +7,10 @@
              <image src='{{item.image}}' class="imgDw"></image>
         </view>
     </view>
+    <block wx:else>
+     <image src='/img/kong.png' class="kong"></image>
+     <text class="text">您还没有会员卡</text>
+     </block>
     <!-- 底部定位 -->
     <view class="bottomDw">
          <view class="active" bindtap='gocode'>我的会员码</view>

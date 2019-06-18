@@ -1,0 +1,83 @@
+<!--pages/home/bulk/succ.wxml-->
+<image class="my" src="/img/my.png" />
+<view style='border:1px solid #fff;'></view>
+<view class='goodsInfo'>
+  <view class='goodsInfo-img'>
+    <image src="{{groupbuy.post_image}}"></image>
+  </view>
+  <view class='goodsInfo-info'>
+    <view>{{groupbuy.goods_name}}</view>
+    <view>{{groupbuy.person_num}}人拼单</view>
+    <view>￥{{groupbuy.goods_price}}</view>
+  </view>
+  <image class="bulk-status" src="/img/bulk-1.png" wx:if="{{user.is_collage_success==0}}"></image>
+  <image class="bulk-status" src="/img/bulk-2.png" wx:if="{{user.is_collage_success==1}}"></image>
+  <image class="bulk-status" src="/img/bulk-3.png" wx:if="{{user.is_collage_success==2}}"></image>
+</view>
+<view class='userInfo'>
+  <view class='userInfo-1'>再邀请{{needNum}}人，超值商品立马到手</view>
+  <view class='userInfo-2'>
+    <view class='userInfo-2-1'>剩余</view>
+    <view class='userInfo-2-2'>{{clock[0]}}</view>
+    <view class='userInfo-2-3'>:</view>
+    <view class='userInfo-2-2'>{{clock[1]}}</view>
+    <view class='userInfo-2-3'>:</view>
+    <view class='userInfo-2-2'>{{clock[2]}}</view>
+    <!-- <view class='userInfo-2-1'>失败</view> -->
+  </view>
+  <view class='userInfo-3'>
+    <view class='userInfo-3-1'>
+      <image src="{{user.member.avatar}}"></image>
+      <!-- <view>团长</view> -->
+    </view>
+    <view class='groupbuyList' wx:for="{{groupbuyList}}" wx:key="index">
+      <view class='userInfo-3-2'>
+        <image src="/img/xz-add.png"></image>
+      </view>
+      <view class='userInfo-3-1'>
+        <image wx:if="{{!item.member.avatar}}" src="/img/7226079b817dd57b44b8e6202067a96.png"></image>
+        <image wx:else src="{{item.member.avatar}}"></image>
+      </view>
+    </view>
+
+  </view>
+  <block wx:if="{{user.is_collage_success!=2}}">
+  <button bindtap='gobuy' class='userInfo-4' wx:if="{{options.share}}">立即参团</button>
+  <button class='userInfo-4' open-type='share' wx:else>邀请好友拼单</button>
+  </block>
+</view>
+<view class='rules' bindtap='binShowRules'>
+  <view>拼单规则</view>
+  <view>好友拼团-满员发货-不满退款
+    <view>
+      <image src="/img/return1.png"></image>
+    </view>
+  </view>
+</view>
+
+<view class='bootom'>
+  <view bindtap='jump' data-types='1'>回首页逛逛</view>
+  <view bindtap='jump' data-types='2'>我的订单</view>
+</view>
+
+<view class='mask' wx:if="{{showRules}}"></view>
+<view class='rulesModal' wx:if="{{showRules}}">
+  <view class='rulesModal-1'>如何参加拼单</view>
+  <view class='rulesModal-2'>发起拼单或参加别人的拼单</view>
+  <view class='rulesModal-2'>在规定的时间内，邀请好友参加拼单</view>
+  <view class='rulesModal-2'>未达拼单人数，款项将自动原路返还</view>
+  <image bindtap='binShowRules' class='rules-close' src="/img/xz-1.png"></image>
+</view>
+
+<view class='mask' wx:if="{{showSucc && options.form == 1}}"></view>
+<view class='prompt' wx:if="{{showSucc && options.form == 1}}">
+  <view class='prompt-1'>开团成功，离发货还差1步</view>
+  <view class='prompt-2'> {{clock[0]}}:{{clock[1]}}:{{clock[2]}}后结束</view>
+  <view class='prompt-3'>
+    <view class=''>再邀请
+      <text>{{needNum}}</text> 人，超值商品立马到手</view>
+    <view>去大群邀请，将提升95%拼单成功率哦！</view>
+    <button open-type='share'>邀请好友拼单</button>
+  </view>
+  <image bindtap='bindSucc' class='rules-close' src="/img/xz-1.png"></image>
+</view>

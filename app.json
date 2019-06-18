@@ -1,9 +1,10 @@
 {
   "pages": [
-     
-    "pages/home/home", 
-    "pages/consumptionDetails/consumptionDetails",
+     "pages/home/home",
+     "pages/serviceOffer/serviceOffer",
+    "pages/consumptionDetails/consumptionDetails", 
     "pages/consumption/consumption",  
+    "pages/home/bulk/succ",
     "pages/code/code",
     "pages/member/member", 
     "pages/complaint/complaint",

@@ -2,28 +2,32 @@
   background: #fff;
   /* height:450rpx; */
   padding: 30rpx 0 40rpx;
-  height:700rpx;
+  height: 700rpx;
 }
 
 .top image {
   display: block;
-  width:100%;  
+  width: 100%;
   height: 100%;
   margin: 0 auto;
 }
-.slide-image{
+
+.slide-image {
   width: 100%;
   display: flex;
-   height:700rpx;
+  height: 700rpx;
 }
+
 .center {
   margin-bottom: 20rpx;
   /* padding-left: 35rpx; */
   background: #fff;
 }
+
 .top .wx-swiper-dots.wx-swiper-dots-horizontal {
-  margin-bottom: -10rpx
+  margin-bottom: -10rpx;
 }
+
 .price {
   font-size: 36rpx;
   color: #fc4c4c;
@@ -397,14 +401,16 @@
   font-size: 24rpx;
   color: #3d6898;
   align-items: center;
-  overflow: hidden
+  overflow: hidden;
 }
- .guige>text{
-  float: left 
- }
+
+.guige>text {
+  float: left;
+}
+
 .guige view {
-  width:77%;
-  float: left
+  width: 77%;
+  float: left;
 }
 
 .spec_shadow-top {
@@ -692,10 +698,10 @@
 
 .specModal-select .attr_value_active {
   border-radius: 10rpx;
-  color: #773ADF;
+  color: #773adf;
   padding: 0 30rpx;
-  border: 1rpx solid #773ADF;
-  background: #F4E6FF;
+  border: 1rpx solid #773adf;
+  background: #f4e6ff;
   /* background: #fff; */
 }
 
@@ -705,15 +711,76 @@
   color: #ccc;
 }
 
-
 /* lida */
-.ot_price{
-  margin-top:2rpx;
-  font-size: 22rpx; 
+
+.ot_price {
+  margin-top: 2rpx;
+  font-size: 22rpx;
   margin-bottom: 24rpx;
-  padding-left:35rpx;
+  padding-left: 35rpx;
   color: #999;
 }
-.ot_price_rmb{
-  text-decoration:line-through;
+
+.ot_price_rmb {
+  text-decoration: line-through;
+}
+
+/* 拼团 */
+
+.bulkBot {
+  width: 546rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 80rpx;
+  font-size: 30rpx;
+  background: linear-gradient(#ff1d97, #ff6a6a);
+  color: #fff;
+  margin: auto 0;
+  text-align: center;
+}
+
+.bulkInfo {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  margin: 24rpx auto;
+}
+
+.bulkInfo view:nth-child(1) {
+  width: 100rpx;
+  height: 32rpx;
+  line-height: 32rpx;
+  border-radius: 32rpx;
+  text-align: center;
+  background: #ffebeb;
+  color: #fc4c4c;
+  font-size: 22rpx;
+}
+
+.bulkInfo view:nth-child(2) {
+  font-size: 26rpx;
+  color: #666;
+}
+
+.bulkRules {
+  width: 90%;
+  padding: 26rpx 5%;
+  background: #fff;
+  color: #666;
+}
+
+.bulkRules-1 {
+  display: flex;
+  justify-content: space-between;
+  font-size: 28rpx;
+}
+
+.bulkRules image {
+  width: 16rpx;
+  height: 22rpx;
+}
+
+.bulkRules-2 {
+  font-size: 26rpx;
+  margin-top: 20rpx;
 }

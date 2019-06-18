@@ -1,39 +1,34 @@
 <view class="{{is_show?'content':''}}">
   <!-- <import src="../../wxParse/wxParse.wxml" /> -->
-  <view  style="background: #fff;">
+  <view style="background: #fff;">
     <image src="{{list.image}}" mode="aspectFill" wx:if="{{list.goods_img.length==0}}" class="slide-image" style='padding-bottom:40rpx'></image>
-    <swiper
-  indicator-dots="{{true}}"
-  autoplay="{{true}}"
-  interval="{{6000}}"
-  duration="{{1000}}"
-  circular="{{true}}"
-  indicator-active-color="#fff"
-  class="top"
-  wx:if="{{list.goods_img.length>0}}"
->
-  <block wx:for="{{listImag}}" wx:key="{{index}}"  >
-    <swiper-item style="height:350rpx!impotant;">
-      <image src="{{item}}" class="slide-image"  mode="aspectFill"/>
-    </swiper-item>
-  </block>
-    
-</swiper>
-  </view>
+    <swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="{{6000}}" duration="{{1000}}" circular="{{true}}" indicator-active-color="#fff" class="top" wx:if="{{list.goods_img.length>0}}">
+      <block wx:for="{{listImag}}" wx:key="{{index}}">
+        <swiper-item style="height:350rpx!impotant;">
+          <image src="{{item}}" class="slide-image" mode="aspectFill" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view> 
   <view class="center">
     <view class="price">
-      <text class="rmb">¥{{list.goods_sku[index_a].price}}</text> 
+      <text class="rmb">¥{{list.goods_sku[index_a].price}}</text>
     </view>
-     <view class="ot_price" wx:if="{{list.ot_price}}">
-     <!-- <view class="ot_price"> -->
-      <text class='ot_price_rmb'>¥{{list.ot_price}}</text> 
+    <view class="ot_price" wx:if="{{list.ot_price}}">
+      <!-- <view class="ot_price"> -->
+      <text class='ot_price_rmb'>¥{{list.ot_price}}</text>
     </view>
     <view class="share">
       <view class="share-left">{{list.name}}</view>
       <image src="/img/share.png" class="share-right" mode='aspectFill' bindtap='onShareTap'></image>
       <!-- <button open-type="share" class="share-right"> <image src="/img/share.png"   mode='aspectFill' ></image></button> -->
     </view>
-    <view class="text_bt" style='border-bottom:1rpx solid #eee;padding-left:60rpx;'>
+    <!-- 拼团 -->
+    <view wx:if="{{options.bulk==1}}" class='bulkInfo'>
+      <view>{{bulkInfo.person_num}}人拼单</view>
+      <view>已拼成单</view>
+    </view>
+    <view wx:else class="text_bt" style='border-bottom:1rpx solid #eee;padding-left:60rpx;'>
       <view class="text_bt_right" wx:if="{{!list.postage}}">
         <text>快递：包邮</text>
       </view>
@@ -67,24 +62,34 @@
     <view class="supplier-img">
       <image src="{{supplierLogo}}"></image>
     </view>
-
     <view class="supplier-content">
       <view>{{supplierName}}</view>
       <text>{{supplierGoodsNumb}}件商品</text>
     </view>
     <view class="supplierText" bindtap='gosupplierdetails'>了解供应商</view>
   </view> -->
-  <view class="norms" bindtap='show'>
+  <view class="norms" bindtap='show' wx:if="{{options.bulk != 1}}">
     <view class="norms-left">产品规格</view>
     <view class="norms-right">
       <view>
-      {{selected?'':'请选择规格'}} 
-          <text wx:for="{{selected}}" wx:key="" style='padding-right:10rpx;line-height:0rpx;'>
+        {{selected?'':'请选择规格'}}
+        <text wx:for="{{selected}}" wx:key="" style='padding-right:10rpx;line-height:0rpx;'>
           {{item}} 
           </text>
       </view>
       <image src='/img/rt.png' mode='aspectFill'></image>
     </view>
+  </view>
+  <!-- 拼团 -->
+  <view wx:if="{{options.bulk==1}}" class='bulkRules'>
+    <view class='bulkRules-1'>
+      <view class=''>拼单规则</view>
+      <view class=''>
+        查看明细规则
+        <image src="/img/return.png"></image>
+      </view>
+    </view>
+    <view class='bulkRules-2'>①拼单/参团②邀请好友③满员发货④不满退款</view>
   </view>
   <view class="norms">
     <view class="norms-left">产品详情</view>
@@ -95,7 +100,7 @@
     <image wx:for="{{list.detail}}" wx:key="{{index}}" mode="widthFix" src='{{item}}'></image>
   </view>
   <!-- 底部悬浮 -->
-  <view class="footer">
+  <view wx:if="{{!options.bulk}}" class="footer">
     <view class="footer-left" bindtap='go_home'>
       <text class='badge' wx:if='{{badgeCount > 0}}'>{{badgeCount}}</text>
       <image src='/img/cart-hl.png' mode='aspectFill' />
@@ -108,6 +113,17 @@
     <view class="footer-right replaceBackground">
       <view class="footer-right_1" bindtap='gocart'>加入购物车</view>
       <view class="footer-right_2 replaceCat" bindtap="purchase">立即购买</view>
+    </view>
+  </view>
+  <!-- 拼团 -->
+  <view wx:else class="footer">
+    <view class="footer-left" bindtap='goBack'>
+      <text class='badge' wx:if='{{badgeCount > 0}}'>{{badgeCount}}</text>
+      <image src='/img/cart-hl.png' mode='aspectFill' />
+      <text>拼单首页</text>
+    </view>
+    <view class='bulkBot' bindtap='gobuy'>
+      拼单￥{{bulkInfo.goods_price}}（直购价￥{{bulkInfo.origin_price}}）
     </view>
   </view>
   <!--黑色弹框遮罩层 -->
@@ -127,9 +143,9 @@
           <view class="guige">
             <text style='width:23%'>已选：</text>
             <view class="text1">
-            <text wx:for="{{selected}}" wx:key=""  >{{item}},</text>
+              <text wx:for="{{selected}}" wx:key="">{{item}},</text>
             </view>
-             
+
           </view>
         </view>
         <image src='/img/xz-1.png' mode='aspectFill' class="spec_shadow-x" bindtap='hide'></image>

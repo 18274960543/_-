@@ -9,7 +9,6 @@ Page({
     is_varieties: true,
   },
   onLoad: function(options) {
-     
     // 查看是否授权
     wx.getSetting({
       success: function (res) {
@@ -99,6 +98,11 @@ Page({
   onTap_coupon: function() {
     wx.navigateTo({
       url: "/pages/coupon/coupon",
+    })
+  },
+  jump(e) {
+    wx.navigateTo({
+      url: e.currentTarget.dataset.url,
     })
   },
   go_Aboutus() {

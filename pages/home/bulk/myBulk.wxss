@@ -1,0 +1,91 @@
+/* pages/home/bulk/myBulk.wxss */
+
+.vae {
+  width: 100%;
+  display: flex;
+  font-size: 28rpx;
+  background: #fff;
+}
+
+.vae view {
+  width: 25%;
+  text-align: center;
+  height: 80rpx;
+  line-height: 80rpx;
+  position: relative;
+}
+
+.top_bt_active {
+  color: #773adf;
+  font-size: 30rpx;
+  font-weight: bold;
+}
+
+.vae view view {
+  width: 30rpx;
+  height: 6rpx;
+  background: #773adf;
+  position: absolute;
+  bottom: 15%;
+  left: 41%;
+}
+
+/*  */
+
+.main {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.list {
+  font-size: 30rpx;
+  background: #fff;
+  width: 95%;
+  padding: 0 2.5% 4%;
+  margin-top: 20rpx;
+}
+
+.list-1 {
+  padding: 38rpx 10rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.list-2 {
+  display: flex;
+  width: 100%;
+}
+
+.list-2 image {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.list-goodsInfo {
+  width: 83%;
+  margin-left: 4%;
+  font-size: 26rpx;
+}
+
+.list-goodsInfo view:nth-child(1) {
+  font-size: 28rpx;
+}
+
+.list-goodsInfo view:nth-child(2) {
+  margin: 14rpx 0;
+}
+.list-3 {
+  display: flex;
+  justify-content: flex-end;
+}
+.list-3 view {
+  width: 135rpx;
+  text-align: center;
+  height: 64rpx;
+  line-height: 64rpx;
+  border-radius: 64rpx;
+  border: 1px solid #773adf;
+  font-size: 24rpx;
+  color: #773adf;
+  margin:0 10rpx;
+}

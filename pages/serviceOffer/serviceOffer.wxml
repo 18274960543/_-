@@ -1,0 +1,21 @@
+<view class="content">
+    <view class="list" wx:for="{{list}}" wx:key="index">
+          <view class="top">
+               <view class="lf">
+                  <text style='margin-top:40rpx;'>¥</text>
+                  <text class="money">{{item.coupon[0].discount}}</text>
+               </view>
+               <view class="center">
+                   <view>{{item.service[0].name}}券</view>
+                   <text>无门槛</text>
+               </view>
+               <view class="rt">
+                   <view class="active" bindtap='receive' data-index='{{index}}' wx:if="{{item.user.length==0}}">立即领取</view>
+                   <view class="active1" wx:else bindtap='gocoupon'>去使用</view>
+                   <text> 消费{{item.user_service_count}}次洗澡服务可领取</text>
+               </view>
+          </view>
+          <image src="/img/receive.png" class="receive" wx:if="{{item.user.length>0}}"></image>
+          <image src='{{item.img.full_img_url}}'></image>
+    </view>
+</view>

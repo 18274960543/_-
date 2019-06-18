@@ -1,0 +1,38 @@
+<!--pages/home/bulk/bulk.wxml-->
+<scroll-view class='scroll-view' bindscroll="bindscroll" scroll-y="true" scroll-top="{{scrollY}}">
+  <image class="bj" src="/img/a9992ae61bd8a439f352f963fbd0c76.png"></image>
+  <view class='selectTab'>
+    <view class="{{selectTabCur==1?'selectTabCur':''}}" bindtap='bindSelectTab' data-types='1' data-id='1'>汪星人</view>
+    <view class="{{selectTabCur==2?'selectTabCur':''}}" bindtap='bindSelectTab' data-types='1' data-id='2'>喵星人</view>
+  </view>
+  <!--  -->
+  <scroll-view wx:if="{{!is_couponScrol}}" class="coupon-scroll-view_x" scroll-x="true" scroll-with-animation="true" id="scroll-view" scroll-left="{{ scrollLeft }}">
+    <view class="flow-items {{ categoryCur == index ? 'flow-items-selected':'' }}" wx:for="{{category}}" wx:key="{{item.id}}" bindtap="onCouponItemClick" id="item-{{ item.id }}" data-index='{{index}}' data-id="{{item.id}}">
+      {{item.name}}
+      <view wx:if="{{categoryCur == index}}"></view>
+    </view>
+  </scroll-view>
+  <scroll-view wx:else class="coupon-scroll-view_x coupon-scrol" scroll-x="true" scroll-with-animation="true" id="scroll-view" scroll-left="{{ scrollLeft }}">
+    <view class="flow-items {{ categoryCur == index ? 'flow-items-selected':'' }}" wx:for="{{category}}" wx:key="{{item.id}}" bindtap="onCouponItemClick" id="item-{{ item.id }}" data-index='{{index}}' data-id="{{item.id}}">
+      {{item.name}}
+      <view wx:if="{{categoryCur == index}}"></view>
+    </view>
+  </scroll-view>
+  <!--  -->
+  <view class='main'>
+    <view class='mainList' wx:for="{{bulkList}}" wx:key="">
+      <view class='mainList-img'>
+        <image src="{{item.post_image}}"></image>
+      </view>
+      <view class='mainList-name'>{{item.goods_name}}</view>
+      <view class='mainList-num'>{{item.person_num}}人拼团</view>
+      <view class='mainList-bot'>
+        <view>
+          <text>￥{{item.goods_price}}</text> 省{{item.new_price}}元
+        </view>
+        <view bindtap='jump' data-id='{{item.id}}'>去拼团</view>
+      </view>
+    </view>
+    <view wx:if="{{!bulkList.length}}" wx:key="" class='nodata'>暂无数据</view>
+  </view>
+</scroll-view>

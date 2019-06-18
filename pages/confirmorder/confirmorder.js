@@ -1,7 +1,6 @@
 let url = require('../../utils/config.js')
-const Page = require('../../utils/ald-stat.js').Page;
 const app = getApp();
-
+const Page = require('../../utils/ald-stat.js').Page;
 //  经纬度sdk文件
 var QQMapWX = require('../../utils/qqmap-wx-jssdk.js');
 var qqmapsdk = new QQMapWX({
@@ -32,34 +31,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    this.addressData()
+    console.log(options)
     this.setData({
       isFirst: false,
       options,
     })
-    console.log(options)
-    // 判断是不是重商品详情页直接进来的
-    // if (options.num) {
-    //   this.orderData(options)
-    // }
-    // if (options.ids) {
-    //   this.cartData(options)
-    // }
   },
-  stopPageScroll: function () {
+  stopPageScroll: function() {
     return
   },
   onShow: function() {
     this.addressData()
-
-    // if (this.data.options.ids){
-    //   this.cartData(this.data.options)
-    // }
-    // if (!this.data.isFirst) {
-    //   this.setData({
-    //     address: app.globalData.address
-    //   })
-    // }
   },
   // 点击去编辑地址
   goaddress() {
@@ -77,44 +59,44 @@ Page({
         "Authorization": app.token
       },
       success: (res) => {
-        
-          console.log(res.data.data)
-          let list = res.data.data.data;
-          if (res.data.data.data.length == 0) {
-            let address_id = ""
-            if (this.data.options.ids) {
-              this.cartData(this.data.options, address_id)
-            }
-            if (this.data.options.num) {
-              this.orderData(this.data.options, address_id)
-            }
-          } else {
-            let address = '';
-            // 判断全局 切换地址页面  切换的地址全局有没有 有就显示这个地址
-            if (app.globalData.address) {
-              address = app.globalData.address;
-            }
-            // 没有就显示 接口返回默认的地址
-            else {
-              let list = res.data.data.data
-              list.map(item => {
-                if (item.is_default) {
-                  address = item
-                }
-              })
-            }
-            if (this.data.options.ids) {
-              this.cartData(this.data.options, address.id)
-            }
-            if (this.data.options.num) {
-              this.orderData(this.data.options, address.id)
-            }
-            this.setData({
-              address,
+
+        console.log(res.data.data)
+        let list = res.data.data.data;
+        if (res.data.data.data.length == 0) {
+          let address_id = ""
+          if (this.data.options.ids) {
+            this.cartData(this.data.options, address_id)
+          }
+          if (this.data.options.num) {
+            this.orderData(this.data.options, address_id)
+          }
+        } else {
+          let address = '';
+          // 判断全局 切换地址页面  切换的地址全局有没有 有就显示这个地址
+          if (app.globalData.address) {
+            address = app.globalData.address;
+          }
+          // 没有就显示 接口返回默认的地址
+          else {
+            let list = res.data.data.data
+            list.map(item => {
+              if (item.is_default) {
+                address = item
+              }
             })
           }
-          return
-        
+          if (this.data.options.ids) {
+            this.cartData(this.data.options, address.id)
+          }
+          if (this.data.options.num) {
+            this.orderData(this.data.options, address.id)
+          }
+          this.setData({
+            address,
+          })
+        }
+        return
+
 
       }
     })
@@ -127,6 +109,7 @@ Page({
   },
   // 商品详情直接进入确认订单页面
   orderData(options, address_id) {
+    console.log
     wx.showLoading({
       title: '加载中...',
     })
@@ -145,56 +128,59 @@ Page({
         "Authorization": app.token
       },
       success: (res) => {
-      
-          console.log(res.data)
-          let detail_list = res.data.list;
-          let totalprice = res.data.order_amount;
-          let length = detail_list[0].goods_list.length;
-          let couponList = res.data.couponList;
-          couponList.push({
-            empty: true,
-            name: "不使用优惠"
-          });
+        console.log(res.data)
+        let detail_list = res.data.list;
+        let totalprice = res.data.order_amount;
+        let length = detail_list[0].goods_list.length;
+        let couponList = res.data.couponList;
+        couponList.push({
+          empty: true,
+          name: "不使用优惠"
+        });
 
-          console.log(res.data.address_info)
-          this.setData({
-            detail_list,
-            totalprice,
-            totalpriceAfterDiscount:totalprice,
-            length,
-            goods_sku_id: options.goods_sku_id,
-            shop_id: options.shop_id,
-            num: options.num,
-            couponList: couponList,
-          })
-          //模拟选中最高优惠
-          if (couponList.length > 1) {
-            let maxIndex = 0;
-            let maxDiscount = 0;
-            for (let i = 0; i < couponList.length - 1; i++) {
-              if (parseFloat(couponList[i].discount) > maxDiscount) {
-                maxDiscount = parseFloat(couponList[i].discount);
-                maxIndex = i;
+        if (options.bulk == 1) {
+          detail_list[0].goods_list[0].goods_price = options.price
+          detail_list[0].goods_amount = options.price
+        }
+
+        this.setData({
+          detail_list,
+          totalprice,
+          totalpriceAfterDiscount: totalprice,
+          length,
+          goods_sku_id: options.goods_sku_id,
+          shop_id: options.shop_id,
+          num: options.num,
+          couponList: couponList,
+        })
+        //模拟选中最高优惠
+        if (couponList.length > 1) {
+          let maxIndex = 0;
+          let maxDiscount = 0;
+          for (let i = 0; i < couponList.length - 1; i++) {
+            if (parseFloat(couponList[i].discount) > maxDiscount) {
+              maxDiscount = parseFloat(couponList[i].discount);
+              maxIndex = i;
+            }
+          }
+          this.choseCouponAction({
+            currentTarget: {
+              dataset: {
+                index: maxIndex
               }
             }
-            this.choseCouponAction({
-              currentTarget: {
-                dataset: {
-                  index: maxIndex
-                }
+          })
+        } else {
+          this.choseCouponAction({
+            currentTarget: {
+              dataset: {
+                index: 0
               }
-            })
-          }else{
-            this.choseCouponAction({
-              currentTarget: {
-                dataset: {
-                  index: 0
-                }
-              }
-            })
-          }
-          wx.hideLoading()
-        
+            }
+          })
+        }
+        wx.hideLoading()
+
 
       }
     })
@@ -220,55 +206,54 @@ Page({
         "Authorization": app.token
       },
       success: (res) => {
-     
-          console.log(res.data)
-          let detail_list = res.data.list;
-          let totalprice = res.data.order_amount;
-          let length = detail_list[0].goods_list.length;
-          let couponList = res.data.couponList;
-          couponList.push({
-            empty: true,
-            name: "不使用优惠"
-          })
 
-          this.setData({
-            length,
-            detail_list,
-            totalprice,
-            totalpriceAfterDiscount: totalprice,
-            ids: ids,
-            couponList: couponList,
-            // address: res.data.address_info
-          })
-          //模拟选中最高优惠
-          if (couponList.length > 1) {
-            let maxIndex = 0;
-            let maxDiscount = 0;
-            for (let i = 0; i < couponList.length - 1; i++) {
-              if (parseFloat(couponList[i].discount) > maxDiscount) {
-                maxDiscount = parseFloat(couponList[i].discount);
-                maxIndex = i;
+        console.log(res.data)
+        let detail_list = res.data.list;
+        let totalprice = res.data.order_amount;
+        let length = detail_list[0].goods_list.length;
+        let couponList = res.data.couponList;
+        couponList.push({
+          empty: true,
+          name: "不使用优惠"
+        })
+
+        this.setData({
+          length,
+          detail_list,
+          totalprice,
+          totalpriceAfterDiscount: totalprice,
+          ids: ids,
+          couponList: couponList,
+          // address: res.data.address_info
+        })
+        //模拟选中最高优惠
+        if (couponList.length > 1) {
+          let maxIndex = 0;
+          let maxDiscount = 0;
+          for (let i = 0; i < couponList.length - 1; i++) {
+            if (parseFloat(couponList[i].discount) > maxDiscount) {
+              maxDiscount = parseFloat(couponList[i].discount);
+              maxIndex = i;
+            }
+          }
+          this.choseCouponAction({
+            currentTarget: {
+              dataset: {
+                index: maxIndex
               }
             }
-            this.choseCouponAction({
-              currentTarget: {
-                dataset: {
-                  index: maxIndex
-                }
+          })
+        } else {
+          this.choseCouponAction({
+            currentTarget: {
+              dataset: {
+                index: 0
               }
-            })
-          }
-          else {
-            this.choseCouponAction({
-              currentTarget: {
-                dataset: {
-                  index: 0
-                }
-              }
-            })
-          }
-          wx.hideLoading()
-          return
+            }
+          })
+        }
+        wx.hideLoading()
+        return
 
       }
     })
@@ -277,6 +262,8 @@ Page({
   payment() {
     console.log(this.data.ids)
     console.log(this.data.address)
+
+    var comment = this.data.comment ? this.data.comment : ''
     if (this.data.address == '' || this.data.address == null || this.data.address == undefined) {
       wx.showToast({
         title: '请填写地址',
@@ -286,12 +273,68 @@ Page({
     }
 
     //判断最终价格是否小于等于0
-    let lastPrice = this.data.totalpriceAfterDiscount || this.data.totalprice;
-    if(lastPrice<=0){
+    let lastPrice = this.data.totalpriceAfterDiscount || this.data.totalprice,
+      options = this.data.options
+    if (lastPrice <= 0) {
       wx.showLoading({
         title: '最终价格不得为0',
       })
       return;
+    }
+
+    if (options.bulk == 1) {
+      wx.request({
+        url: url.api + `/ucs/v1/groupbuy/order/activity`, // 仅为示例，并非真实的接口地址
+        data: {
+          groupbuy_id: options.groupbuy_id,
+          shop_id: this.data.shop_id,
+          address_id: this.data.address.id,
+          pay_type: "WeChat",
+          comment,
+        },
+        method: "post",
+        header: {
+          'content-type': 'application/json', // 默认值
+          "Authorization": app.token
+        },
+        success(res) {
+          console.log('拼团下单', res)
+          if (res.data.code == 200) {
+            let pay_info = res.data.pay_info
+            wx.requestPayment({
+              timeStamp: res.data.pay_info.timestamp,
+              nonceStr: res.data.pay_info.nonceStr,
+              package: res.data.pay_info.package,
+              signType: res.data.pay_info.signType,
+              paySign: res.data.pay_info.paySign,
+              success: res => {
+                wx.redirectTo({
+                  url: '/pages/home/bulk/succ?activity_id=' + pay_info.activity_id
+                })
+              },
+              fail: err => {
+                wx.redirectTo({
+                  url:'/pages/home/bulk/myBulk'
+                })
+              }
+            })
+            return
+          }
+          wx.showModal({
+            content: res.data.message,
+            showCancel: false,
+            success(re) {
+              if (res.data.code == 30) {
+                wx.redirectTo({
+                  url: '/pages/home/bulk/myBulk'
+                })
+              }
+            }
+          })
+        }
+      })
+
+      return
     }
 
     // 判断是直接从购物车进来支付 还是商品详情页面进来支付
@@ -328,6 +371,12 @@ Page({
               signType: pay_info.signType,
               paySign: pay_info.paySign,
               success: res => {
+                if (options.bulk == 1) {
+                  wx.redirectTo({
+                    url: '/pages/home/bulk/succ'
+                  })
+                  return
+                }
                 wx.redirectTo({
                   url: '/pages/pay_success/pay_success?pay_sn=' + pay_info.pay_sn
                 })
@@ -361,7 +410,7 @@ Page({
         submitParams.coupon_id = this.data.couponList[selectCouponIndex].couponId;
       }
       wx.request({
-        url: url.api + `/ucs/v1/order/submit`, // 仅为示例，并非真实的接口地址
+        url: url.api + `/ucs/v1/order/submit`,  
         data: submitParams,
         method: "post",
         header: {
@@ -428,10 +477,11 @@ Page({
     let totalpriceAfterDiscount = this.data.totalprice;
     if (this.data.couponList[index] && !this.data.couponList[index].empty) {
       totalpriceAfterDiscount = (this.data.totalprice - this.data.couponList[index].discount);
-      totalpriceAfterDiscount = totalpriceAfterDiscount ? totalpriceAfterDiscount.toFixed(2):''
-      if (totalpriceAfterDiscount <= 0) {totalpriceAfterDiscount =0}
-    } else { 
-    }
+      totalpriceAfterDiscount = totalpriceAfterDiscount ? totalpriceAfterDiscount.toFixed(2) : ''
+      if (totalpriceAfterDiscount <= 0) {
+        totalpriceAfterDiscount = 0
+      }
+    } else {}
     this.setData({
       selectCouponIndex: index,
       selectCouponText: selectCouponText,

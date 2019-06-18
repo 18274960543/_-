@@ -20,7 +20,12 @@
   <view class='line'></view>
   <text  class='p2-text2'>轻便快捷的预约服务，为你爱犬提供全方位爱的呵护！</text>
   <image src='/img/return1.png' class='rt-icon'></image> -->
-  <scroll-view scroll-x="true" class="scroll">
+   <view bindtap="onTap_pet" class="onTappet">
+       <image src='/img/mypet.png'></image>
+       <text>宠物卡</text>
+    </view>
+<scroll-view scroll-x="true" class="scroll">
+  
 <block wx:for="{{pet_list}}" wx:key="index">
 <view class="scroll_left {{item.is_select?'bac':''}}" bindtap='is_select' data-index="{{index}}">
 <image src='{{item.avatar}}' mode='aspectFill' class="scroll_img"></image>
@@ -29,7 +34,7 @@
 </view>
 </view>
 </block>
-<view class="scroll_left" bindtap='addPets'>
+<view class="scroll_left" bindtap='addPets' style='width:80rpx'>
 <image src='/img/a.png' mode='aspectFill' class="scroll_img" style='width:40rpx;height:40rpx;margin-top:14rpx'></image>
 <view class="scroll_text">
 <view style='font-size:28rpx;color:#666;'>添加宠物</view>
@@ -46,10 +51,7 @@
        <image src='/img/order.png'></image>
        <text>我的订单</text>
     </view>
-    <view bindtap="onTap_pet">
-       <image src='/img/mypet.png'></image>
-       <text>我的宠物</text>
-    </view>
+   
     <view bindtap="onTap_coupon">
        <image src='/img/coupon.png'></image>
        <text>优惠券</text>
@@ -76,6 +78,10 @@
        <image src='/img/hy.png'></image>
        <text>我的会员卡</text>
     </view>
+    <view bindtap='jump' data-url='../home/bulk/myBulk'>
+        <image src='/img/8de46b36c6be33620652a74bf1a4103.png'></image>
+        <text>我的拼团</text>
+      </view>
       <view bindtap='go_Aboutus'>
         <image src='/img/about.png'></image>
         <text>关于我们</text>

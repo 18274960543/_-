@@ -1,10 +1,9 @@
-
-<wxs src="../../filter/formatFr.wxs" module="formatFr"/>
- <view wx:if="{{!isToken}}"> 
- <!-- <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class="PhoneNumber"></button> -->
-<scroll-view class="home" scroll-y style='height:{{screenHeight}}px;' lower-threshold="150" bindscrolltolower="bindscrolltolower">
-  <!-- 当前地址地位 -->
-  <!-- <view class="position" wx:if="{{address}}">
+<wxs src="../../filter/formatFr.wxs" module="formatFr" />
+<view wx:if="{{!isToken}}">
+  <!-- <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class="PhoneNumber"></button> -->
+  <scroll-view class="home" scroll-y style='height:{{screenHeight}}px;' lower-threshold="150" bindscrolltolower="bindscrolltolower">
+    <!-- 当前地址地位 -->
+    <!-- <view class="position" wx:if="{{address}}">
     <image src='/img/position.png' class="position-dw"></image>
     <text bindtap='position'>{{address}}</text>
     <image src='/img/rt.png' style='margin-left:-4rpx;margin-top:4rpx;' bindtap='position'></image>
@@ -13,98 +12,169 @@
     附近店铺
  </view> 
   </view> -->
-  <view style='width:95%;margin:10rpx auto 0;'>
-    <scroll-view class="nav_top  {{istrue>410? 'float' : ''}} none" scroll-x="true">
-      <block wx:for="{{mergedata.category}}" wx:key="index">
-        <view class="nav_top_items {{curIndex == index ? 'nav_top_item-active' : ''}}" data-id="{{item.id}}" bindtap="switchRightTab">
-          {{item.name}}
-        </view>
-        <text></text>
-      </block>
-    </scroll-view>
-    <swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="{{8000}}" duration="{{500}}" circular="{{true}}" indicator-color="rgba(255, 255, 255, .3)" indicator-active-color="#fff" >
-      <block wx:for="{{mergedata.banner.banner.list}}" wx:key="index">
-        <swiper-item style="border-radius:10rpx;">
-          <image src="{{item.img.full_img_url}}" mode="scaleToFill" class="slide-image" />
-        </swiper-item>
-      </block>
-    </swiper>
-  <!-- 头部悬浮 -->
-    <view class="order" wx:if="{{mergedata}}">
-      <view class="order-top">
-        <view>快速预约服务 </view>
-        <!-- <text>更多服务敬请期待</text> -->
-        <!-- wx:for="{{order}}" wx:key="index" wx:for-index="index" wx:for-item="item" -->
-      </view>
-      <swiper class="swiper-box" indicator-dots="{{true}}" autoplay="{{false}}">
-        <swiper-item class="swiper-item">
-          <block wx:for="{{mergedata.service}}" wx:key="index1" wx:for-index="index1" wx:for-item="item1">
-            <view class="page-column" bindtap='goservice' data-id="{{index1}}" data-serviceid="{{item1.id}}" wx:if="{{item1.id!=13}}">
-              <image src="{{item1.img}}" mode="scaleToFill" />
-              <text>{{item1.name}}</text>
-            </view>
-          </block>
-        </swiper-item>
-      </swiper>
-    </view>
-    <!-- 养宠小课堂 -->
-    <view class="more" style='margin-bottom:0;'>
-      <image src='{{mergedata.banner.activity.list[0].img.full_img_url}}' bindtap='classroom'></image>
-    </view>
-    <view class="list1">
-      <scroll-view class="nav_top" scroll-x="true">
+    <view style='width:95%;margin:10rpx auto 0;'>
+      <scroll-view class="nav_top  {{istrue>410? 'float' : ''}} none" scroll-x="true">
         <block wx:for="{{mergedata.category}}" wx:key="index">
-          <view class="nav_top_items {{curIndex == index ? 'nav_top_item-active replaceColour' : ''}}" data-id="{{item.id}}" bindtap="switchRightTab" data-index="{{index}}">
+          <view class="nav_top_items {{curIndex == index ? 'nav_top_item-active' : ''}}" data-id="{{item.id}}" bindtap="switchRightTab">
             {{item.name}}
           </view>
           <text></text>
         </block>
       </scroll-view>
-      <scroll-view class='nav_bottom'>
-        <view wx:if='{{nav_bottomItems.length>0}}' style='padding-bottom: 10px;'>
-          <block wx:for="{{nav_bottomItems}}" wx:for-item="item" wx:key="index">
-            <view class="item" bindtap='godetails' data-id="{{item.id}}">
-              <image class="item-img" src='{{item.image}}' mode="aspectFit"></image>
-              <text class="item-title padding">{{item.name}}</text>
-              <view class="item_text padding">
-                <text style='font-size:20rpx'>销量：{{item.sales+item.ficti}}</text>
-                <!-- <text>{{item.subTitle}}</text> -->
+      <swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="{{8000}}" duration="{{500}}" circular="{{true}}" indicator-color="rgba(255, 255, 255, .3)" indicator-active-color="#fff">
+        <block wx:for="{{mergedata.banner.banner.list}}" wx:key="index">
+          <swiper-item style="border-radius:10rpx;">
+            <image src="{{item.img.full_img_url}}" mode="scaleToFill" class="slide-image" />
+          </swiper-item>
+        </block>
+      </swiper>
+      <!-- 头部悬浮 -->
+      <view class="order" wx:if="{{mergedata}}">
+        <view class="order-top">
+          <view>快速预约服务 </view>
+          <!-- <text>更多服务敬请期待</text> -->
+          <!-- wx:for="{{order}}" wx:key="index" wx:for-index="index" wx:for-item="item" -->
+        </view>
+        <swiper class="swiper-box" indicator-dots="{{true}}" autoplay="{{false}}">
+          <swiper-item class="swiper-item">
+            <block wx:for="{{mergedata.service}}" wx:key="index1" wx:for-index="index1" wx:for-item="item1">
+              <view class="page-column" bindtap='goservice' data-id="{{index1}}" data-serviceid="{{item1.id}}" wx:if="{{item1.id!=13}}">
+                <image src="{{item1.img}}" mode="scaleToFill" />
+                <text>{{item1.name}}</text>
               </view>
-              <view class="item_bottom padding">
-                <view><text class="rmb" style='font-size:22rpx'>¥</text>
-                {{item.goods_sku[0].price}}
-                <text class="ot_price_rmb">¥{{item.ot_price}} </text>
-                </view>
-                <image src='/img/che.png'></image>
+            </block>
+          </swiper-item>
+        </swiper>
+      </view>
+      <!-- 养宠小课堂 -->
+      <!-- <view class="more" style='margin-bottom:0;'>
+      <image src='{{mergedata.banner.activity.list[0].img.full_img_url}}' bindtap='classroom'></image>
+    </view> -->
+      <!-- 限量抢购 -->
+      <!-- <view class='limited'>
+        <view class='limited-lf' bindtap='jump' data-url='limited/limited'>
+          <view class='limited-time'>
+            <view style='font-weight:bold;'>限量购</view>
+            <view class='limited-time-1'>
+              <view>{{clock[0]}}</view>
+              <view>:</view>
+              <view>{{clock[1]}}</view>
+              <view>:</view>
+              <view>{{clock[2]}}</view>
+            </view>
+          </view>
+          <view class='limited-lf-goods'>
+            <view class="limited-lf-goodsList" wx:for="{{2}}" wx:key="">
+              <view class='limited-lf-goods-img'>
+                <image src="/img/share1.png"></image>
+              </view>
+              <view class='limited-lf-goods-info'>
+                <view>￥ 6</view>
+                <view>剩余
+                  <text>9</text> 件</view>
               </view>
             </view>
-          </block>
+          </view>
         </view>
-        <!-- <view wx:else  style='font-size:30rpx;padding:50rpx;'>
+        <view class='limited-rt'>
+          <view class='limited-top'>
+            <view>一元抢购商品</view>
+            <view>
+              <image src="/img/share1.png"></image>
+              <image src="/img/share1.png"></image>
+            </view>
+          </view>
+          <view class='limited-bot' bindtap='goserviceOffer'>
+            <view>赠送服务
+              <text>洗澡/美容/SPA</text>
+            </view>
+            <view>
+              <image src="/img/share1.png"></image>
+              <image src="/img/share1.png"></image>
+            </view>
+          </view>
+        </view>
+      </view> -->
+            <!-- 赠送服务 -->
+      <view class="give" bindtap='goserviceOffer' wx:if="{{mergedata.servicecosts}}">
+          <!-- <view>赠送服务<text>满就送100元券</text></view> -->
+          <image src='{{mergedata.servicecosts}}'></image>
+      </view>
+      <!-- 超值拼团-->
+      <view class='bulk' bindtap='jump' data-url='bulk/bulk' style="background-image: url('{{mergedata.assemble}}')" wx:if="{{mergedata.broupbuy.length}}">
+        <view class='bulk-1'>
+          <view>超值拼团</view>
+          <view class="free">
+            <!-- <image src="/img/baoyou.png"></image> -->
+            包邮
+          </view>
+        </view>
+        <view class="bulk-2">拼团立减/低至5折</view>
+        <view class='bulkImg'>
+        <view wx:for="{{mergedata.broupbuy}}" wx:key="index" class="bulkImgCenter">
+         <image src="{{item.goods.image}}"></image>
+          <view>
+             <text class="rmb" style='font-size:30rpx;color:#FC4C4C'><text style='font-size:22rpx;'>¥</text>{{item.goods_price}}</text>
+             <text class="ot_price_rmb" style='font-size:22rpx;'>¥{{item.origin_price}}</text>
+          </view>
+        </view>
+        </view>
+        <!-- <image src='/img/Assemble.png' class="assemble"></image> -->
+      </view>
+   
+      <!--  -->
+      <view class="list1">
+        <scroll-view class="nav_top" scroll-x="true">
+          <block wx:for="{{mergedata.category}}" wx:key="index">
+            <view class="nav_top_items {{curIndex == index ? 'nav_top_item-active replaceColour' : ''}}" data-id="{{item.id}}" bindtap="switchRightTab" data-index="{{index}}">
+              {{item.name}}
+            </view>
+            <text></text>
+          </block>
+        </scroll-view>
+        <scroll-view class='nav_bottom'>
+          <view wx:if='{{nav_bottomItems.length>0}}' style='padding-bottom: 10px;'>
+            <block wx:for="{{nav_bottomItems}}" wx:for-item="item" wx:key="index">
+              <view class="item" bindtap='godetails' data-id="{{item.id}}">
+                <image class="item-img" src='{{item.image}}' mode="aspectFit"></image>
+                <text class="item-title padding">{{item.name}}</text>
+                <view class="item_text padding">
+                  <text style='font-size:20rpx'>销量：{{item.sales+item.ficti}}</text>
+                  <!-- <text>{{item.subTitle}}</text> -->
+                </view>
+                <view class="item_bottom padding">
+                  <view>
+                    <text class="rmb" style='font-size:22rpx'>¥</text> {{item.goods_sku[0].price}}
+                    <text class="ot_price_rmb">¥{{item.ot_price}} </text>
+                  </view>
+                  <image src='/img/che.png'></image>
+                </view>
+              </view>
+            </block>
+          </view>
+          <!-- <view wx:else  style='font-size:30rpx;padding:50rpx;'>
           敬请期待 !!
       </view> -->
-      </scroll-view>
+        </scroll-view>
+      </view>
+      <!-- <button open-type='contact'>点击进入客服会话</button> -->
+      <!-- 客服电话 -->
+      <image src='/img/kefut.png' mode="scaleToFill" class="kefu" bindtap='dianhua'></image>
     </view>
-    <!-- <button open-type='contact'>点击进入客服会话</button> -->
-    <!-- 客服电话 -->
-    <image src='/img/kefu.png' mode="scaleToFill" class="kefu" bindtap='dianhua'></image>
-  </view>
 
-</scroll-view>
-<!-- 新人优惠劵 -->
-<view catchtouchmove='stopPageScroll'>
-<view wx:if="{{isCoupon}}">
-<view class="mask"></view>
-<view class="coupon">
-   <image src='/img/abc.png' bindtap='goCoupon'></image>
-  <image src='/img/acc.png' class="icon" bindtap='couponNone'></image>
-</view>
-</view>
-</view>
+  </scroll-view>
+  <!-- 新人优惠劵 -->
+  <view catchtouchmove='stopPageScroll'>
+    <view wx:if="{{isCoupon}}">
+      <view class="mask"></view>
+      <view class="coupon">
+        <image src='/img/abc.png' bindtap='goCoupon'></image>
+        <image src='/img/acc.png' class="icon" bindtap='couponNone'></image>
+      </view>
+    </view>
+  </view>
 </view>
 <view class="indexImages" wx:if="{{isToken}}">
-   <image src='/img/none.png' mode='widthFix'></image>
-   <view class='replaceBackground' bindtap='btnclick'>重新授权</view>
+  <image src='/img/none.png' mode='widthFix'></image>
+  <view class='replaceBackground' bindtap='btnclick'>重新授权</view>
 </view>
- 
- 

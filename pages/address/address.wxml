@@ -7,7 +7,6 @@
          <view class="list_lf">
            <text>{{item.name}} {{item.mobile}} <text style='color:#773ADF'>{{item.is_gaoL?'默认':''}}</text></text>
            <view>{{item.province}}{{item.city}}{{item.area}}{{item.address}}</view>
-          
         </view>
     </view>
         <view class="list_rt" bindtap='go_addresseditor1' data-list='{{item}}'>编辑</view>

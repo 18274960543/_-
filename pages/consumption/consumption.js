@@ -14,6 +14,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
     let card_id = options.card_id;
     this.statistics(card_id)
     wx.request({
@@ -38,9 +39,9 @@ Page({
     wx.request({
       url: url.api + `/ucs/v1/club/statistics`,
       method: "get",
-      data:{
-        card_id,
-      },
+      // data:{
+      //   card_id,
+      // },
       header: {
         'content-type': 'application/json',
         "Authorization": app.token

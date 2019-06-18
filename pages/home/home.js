@@ -1,6 +1,7 @@
 // pages/home/home.js
 const app = getApp()
-let url = require('../../utils/config.js')
+let url = require('../../utils/config.js'),
+  util = require('../../utils/util.js')
 var QQMapWX = require('../../utils/qqmap-wx-jssdk.min.js')
 const Page = require('../../utils/ald-stat.js').Page;
 Page({
@@ -25,10 +26,18 @@ Page({
     address: '',
     ids: '',
     page: 1,
-    isCoupon:false,
-    isToken:false
+    isCoupon: false,
+    isToken: false
   },
+  // 
+  jump(e) {
+    wx.navigateTo({
+      url: e.currentTarget.dataset.url,
+    })
+  },
+  // 
   bindscrolltolower(e) {
+
     let self = this;
     // console.log(122222)
     //当长度不够
@@ -42,7 +51,7 @@ Page({
     wx.showLoading({
       title: 'Loading...',
     })
-    this.renderGoods(this.data.ids, function(res) {
+    this.renderGoods(this.data.ids, function (res) {
       wx.hideLoading()
       console.log(123333, res)
       if (!res.data.data.length) {
@@ -61,41 +70,42 @@ Page({
     })
 
   },
-  stopPageScroll: function() {
+  stopPageScroll: function () {
     return
   },
-  onLoad: function(options) {
+  onLoad: function (options) {
     wx.playBackgroundAudio({
       dataUrl: '',
       title: '',
       coverImgUrl: ''
     })
+    this.countdown(7000000)
     console.log(options)
     // 如果扫码进来 有uuid 就显示扫码的店铺
-    if (options.uuid){
-      
-      this.homeMergedata(options.uuid,1)
+    if (options.uuid) {
+
+      this.homeMergedata(options.uuid, 1)
       this.setData({
         uuid: options.uuid,
       })
       wx.setStorageSync('uuid', options.uuid)
-    } else if (wx.getStorageSync('uuid')){//扫码进来 在用户没有清除换成的情况下 显示扫码进来的店铺（可以在关注门店切换店铺）
-    
-      this.homeMergedata(wx.getStorageSync('uuid'),2)
-    } else if (wx.getStorageSync('shop_uuid')){
+    } else if (wx.getStorageSync('uuid')) { //扫码进来 在用户没有清除换成的情况下 显示扫码进来的店铺（可以在关注门店切换店铺）
+
+      this.homeMergedata(wx.getStorageSync('uuid'), 2)
+    } else if (wx.getStorageSync('shop_uuid')) {
       console.log(777)
-      this.homeMergedata(wx.getStorageSync('shop_uuid'),2)
-    }else{
+      this.homeMergedata(wx.getStorageSync('shop_uuid'), 2)
+    } else {
       //授权地理位置 => 1、在用户初次进入小程序 不是在在扫码情况下进入 2、在用户扫码进来删除本地缓存情况下 调用这个方法
       this.cmmon()
     }
     this.setData({
       address: wx.getStorageSync('address')
     })
-      
+
     var that = this
     wx.getSystemInfo({
-      success: function(res) {
+      success: function (res) {
         console.log(res)
         that.setData({
           screenHeight: res.screenHeight
@@ -116,7 +126,7 @@ Page({
       //   province: wx.getStorageSync('location').province,
       //   city: wx.getStorageSync('location').city,
       // })
-      this.homeMergedata(wx.getStorageSync('uuid'),2)
+      this.homeMergedata(wx.getStorageSync('uuid'), 2)
       wx.setStorageSync('is_change', '')
     }
     this.setData({
@@ -132,7 +142,7 @@ Page({
       title: title,
       imageUrl: '/img/share1.png',
       path: '/pages/home/home?share=share&uuid=' + uuid,
-      success: (res) => {}
+      success: (res) => { }
       //
     }
   },
@@ -150,7 +160,7 @@ Page({
       'lon': opts.lon,
     }
     wx.request({
-      url: url.api + `/ucs/v1/service/all/store`,  
+      url: url.api + `/ucs/v1/service/all/store`,
       method: "post",
       data: nearParams,
       header: {
@@ -161,7 +171,7 @@ Page({
         console.log('附近店铺', res)
         if (res.data.data.length) {
           let uuid = res.data.data[0].uuid;
-          this.homeMergedata(uuid,3)
+          this.homeMergedata(uuid, 3)
           return
         }
         wx.showModal({
@@ -177,27 +187,31 @@ Page({
     })
   },
   // 合并 服务，商品分类，联系方式，轮播图 ，广告图
-  homeMergedata(uuid,type) {
+  homeMergedata(uuid, type) {
     wx.showLoading({
       title: 'Loading...',
     })
     console.log(uuid)
-    let uuid1 =  uuid//如果是扫码进来的就用扫码的UUID  不是扫码就用附近最近店铺UUID
+    let uuid1 = uuid //如果是扫码进来的就用扫码的UUID  不是扫码就用附近最近店铺UUID
     wx.request({
-      url: url.api + `/ucs/v1/shop/index/${uuid1}`,  
+      url: url.api + `/ucs/v1/shop/index/${uuid1}`,
       method: "get",
-      data:{
-        uuid: uuid, 
-        type,//1 扫码 2 关注门店 3用户自己进来
+      data: {
+        uuid: uuid,
+        type, //1 扫码 2 关注门店 3用户自己进来
       },
       header: {
-        'content-type': 'application/json' ,// 默认值
+        'content-type': 'application/json', // 默认值
         "Authorization": wx.getStorageSync('token')
       },
       success: (res) => {
         console.log(res.data)
         if (res.statusCode == 200) {
           let mergedata = res.data;
+          mergedata.broupbuy.map(item=>{
+            item.goods_price = parseFloat(item.goods_price)
+            item.origin_price = parseFloat(item.origin_price)
+          })
           wx.setStorageSync('shop_info', res.data.info)
           url.store_id = res.data.info.id
           wx.setStorageSync('shop_id', res.data.info.id)
@@ -205,9 +219,9 @@ Page({
           wx.setStorageSync('uuid', res.data.info.uuid)
           wx.setStorageSync('category', res.data.category)
           let isCoupon = mergedata.is_new
-          if (isCoupon){
-            isCoupon=true
-          }else{
+          if (isCoupon) {
+            isCoupon = true
+          } else {
             isCoupon = false
           }
           console.log(typeof isCoupon)
@@ -234,7 +248,7 @@ Page({
     })
   },
   // 距离顶部的位置
-  onPageScroll: function(e) {
+  onPageScroll: function (e) {
     // console.log(e.scrollTop)
     this.setData({
       istrue: e.scrollTop
@@ -254,7 +268,7 @@ Page({
       page: 1,
       is_nodata: false
     })
-    this.renderGoods(id, function(res) {
+    this.renderGoods(id, function (res) {
       console.log(res.data.data)
       self.setData({
         nav_bottomItems: res.data.data,
@@ -275,7 +289,7 @@ Page({
       ids: this.data.mergedata.category[0].id,
       page: 1,
     })
-    this.renderGoods(this.data.mergedata.category[0].id, function(res) {
+    this.renderGoods(this.data.mergedata.category[0].id, function (res) {
       console.log(res.data)
       self.setData({
         nav_bottomItems: res.data.data
@@ -287,7 +301,7 @@ Page({
   //render goods
   renderGoods(ids, callback) {
     wx.request({
-      url: url.api + '/ucs/v1/shop/goods/list',  
+      url: url.api + '/ucs/v1/shop/goods/list',
       data: {
         ids: ids,
         page: this.data.page,
@@ -423,7 +437,7 @@ Page({
     })
   },
   // 重新授权 地理位置 判断等
-  btnclick: function() {
+  btnclick: function () {
     wx.getSetting({
       success: (res) => {
         // console.log(JSON.stringify(res))
@@ -434,7 +448,7 @@ Page({
           wx.showModal({
             title: '授权当前地理位置',
             content: '兽兽淘平台为您匹配附近店铺',
-            success:(res)=>{
+            success: (res) => {
               if (res.cancel) {
                 wx.showToast({
                   title: '拒绝授权地理位置无法匹配附近店铺',
@@ -478,7 +492,7 @@ Page({
   cmmon() {
     wx.getLocation({
       type: 'gcj02',
-      success: (res) => { 
+      success: (res) => {
         console.log(111111111111, res)
         let lati = res.latitude
         let longi = res.longitude
@@ -514,21 +528,21 @@ Page({
           },
         })
       },
-     fail:(res)=>{
-       this.setData({
-         isToken:true
-       })
-     }
+      fail: (res) => {
+        this.setData({
+          isToken: true
+        })
+      }
     })
   },
   // 优惠劵
-  couponNone(){
+  couponNone() {
     this.setData({
-      isCoupon:false
+      isCoupon: false
     })
   },
   // 点击优惠劵图片  跳转到优惠劵页面
-  goCoupon(){
+  goCoupon() {
     this.setData({
       isCoupon: false
     })
@@ -542,5 +556,30 @@ Page({
     console.log(e.detail.errMsg)
     console.log(e.detail.iv)
     console.log(e.detail.encryptedData)
+  },
+  // 倒计时
+  countdown(time) {
+    var that = this,
+      sj = util.dateformat(time),
+      sj = sj.split(':')
+    this.setData({
+      clock: sj
+    });
+    if (time <= 0) {
+      this.setData({
+        clock: ['00', '00', '00'] //若已结束，此处输出'0天0小时0分钟0秒'
+      });
+      return;
+    }
+    setTimeout(function () {
+      time -= 1000;
+      that.countdown(time);
+      // return
+    }, 1000)
+  },
+  goserviceOffer(){
+    wx.navigateTo({
+      url: '/pages/serviceOffer/serviceOffer',
+    })
   }
 })

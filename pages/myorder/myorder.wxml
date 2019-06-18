@@ -57,7 +57,7 @@
       </view>
       <view class="bt_bt">
         <view wx:if='{{item.state==20}}' bindtap='rebook' data-service_id='{{item.service_id}}' data-mername='{{item.service[0].name}} ' data-pets_id='{{item.member[0].id}}' data-order_id="{{item.id}}" data-index='{{index}}'>改签</view>
-        <view bindtap='cancelorder' data-index='{{index}}' wx:if="{{item.state==20}}">取消订单</view>
+        <view bindtap='cancelorder' data-index='{{index}}' wx:if="{{item.state==20||item.state==10}}">取消订单</view>
         <view wx:if="{{item.state==0}}">订单已取消</view>
         <!-- <view wx:if="{{item.state==20}}">已支付</view> -->
         <view wx:if="{{item.state==40}}">已完成</view>

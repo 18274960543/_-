@@ -65,6 +65,7 @@ Page({
     // if (self.data.nav_bottomItems.length==this.data.page*8){
     let params = this.data.params;
     params.page = params.page+1;
+    params.shopId = wx.getStorageSync('shop_id')
     this.setData({
       params: params,
     });
@@ -72,7 +73,6 @@ Page({
       title: 'Loading...',
     })
     // this.renderGoods(this.data.ids, function (res) {
- 
     wx.request({
       url: url.api + '/ucs/v1/shop/goods/show', // 仅为示例，并非真实的接口地址
       data: this.data.params,
@@ -186,6 +186,7 @@ Page({
           sortFiled: 'is_new',
           sortType: 2,
           paeg: 1,
+          shopId: wx.getStorageSync('shop_id')
         },
         method: "post",
         success: (res) => {
@@ -214,6 +215,7 @@ Page({
           sortFiled: 'price',
           sortType: 2,
           paeg: 1,
+          shopId: wx.getStorageSync('shop_id')
         },
         method: "post",
         success: (res) => {
@@ -241,7 +243,8 @@ Page({
           ids: this.data.ids,
           sortFiled: 'price',
           sortType:1,
-          page: 1
+          page: 1,
+          shopId: wx.getStorageSync('shop_id')
         },
         method: "post",
         success: (res) => {
@@ -291,7 +294,8 @@ Page({
           ids: this.data.ids,
           sortFiled: 'price',
           sortType: this.data.is_price,
-          page: 1
+          page: 1,
+          shopId: wx.getStorageSync('shop_id')
         },
         method: "post",
         success: (res) => {
@@ -328,7 +332,8 @@ Page({
           ids: this.data.ids,
           sortFiled: 'ficti',
           sortType: this.data.is_price,
-          page: 1
+          page: 1,
+          shopId: wx.getStorageSync('shop_id')
         },
         method: "post",
         success: (res) => {
@@ -432,6 +437,7 @@ Page({
         page: 1,
         priceStart: this.data.priceStart ? this.data.priceStart:'', 
         priceEnd: this.data.priceEnd ? this.data.priceEnd : '', 
+        shopId: wx.getStorageSync('shop_id')
       },
       method: "post",
       success: (res) => {
@@ -465,11 +471,13 @@ Page({
         page: 1,
       }
     })
+    console.log(wx.getStorageSync('shop_id'))
     wx.request({
       url: url.api + '/ucs/v1/shop/goods/show', // 仅为示例，并非真实的接口地址
       data: {
         ids: ids,
-        page:1
+        page:1,
+        shopId: wx.getStorageSync('shop_id')
       },
       method: "post",
       success: (res) => {

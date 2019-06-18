@@ -28,7 +28,8 @@
   color: #fff;
 }
 .list{
-  padding: 40rpx 30rpx;
+  padding: 0rpx 30rpx;
+  margin-top:-20rpx;
 }
 .list>view{
   padding: 40rpx 30rpx;
@@ -60,4 +61,20 @@
 }
 .list view text{
   font-size: 26rpx;
+}
+.kong{
+  display: flex;
+  margin:0 auto;
+  width: 320rpx;
+  height: 320rpx;
+}
+.content{
+  padding-top:50rpx;
+}
+.text{
+  display: block;
+  font-size: 32rpx;
+  text-align: center;
+  padding-top:10rpx;
+  color: #666
 }

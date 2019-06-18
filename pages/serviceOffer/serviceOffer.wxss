@@ -1,0 +1,88 @@
+ .content{
+   padding: 20rpx 30rpx;
+ }
+ .list{
+   background: #fff;
+   border-radius: 10rpx;
+   padding: 20rpx 20rpx 25rpx;
+   margin-bottom: 20rpx;
+   position: relative
+ }
+ .top{
+   display: flex;
+   align-items: center;
+ }
+ .top>view{
+   display: flex;
+   flex-direction: column;
+ }
+ .top>view.lf{
+   flex-direction: row;
+   margin-right: 30rpx;
+   color: #FC4C4C;
+   font-size: 28rpx;
+   }
+   .money{
+     font-size: 50rpx;
+     margin-left:10rpx;
+     margin-top:20rpx;
+   }
+   .center{
+     width: 100rpx;
+     font-size: 32rpx;
+     color: #333;
+     margin-right:100rpx;
+   }
+    .center text{
+      display: block;
+      font-size:20rpx;
+      background: #F3F3F3;
+      color: #999;
+      text-align: center;
+      margin-top:8rpx;
+    }
+  .rt{
+      font-size:28rpx;
+      align-items: flex-end
+    }
+  .rt text{
+       font-size: 20rpx;
+       color: #999;
+     }
+  .rt view{
+      width: 156rpx;
+      height: 60rpx;
+      text-align: center;
+      line-height: 60rpx;
+      border-radius: 100rpx;
+      margin-bottom: 15rpx;
+  }
+  .list>image{
+   height: 200rpx;
+   width: 100%;
+   display: flex;
+   margin-top:10rpx;
+   border-radius:10rpx; 
+  }
+  .list>image.receive{
+    position:absolute;
+   height: 80rpx;
+   width: 125rpx;
+   left: 0;
+   top:-10rpx;
+   z-index: 1
+  }
+  .rt .active{
+      background: -webkit-linear-gradient(left,#AC3EFF,#7739DF);
+      color: #fff;
+      /* width: 156rpx;
+      height: 60rpx;
+      text-align: center;
+      line-height: 60rpx;
+      border-radius: 100rpx;
+      margin-bottom: 15rpx; */
+   }
+  .rt .active1{
+     color: #7739DF;
+     border:1rpx solid #7739DF
+  }

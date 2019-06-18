@@ -17,11 +17,12 @@ Page({
    */
   onLoad: function(options) {
     this.addresslist()
-    // console.log(options)
-    if (options.viewform) {
+    console.log(options)
+    if (options.Viewfrom) {
       this.setData({
-        Viewfrom: options.viewform
+        Viewfrom: options.Viewfrom
       })
+      console.log(this.data.Viewfrom)
     }
   },
   onShow: function(options) {
@@ -89,12 +90,14 @@ Page({
   },
   // 是否选择为默认地址
   is_selection(e) {
-    // console.log(this.data.Viewfrom)
+    console.log(this.data.Viewfrom)
     let index = e.currentTarget.dataset.index;
     if (this.data.Viewfrom == 'select') {
+      console.log(122222)
       let list = this.data.list
       app.globalData.address = list[index]
       wx.navigateBack({
+        delta:1
       })
     } else {
       let list = this.data.list;
@@ -105,7 +108,6 @@ Page({
       this.setData({
         list
       })
-      
     }
   }
 })
