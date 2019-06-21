@@ -20,9 +20,8 @@
       <view class='time'>{{item.start_time +' - '+item.end_time}}</view>
     </view>
     <view class='use-btn'>
-      <button data-id="{{item.coupon_id}}" data-use_way="{{item.use_way}}" data-is_shop_coupon="{{item.is_shop_coupon}}" bindtap="go2useCoupon" class='use-btn-bn replaceBackground'>去使用</button>
+    <button data-id="{{item.coupon_id}}" data-use_way="{{item.use_way}}" data-is_shop_coupon="{{item.is_shop_coupon}}" bindtap="go2useCoupon" class='use-btn-bn replaceBackground' data-index='{{index}}'>去使用</button>
     </view>
-
     <view wx:if="{{currIndex==1}}" class='coupon-used-view'>
       <image class='image' src="/img/coupon-used.png" mode="aspectFit">
       </image>

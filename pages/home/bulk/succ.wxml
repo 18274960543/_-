@@ -15,6 +15,7 @@
   <image class="bulk-status" src="/img/bulk-3.png" wx:if="{{user.is_collage_success==2}}"></image>
 </view>
 <view class='userInfo'>
+<block wx:if="{{!finish}}">
   <view class='userInfo-1'>再邀请{{needNum}}人，超值商品立马到手</view>
   <view class='userInfo-2'>
     <view class='userInfo-2-1'>剩余</view>
@@ -25,13 +26,15 @@
     <view class='userInfo-2-2'>{{clock[2]}}</view>
     <!-- <view class='userInfo-2-1'>失败</view> -->
   </view>
+</block>
+<view wx:else class="userInfo-1">恭喜您拼单成功</view>
   <view class='userInfo-3'>
-    <view class='userInfo-3-1'>
+    <!--<view class='userInfo-3-1'>
       <image src="{{user.member.avatar}}"></image>
-      <!-- <view>团长</view> -->
-    </view>
+       <view>团长</view> 
+    </view>-->
     <view class='groupbuyList' wx:for="{{groupbuyList}}" wx:key="index">
-      <view class='userInfo-3-2'>
+      <view class='userInfo-3-2' wx:if='{{index}}'>
         <image src="/img/xz-add.png"></image>
       </view>
       <view class='userInfo-3-1'>
@@ -39,10 +42,10 @@
         <image wx:else src="{{item.member.avatar}}"></image>
       </view>
     </view>
-
   </view>
   <block wx:if="{{user.is_collage_success!=2}}">
-  <button bindtap='gobuy' class='userInfo-4' wx:if="{{options.share}}">立即参团</button>
+   <button class='userInfo-4' wx:if="{{finish}}">拼团完成</button>
+  <button bindtap='gobuy' class='userInfo-4' wx:elif="{{options.share}}">立即参团</button>
   <button class='userInfo-4' open-type='share' wx:else>邀请好友拼单</button>
   </block>
 </view>
@@ -54,7 +57,6 @@
     </view>
   </view>
 </view>
-
 <view class='bootom'>
   <view bindtap='jump' data-types='1'>回首页逛逛</view>
   <view bindtap='jump' data-types='2'>我的订单</view>

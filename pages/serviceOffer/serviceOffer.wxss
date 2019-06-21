@@ -60,7 +60,7 @@
   .list>image{
    height: 200rpx;
    width: 100%;
-   display: flex;
+   display: block;
    margin-top:10rpx;
    border-radius:10rpx; 
   }
@@ -85,4 +85,8 @@
   .rt .active1{
      color: #7739DF;
      border:1rpx solid #7739DF
+  }
+  .rt .active1{
+    color:#ccc;
+    border:1rpx solid #ddd
   }

@@ -6,6 +6,7 @@ Page({
   data: {
     showSucc: true,
     address_id:'',
+    finish:false
   },
   onLoad(options) {
     console.log(options)
@@ -31,8 +32,6 @@ Page({
             method: "post",
             success: (res) => {
               console.log(res)
-              // console.log('getCode',res.data)
-              // 获取token
               url.token = res.data.token_type + ' ' + res.data.access_token;
               let token = res.data.token_type + ' ' + res.data.access_token;
               that.abc(token, options)
@@ -47,13 +46,16 @@ Page({
       })
     } else{
       this.abc(wx.getStorageSync('token'), options)
-      // this.addresslist(wx.getStorageSync('token'))
       }
     // 分享进来结束
   },
   abc(token, options) {
+    console.log()
+    console.log(options,options.activity_id)
+    // 分享是1  其余是0
+    let is_share = options.is_share?1:0;
     wx.request({
-      url: url.api + `/ucs/v1/groupbuy/order/info/` + options.activity_id, 
+      url: url.api + `/ucs/v1/groupbuy/order/info/` + options.activity_id + `?is_share=` + is_share, 
       header: {
         'content-type': 'application/json',
         "Authorization": token,
@@ -64,11 +66,12 @@ Page({
           var groupbuy = res.data.data.user.groupbuy,
             user = res.data.data.user,
             groupbuyList = res.data.data.list,
+            list=res.data.data.list,
             arr = [],
             arrNum = 0
-          for (var i = 0; i < groupbuy.person_num - 1; i++) {
+          for (var i = 0; i < groupbuy.person_num;i++) {
             if (groupbuyList[i]) {
-              var obj = groupbuyList[i]
+              var obj = list[i]
               console.log(obj)
             } else {
               var obj = {}
@@ -76,8 +79,9 @@ Page({
             }
             arr.push(obj)
           }
-          console.log(arr)
+          // console.log(arr)
           // this.countdown(parseInt(res.data.data.time + '1000'))
+          // console.log('打印:',groupbuyList);
           this.countdown(parseInt(res.data.data.time)*1000)
           this.setData({
             user,
@@ -85,8 +89,18 @@ Page({
             groupbuy,
             userInfo: wx.getStorageSync('userInfo'),
             options,
-            needNum: arrNum
+            needNum: groupbuy.person_num - groupbuyList.length,
+            list,
           })
+          //拼团 还是 参团 完成等状态判断/////
+          let num = this.data.list.length
+          if (groupbuy.person_num == num) {
+            this.setData({
+              finish: true,
+            })
+            console.log("完成拼团")
+          }
+          // ///
           return
         }
         wx.showModal({
@@ -136,6 +150,7 @@ Page({
       })
       return
     }
+    // console.log('打印', groupbuy.id, user.shop_id, this.data.address_id, this.data.options.activity_id)
     wx.request({
       url: url.api + `/ucs/v1/groupbuy/order/activity`,
       data: {
@@ -143,14 +158,14 @@ Page({
         shop_id: user.shop_id,
         address_id: this.data.address_id,
         pay_type: "WeChat",
-        activity_sn: user.activity_sn
+        activity_sn:this.data.options.activity_id
       },
       method: "post",
       header: {
         'content-type': 'application/json',
         "Authorization": app.token
       },
-      success(res) {
+      success:(res)=>{
         console.log('拼团下单', res)
         if (res.data.code == 200) {
           wx.requestPayment({
@@ -159,9 +174,47 @@ Page({
             package: res.data.pay_info.package,
             signType: res.data.pay_info.signType,
             paySign: res.data.pay_info.paySign,
-            success: res => {
+            success: res => { 
               wx.showToast({
-                title: '拼团成功'
+                title: '拼团成功',
+                success:(res)=>{
+                  let options = this.data.options;
+                  options.share=0
+                  this.abc(wx.getStorageSync('token'), options)
+                  // let groupbuyList = this.data.groupbuyList;
+                  // let groupbuy = this.data.groupbuy;
+                  // let list = this.data.list;
+                  // groupbuyList.map(item => {
+                  //   // 判断是不是有空的对象 有空的对象是 图片
+                  //   if (Object.keys(item).length == 0) {
+                  //     list.push(item)
+                  //   }
+                  // })
+                  // list.pop()
+                  // this.setData({
+                  //   groupbuyList: list
+                  // })
+                  // let num = list.length;
+                  // console.log("成功前",list1,list,num,groupbuy)
+                  // if (groupbuy.person_num > num) {
+                  //   let options = this.data.options;
+                  //   console.log("要求好友拼团1")
+                  //   options.share = 0
+                  //   this.setData({
+                  //     options,
+                  //     needNum: groupbuy.person_num - list1.length,
+                  //   })
+                  // }
+                  // if (groupbuy.person_num == num) {
+                  //   this.setData({
+                  //     finish: true
+                  //   })
+                  //   console.log("完成拼团1")
+                  // }
+                  // console.log("成功后")
+                },
+                fail: function(res) {},
+                complete: function(res) {},
               })
             },
             fail: err => {
@@ -207,7 +260,7 @@ Page({
     return {
       title: groupbuy.goods_name,
       imageUrl: groupbuy.post_image,
-      path: '/pages/home/bulk/succ?share=share&activity_id=' + activity_id,
+      path: '/pages/home/bulk/succ?share=share&activity_id=' + activity_id + '&is_share=' +1,
       success: (res) => {
         console.log(res)
       }

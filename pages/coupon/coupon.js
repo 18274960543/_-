@@ -8,8 +8,8 @@ Page({
     list: ["未使用", "已使用", "已失效"],
     couponList: [],
     actionDisabled: false,
+     
   },
-
   on_tap(e) {
     let index = e.currentTarget.dataset.index
     this.setData({
@@ -52,8 +52,8 @@ Page({
       title: '加载中...',
     })
     wx.request({
-      url: url.api + `/ucs/v1/member/coupon/` + this.data.currIndex, // 仅为示例，并非真实的接口地址
-      // url: url.api + `/ucs/v1/member/coupon/` + 0, // 仅为示例，并非真实的接口地址
+      url: url.api + `/ucs/v1/member/coupon/` + this.data.currIndex,
+      // url: url.api + `/ucs/v1/member/coupon/` + 0, 
       method: "get",
       data: {
         shop_id: wx.getStorageSync('shop_id'),
@@ -66,6 +66,7 @@ Page({
         wx.hideLoading();
       },
       success: (res) => {
+        console.log(res.data)
         if (res.data.status == 'success') {
           for (let item of res.data.data) {
             item.start_time = self.formatDate(item.start_time);
@@ -129,8 +130,11 @@ Page({
   },
   go2useCoupon: function(e) {
     if (this.data.currIndex == 0) {
+      let index = e.target.dataset.index
       let use_way = e.target.dataset.use_way;
       let is_shop_coupon = e.target.dataset.is_shop_coupon;
+      let service=wx.getStorageSync('service')
+      // 等于1是服务的优惠劵
       if (use_way == 1) {
         //不能使用
         if (is_shop_coupon == 0) {
@@ -140,9 +144,55 @@ Page({
             icon: 'none',
           })
         } else {
-          wx.switchTab({
-            url: '../home/home',
+          let service_id = this.data.couponList[index].common.service_type;
+          let id;
+          service.map((item,index)=>{
+            if (item.id == service_id){
+              id=index
+            }
           })
+          switch (id+1) {
+              case 1:
+                wx.navigateTo({
+                  url: '/pages/template/template?service_id=' + service_id + '&mername=' + service[id].name,
+                })
+                break;
+              case 2:
+                wx.navigateTo({
+                  url: "/pages/template/template?service_id=" + service_id + '&mername=' + service[id].name,
+                })
+                break;
+              case 3:
+                wx.navigateTo({
+                  url: "/pages/foster/foster?service_id=" + service_id + '&mername=' + service[id].name,
+                })
+                break;
+              case 4:
+                wx.navigateTo({
+                  url: "/pages/peripheryTemplate/peripheryTemplate?service_id=" + service_id + '&mername=' + service[id].name,
+                })
+                break;
+              case 5:
+                wx.navigateTo({
+                  url: "/pages/peripheryTemplate/peripheryTemplate?service_id=" + service_id + '&mername=' + service[id].name,
+                })
+                break;
+              case 7:
+                wx.navigateTo({
+                  url: "/pages/peripheryTemplate/peripheryTemplate?service_id=" + service_id + '&mername=' + service[id].name,
+                })
+                break;
+              case 9:
+                wx.navigateTo({
+                  url: "/pages/serviceTemplate/serviceTemplate?service_id=" + service_id + '&mername=' + service[id].name,
+                })
+                break;
+              case 6:
+                wx.navigateTo({
+                  url: "/pages/peripheryTemplate/peripheryTemplate?service_id=" + service_id + '&mername=' + service[id].name,
+                })
+                break;
+            }
         }
       } else {
         wx.navigateTo({

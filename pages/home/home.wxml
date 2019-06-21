@@ -101,15 +101,15 @@
           <image src='{{mergedata.servicecosts}}'></image>
       </view>
       <!-- 超值拼团-->
-      <view class='bulk' bindtap='jump' data-url='bulk/bulk' style="background-image: url('{{mergedata.assemble}}')" wx:if="{{mergedata.broupbuy.length}}">
-        <view class='bulk-1'>
-          <view>超值拼团</view>
-          <view class="free">
-            <!-- <image src="/img/baoyou.png"></image> -->
-            包邮
-          </view>
+      <view class='bulk' bindtap='jump' data-url='bulk/bulk'   wx:if="{{mergedata.broupbuy.length}}">
+      <div class="bulkTop" style="background-image: url('{{mergedata.assemble}}')">
+      <view class='bulk-1'>
+          <view style='font-weight: bold;'>超值拼团</view>
+         <view class="bulk-2">拼团立减/低至5折</view>
+          <view class="free">包邮</view>
         </view>
-        <view class="bulk-2">拼团立减/低至5折</view>
+        <view class="rt">更多></view>
+      </div>
         <view class='bulkImg'>
         <view wx:for="{{mergedata.broupbuy}}" wx:key="index" class="bulkImgCenter">
          <image src="{{item.goods.image}}"></image>
@@ -119,10 +119,31 @@
           </view>
         </view>
         </view>
-        <!-- <image src='/img/Assemble.png' class="assemble"></image> -->
       </view>
-   
       <!--  -->
+      <!-- 超值拼团第5次修改备份 -->
+      <!-- <view class="pinta" bindtap='jump' data-url='bulk/bulk' wx:if="{{mergedata.broupbuy.length}}">
+           <div class="pintaTop" style="background-image: url('{{mergedata.assemble}}')">
+              <div class="lf">
+                  <div>超值拼团<div>
+                  <text>拼团立减/低至5折</text>
+                  <view class="free">包邮</view>
+              <div>
+              <div class="rt">
+                 更多
+              </div>
+           </div>
+          <view class='bulkImg'>
+        <view wx:for="{{mergedata.broupbuy}}" wx:key="index" class="bulkImgCenter">
+         <image src="{{item.goods.image}}"></image>
+          <view>
+             <text class="rmb" style='font-size:30rpx;color:#FC4C4C'><text style='font-size:22rpx;'>¥</text>{{item.goods_price}}</text>
+             <text class="ot_price_rmb" style='font-size:22rpx;'>¥{{item.origin_price}}</text>
+          </view>
+        </view>
+        </view>
+      </view> -->
+      <!-- 第5次修改结束 -->
       <view class="list1">
         <scroll-view class="nav_top" scroll-x="true">
           <block wx:for="{{mergedata.category}}" wx:key="index">

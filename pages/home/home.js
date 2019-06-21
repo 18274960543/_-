@@ -218,6 +218,7 @@ Page({
           wx.setStorageSync('title', res.data.info.name)
           wx.setStorageSync('uuid', res.data.info.uuid)
           wx.setStorageSync('category', res.data.category)
+          wx.setStorageSync('service', res.data.service)
           let isCoupon = mergedata.is_new
           if (isCoupon) {
             isCoupon = true
@@ -318,9 +319,9 @@ Page({
 
   // 打电话
   dianhua() {
-    let tel = this.data.mergedata.contact_number
+    // let tel = this.data.mergedata.contact_number
     wx.makePhoneCall({
-      phoneNumber: tel // 仅为示例，并非真实的电话号码
+      phoneNumber: '0731-82826069' // 电话号码
     })
   },
   // 点击去商品详情页

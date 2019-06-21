@@ -29,7 +29,7 @@
     </view>
     <view class='list-3'>
       <view wx:if="{{item.state == 10}}" bindtap='operation' data-groupbuy_id='{{item.groupbuy_id}}' data-types='1' data-index="{{index}}" data-activity_sn='{{item.activity_sn}}'>去支付</view>
-      <view bindtap='operation' data-groupbuy_id='{{item.groupbuy_id}}' data-types='2' data-index="{{index}}" data-activity_sn='{{item.activity_sn}}'>查看详情</view>
+      <view bindtap='operation' data-groupbuy_id='{{item.groupbuy_id}}' data-types='2' data-index="{{index}}" data-activity_sn='{{item.activity_sn}}' wx:else>查看详情</view>
     </view>
   </view>
   <view wx:if="{{!orderList.length}}" class="noData">

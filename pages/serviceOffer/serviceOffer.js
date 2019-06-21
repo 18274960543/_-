@@ -9,7 +9,6 @@ Page({
   data: {
 
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -46,10 +45,12 @@ Page({
       url: url.api + `/ucs/v1/service/coupon/own`,
       method: "post",
       data:{
-        coupon_id: receive.id,
-        start_time: receive.start_time,
-        end_time: receive.end_time,
-        discount: receive.discount,
+        coupon_id: receive.coupon_id,
+        start_time: receive.coupon[0].start_time,
+        end_time: receive.coupon[0].end_time,
+        discount: receive.coupon[0].discount,//折扣
+        use_way:1,
+        service_coupon_id: receive.id
       },
       header: {
         'content-type': 'application/json',

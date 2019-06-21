@@ -37,7 +37,7 @@
 <view class="scroll_left" bindtap='addPets' style='width:80rpx'>
 <image src='/img/a.png' mode='aspectFill' class="scroll_img" style='width:40rpx;height:40rpx;margin-top:14rpx'></image>
 <view class="scroll_text">
-<view style='font-size:28rpx;color:#666;'>添加宠物</view>
+<view style='font-size:28rpx;color:#fff;width:0'>添加宠物</view>
 </view>
 </view>
 </scroll-view>
@@ -51,11 +51,18 @@
        <image src='/img/order.png'></image>
        <text>我的订单</text>
     </view>
-   
+  <view  bindtap="gomember">
+       <image src='/img/hy.png'></image>
+       <text>我的会员卡</text>
+    </view>
     <view bindtap="onTap_coupon">
        <image src='/img/coupon.png'></image>
        <text>优惠券</text>
     </view>
+    <view bindtap='jump' data-url='../home/bulk/myBulk'>
+        <image src='/img/8de46b36c6be33620652a74bf1a4103.png'></image>
+        <text>我的拼团</text>
+      </view>
     <view bindtap='go_news'>
        <image src='/img/message.png'></image>
        <text>我的消息</text>
@@ -68,20 +75,14 @@
        <image src='/img/store.png'></image>
        <text>关注门店</text>
     </view>
-    <view>
+    <!-- <view>
      <navigator target="miniProgram" app-id="wx1fff2a2ffd4afd95">
         <image src='/img/enter.png'></image>
         <text>商家端</text>
       </navigator>
-    </view>
-    <view  bindtap="gomember">
-       <image src='/img/hy.png'></image>
-       <text>我的会员卡</text>
-    </view>
-    <view bindtap='jump' data-url='../home/bulk/myBulk'>
-        <image src='/img/8de46b36c6be33620652a74bf1a4103.png'></image>
-        <text>我的拼团</text>
-      </view>
+    </view> -->
+ 
+    
       <view bindtap='go_Aboutus'>
         <image src='/img/about.png'></image>
         <text>关于我们</text>
