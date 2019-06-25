@@ -7,6 +7,7 @@ Page({
     curList: 0
   },
   onLoad(options) {
+    wx.setNavigationBarTitle({ title: '我的拼团' })  
     this.orderReq('all')
   },
   bindVae(e) {

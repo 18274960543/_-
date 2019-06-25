@@ -17,7 +17,9 @@
       </view>
       <view class="house-top_rt" wx:if="{{item.state==10}}">待付款</view>
       <view class="house-top_rt" wx:if="{{item.state==0}}">订单已取消</view>
-        <view class="house-top_rt" wx:if="{{item.state==30}}">已改签</view>
+        <view class="house-top_rt" wx:if="{{item.change_sign==1&&item.state==30}}">未改签（商家审核中）</view>
+        <view class="house-top_rt" wx:if="{{item.change_sign==2&&item.state==30}}">已同意改签</view>
+        <view class="house-top_rt" wx:if="{{item.change_sign==3&&item.state==30}}">拒绝改签</view>
       <view class="house-top_rt" wx:if="{{item.state==20}}">待服务</view>
       <view class="house-top_rt" wx:if="{{item.state==40}}">已完成</view>
       <view class="house-top_rt" wx:if="{{item.state==50}}">已过期</view>
@@ -30,7 +32,8 @@
         <view class="house-content-top" style='height:40rpx;margin-bottom:0;'>类型：{{item.service[0].name}}</view>
         <view class="house-content-bt">
           <text style='display:block' wx:if="{{item.member.length}}">{{item.member[0].specs}};{{item.member[0].weight}}kg</text>
-          <text>{{item.date_time?item.date_time:''}}</text>
+          <text>预约时间：{{item.date_time?item.date_time:''}}</text>
+          <text wx:if="{{item.change_time}}">改签时间：{{item.change_time}}</text>
         </view>
       </view>
       <view class="rt">￥{{item.total_fee?item.total_fee:item.base_fee}}</view>

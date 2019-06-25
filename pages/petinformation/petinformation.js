@@ -211,7 +211,7 @@ Page({
           attr_values: attr_values,
           // gender: breed_id,
           age: attr1.age,
-          weight: attr1.weight,
+          weight: parseInt(attr1.weight),
           specs: specs,
           avatar_default_check: this.data.img1 ? 1 : 0,
           avatar: this.data.img1 ? this.data.img1 : this.data.fromdata.avatar_default,

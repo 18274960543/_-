@@ -609,13 +609,13 @@ border-radius: 10rpx;
  flex-direction: column;
  text-align: center;
 width:210rpx;
- margin: 0 8rpx 10rpx;
+ margin: 0 7.8rpx 10rpx;
 }
 .bulkImg image {
   width:100%;
   height: 210rpx;
    margin-bottom: 15rpx;
-  border: 1rpx solid #EDEDED
+  border: 1rpx solid #eee
 }
 .bulkImg>view view{
   display: flex;

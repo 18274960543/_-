@@ -42,7 +42,7 @@ Page({
             status: 1,
           },
            {
-            text: '已改签',
+            text: '改签审核',
             status: 1,
           }
         ]
@@ -503,7 +503,6 @@ Page({
   cancelorder(e) {
     let index = e.currentTarget.dataset.index;
     let order_id = this.data.service_list[index].id;
-   
   //托运订单 3天之内不扣钱 3天之后扣100元 手续费
     if (this.data.service_list[index].service[0].name =='托运'){
       wx.showModal({

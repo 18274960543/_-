@@ -256,40 +256,6 @@ Page({
        isclose: false
      })
   },
-  // 点击切换店铺 出来弹框
-  // switch_dp(){
-  //   // 最优店铺选择接口数据
-  //   let c=this.data.exes[2]
-  //   wx.request({
-  //     url: url.api + `/ucs/v1/service/${c}`, // 仅为示例，并非真实的接口地址
-  //     method: "post",
-  //     data:{
-  //       lon:this.data.lon,
-  //       lat:this.data.lat,
-  //       province: this.data.address.province,
-  //       city: this.data.address.city,
-  //       service_id: this.data.service_id
-  //     },
-  //     header: {
-  //       'content-type': 'application/json', // 默认值
-  //       "Authorization": app.token
-  //     },
-  //     success: (res) => {
-  //       console.log(res.data.data) 
-  //       let switch_dp = res.data.data;
-  //       switch_dp.map((item)=>{
-  //         item.switch1=false
-  //       })
-  //        this.setData({
-  //          switch_dp: res.data.data
-  //        })
-  //     }
-  //   })
-  //  this.setData({
-  //    iswitch: true,
-  //    isclose: true
-  //  })
-  // },
   // 点击去编辑地址
   goaddress(){
     wx.navigateTo({
@@ -704,7 +670,6 @@ Page({
           }
         }) 
       }
-      
     }
     },
     //  点击导航

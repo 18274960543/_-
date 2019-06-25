@@ -582,5 +582,10 @@ Page({
     wx.navigateTo({
       url: '/pages/serviceOffer/serviceOffer',
     })
+  },
+  jump1(e) {
+    wx.navigateTo({
+      url: '/pages/details/details?bulk=1&id=' + e.currentTarget.dataset.id,
+    })
   }
 })

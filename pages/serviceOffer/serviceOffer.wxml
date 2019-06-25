@@ -1,4 +1,4 @@
-<view class="content">
+<view class="content" wx:if="{{list.length>0}}">
     <view class="list" wx:for="{{list}}" wx:key="index">
           <view class="top">
                <view class="lf">
@@ -21,4 +21,8 @@
           <image src="/img/receive.png" class="receive" wx:if="{{item.user.length>0}}"></image>
           <image src='{{item.img.full_img_url}}' mode="scaleToFill"></image>
     </view>
+</view>
+<view wx:else class="juan">
+   <image src='/img/kong.png'></image>
+   <text>您当前还没有可用的服务劵</text>
 </view>

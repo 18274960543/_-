@@ -111,7 +111,7 @@
         <view class="rt">更多></view>
       </div>
         <view class='bulkImg'>
-        <view wx:for="{{mergedata.broupbuy}}" wx:key="index" class="bulkImgCenter">
+        <view wx:for="{{mergedata.broupbuy}}" wx:key="index" class="bulkImgCenter" catchtap='jump1' data-id='{{item.id}}'>
          <image src="{{item.goods.image}}"></image>
           <view>
              <text class="rmb" style='font-size:30rpx;color:#FC4C4C'><text style='font-size:22rpx;'>¥</text>{{item.goods_price}}</text>

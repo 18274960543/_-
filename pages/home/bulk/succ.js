@@ -45,6 +45,7 @@ Page({
         }
       })
     } else{
+      // this.addresslist(wx.getStorageSync('token'))
       this.abc(wx.getStorageSync('token'), options)
       }
     // 分享进来结束
@@ -181,37 +182,6 @@ Page({
                   let options = this.data.options;
                   options.share=0
                   this.abc(wx.getStorageSync('token'), options)
-                  // let groupbuyList = this.data.groupbuyList;
-                  // let groupbuy = this.data.groupbuy;
-                  // let list = this.data.list;
-                  // groupbuyList.map(item => {
-                  //   // 判断是不是有空的对象 有空的对象是 图片
-                  //   if (Object.keys(item).length == 0) {
-                  //     list.push(item)
-                  //   }
-                  // })
-                  // list.pop()
-                  // this.setData({
-                  //   groupbuyList: list
-                  // })
-                  // let num = list.length;
-                  // console.log("成功前",list1,list,num,groupbuy)
-                  // if (groupbuy.person_num > num) {
-                  //   let options = this.data.options;
-                  //   console.log("要求好友拼团1")
-                  //   options.share = 0
-                  //   this.setData({
-                  //     options,
-                  //     needNum: groupbuy.person_num - list1.length,
-                  //   })
-                  // }
-                  // if (groupbuy.person_num == num) {
-                  //   this.setData({
-                  //     finish: true
-                  //   })
-                  //   console.log("完成拼团1")
-                  // }
-                  // console.log("成功后")
                 },
                 fail: function(res) {},
                 complete: function(res) {},

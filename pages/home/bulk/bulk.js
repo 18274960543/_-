@@ -11,6 +11,7 @@ Page({
     scrollLeft: 0
   },
   onLoad(options) {
+    wx.setNavigationBarTitle({ title: '超值拼单' })  
     var that = this
     wx.request({
       url: url.api + `/ucs/v1/groupbuy/goods/class`,
@@ -74,7 +75,6 @@ Page({
           content: res.data.message,
           showCancel: false
         })
-        
       }
     })
   },

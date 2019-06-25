@@ -20,7 +20,7 @@
   </scroll-view>
   <!--  -->
   <view class='main'>
-    <view class='mainList' wx:for="{{bulkList}}" wx:key="">
+    <view class='mainList' wx:for="{{bulkList}}" wx:key="index" bindtap='jump' data-id='{{item.id}}'>
       <view class='mainList-img'>
         <image src="{{item.post_image}}"></image>
       </view>
@@ -30,7 +30,7 @@
         <view>
           <text>￥{{item.goods_price}}</text> 省{{item.new_price}}元
         </view>
-        <view bindtap='jump' data-id='{{item.id}}'>去拼团</view>
+        <view>去拼团</view>
       </view>
     </view>
     <view wx:if="{{!bulkList.length}}" wx:key="" class='nodata'>暂无数据</view>

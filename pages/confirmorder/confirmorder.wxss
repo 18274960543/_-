@@ -49,8 +49,9 @@ margin:0 20rpx;font-size:28rpx;color:#333;border-bottom:1px solid #F5F5F5}
 .coupon-text{
   display: inline-block;
   line-height: 0rpx;
-  color: #999;
+  color: #000;
   margin-right:35rpx;
+  font-size: 28rpx;
 }
 .coupon-select-wraper{
   position: fixed;

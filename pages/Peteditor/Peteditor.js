@@ -127,13 +127,11 @@ Page({
             array,
             gender,
             index: breed_id,
-            
           })
         }
       })
     }
   },
- 
   // 体毛、体型
   select(e) {
     let index = e.currentTarget.dataset.index[0];
@@ -233,7 +231,7 @@ Page({
           attr_values: attr_values,
           // gender: breed_id,
           age: attr1.age,
-          weight: attr1.weight,
+          weight: parseInt(attr1.weight),
           specs: specs,
           avatar_default_check: 1,
           avatar: this.data.img1 ? this.data.img1 :this.data.img2,
@@ -252,7 +250,6 @@ Page({
         }
       })
     }
-
   },
   // 删除宠物
   deletPets() {
