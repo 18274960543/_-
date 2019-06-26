@@ -739,4 +739,7 @@ width:210rpx;
   font-size: 18rpx;
   color: #999;
   margin-right: 30rpx;
+  display:flex;
+  align-items: center;
+  flex: 1;
 }
