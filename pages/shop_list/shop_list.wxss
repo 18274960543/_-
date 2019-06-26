@@ -39,7 +39,6 @@ page {
 }
 
 /* 选项 */
-
 .selectView {
   width: 90%;
   margin: 0 auto;

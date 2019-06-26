@@ -144,6 +144,12 @@ Page({
             icon: 'none',
           })
         } else {
+          if (!this.data.couponList[index].common){
+            wx.switchTab({
+              url: '/pages/home/home'
+            }) 
+           return
+          }
           let service_id = this.data.couponList[index].common.service_type;
           let id;
           service.map((item,index)=>{

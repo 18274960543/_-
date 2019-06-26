@@ -53,9 +53,9 @@ Page({
     })
     this.renderGoods(this.data.ids, function (res) {
       wx.hideLoading()
-      console.log(123333, res)
+      // console.log(123333, res)
       if (!res.data.data.length) {
-        console.log(2333)
+        // console.log(2333)
         self.setData({
           is_nodata: true
         })

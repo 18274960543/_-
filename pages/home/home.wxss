@@ -638,11 +638,6 @@ width:210rpx;
   font-size: 28rpx;
   color: #333;
 }
-/* .give text{
-  font-size: 24rpx;
-  color: #0783FF;
-  margin-left:20rpx;
-} */
 .give image{
   width: 100%;
   height:350rpx;
@@ -660,4 +655,88 @@ width:210rpx;
   box-sizing: border-box;
   border-top-left-radius:15rpx;
   border-bottom-right-radius:15rpx;
+}
+/* 热卖专区 */
+.popularAreas{
+  width: 100%;
+  background: #fff;
+  border-radius: 10rpx;
+  margin-bottom: 30rpx;
+}
+.areasTop{
+  display: flex;
+  height: 100rpx;
+  align-items: center;
+  padding: 23rpx 20rpx;
+  box-sizing: border-box;
+  font-size: 32rpx;
+  color: #666;
+}
+.areasTop image{
+  height: 55rpx;
+  width: 55rpx;
+}
+.areasTop view{
+  width: 120rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  border-radius: 50rpx;
+  background: linear-gradient(#FFE6A1, #FBD15F);
+  text-align: center;
+  color: #FF5038;
+  font-size:26rpx;
+  }
+ .areasTop text{
+    padding: 0 20rpx;
+}
+.scrollLeft{
+  width: 100%;
+  white-space:nowrap;
+ display: flex;
+ align-items: center;
+}
+.slide{
+  display: inline-block;
+  width: 260rpx;
+  margin-left: 25rpx;
+  padding: 15rpx 0;
+}
+.slide>image{
+  height: 160rpx;
+  width: 125rpx;
+  display: block;
+  margin:20rpx auto;
+}
+.slideText{
+  font-size: 26rpx;
+  color: #343434;
+}
+.lfRt{
+  font-size: 20rpx;
+  color: #666;
+}
+.lfRt text{
+  padding-right:30rpx;
+}
+.slideBt{
+  align-items: center;
+  display: flex;
+ padding:15rpx;
+}
+.slideBt image{
+  height: 30rpx;
+  width: 30rpx;
+}
+.slideBt view{
+  font-size: 24rpx;
+  color: #FC4C4C;
+  margin-right: 13rpx;
+}
+.slideBt view text{
+  font-size: 20rpx;
+}
+.slideBt>text{
+  font-size: 18rpx;
+  color: #999;
+  margin-right: 30rpx;
 }

@@ -18,8 +18,8 @@
       <view class="house-top_rt" wx:if="{{item.state==10}}">待付款</view>
       <view class="house-top_rt" wx:if="{{item.state==0}}">订单已取消</view>
         <view class="house-top_rt" wx:if="{{item.change_sign==1&&item.state==30}}">未改签（商家审核中）</view>
-        <view class="house-top_rt" wx:if="{{item.change_sign==2&&item.state==30}}">已同意改签</view>
-        <view class="house-top_rt" wx:if="{{item.change_sign==3&&item.state==30}}">拒绝改签</view>
+        <view class="house-top_rt" wx:if="{{item.change_sign==2&&item.state==20}}">已同意改签</view>
+        <view class="house-top_rt" wx:if="{{item.change_sign==3&&item.state==20}}">拒绝改签</view>
       <view class="house-top_rt" wx:if="{{item.state==20}}">待服务</view>
       <view class="house-top_rt" wx:if="{{item.state==40}}">已完成</view>
       <view class="house-top_rt" wx:if="{{item.state==50}}">已过期</view>

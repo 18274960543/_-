@@ -40,12 +40,9 @@ Page({
       success: (res) => {
         //  console.log(res.data.data);
         let pet_list = res.data.data;
-       
-
         this.setData({
           pet_list: pet_list
         })
-       
         console.log(this.data.pet_list)
       }
     })
@@ -63,10 +60,8 @@ Page({
   stopPageScroll: function () {
     return
   },
-  
   // 点击遮罩层 遮罩层消失 弹框消失
   mask() {
-    
       this.setData({
         maskstate: true,
         selectiontime: true,

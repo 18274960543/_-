@@ -26,7 +26,8 @@ Page({
     wx.request({
       url: url.api + '/ucs/v1/shop/goods/show', // 仅为示例，并非真实的接口地址
       data: {
-        likeWhere: likeWhere
+        likeWhere: likeWhere,
+        shopId: wx.getStorageSync('shop_id')
       },
       method: "post",   
       success: (res) => {
