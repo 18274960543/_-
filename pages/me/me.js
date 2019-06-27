@@ -9,17 +9,6 @@ Page({
     is_varieties: true,
   },
   onLoad: function(options) {
-    // 查看是否授权
-    wx.getSetting({
-      success: function (res) {
-        // 如果用户没有授权
-        if (!res.authSetting['scope.userInfo']) {
-          wx.navigateTo({
-            url: '/pages/authorize/authorize'
-          })
-        }
-      }
-    })
     if (!wx.getStorageSync('userInfo')){
       this.queryUsreInfo()
     }else{

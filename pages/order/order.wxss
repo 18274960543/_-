@@ -444,6 +444,11 @@
   margin-bottom: -20rpx;
   font-size:30rpx;
 }
+.counponBt{
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+}
 .coupon-text{
   display: inline-block;
   line-height: 0rpx;

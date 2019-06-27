@@ -15,12 +15,13 @@
   background: #eee;
 }
 
-.title image {
+/* .title image {
   width: 60rpx;
   height: 60rpx;
-}
+} */
 
 .title text {
+  
   padding: 0 20rpx;
   color: #333;
 }
@@ -687,6 +688,7 @@ width:210rpx;
   font-size:26rpx;
   }
  .areasTop text{
+    margin-left:60rpx;
     padding: 0 20rpx;
 }
 .scrollLeft{

@@ -130,7 +130,7 @@
       <view class='coupon-content'>
         <view class='coupon-title'>选择优惠</view>
         <view wx:for="{{couponList}}" wx:key="{{index}}" wx:for-item="coupon">
-          <view class='coupon-item'>
+          <view class='coupon-item counponBt' bindtap="choseCouponAction" data-index="{{index}}" >
             <view>{{coupon.name}}
               <text wx:if="{{coupon.type==1}}">(减{{coupon.discount}})</text>
               <text wx:if="{{coupon.type==2||coupon.type==5}}">(满{{coupon.condition}}减{{coupon.discount}})</text>
@@ -139,7 +139,7 @@
               <text wx:if="{{coupon.type==4}}">(减{{coupon.discount}})</text>
                
             </view>
-            <view data-index="{{index}}" class='select-action' bindtap="choseCouponAction">
+            <view  class='select-action' >
               <image src="/img/switch_dp-3.png" mode='aspectFill' wx:if="{{selectCouponIndex!=='' && index==selectCouponIndex}}"></image>
               <image src="/img/switch_dp-1.png" mode='aspectFill' wx:else></image>
             </view>

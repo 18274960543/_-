@@ -8,6 +8,9 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   onLoad: function () {
+    wx.setNavigationBarTitle({
+      title: "授权" //页面标题为路由参数
+    })
     var that = this;
     // 查看是否授权
     wx.getSetting({
@@ -19,7 +22,7 @@ Page({
               that.queryUsreInfo();
               //用户已经授权过
               wx.switchTab({
-                url: '/pages/me/me'
+                url: '/pages/home/home'
               })
             } 
           });
@@ -53,7 +56,7 @@ Page({
           this.queryUsreInfo();
           console.log(res.data)
           wx.switchTab({
-            url: '/pages/me/me'
+            url: '/pages/home/home'
           })
           console.log("插入小程序登录用户信息成功！");
         },

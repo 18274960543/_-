@@ -92,7 +92,7 @@ Page({
   is_selection(e) {
     console.log(this.data.Viewfrom)
     let index = e.currentTarget.dataset.index;
-    if (this.data.Viewfrom == 'select') {
+    if (this.data.Viewfrom == 'edit') {
       console.log(122222)
       let list = this.data.list
       app.globalData.address = list[index]

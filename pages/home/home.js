@@ -74,6 +74,7 @@ Page({
     return
   },
   onLoad: function (options) {
+ 
     wx.playBackgroundAudio({
       dataUrl: '',
       title: '',
@@ -486,7 +487,7 @@ Page({
         } else {
           this.cmmon()
         }
-      }
+      }   
     })
   },
   // 授权地理位置
@@ -508,6 +509,7 @@ Page({
             longitude: longi
           },
           success: (res) => {
+            console.log("授权",res)
             let result = res.result;
             // 获取当前位置 调用最近店铺
             this.nearestShop({
@@ -523,6 +525,17 @@ Page({
             location.lat = res.result.location.lat;
             location.lon = res.result.location.lng;
             wx.setStorageSync('location', location);
+            // 查看是否授权
+            wx.getSetting({
+              success: function (res) {
+                // 如果用户没有授权
+                if (!res.authSetting['scope.userInfo']) {
+                  wx.navigateTo({
+                    url: '/pages/authorize/authorize'
+                  })
+                }
+              }
+            })
             this.setData({
               address
             })

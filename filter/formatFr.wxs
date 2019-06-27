@@ -3,7 +3,7 @@ var formatFr = {
     if(val){
       return parseFloat(val).toFixed(2);
     }
-    return "";
+    return 0.1;
   }
 }
 

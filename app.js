@@ -6,6 +6,7 @@ let url = require('./utils/config.js')
 App({
   
   onLaunch: function() {
+  
     wx.login({
       success: res => {
         console.log(res)
@@ -41,7 +42,7 @@ App({
         })
       }
     })
-
+ 
   },
 
   tele_phone: '18275142301', //电话号码

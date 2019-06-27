@@ -42,7 +42,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 17,
+			"current": 18,
 			"list": [
 				{
 					"id": -1,
@@ -168,6 +168,13 @@
 					"name": "拼团详情",
 					"pathName": "pages/home/bulk/succ",
 					"query": "share=share&activity_id=e379dab78d3c2",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "优惠劵",
+					"pathName": "pages/order/order",
+					"query": "",
 					"scene": null
 				}
 			]

@@ -1,7 +1,9 @@
 {
   "pages": [
+     
      "pages/home/home",
      "pages/serviceOffer/serviceOffer",
+     "pages/authorize/authorize",
     "pages/consumptionDetails/consumptionDetails", 
     "pages/consumption/consumption",  
     "pages/home/bulk/succ",
@@ -23,7 +25,7 @@
     "pages/shopdetails/shopdetails",
     "pages/nearby/nearby",
     "pages/nearbyShops/nearbyShops",
-    "pages/authorize/authorize",
+     
     "pages/photography/photography",
     "pages/city/city",
     "pages/position/position",

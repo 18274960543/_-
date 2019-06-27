@@ -796,6 +796,7 @@ Page({
           if (couponList.length > 1) {
             let maxIndex = 0;
             let maxDiscount = 0;
+            // discount  优惠的钱 condition 满足这个价格才能优惠
             for (let i = 0; i < couponList.length - 1; i++) {
               if (parseFloat(couponList[i].discount) > maxDiscount) {
                 maxDiscount = parseFloat(couponList[i].discount);
@@ -850,20 +851,25 @@ Page({
   },
   choseCouponAction(e) {
     let index = e.currentTarget.dataset.index;
+    console.log("//",index)
     let selectCouponText = '';
     let selectCouponDiscount = "";
     if (this.data.couponList[index].empty) {
       selectCouponText = "不使用优惠券";
       selectCouponDiscount = "";
     } else {
-      selectCouponText = this.data.couponList[index].name;
+      // selectCouponText = this.data.couponList[index].name; fa
+      selectCouponText = true;
       selectCouponDiscount = this.data.couponList[index].discount;
     }
-    let totalpriceAfterDiscount = this.data.total_fee ? this.data.total_fee : this.data.price ? this.data.price : this.data.grain_price;
+    var totalpriceAfterDiscount = this.data.total_fee ? this.data.total_fee : this.data.price ? this.data.price : this.data.grain_price;
     if (this.data.couponList[index] && !this.data.couponList[index].empty) {
       totalpriceAfterDiscount = (totalpriceAfterDiscount - this.data.couponList[index].discount);
       totalpriceAfterDiscount = totalpriceAfterDiscount ? totalpriceAfterDiscount.toFixed(2) : ''
-      if (totalpriceAfterDiscount <= 0) { totalpriceAfterDiscount = 0 }
+      
+      if (totalpriceAfterDiscount <= 0) { totalpriceAfterDiscount = 0
+     
+       }
     } else {
     }
     this.setData({

@@ -1,32 +1,42 @@
 .header {
-    margin:20rpx auto;
+    padding: 150rpx 0 20rpx;
     text-align: center;
-    width: 650rpx;
-    height: 300rpx;
-    line-height: 450rpx;
+ 
 }
-
+.loginDw{
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ left: 0;
+ top: 0;
+ z-index: -1
+}
 .header image {
     width: 200rpx;
     height: 200rpx;
 }
 
 .content {
-    margin-left: 50rpx;
     margin-bottom: 50rpx;
 }
-.content view{text-align: center}
+.content view{text-align: center;
+color: #000;
+}
 .content text {
     display: block;
-    color: #9d9d9d;
+    color: #666d;
     margin-top: 40rpx;
-    text-align: center
+    text-align: center;
+   font-size:32rpx;
 }
 
 .bottom {
+  background: #773adf;
     border-radius: 80rpx;
     margin: 0 auto;
     font-size: 35rpx;
     width:80%
 }
- 
+button[type=primary]{
+  background: #773adf;
+}
