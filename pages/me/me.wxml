@@ -55,9 +55,10 @@
        <image src='/img/hy.png'></image>
        <text>我的会员卡</text>
     </view>
-    <view bindtap="onTap_coupon">
+    <view bindtap='onTap_coupon' class="coupon">
        <image src='/img/coupon.png'></image>
        <text>优惠券</text>
+       <view></view>
     </view>
     <view bindtap='jump' data-url='../home/bulk/myBulk'>
         <image src='/img/8de46b36c6be33620652a74bf1a4103.png'></image>
@@ -81,8 +82,6 @@
         <text>商家端</text>
       </navigator>
     </view> -->
- 
-    
       <view bindtap='go_Aboutus'>
         <image src='/img/about.png'></image>
         <text>关于我们</text>

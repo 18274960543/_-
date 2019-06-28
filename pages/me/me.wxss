@@ -19,6 +19,19 @@
   top:46rpx;
   right:0rpx;
 }
+.coupon{
+  position: relative;
+}
+.box .coupon view{
+  position: absolute;
+  right:85rpx;
+  top: 30rpx;
+  height:20rpx;
+  width:20rpx;
+  padding: 0;
+  background: red;
+  border-radius: 50%;
+}
   /* 影藏滚动条 */
 ::-webkit-scrollbar {
  width: 0;

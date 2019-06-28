@@ -54,7 +54,6 @@ Page({
     // this.pet_list()
     this.initDate();
     var myDate = new Date();
-
     // 判断是不是改签过来的页面
     if (options.isrebook) {
       this.setData({
@@ -532,7 +531,6 @@ Page({
     })
 
   },
-
   //初始化日期
   initDate() {
     const year = new Date().getFullYear()
@@ -565,9 +563,9 @@ Page({
     let dayList = []
     //每月1号不是星期一时从上一个月补
     for (let i = (prevDatMax - Math.abs(1 - startWeek) + 1); i <= prevDatMax; i++) {
-      dayList.push({ day: '', month: prevMonth })
+      dayList.push({ day: '111', month: prevMonth })
     }
-    //当前展示月份天数
+    // //当前展示月份天数
     for (let i = 1; i <= dayMax; i++) {
       dayList.push({
         day: i,
@@ -635,10 +633,8 @@ Page({
     let date = new Date().getFullYear() + '/' + month + '/' + day;
     console.log(date)
     let date_time = new Date().getFullYear() + '-' + month + '-' + day;
-
     let index1 = this.data.index
     // 获取套餐的天数
-
     var date1 = new Date(date);
     var date2 = new Date(date1);
     console.log(date1, date2)
@@ -656,7 +652,6 @@ Page({
   PrefixInteger(num) {
     return (Array(2).join('0') + num).slice(-2);
   },
-
   // 改签接口
   rebook() {
     if (!this.data.date) {
@@ -736,7 +731,6 @@ Page({
       },
       success: (res) => {
         let setmeal = this.data.setmeal;
-
         console.log(222, setmeal)
         console.log(res)
         console.log(setmeal[this.data.index])

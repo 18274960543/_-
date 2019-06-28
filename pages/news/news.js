@@ -32,7 +32,7 @@ Page({
 //  消息
   news(){
     wx.request({
-      url: url.api + `/ucs/v1/system_message`, // 仅为示例，并非真实的接口地址
+      url: url.api + `/ucs/v1/system_message`, 
       method: "get",
       header: {
         'content-type': 'application/json', // 默认值

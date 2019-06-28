@@ -15,7 +15,7 @@
                     <view class="active1"  wx:if="{{item.consume_times >item.user_service_count}}">立即领取</view>
                    <view class="active" wx:if="{{item.user.length>0&&(item.user_service_count>=item.consume_times)}}" bindtap='gocoupon'>去使用</view>
                    <text>当前已消费<text style='red'>{{item.user_service_count}}</text>次</text>
-                   <text> 消费{{item.consume_times}}次洗澡服务可领取</text>
+                   <text> 消费{{item.consume_times}}次{{item.service[0].name}}服务可领取</text>
                </view>
           </view>
           <image src="/img/receive.png" class="receive" wx:if="{{item.user.length>0}}"></image>
