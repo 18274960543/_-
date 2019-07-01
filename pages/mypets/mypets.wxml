@@ -1,0 +1,21 @@
+<view class='bannerWrap'>
+  <swiper class='bannerSwiper' previous-margin="100rpx" next-margin='90rpx'    interval='3000' duration='500' bindchange='onChange' circular='true'>
+    <block wx:for="{{list}}" wx:key="{{index}}">
+      <swiper-item>
+        <view class="{{index==xindex?'imageBanner':'imageBanner_small'}}">
+          <image src="{{item.img}}" id='{{item.url}}' bindtap='imageClick'></image>
+          <view class="content">
+           <view class="ID">奥利奥</view>
+            <text class="item">ID:18274960543</text>
+            <view class="item">
+                <text>比熊犬</text>
+                <text>小鲜肉</text>
+                <text>1岁</text>
+            </view>
+          </view>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+<view class="bt replaceBackground">添加宠物</view>

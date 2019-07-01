@@ -7,8 +7,13 @@ Page({
     maskstate: true,
     is_select: true,
     is_varieties: true,
+    judgeCoupon:false,
+    num:0,
+    uuid:wx.getStorageSync('uuid')
   },
   onLoad: function(options) {
+     
+     
     if (!wx.getStorageSync('userInfo')){
       this.queryUsreInfo()
     }else{
@@ -68,6 +73,8 @@ Page({
   onShow(){
     this.queryUsreInfo()
     this.pet_list()
+    this.newsNum()
+    this.judgeCoupon()
   },
   my_order: function() {
     wx.navigateTo({
@@ -141,4 +148,53 @@ Page({
       }
     })
   },
+  // 判断还有没有未使用的优惠劵
+  judgeCoupon(){
+    wx.request({
+      url: url.api + `/ucs/v1/member/coupon/` + 0,
+      // url: url.api + `/ucs/v1/member/coupon/` + 0, 
+      method: "get",
+      data: {
+        shop_id: wx.getStorageSync('shop_id'),
+        is_service: 1
+      },
+      header: {
+        'content-type': 'application/json', // 默认值
+        "Authorization": wx.getStorageSync('token')
+      },
+      complete: (res) => {
+        wx.hideLoading();
+      },
+      success: (res) => {
+        console.log(res.data)
+        if(res.data.code==200){
+          if(res.data.data.length>0){
+            this.setData({
+              judgeCoupon:true
+            })
+          }
+        }
+      }
+      })
+  },
+  //  我的消息  未读消息个数
+  newsNum(){
+    wx.request({
+      url: url.api + `/ucs/v1/unread_num`,
+      method: "get",
+      header: {
+        'content-type': 'application/json',
+        "Authorization": wx.getStorageSync('token')
+      },
+      success: (res) => {
+        console.log(res.data)
+        if (res.data.code == 200) {
+            this.setData({
+              num:res.data.message_num
+            })
+          }
+        }
+   
+    })
+  }
 })

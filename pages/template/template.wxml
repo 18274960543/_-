@@ -41,6 +41,19 @@
       </scroll-view>
     </view>
   </view>
+    <!-- 选择套餐 -->
+  <view class="setMeal" wx:if="{{mername=='美容'}}">
+    <view class="setMeal-text">
+      <text>选择套餐</text>
+      <text class="selectionTimetextRt">已选：{{setmeal[indexI].service_product_name}}</text>
+    </view>
+    <scroll-view class="setMealSlide" scroll-x>
+      <view class="setMealSlideLi {{item.is_select?'replaceColour taocan':''}}" wx:for="{{setmeal}}" wx:key="{{index}}" bindtap='setmeal' data-index="{{index}}">
+        <view>{{item.service_product_name}}</view>
+        <view> ￥{{item.wholesale_price?item.wholesale_price:item.price}}</view>
+      </view>
+    </scroll-view>
+  </view>
   <!-- 选择时间 -->
      <view class="selectionTime">
     <view class="selectionTimetext">

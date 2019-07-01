@@ -114,7 +114,7 @@ Page({
       title: '加载中...',
     })
     wx.request({
-      url: url.api + `/ucs/v1/order/preview`, // 仅为示例，并非真实的接口地址
+      url: url.api + `/ucs/v1/order/preview`, 
       data: {
         goods_sku_id: options.goods_sku_id,
         shop_id: options.shop_id,
@@ -137,12 +137,10 @@ Page({
           empty: true,
           name: "不使用优惠"
         });
-
         if (options.bulk == 1) {
           detail_list[0].goods_list[0].goods_price = options.price
           detail_list[0].goods_amount = options.price
         }
-
         this.setData({
           detail_list,
           totalprice,
@@ -180,8 +178,6 @@ Page({
           })
         }
         wx.hideLoading()
-
-
       }
     })
   },
@@ -206,7 +202,6 @@ Page({
         "Authorization": app.token
       },
       success: (res) => {
-
         console.log(res.data)
         let detail_list = res.data.list;
         let totalprice = res.data.order_amount;
@@ -216,7 +211,6 @@ Page({
           empty: true,
           name: "不使用优惠"
         })
-
         this.setData({
           length,
           detail_list,
@@ -281,10 +275,9 @@ Page({
       })
       return;
     }
-
     if (options.bulk == 1) {
       wx.request({
-        url: url.api + `/ucs/v1/groupbuy/order/activity`, // 仅为示例，并非真实的接口地址
+        url: url.api + `/ucs/v1/groupbuy/order/activity`, 
         data: {
           groupbuy_id: options.groupbuy_id,
           shop_id: this.data.shop_id,
@@ -333,7 +326,6 @@ Page({
           })
         }
       })
-
       return
     }
 
@@ -353,11 +345,11 @@ Page({
       // debugger;
       // return;
       wx.request({
-        url: url.api + `/ucs/v1/order/submit`, // 仅为示例，并非真实的接口地址
+        url: url.api + `/ucs/v1/order/submit`, 
         data: submitParams,
         method: "post",
         header: {
-          'content-type': 'application/json', // 默认值
+          'content-type': 'application/json',
           "Authorization": app.token
         },
         success: (res) => {
@@ -414,7 +406,7 @@ Page({
         data: submitParams,
         method: "post",
         header: {
-          'content-type': 'application/json', // 默认值
+          'content-type': 'application/json', 
           "Authorization": app.token
         },
         success: (res) => {
@@ -479,7 +471,7 @@ Page({
       totalpriceAfterDiscount = (this.data.totalprice - this.data.couponList[index].discount);
       totalpriceAfterDiscount = totalpriceAfterDiscount ? totalpriceAfterDiscount.toFixed(2) : ''
       if (totalpriceAfterDiscount <= 0) {
-        totalpriceAfterDiscount = 0
+        totalpriceAfterDiscount = 0.00
       }
     } else {}
     this.setData({

@@ -57,6 +57,7 @@ Page({
       method: "get",
       data: {
         shop_id: wx.getStorageSync('shop_id'),
+        is_service:1
       },
       header: {
         'content-type': 'application/json', // 默认值

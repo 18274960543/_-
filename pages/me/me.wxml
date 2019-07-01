@@ -58,15 +58,16 @@
     <view bindtap='onTap_coupon' class="coupon">
        <image src='/img/coupon.png'></image>
        <text>优惠券</text>
-       <view></view>
+       <view wx:if="{{judgeCoupon}}"></view>
     </view>
     <view bindtap='jump' data-url='../home/bulk/myBulk'>
         <image src='/img/8de46b36c6be33620652a74bf1a4103.png'></image>
         <text>我的拼团</text>
       </view>
-    <view bindtap='go_news'>
+    <view bindtap='go_news' class="go_news">
        <image src='/img/message.png'></image>
        <text>我的消息</text>
+       <view wx:if="{{num}}">{{num}}</view>
     </view>
     <view  bindtap='go_edit'>
        <image src='/img/setting.png'></image>

@@ -162,7 +162,7 @@ swiper image {
   width: 325rpx;
   height: 330rpx;
   display: block;
-  margin: 0 auto 20rpx;
+  margin: 8rpx auto 20rpx;
   border-top-right-radius: 10rpx;
   border-top-left-radius: 10rpx;
 }

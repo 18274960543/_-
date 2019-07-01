@@ -32,6 +32,22 @@
   background: red;
   border-radius: 50%;
 }
+.box .go_news{
+  position: relative;
+}
+.box .go_news view{
+  position: absolute;
+  right:85rpx;
+  top: 30rpx;
+  height:25rpx;
+  width:25rpx;
+  padding: 0;
+  color: #fff;
+  background: red;
+  line-height: 25rpx;
+  font-size: 16rpx;
+  border-radius: 50%;
+}
   /* 影藏滚动条 */
 ::-webkit-scrollbar {
  width: 0;

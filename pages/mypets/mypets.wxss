@@ -1,0 +1,72 @@
+page {
+  background: #f3f3f3;
+}
+
+.imageBanner {
+  width: 100%;
+  border-radius: 20rpx;
+  height: 990rpx !important;
+  background: #fff;
+}
+
+.bannerWrap {
+  padding-top: 45rpx;
+}
+
+swiper {
+  height: 990rpx;
+}
+
+.imageBanner_small {
+  height: 865rpx;
+  transform: scale(0.9);
+  transition: all 0.2s ease-in 0s;
+  margin-left: -10rpx;
+  position: absolute;
+  background: #fff;
+}
+
+.imageBanner_small image {
+  height: 500rpx;
+  display: block;
+  border-top-left-radius: 15rpx;
+  border-top-right-radius: 15rpx;
+}
+
+.imageBanner image {
+  height: 550rpx;
+  display: block;
+  width: 100%;
+  border-top-left-radius: 15rpx;
+  border-top-right-radius: 15rpx;
+}
+
+.bt {
+  width: 590rpx;
+  height: 88rpx;
+  background: rgba(255, 196, 8, 1);
+  border-radius: 44px;
+  margin: 50rpx auto;
+  line-height: 88rpx;
+  text-align: center;
+}
+
+.content {
+  padding: 20rpx 30rpx;
+}
+.ID {
+  font-size: 33rpx;
+  color: #000;
+}
+.item {
+  font-size: 20rpx;
+  color: #666;
+  padding:15rpx 0 0rpx;
+  display: flex;
+}
+.item text{
+  margin-right: 10rpx;
+  background: #F8F8F8;
+  padding: 5rpx 10rpx;
+}
+ 

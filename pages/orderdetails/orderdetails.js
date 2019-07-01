@@ -58,7 +58,7 @@ Page({
       title: '加载中...',
     })
    wx.request({
-     url: url.api + `/ucs/v1/service/bath/finish/${pay_sn}`, // 仅为示例，并非真实的接口地址
+     url: url.api + `/ucs/v1/service/bath/detail/${pay_sn}`,
      method: "get",
      header: {
        'content-type': 'application/json', // 默认值
@@ -66,9 +66,7 @@ Page({
      },
      success: (res) => {
        console.log(res.data)
-       let detailsData=res.data;
-      //  console.log(detailsData.体毛)
-      //  let spec = detailsData.spec[0].service_specs;
+       let detailsData=res.data.data;
        this.getLocalTime(detailsData.created_at)
        this.setData({
          detailsData

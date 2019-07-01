@@ -1,9 +1,10 @@
 {
   "pages": [
-     
-     "pages/home/home",
-     "pages/serviceOffer/serviceOffer",
-     "pages/authorize/authorize",
+      
+    "pages/home/home",
+    "pages/mypets/mypets",
+    "pages/serviceOffer/serviceOffer",
+    "pages/authorize/authorize",
     "pages/consumptionDetails/consumptionDetails", 
     "pages/consumption/consumption",  
     "pages/home/bulk/succ",
