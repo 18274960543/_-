@@ -217,8 +217,14 @@
   height: 586rpx;
   overflow: auto;
 }
-/* 
-'discount'>{{item.discount}}</view>
-    <view class='use_way'>{{item.use_way}}</view>
-    <view class='condition'>{{item.condition}}</view>
-    <view class='time'>{{ite */
+.Coupon{
+  border-top:1rpx solid #eee;
+  display: flex;
+  justify-content: space-around;
+  background: #fff;
+  margin-bottom: 20rpx;
+  height: 95rpx;
+  line-height: 95rpx;
+  font-size: 32rpx;
+  color: #333;
+}

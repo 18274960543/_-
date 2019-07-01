@@ -4,11 +4,12 @@ const app = getApp()
 let url = require('../../utils/config.js')
 Page({
   data: {
-    currIndex: "0",
+    currIndex: 0,
+    currIndex1:0,
     list: ["未使用", "已使用", "已失效"],
     couponList: [],
     actionDisabled: false,
-     
+    couponClass: ['商品券','服务券']
   },
   on_tap(e) {
     let index = e.currentTarget.dataset.index

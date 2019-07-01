@@ -4,6 +4,9 @@
   <text bindtap='on_tap' class="tap-tex  {{currIndex==index?'tap-this':''}}" wx:for="{{list}}" wx:key="{{index}}" data-index='{{index}}'>{{item}}</text>
 
 </view>
+<view class="Coupon">
+    <view wx:for="{{couponClass}}" class=" {{currIndex1==index?'tap-this':''}}" wx:key="index">{{item}}</view>
+</view>
 <view class="{{actionDisabled?'cupon-item-container-disabled':''}} cupon-item-container">
   <!-- <view class='cupon-item-container'> -->
   <!-- 优惠券 item -->

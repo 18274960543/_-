@@ -47,8 +47,8 @@ Page({
   getCoupon() {
     let self = this;
     wx.request({
-      // url: url.api + `/ucs/v1/member/coupon/` + this.data.currIndex, // 仅为示例，并非真实的接口地址
-      url: url.api + `/ucs/v1/coupon/list`, // 仅为示例，并非真实的接口地址
+      // url: url.api + `/ucs/v1/member/coupon/` + this.data.currIndex, 
+      url: url.api + `/ucs/v1/coupon/list`, 
       method: "get",
       header: {
         'content-type': 'application/json', // 默认值
@@ -63,6 +63,7 @@ Page({
           self.setData({
             couponList: res.data.data
           })
+          console.log(res.data.data)
         } else { //接口请求失败
 
         }
