@@ -1,26 +1,36 @@
-<!--pages/me/coupon/coupon.wxml-->
+
 <view class='tap'>
-
   <text bindtap='on_tap' class="tap-tex  {{currIndex==index?'tap-this':''}}" wx:for="{{list}}" wx:key="{{index}}" data-index='{{index}}'>{{item}}</text>
-
 </view>
+<!-- 商品劵 服务劵 -->
 <view class="Coupon">
     <view wx:for="{{couponClass}}" class=" {{currIndex1==index?'tap-this':''}}" wx:key="index">{{item}}</view>
 </view>
+
 <view class="{{actionDisabled?'cupon-item-container-disabled':''}} cupon-item-container">
-  <!-- <view class='cupon-item-container'> -->
   <!-- 优惠券 item -->
   <view class="coupon-item" wx:for="{{couponList}}"wx:key="{{index}}">
     <view class='coupon-view'>
-      <view class='name'>{{item.name}}</view>
-      <!-- 品类 -->
+      <view class="lf">
+          <view class="lfTop">
+             <text>¥</text>
+             <view>100</view>
+          </view>
+          <view class="lfBt">满30元</view>
+      </view>
+      <view class="rt">
+           <view class="rtTop">
+             <text>【全品类云券】商品无门 槛优惠券</text>
+           </view>
+           <text class="rtBt">有效期至：2018.03.05</text>
+      </view>
+      <!-- <view class='name'>{{item.name}}</view>
       <view wx:if="{{item.user_type==2}}" class='coupon-type coupon-type1'>新人优惠券</view>
       <view wx:elif="{{item.user_range==2}}" class='coupon-type coupon-type2'>限品类优惠券</view>
       <view wx:elif="{{item.user_range==1}}" class='coupon-type coupon-type3'>限品类优惠券</view>
       <view class='discount'>{{item.discount +'元优惠券'}}</view>
-      <!-- <view class='use_way'>{{item.use_way}}</view> -->
       <view class='minimum'>最低消费{{item.minimum || '-'}}元</view>
-      <view class='time'>{{item.start_time +' - '+item.end_time}}</view>
+      <view class='time'>{{item.start_time +' - '+item.end_time}}</view> -->
     </view>
     <view class='use-btn'>
     <button data-id="{{item.coupon_id}}" data-use_way="{{item.use_way}}" data-is_shop_coupon="{{item.is_shop_coupon}}" bindtap="go2useCoupon" class='use-btn-bn replaceBackground' data-index='{{index}}'>去使用</button>
@@ -33,7 +43,6 @@
       <image class='image' src="/img/coupon-disabled.png" mode="aspectFit">
       </image>
     </view>
-    <!-- <view>{{item.num}}</view> -->
   </view>
   <view class='get-coupon-action'>
     <button bindtap="go2CouponCenter" class='get-coupon-btn replaceBackground'>去领券</button>

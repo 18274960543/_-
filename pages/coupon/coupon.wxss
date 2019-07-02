@@ -16,7 +16,7 @@
 }
 
 .tap-this {
-  color: #773ADF;
+  color: #773adf;
 }
 
 .tap-this::after {
@@ -24,7 +24,7 @@
   display: block;
   width: 40rpx;
   height: 8rpx;
-  background-color: #773ADF;
+  background-color: #773adf;
   border-radius: 10rpx;
   margin-left: 50%;
   transform: translateX(-50%);
@@ -51,14 +51,6 @@
   margin: 145rpx auto 0 auto;
 }
 
-/* .content{
-  width: 690rpx;
-  height: 272rpx;
-  background-color: white;
-} */
-
-/* lida start*/
-
 .cupon-item-container {
   margin-bottom: 150rpx;
 }
@@ -71,10 +63,12 @@
 }
 
 .coupon-view {
+  display: flex;
+  justify-content: space-between;
   background: #fff;
   height: 240rpx;
   width: 520rpx;
-  border-radius: 10rpx 30rpx 30rpx 10rpx;
+  padding: 40rpx 0 40rpx 30rpx;
 }
 
 .get-coupon-action {
@@ -84,7 +78,12 @@
   bottom: 0rpx;
   z-index: 100;
 }
-
+.rt{
+  
+}
+.lfTop{
+  display: flex;
+}
 .get-coupon-btn {
   width: 95%;
   margin: 20rpx auto;
@@ -139,22 +138,16 @@
   right: -0rpx;
 }
 
-/* 新人 */
-
 .coupon-type1 {
   background: red;
 }
-
-/* 全品种 */
 
 .coupon-type2 {
   background: red;
 }
 
-/* 限品种 */
-
 .coupon-type3 {
-  background: #773adf!important;
+  background: #773adf !important;
 }
 
 .name {
@@ -189,36 +182,35 @@
   font-size: 12px;
   color: #ccc;
 }
-.coupon-used-view, .coupon-disabled-view{
+.coupon-used-view, .coupon-disabled-view {
   position: absolute;
   top: 40rpx;
-  right:140rpx;
+  right: 140rpx;
 }
-.coupon-used-view .image, .coupon-disabled-view .image{
+.coupon-used-view .image, .coupon-disabled-view .image {
   width: 160rpx;
   height: 160rpx;
 }
-/* disabled 遮罩*/
 .cupon-item-container-disabled .coupon-type {
-  background: #ddd!important;
+  background: #ddd !important;
 }
-.cupon-item-container-disabled .use-btn-bn{
-  background: #ddd!important;
-  color: #aaa!important;
+.cupon-item-container-disabled .use-btn-bn {
+  background: #ddd !important;
+  color: #aaa !important;
 }
-.cupon-item-container-disabled .discount{
-  color: #ddd!important;
+.cupon-item-container-disabled .discount {
+  color: #ddd !important;
 }
-.cupon-item-container-disabled .get-coupon-btn{
-   background: #ddd!important;
-  color: #999!important;
+.cupon-item-container-disabled .get-coupon-btn {
+  background: #ddd !important;
+  color: #999 !important;
 }
-.coupon-content{
+.coupon-content {
   height: 586rpx;
   overflow: auto;
 }
-.Coupon{
-  border-top:1rpx solid #eee;
+.Coupon {
+  border-top: 1rpx solid #eee;
   display: flex;
   justify-content: space-around;
   background: #fff;
@@ -226,5 +218,5 @@
   height: 95rpx;
   line-height: 95rpx;
   font-size: 32rpx;
-  color: #333;
+  color: #333; 
 }
