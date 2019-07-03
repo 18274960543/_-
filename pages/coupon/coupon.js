@@ -1,5 +1,4 @@
 const Page = require('../../utils/ald-stat.js').Page;
-
 const app = getApp()
 let url = require('../../utils/config.js')
 Page({
@@ -9,7 +8,7 @@ Page({
     list: ["未使用", "已使用", "已失效"],
     couponList: [],
     actionDisabled: false,
-    couponClass: ['商品券','服务券']
+    couponClass: ['服务券','商品券']
   },
   on_tap(e) {
     let index = e.currentTarget.dataset.index
@@ -17,9 +16,17 @@ Page({
       currIndex: index,
       actionDisabled: index != 0 ? true : false
     })
-    this.getCoupon();
+    let is_service = this.data.currIndex1+1
+    this.getCoupon(is_service);
   },
-
+  tabChange(e){
+    let index = e.currentTarget.dataset.index;
+    let is_service = index + 1
+    this.setData({
+      currIndex1:index,
+    })
+    this.getCoupon(is_service);
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -28,17 +35,18 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    this.getCoupon();
+    let is_service = this.data.currIndex1 + 1
+    this.getCoupon(is_service);
   },
   formatDate(val, format) {
     val = val.replace(/-/g, '/');
-    let format_ = new Date(val).Format(format || 'yyyy-MM-dd');
+    let format_ = new Date(val).Format(format || 'yyyy.MM.dd');
     return format_
   },
   /**
    * 获取优惠券列表
    */
-  getCoupon() {
+  getCoupon(is_service) {
     let self = this;
     self.setData({
       couponList: [],
@@ -52,7 +60,7 @@ Page({
       method: "get",
       data: {
         shop_id: wx.getStorageSync('shop_id'),
-        is_service:1
+        is_service,
       },
       header: {
         'content-type': 'application/json', // 默认值
@@ -71,13 +79,11 @@ Page({
           self.setData({
             couponList: res.data.data
           })
-        } else { //接口请求失败
-
+        } else {
         }
       }
     })
   },
-
   go_home() {
     wx.switchTab({
       url: '/pages/home/home'
@@ -85,7 +91,7 @@ Page({
   },
   // 去领券
   go2CouponCenter: function(e) {
-    if (this.data.currIndex == 0)
+    // if (this.data.currIndex == 0)
       wx.navigateTo({
         url: '/pages/coupon_center/coupon_center'
       })
@@ -102,7 +108,7 @@ Page({
         if (is_shop_coupon == 0) {
           //服务优惠券
           wx.showToast({
-            title: '本店铺无此服务或优惠券范围与当前店铺不一致，不能使用此优惠券',
+            title: '本店铺不能使用此优惠券',
             icon: 'none',
           })
         } else {

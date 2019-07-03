@@ -1,7 +1,10 @@
 <view class="content" >
     <view class="list" wx:if="{{list.length}}">
         <view wx:for="{{list}}" wx:key="index">
-             <image src='{{item.shop.img_url}}' style=' border-radius:50%;'></image>
+            <view class="lsitTop">
+               <image src='{{item.shop.img_url}}' style=' border-radius:50%;'></image>
+               <text wx:if="{{item.discount}}">门店折扣：{{item.discount}}折</text>
+            </view>
              <view>{{item.shop.name}}会员专享</view>
              <text>会员卡余额￥{{item.balance}}</text>
              <image src='{{item.image}}' class="imgDw"></image>

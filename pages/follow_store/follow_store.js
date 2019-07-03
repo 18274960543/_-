@@ -8,7 +8,7 @@ Page({
     store_list: [],
     store_index: "0"
   },
-  requestList: function () {
+  requestList: function() {
     var that = this;
     // console.log("111",app.token);
     wx.request({
@@ -46,7 +46,7 @@ Page({
       method: 'delete',
       dataType: 'json',
       responseType: 'text',
-      success: function (res) {
+      success: function(res) {
         console.log(res);
         wx.showToast({
           title: res.data.message,
@@ -58,28 +58,26 @@ Page({
     })
   },
   /*生命周期函数--监听页面加载*/
-  onLoad: function (options) {
+  onLoad: function(options) {
     this.requestList();
   },
   /*生命周期函数--监听页面显示*/
-  onShow: function () {
-  },
-  // 点击关注门店 去首页 切换店铺
-   
-  gohome(e){
+  onShow: function() {},
+  // 点击关注门店 去首页 切换店铺  
+  gohome(e) {
     console.log(e)
     let index = e.currentTarget.dataset.index;
     let store_list = this.data.store_list;
     let uuid = store_list[index].uuid
     console.log(index, store_list)
-    let location={};
+    let location = {};
     location.lon = store_list[index].lon;
     location.lat = store_list[index].lat;
     location.province = store_list[index].province;
     location.city = store_list[index].city;
     console.log(location)
     wx.setStorageSync('uuid', uuid)
-    wx.setStorageSync('is_change',1)
+    wx.setStorageSync('is_change', 1)
     wx.switchTab({
       url: '../home/home'
     })

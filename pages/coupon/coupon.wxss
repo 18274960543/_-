@@ -1,4 +1,3 @@
-/* pages/me/coupon/coupon.wxss */
 
 .tap {
   width: 750rpx;
@@ -30,14 +29,11 @@
   transform: translateX(-50%);
   margin-top: -15rpx;
 }
-
 .none-img {
   width: 360rpx;
   height: 360rpx;
   margin-left: 195rpx;
-  margin-top: 205rpx;
 }
-
 .return-btn {
   width: 200rpx;
   height: 78rpx;
@@ -64,11 +60,12 @@
 
 .coupon-view {
   display: flex;
-  justify-content: space-between;
+  justify-content:space-around;
   background: #fff;
-  height: 240rpx;
+  height: 210rpx;
   width: 520rpx;
   padding: 40rpx 0 40rpx 30rpx;
+  box-sizing: border-box;
 }
 
 .get-coupon-action {
@@ -78,44 +75,74 @@
   bottom: 0rpx;
   z-index: 100;
 }
-.rt{
-  
+.lfBt{
+  font-size: 26rpx;
+  color: #FC4C4C;
 }
 .lfTop{
   display: flex;
+  font-size: 50rpx;
+  color: #FC4C4C;
+  align-items: center
+}
+.lfTop view{
+  font-weight: 700rpx;
+}
+.lfTop text{
+  font-size: 32rpx;
+  margin-top:15rpx;
+}
+.rt{
+  width: 286rpx;
+}
+.rtTop{
+  font-size: 26rpx;
+  font-weight: 500;
+  color: #000;
+  margin-bottom: 10rpx;
+}
+.rtBt{
+  font-size: 24rpx;
+  color: #999;
+  width: 100%;
+  display: flex
 }
 .get-coupon-btn {
-  width: 95%;
+  width: 630rpx;
   margin: 20rpx auto;
-  line-height: 100rpx;
-  height: 100rpx;
+  line-height: 80rpx;
+  height: 80rpx;
   border: none;
   border-radius: 60rpx;
 }
-
 .use-btn {
   background: #fff;
   position: absolute;
   width: 200rpx;
-  height: 240rpx;
+  height: 210rpx;
   right: 0;
   top: 0;
-  border-radius: 30rpx 10rpx 10rpx 30rpx;
-  border-left: 2px dashed #f5f5f5;
 }
-
+.positionImg{
+  height: 76rpx;
+  width: 76rpx;
+  top:1rpx;
+  left:0;
+  position: absolute;
+}
 .use-btn-bn {
-  border-radius: 40rpx;
+  border-radius:40rpx;
   border: none;
-  height: 80rpx;
-  line-height: 80rpx;
-  width: 160rpx;
-  font-size: 32rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  width: 140rpx;
+  font-size:28rpx;
   position: absolute;
   top: 80rpx;
   right: 25rpx;
+  background: linear-gradient(to right,#AC3EFF, #7739DF);
+  color:#fff;
 }
-
 .coupon-type {
   position: absolute;
   top: 10rpx;
@@ -127,7 +154,6 @@
   width: 220rpx;
   color: #fff;
 }
-
 .coupon-type:after {
   height: 0rpx;
   width: 0rpx;
@@ -137,19 +163,15 @@
   position: absolute;
   right: -0rpx;
 }
-
 .coupon-type1 {
   background: red;
 }
-
 .coupon-type2 {
   background: red;
 }
-
 .coupon-type3 {
   background: #773adf !important;
 }
-
 .name {
   position: absolute;
   top: 10rpx;
@@ -158,7 +180,6 @@
   color: #666;
   font-size: 12px;
 }
-
 .discount {
   position: absolute;
   top: 60rpx;
@@ -166,7 +187,6 @@
   color: #333;
   font-size: 18px;
 }
-
 .minimum {
   position: absolute;
   top: 120rpx;
@@ -174,7 +194,6 @@
   left: 20rpx;
   font-size: 14px;
 }
-
 .time {
   position: absolute;
   top: 175rpx;
@@ -198,13 +217,23 @@
   background: #ddd !important;
   color: #aaa !important;
 }
-.cupon-item-container-disabled .discount {
+ 
+.cupon-item-container-disabled .rtTop{ 
   color: #ddd !important;
 }
-.cupon-item-container-disabled .get-coupon-btn {
+.cupon-item-container-disabled .lfTop{ 
+  color: #ddd !important;
+}
+.cupon-item-container-disabled .rtBt{ 
+  color: #ddd !important;
+}
+.cupon-item-container-disabled  .lfBt{ 
+  color: #ddd !important;
+}
+/* .cupon-item-container-disabled .get-coupon-btn {
   background: #ddd !important;
   color: #999 !important;
-}
+} */
 .coupon-content {
   height: 586rpx;
   overflow: auto;

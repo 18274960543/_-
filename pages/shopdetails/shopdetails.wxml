@@ -89,9 +89,8 @@
   </view> -->
 </view>
 <view class="footer">
-  <view bindtap='goExpress' wx:if="{{orderData.state==30||orderData.state==40}}">查看物流</view>
-  <!-- <view bindtap='goExpress'>查看物流</view> -->
-  <view wx:if="{{orderData.state==30}}" class="replaceColour replaceBorder">确认收货</view>
+  <!-- <view bindtap='goExpress' wx:if="{{orderData.state==30||orderData.state==40}}">查看物流</view>
+  <view wx:if="{{orderData.state==30}}" class="replaceColour replaceBorder">确认收货</view> -->
   <view bindtap='gohome'>再次购买</view>
 </view>
 <!-- 选择售后 -->

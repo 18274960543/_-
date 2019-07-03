@@ -186,11 +186,13 @@
     </view>
     <view class='footer-text-box'>
       <text>下单时间：</text>
-      <text class='changetext'>{{ordertime}}</text>
+      <!-- <text class='changetext'>{{ordertime}}</text> -->
+        <text class='changetext'>{{detailsData.date_time}}</text>
     </view>
     <view class='footer-text-box' wx:if="{{paytime}}">
       <text>付款时间：</text>
       <text class='changetext'>{{paytime}}</text>
+      
     </view>
   </view>
   <view class='footer-box3'>

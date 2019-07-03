@@ -74,7 +74,8 @@ Page({
     return
   },
   onLoad: function (options) {
- 
+//  品牌专区
+    this.brandData()
     wx.playBackgroundAudio({
       dataUrl: '',
       title: '',
@@ -84,17 +85,14 @@ Page({
     console.log(options)
     // 如果扫码进来 有uuid 就显示扫码的店铺
     if (options.uuid) {
-
       this.homeMergedata(options.uuid, 1)
       this.setData({
         uuid: options.uuid,
       })
       wx.setStorageSync('uuid', options.uuid)
     } else if (wx.getStorageSync('uuid')) { //扫码进来 在用户没有清除换成的情况下 显示扫码进来的店铺（可以在关注门店切换店铺）
-
       this.homeMergedata(wx.getStorageSync('uuid'), 2)
     } else if (wx.getStorageSync('shop_uuid')) {
-      console.log(777)
       this.homeMergedata(wx.getStorageSync('shop_uuid'), 2)
     } else {
       //授权地理位置 => 1、在用户初次进入小程序 不是在在扫码情况下进入 2、在用户扫码进来删除本地缓存情况下 调用这个方法
@@ -599,6 +597,22 @@ Page({
   jump1(e) {
     wx.navigateTo({
       url: '/pages/details/details?bulk=1&id=' + e.currentTarget.dataset.id,
+    })
+  },
+  // 品牌专区
+  brandData(){
+    wx.request({
+      url: url.api + '/ucs/v1/shop/brand/push',
+      method: "get",
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: (res) => {
+       console.log(res)
+       this.setData({
+         branData:res.data.data
+       })
+      }
     })
   }
 })
