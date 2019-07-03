@@ -5,7 +5,8 @@ Page({
   data: {
     orderData:null,
     showSerivce:false,
-    index1:0
+    index1:0,
+    time: Date.parse(new Date())/1000-5184000
   },
   /**
    * 生命周期函数--监听页面加载
@@ -13,11 +14,10 @@ Page({
   onLoad: function (options) {
     console.log(options)
     this.orderData(options.id)
-  
+    console.log(this.data.time)
   },
   // 商品确认收货
   confirm(e) {
- 
     let order_sn = this.data.orderData.order_sn;
     let pay_sn = this.data.orderData.pay_sn;
     wx.request({

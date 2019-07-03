@@ -6,7 +6,7 @@
 <view class="Coupon">
     <view wx:for="{{couponClass}}" class=" {{currIndex1==index?'tap-this':''}}" wx:key="index" bindtap='tabChange' data-index='{{index}}'>{{item}}</view>
 </view>
-<my-coupon></my-coupon>
+<!-- <my-coupon></my-coupon> -->
 <view class="{{actionDisabled?'cupon-item-container-disabled':''}} cupon-item-container">
   <!-- 优惠券 item -->
   <view class="coupon-item" wx:for="{{couponList}}"wx:key="{{index}}">

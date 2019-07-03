@@ -29,7 +29,7 @@
     <view class="shoplist-bt" 
       data-index='{{index1}}'
     bindtap='add' 
-    wx:if="{{orderData.state==20||orderData.state==30||orderData.state==40}}"
+    wx:if="{{orderData.state==20||orderData.state==30|| ((orderData.state==40||orderData.state==100)&&orderData.finished_at>time)}}"
     >申请售后</view>
   </view>
 <!-- </block> -->
