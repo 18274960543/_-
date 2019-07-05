@@ -1,4 +1,8 @@
 .coupon{
   font-size: 30rpx;
-  color: #000;
+  background: #fff;
+  margin:0 20rpx;
+  border-radius: 10rpx;
+  padding: 30rpx;
+  box-sizing: border-box
 }

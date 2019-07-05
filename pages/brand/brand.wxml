@@ -1,0 +1,39 @@
+<scroll-view scroll-y style='background:#fff' >
+  <view style='border-top:0.1rpx solid #fff'></view>
+  <view class="search" bindtap='gosearch'>
+    <image src="/img/glass.png"></image>
+    搜索需要查询的内容
+  </view>
+  <!-- 列表 -->
+  <scroll-view class="main" scroll-y >
+    <view class="mainList" wx:for="{{nav_bottomItems}}" wx:key="{{index}}" bindtap='godetails' data-id='{{item.id}}'>
+      <view class="mainList-lf" bindtap='toInfo' data-id='{{item.id}}'>
+        <image class="imgpro" src="{{item.image}}"></image>
+      </view>
+      <view class="mainList-rt">
+        <view class="mainList-name">
+          {{item.name}}
+        </view>
+        <view class="mainList-price">
+          <view>
+            ￥
+            <text>{{item.price}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="mainList-2-1" >
+        <image class="imgpro" src="/img/che.png"></image>
+      </view>
+    </view>
+  </scroll-view>
+  <!-- <view  catchtouchmove='stopPageScroll'>
+  <view class="mask" wx:if="{{showScreening == 1 || showScreening == 2}}" bindtap='mask'></view>
+  </view> -->
+
+  <view class="kong" wx:if="{{nav_bottomItems.length==0}}">
+  <image src='/img/kong.png' ></image>
+  <text>非常抱歉</text>
+  <view>没有找到相关的宝贝</view>
+  </view>
+
+</scroll-view>

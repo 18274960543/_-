@@ -101,11 +101,12 @@
       </view>
     </view>
     <image class='separator' src='/img/separator.png'/>
+    
     <view class='tatal-price-boc' 
     wx:if='{{detailsData.state==20||detailsData.state==30||detailsData.state==40||detailsData.state==50}}'
     >
-      <text class='actualpayment'>实付款：</text>
-      <text class='total-price' >￥<text class='big-total-price'>{{detailsData.message[0].amount}}</text></text>
+      <text class='actualpayment'>实付款：<text class='total-price' >￥<text class='big-total-price'>{{detailsData.message[0].amount/100}}</text></text></text>
+      <text class="actualpayment">优惠金额：{{detailsData.discount_amount}}</text>
     </view>
   </view>
 </view>

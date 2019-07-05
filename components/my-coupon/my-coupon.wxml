@@ -1,4 +1,7 @@
 <!-- 优惠劵组件开发 -->
-<view class="coupon">
-  优惠劵组件开发
+<view class="coupon titleclass" bindtap='couponData'>
+   我的组件
+  {{title}}
 </view>
+ <view>当前组件计数：{{total}}</view>
+<button bindtap='handerNmu' size='mini'>+</button>   

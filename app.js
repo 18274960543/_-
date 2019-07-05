@@ -2,11 +2,8 @@
 //app.js
 const App = require('./utils/ald-stat.js').App;
 let url = require('./utils/config.js')
- 
 App({
-  
   onLaunch: function() {
-  
     wx.login({
       success: res => {
         console.log(res)
@@ -21,7 +18,6 @@ App({
           method: "post",
           success: (res) => {
             console.log('getCode', res)
-            // console.log(,res.data)
             // 获取token
             this.token = res.data.token_type + ' ' + res.data.access_token;
             let uuid = res.data.shop_uuid
@@ -29,7 +25,7 @@ App({
             wx.setStorageSync('shop_uuid', uuid);
             console.log(res.data.token_type + ' ' + res.data.access_token)
             this.tokenHeader = {
-              'content-type': 'application/json', // 默认值
+              'content-type': 'application/json', 
               "Authorization": this.token,
               "Accept": 'application/json'
             };
@@ -44,10 +40,8 @@ App({
     })
  
   },
-
   tele_phone: '18275142301', //电话号码
   appid: "wx12a9b6ebd67dcb13",
-  
   token: '',
   tokenHeader: {}, 
   sst_secret: '0e506ed52bfade9ae29ebe3f312b90c1',
@@ -61,7 +55,6 @@ App({
     }
   },
 })
-
 // global
 Date.prototype.Format = function(fmt) { //author: meizz 
   var o = {

@@ -8,7 +8,9 @@ Page({
     list: ["未使用", "已使用", "已失效"],
     couponList: [],
     actionDisabled: false,
-    couponClass: ['服务券','商品券']
+    couponClass: ['服务券','商品券'],
+    title:'优惠劵组件',
+    num:0,
   },
   on_tap(e) {
     let index = e.currentTarget.dataset.index
@@ -26,6 +28,25 @@ Page({
       currIndex1:index,
     })
     this.getCoupon(is_service);
+  },
+  handBut(event){
+    console.log(event)
+    console.log("----");
+    let num = this.data.num;
+    num++
+    this.setData({
+      num
+    })
+  },
+ 
+  handZhu(e){
+    console.log(e)
+    let zhuJ = this.selectComponent('#myShow');
+    let total = zhuJ.data.total;
+    total++
+    zhuJ.setData({
+      total
+    })
   },
   /**
    * 生命周期函数--监听页面加载

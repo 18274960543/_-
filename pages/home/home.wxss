@@ -7,6 +7,7 @@
   display: flex;
   font-size: 36rpx;
   justify-content: center;
+   
 }
 
 .PhoneNumber {
@@ -687,7 +688,9 @@ swiper image {
   padding: 23rpx 20rpx;
   box-sizing: border-box;
   font-size: 32rpx;
-  color: #666;
+  color: #fff;
+  background-size: 100% 100%;
+  background-position: left top;
 }
 
 .areasTop image {
@@ -733,13 +736,19 @@ swiper image {
 }
 
 .slideText {
+  width: 100%;
   font-size: 26rpx;
   color: #343434;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
 }
 
 .lfRt {
   font-size: 20rpx;
   color: #666;
+  display: flex;
+  align-items: center
 }
 
 .lfRt text {
@@ -803,4 +812,11 @@ swiper image {
   height: 200rpx;
   width: 48%;
   margin-bottom: 1%;
+}
+
+.keyword{
+  width:80rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+   white-space: nowrap;
 }

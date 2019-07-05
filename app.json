@@ -1,17 +1,19 @@
 {
   "pages": [
-      
+       
     "pages/home/home",
+    "pages/brand/brand",
+    "pages/hot/hot",
     "pages/mypets/mypets",
     "pages/serviceOffer/serviceOffer",
     "pages/authorize/authorize",
-    "pages/consumptionDetails/consumptionDetails", 
-    "pages/consumption/consumption",  
+    "pages/consumptionDetails/consumptionDetails",
+    "pages/consumption/consumption",
     "pages/home/bulk/succ",
     "pages/code/code",
-    "pages/member/member", 
+    "pages/member/member",
     "pages/complaint/complaint",
-    "pages/img/img", 
+    "pages/img/img",
     "pages/timecontrol/timecontrol",
     "pages/peripheryTemplate/peripheryTemplate",
     "pages/template/template",
@@ -26,7 +28,6 @@
     "pages/shopdetails/shopdetails",
     "pages/nearby/nearby",
     "pages/nearbyShops/nearbyShops",
-     
     "pages/photography/photography",
     "pages/city/city",
     "pages/position/position",
@@ -71,7 +72,7 @@
     "pages/coupon/coupon",
     "pages/coupon_center/coupon_center",
     "pages/couponShopList/couponShopList",
-    "pages/orderexpress/orderexpress"
+    "pages/orderexpress/orderexpress" 
   ],
   "window": {
     "backgroundTextStyle": "dark",

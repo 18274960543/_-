@@ -42,8 +42,8 @@
 			"list": []
 		},
 		"miniprogram": {
-		"current": 19,
-		"list": [
+			"current": 19,
+			"list": [
 				{
 					"id": -1,
 					"name": "宠物信息",

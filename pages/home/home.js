@@ -76,6 +76,8 @@ Page({
   onLoad: function (options) {
 //  品牌专区
     this.brandData()
+    // 热卖专区
+    this.hotData()
     wx.playBackgroundAudio({
       dataUrl: '',
       title: '',
@@ -133,7 +135,6 @@ Page({
     })
   },
   onShareAppMessage(res) {
-
     let uuid = wx.getStorageSync('uuid')
     let title = wx.getStorageSync('shop_info').name
     // console.log(goodsInfo)
@@ -163,7 +164,7 @@ Page({
       method: "post",
       data: nearParams,
       header: {
-        'content-type': 'application/json', // 默认值
+        'content-type': 'application/json', 
         "Authorization": wx.getStorageSync('token'),
       },
       success: (res) => {
@@ -172,7 +173,12 @@ Page({
           let uuid = res.data.data[0].uuid;
           this.homeMergedata(uuid, 3)
           return
-        }
+        }else{
+          // 当用户当前附近没有店铺的时候  我们平台给他一个默认的店铺  店铺名为 兽兽淘示范门店
+          let uuid = '44619490-9307-11e9-bdd0-b58cb4132920';//兽兽淘示范门店的uuid
+          this.homeMergedata(uuid,3)
+         return
+        }  
         wx.showModal({
           content: '附近暂无店铺请切换店铺',
           showCancel: false,
@@ -200,7 +206,7 @@ Page({
         type, //1 扫码 2 关注门店 3用户自己进来
       },
       header: {
-        'content-type': 'application/json', // 默认值
+        'content-type': 'application/json', 
         "Authorization": wx.getStorageSync('token')
       },
       success: (res) => {
@@ -232,7 +238,7 @@ Page({
           wx.setNavigationBarTitle({
             title: res.data.info.name //页面标题为路由参数
           })
-          this.moren()
+          // this.moren()
           wx.hideLoading()
         }
       }
@@ -241,12 +247,12 @@ Page({
   /*
    * 记录列表点击的按钮下标 
    */
-  switchRightTab(e) {
-    let index = parseInt(e.currentTarget.dataset.index);
-    this.setData({
-      curIndex: index
-    })
-  },
+  // switchRightTab(e) {
+  //   let index = parseInt(e.currentTarget.dataset.index);
+  //   this.setData({
+  //     curIndex: index
+  //   })
+  // },
   // 距离顶部的位置
   onPageScroll: function (e) {
     // console.log(e.scrollTop)
@@ -255,49 +261,49 @@ Page({
     })
   },
   // 商品列表
-  switchRightTab(e) {
-    let self = this;
-    console.log('switch list');
-    wx.showLoading({
-      title: '加载中...',
-    })
-    let id = e.currentTarget.dataset.id
-    let index = e.currentTarget.dataset.index
-    this.setData({
-      ids: id,
-      page: 1,
-      is_nodata: false
-    })
-    this.renderGoods(id, function (res) {
-      console.log(res.data.data)
-      self.setData({
-        nav_bottomItems: res.data.data,
-        curIndex: index,
+  // switchRightTab(e) {
+  //   let self = this;
+  //   console.log('switch list');
+  //   wx.showLoading({
+  //     title: '加载中...',
+  //   })
+  //   let id = e.currentTarget.dataset.id
+  //   let index = e.currentTarget.dataset.index
+  //   this.setData({
+  //     ids: id,
+  //     page: 1,
+  //     is_nodata: false
+  //   })
+  //   this.renderGoods(id, function (res) {
+  //     console.log(res.data.data)
+  //     self.setData({
+  //       nav_bottomItems: res.data.data,
+  //       curIndex: index,
 
-      })
-      wx.hideLoading()
-    })
-  },
+  //     })
+  //     wx.hideLoading()
+  //   })
+  // },
   // 商品列表默认数据
-  moren() {
-    let self = this;
-    wx.showLoading({
-      title: '加载中...',
-    })
-    console.log('moren list');
-    this.setData({
-      ids: this.data.mergedata.category[0].id,
-      page: 1,
-    })
-    this.renderGoods(this.data.mergedata.category[0].id, function (res) {
-      console.log(res.data)
-      self.setData({
-        nav_bottomItems: res.data.data
-      })
-      console.log(self.data.nav_bottomItems)
-      wx.hideLoading()
-    })
-  },
+  // moren() {
+  //   let self = this;
+  //   wx.showLoading({
+  //     title: '加载中...',
+  //   })
+  //   console.log('moren list');
+  //   this.setData({
+  //     ids: this.data.mergedata.category[0].id,
+  //     page: 1,
+  //   })
+  //   this.renderGoods(this.data.mergedata.category[0].id, function (res) {
+  //     console.log(res.data)
+  //     self.setData({
+  //       nav_bottomItems: res.data.data
+  //     })
+  //     console.log(self.data.nav_bottomItems)
+  //     wx.hideLoading()
+  //   })
+  // },
   //render goods
   renderGoods(ids, callback) {
     wx.request({
@@ -613,6 +619,49 @@ Page({
          branData:res.data.data
        })
       }
+    })
+  },
+  //热卖专区
+  hotData(){
+wx.showLoading({
+  title: '加载中...',
+})
+    wx.request({
+      url: url.api + '/ucs/v1/shop/hot/category',
+      method: "get",
+      header: {
+        'content-type': 'application/json' ,
+        "Authorization": wx.getStorageSync('token')
+      },
+      success: (res) => {
+        console.log(res)
+        let hotData=res.data.data;
+        hotData.map(item=>{
+          item.category_goods.map(item1=>{
+            item1.goods.weight = Number(item1.goods.weight).toFixed(2)
+          })
+        })
+        this.setData({
+          hotData: res.data.data
+        })
+        wx.hideLoading()
+      }
+    })
+  },
+  //点击 热卖专区更多 去热卖专区 列表页面
+  goHot(e){
+    let id = e.currentTarget.dataset.id;
+    let name = e.currentTarget.dataset.name+'热卖专区'
+    wx.navigateTo({
+      url: '/pages/hot/hot?category_id=' + id + '&name='+name,
+    })
+  },
+  // 去品牌专区 列表页面
+  gobrand(e){
+  let id = e.currentTarget.dataset.id;
+    let name = e.currentTarget.dataset.name + '专区'
+    wx.navigateTo({
+      url: '/pages/brand/brand?brand_id=' + id+'&name='+name,
     })
   }
 })

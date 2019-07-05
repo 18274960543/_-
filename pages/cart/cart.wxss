@@ -61,7 +61,7 @@ height:58rpx;width:145rpx;border-radius:100rpx;text-align:center;line-height:58r
   display: flex
 }
 .kong{
-  margin-top:200rpx;
+  padding-top:200rpx;
   font-size: 28rpx;
   color: #666;
   text-align: center;

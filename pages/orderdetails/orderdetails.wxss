@@ -315,6 +315,7 @@
   width: 628rpx;
   margin-left: 3%;
   margin-top: 15rpx;
+  align-items: center;
 }
 
 .actualpayment {

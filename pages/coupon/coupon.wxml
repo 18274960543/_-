@@ -6,7 +6,10 @@
 <view class="Coupon">
     <view wx:for="{{couponClass}}" class=" {{currIndex1==index?'tap-this':''}}" wx:key="index" bindtap='tabChange' data-index='{{index}}'>{{item}}</view>
 </view>
-<!-- <my-coupon></my-coupon> -->
+当前计数：{{num}}
+<my-coupon title="{{title}}" titleclass="red" bind:handBut="handBut"></my-coupon>
+<my-coupon title="我是优惠劵组件#666颜色" titleclass="huiSe" id="myShow" bindtap="handZhu"></my-coupon>
+<!-- <button size='mini' bindtap="handZhu">+</button> -->
 <view class="{{actionDisabled?'cupon-item-container-disabled':''}} cupon-item-container">
   <!-- 优惠券 item -->
   <view class="coupon-item" wx:for="{{couponList}}"wx:key="{{index}}">
