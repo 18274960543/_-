@@ -83,17 +83,15 @@ page {
   display: flex;
   /* font-size: 28rpx; */
 }
-
 .comprehensive view view:nth-child(2) {
   width: 30rpx;
   height: 30rpx;
   margin-top: 23rpx;
 }
-
 .main {
   width: 90%;
-  margin: 0 auto;
-  padding-top: 3%;
+  margin: 3% auto 0;
+ padding-bottom: 100rpx;
 }
 .mainList {
   height: 250rpx;

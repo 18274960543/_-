@@ -3,25 +3,32 @@ let url = require('../../utils/config.js')
 const Page = require('../../utils/ald-stat.js').Page;
 Page({
   data: {
-    nav_bottomItems: null,
+    nav_bottomItems:[],
+    page:0
   },
 
 // 列表数据
-  hotData(category_id){
+  hotData(category_id, page){
     wx.showLoading({
       title: '加载中...',
     })
   wx.request({
     url: url.api + '/ucs/v1/shop/hot/list', 
     data: {
-      category_id
+      category_id,
+      page
     },
     method: "post",
     success: (res) => {
       console.log( res)
-
+      let nav_bottomItems = this.data.nav_bottomItems;
+      let list = res.data.data.data;
+      list.map(item=>{
+        nav_bottomItems.push(item)
+      })
     this.setData({
-        nav_bottomItems:res.data.data
+        nav_bottomItems,
+      page:page++
       })
       wx.hideLoading()
      
@@ -33,12 +40,18 @@ Page({
   },
   onLoad(options) {
     console.log(options)
-      this.hotData(options.category_id)
+    this.setData({
+      category_id: options.category_id
+    })
+      this.hotData(options.category_id,this.data.page)
     wx.setNavigationBarTitle({
       title: options.name,
     })
   },
- 
+  // 页面到底部 分页
+  onReachBottom() {
+    this.hotData(this.data.category_id, this.data.page)
+  },
   // 点击去商品详情页
   godetails(e) {
     // console.log(e)

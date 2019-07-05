@@ -31,7 +31,7 @@
       <!-- 头部悬浮 -->
       <view class="order" wx:if="{{mergedata}}">
         <view class="order-top">
-          <view>快速预约服务 </view>
+          <view>门店服务 </view>
           <!-- <text>更多服务敬请期待</text> -->
           <!-- wx:for="{{order}}" wx:key="index" wx:for-index="index" wx:for-item="item" -->
         </view>
@@ -107,17 +107,17 @@
         </scroll-view>
       </view> -->
       <!-- 品牌推荐 -->
-      <view class="brandZhuanQu">
+      <view class="brandZhuanQu" wx:if="{{branData}}">
           <view class="brandText">品牌专区</view>
           <view class="brandImage">
           <block wx:for="{{branData}}" wx:key="index" wx:if="{{index<4}}"  >
-           <image src="{{item.img.full_img_url}}" bindtap="gobrand" data-id="{{item.id}}" data-name='{{item.name}}'></image>
+           <image src="{{item.show_img.full_img_url}}" bindtap="gobrand" data-id="{{item.id}}" data-name='{{item.name}}'></image>
           </block>
           </view>
       </view>
-      <!-- 热门专区 -->
-      <view class="popularAreas" wx:for="{{hotData}}" wx:key="index">
-          <view class="areasTop" style='background: url({{item.icon}})'>
+      <!-- 热门专区 --> 
+      <view class="popularAreas" wx:for="{{hotData}}" wx:key="index" wx:if="{{hotData}}">
+          <view class="areasTop" style='background-image: url({{item.hot_img}})'>
               <text>热卖{{item.name}}专区</text>
               <view bindtap='goHot' data-id='{{item.id}}' data-name='{{item.name}}'>更多></view>
           </view>
@@ -135,46 +135,7 @@
                    <image src='/img/che.png'></image>
                 </view>
              </view>
-             <!-- <view class="slide">
-                <image src='/img/abc.png'></image>
-                <view class="slideText">旺之味 猫粮成猫幼…</view>
-                <view class="lfRt">
-                  <text>15kg*1</text>
-                  <text>成犬粮</text>
-                </view>
-                <view class="slideBt"> 
-                   <view><text>¥</text>519</view>
-                   <text class="ot_price_rmb">¥800.0</text>
-                   <image src='/img/che.png'></image>
-                </view>
-             </view>
-               <view class="slide">
-                <image src='/img/abc.png'></image>
-                <view class="slideText">旺之味 猫粮成猫幼…</view>
-                <view class="lfRt">
-                  <text>15kg*1</text>
-                  <text>成犬粮</text>
-                </view>
-                <view class="slideBt"> 
-                   <view><text>¥</text>519</view>
-                   <text class="ot_price_rmb">¥800.0</text>
-                   <image src='/img/che.png'></image>
-                </view>
-             </view>
-               <view class="slide">
-                <image src='/img/abc.png'></image>
-                <view class="slideText">旺之味 猫粮成猫幼…</view>
-                <view class="lfRt">
-                  <text>15kg*1</text>
-                  <text>成犬粮</text>
-                </view>
-                <view class="slideBt"> 
-                   <view><text>¥</text>519</view>
-                   <text class="ot_price_rmb">¥800.0</text>
-                   <image src='/img/che.png'></image>
-                </view>
-                <view ></view>
-             </view> -->
+      
           </scroll-view>
       </view>
       <!-- <button open-type='contact'>点击进入客服会话</button> -->

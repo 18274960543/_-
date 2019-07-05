@@ -690,7 +690,7 @@ swiper image {
   font-size: 32rpx;
   color: #fff;
   background-size: 100% 100%;
-  background-position: left top;
+  background-position:let top;
 }
 
 .areasTop image {

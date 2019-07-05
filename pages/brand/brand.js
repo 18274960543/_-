@@ -3,7 +3,7 @@ let url = require('../../utils/config.js')
 const Page = require('../../utils/ald-stat.js').Page;
 Page({
   data: {
-    nav_bottomItems: null,
+    nav_bottomItems: [],
     page:1
   },
 
@@ -20,9 +20,15 @@ Page({
       },
       method: "post",
       success: (res) => {
+       
+        let nav_bottomItems = this.data.nav_bottomItems;
+        let list = res.data.data.data;
+         list.map(item=>{
+           nav_bottomItems.push(item)
+         })
         console.log(res)
         this.setData({
-          nav_bottomItems: res.data.data.data,
+          nav_bottomItems,
           page:page++
         })
         wx.hideLoading()

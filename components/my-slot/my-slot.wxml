@@ -1,0 +1,7 @@
+<view class="slot">
+<view>我是插槽组件头部</view>
+  <slot name="slot1"></slot>
+  <slot name="slot2"></slot>
+  <slot name="slot3"></slot>
+  <view>我是插槽组件底部</view>
+</view>

@@ -5,3 +5,5 @@
 </view>
  <view>当前组件计数：{{total}}</view>
 <button bindtap='handerNmu' size='mini'>+</button>   
+
+<!-- slot -->

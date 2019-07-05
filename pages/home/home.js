@@ -27,7 +27,9 @@ Page({
     ids: '',
     page: 1,
     isCoupon: false,
-    isToken: false
+    isToken: false,
+    hotData:null,//热卖专区数据
+    branData:null//品牌专区数据
   },
   // 
   jump(e) {
@@ -74,10 +76,7 @@ Page({
     return
   },
   onLoad: function (options) {
-//  品牌专区
-    this.brandData()
-    // 热卖专区
-    this.hotData()
+ 
     wx.playBackgroundAudio({
       dataUrl: '',
       title: '',
@@ -212,6 +211,10 @@ Page({
       success: (res) => {
         console.log(res.data)
         if (res.statusCode == 200) {
+          //  品牌专区
+          this.brandData()
+          // 热卖专区
+          this.hotData()
           let mergedata = res.data;
           mergedata.broupbuy.map(item=>{
             item.goods_price = parseFloat(item.goods_price)
@@ -611,7 +614,8 @@ Page({
       url: url.api + '/ucs/v1/shop/brand/push',
       method: "get",
       header: {
-        'content-type': 'application/json' // 默认值
+        'content-type': 'application/json',
+        "Authorization": wx.getStorageSync('token')
       },
       success: (res) => {
        console.log(res)
