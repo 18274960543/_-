@@ -117,9 +117,9 @@
       </view>
       <!-- 热门专区 --> 
       <view class="popularAreas" wx:for="{{hotData}}" wx:key="index" wx:if="{{hotData}}">
-          <view class="areasTop" style='background-image: url({{item.hot_img}})'>
+          <view class="areasTop" style='background-image: url({{item.hot_img}})' bindtap='goHot' data-id='{{item.id}}' data-name='{{item.name}}'>
               <text>热卖{{item.name}}专区</text>
-              <view bindtap='goHot' data-id='{{item.id}}' data-name='{{item.name}}'>更多></view>
+              <view>更多></view>
           </view>
           <scroll-view class="scrollLeft" scroll-x="{{true}}" >
              <view class="slide" wx:for="{{item.category_goods}}" wx:key="index" wx:for-item="item1" bindtap='godetails' data-id="{{item1.goods.id}}">

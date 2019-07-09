@@ -19,7 +19,7 @@
   </scroll-view>
     <view class='right'> 
      <scroll-view class='nav_right' scroll-y scroll-with-animation="true" scroll-into-view="{{rightScrollId}}">
-      <image src='{{mergedata.banner.advertising.list[0].img.full_img_url}}' class="img"></image>
+      <image src='{{imgUrls[0].img.full_img_url}}' class="img"></image>
       <view wx:if='{{list[curIndextop].children[curIndex].children}}' style='padding-bottom: 10px;' wx:key="{{index}}" class=''>
       <!-- <block wx:for="{{list[curIndextop].children[curIndex].children}}" wx:for-item="item" wx:key="{{index}}">
               <view class='jd-category-style' bindtap='goshoplist' data-id='{{item.id}}' data-name='{{item.name}}'>

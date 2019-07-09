@@ -31,21 +31,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    this.lunbo()
     let self = this;
-    this.homeMergedata()
     wx.showLoading({
       title: '加载中...',
     })
     wx.request({
-      url: url.api + '/ucs/v1/shop/category/show', // 仅为示例，并非真实的接口地址
+      url: url.api + '/ucs/v1/shop/category/show', 
       method: "get",
       header: {
         'content-type': 'application/json' 
       },
       success: (res) => { 
-        // this.setData({
-        //   navLeftItems: res.data.data
-        // })
         console.log(res.data.data)
         let list = res.data.data;
         this.setData({
@@ -58,28 +55,7 @@ Page({
       }
     })
   },
-  // 合并 服务，商品分类，联系方式，轮播图 ，广告图
-  homeMergedata() {
-  let uuid = wx.getStorageSync('shop_info').uuid  
-    wx.request({
-      url: url.api + `/ucs/v1/shop/index/${uuid}`, // 仅为示例，并非真实的接口地址
-      method: "get",
-      header: {
-        'content-type': 'application/json', // 默认值
-        "Authorization": app.token
-      },
-      success: (res) => {
-        console.log(res)
-        if (res.statusCode == 200) {
-          let mergedata = res.data
-          this.setData({
-            mergedata
-          })
-          
-        }
-      }
-    })
-  },
+
   /*
    * 记录左侧点击的按钮下标 
    */

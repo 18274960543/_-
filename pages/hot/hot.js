@@ -6,14 +6,13 @@ Page({
     nav_bottomItems:[],
     page:0
   },
-
 // 列表数据
   hotData(category_id, page){
     wx.showLoading({
       title: '加载中...',
     })
   wx.request({
-    url: url.api + '/ucs/v1/shop/hot/list', 
+    url: url.api + '/ucs/v1/shop/hot/list',    
     data: {
       category_id,
       page
@@ -23,15 +22,15 @@ Page({
       console.log( res)
       let nav_bottomItems = this.data.nav_bottomItems;
       let list = res.data.data.data;
+      console.log(res)
       list.map(item=>{
         nav_bottomItems.push(item)
       })
-    this.setData({
-        nav_bottomItems,
-      page:page++
+      this.setData({
+      nav_bottomItems,
+      page:page++  
       })
       wx.hideLoading()
-     
     }
   })
 },

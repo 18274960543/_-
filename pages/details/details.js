@@ -84,7 +84,7 @@ Page({
     let ewmPath = this.data.ewmPath;
     console.log(this.data.list, goodsPath, ewmPath)
     // return
-    // 画海报背景
+    //画海报背景
     ctx.drawImage("/img/poster_bg.png", 0, 0, 528 * rpx, 755 * rpx);
     // 画价格
     ctx.setFontSize(31 * rpx);
@@ -100,7 +100,9 @@ Page({
     ctx.fillText("长按扫描去逛逛", 368 * rpx, 705 * rpx);
     //画商品名
     let text = this.data.list.name;
+    console.log('切割的字符',text)
     let chr = text.split(""); //将一个字符串分割成字符串数组
+    console.log(chr)
     let temp = "";
     let row = [];
     ctx.setFontSize(28 * rpx);
@@ -119,7 +121,9 @@ Page({
     // console.log("row", row);
     console.log("temp", temp);
     //如果数组长度大于2 则截取前两行
-    if (row.length > 2) {
+    console.log(row)
+    if (row.length >2) {
+      console.log(11)
       var rowCut = row.slice(0, 2);
       var rowPart = rowCut[1];
       var test = "";
@@ -143,7 +147,8 @@ Page({
       ctx.fillText(row[b], 22 * rpx, (586 + b * 40) * rpx, 300 * rpx);
       console.log("row[" + b + "]", row[b])
     }
-    ctx.draw();
+    ctx.draw(true);
+    wx.hideLoading()
     setTimeout(() => {
       wx.canvasToTempFilePath({
         x: 0,
@@ -154,13 +159,12 @@ Page({
         destHeight: 755 * 4,
         canvasId: 'share',
         success: function(res) {
+          console.log(res)
           wx.hideLoading()
-          // console.log("1", res);
-          //这就是生成的文件临时路径
+        //这就是生成的文件临时路径
           that.setData({
             shareImgSrc: res.tempFilePath
           })
-          // console.log(that.data.shareImgSrc);
           if (!res.tempFilePath) {
             wx.showModal({
               title: '提示',
@@ -261,16 +265,20 @@ Page({
       })
     } else {
       if (options.bulk == '1') {
+        wx.showLoading({
+          title: '加载中...',
+        })
         wx.request({
           url: url.api + '/ucs/v1/groupbuy/goods/info', // 仅为示例，并非真实的接口地址
           data: {
-            id: options.id
+            id: options.id,
+            shop_id: url.store_id ? url.store_id : shop_id,
           },
           header: {
             'content-type': 'application/json',
             "Authorization": app.token
           },
-          success(res) {
+          success:(res)=>{
             console.log('团购详情', res)
             var bulkInfo = res.data.data,
               list = bulkInfo.goods
@@ -281,8 +289,6 @@ Page({
             list.ot_price = bulkInfo.origin_price
             list.name = bulkInfo.goods_name
             list.goods_img = bulkInfo.goods_img
-
-          
             let listImag = [];
             // listImag.push(bulkInfo.image)
             bulkInfo.goods_img.map(item => {
@@ -295,7 +301,35 @@ Page({
               list,
               listImag
             })
-          }
+            wx.hideLoading()
+            wx.downloadFile({
+              url: insertStr(this.data.list.code_path, 4, 's'),
+              success:(res)=>{
+                // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
+                if (res.statusCode === 200) {
+                  that.setData({
+                    ewmPath: res.tempFilePath
+                  })
+                   
+                }
+              }
+            })
+            // 下载网络图片（商品图）到本地
+            wx.downloadFile({
+              url: insertStr(this.data.list.image, 4, 's'),
+              success: res => {
+                if (res.statusCode === 200) {
+                  that.setData({
+                    goodsPath: res.tempFilePath
+                  })
+                }
+              }
+            })
+            function insertStr(soure, start, newStr) {
+              return soure.slice(0, start) + newStr + soure.slice(start);
+            }
+          },
+          
         })
         return
       }
@@ -403,20 +437,7 @@ Page({
             }
             that.updateData(goodsInfo.sku, goodsInfo.goods_sku) //数据重构
           }
-          // 解析html标签
-          // var aHrefHrefData = list.detail;
-          // WxParse.wxParse('aHrefHrefData', 'html', aHrefHrefData, this);
 
-          //设置 供应商相关详情
-          // let supplier=res.data.data.supplier;
-          // if(supplier && supplier.supplier_store);
-          // { 
-          //   that.setData({
-          //     supplierName: supplier.name,
-          //     supplierLogo: supplier.supplier_store.store_logo,
-          //     supplier_id: supplier.supplier_store.id,
-          //   })
-          // }
         }
       })
     }

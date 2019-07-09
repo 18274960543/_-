@@ -84,10 +84,10 @@
   <view wx:if="{{options.bulk==1}}" class='bulkRules'>
     <view class='bulkRules-1'>
       <view class=''>拼单规则</view>
-      <view class=''>
+      <!-- <view class=''>
         查看明细规则
         <image src="/img/return.png"></image>
-      </view>
+      </view> -->
     </view>
     <view class='bulkRules-2'>
     <!-- ①拼单/参团②邀请好友③满员发货④不满退款 -->

@@ -1,6 +1,7 @@
 const app = getApp(),
   url = require('../../utils/config.js')
 const Page = require('../../utils/ald-stat.js').Page;
+import {http} from '../../utils/http.js'
 Page({
   data: {
     userInfo: null,
@@ -12,8 +13,6 @@ Page({
     uuid:wx.getStorageSync('uuid')
   },
   onLoad: function(options) {
-     
-     
     if (!wx.getStorageSync('userInfo')){
       this.queryUsreInfo()
     }else{
@@ -21,7 +20,9 @@ Page({
         userInfo: wx.getStorageSync('userInfo')
       })
     }
+    
   },
+  
   // 选择服务的宠物列表接口数据
   pet_list() {
     wx.request({
@@ -150,6 +151,21 @@ Page({
   },
   //  我的消息  未读消息个数  没有未使用的优惠劵
   newsNum(){
+    // let params={
+    //   url:'/ucs/v1/unread_num',
+    //   method:'get',
+    //   header: {
+    //     'content-type': 'application/json',
+    //     "Authorization": wx.getStorageSync('token')
+    //   },
+    // };
+    // http(params).then(res=>{
+    //   console.log(res)
+    //   this.setData({
+    //     num: res.message_num,
+    //     judgeCoupon: res.coupon_num
+    //   })
+    // })
     wx.request({
       url: url.api + `/ucs/v1/unread_num`,
       method: "get",
@@ -168,5 +184,6 @@ Page({
         }
    
     })
-  }
+  },
+ 
 })

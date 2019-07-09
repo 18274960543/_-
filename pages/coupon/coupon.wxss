@@ -48,7 +48,7 @@
 }
 
 .cupon-item-container {
-  margin-bottom: 150rpx;
+  padding-bottom: 150rpx;
 }
 
 .coupon-item {

@@ -605,12 +605,12 @@ swiper image {
 .bulkImg {
   display: flex;
   background: #fff;
-  width: 690rpx;
   margin: 0 auto;
-  padding: 20rpx 8rpx 10rpx;
+  padding: 20rpx 0;
   box-sizing: border-box;
   flex-wrap: wrap;
   border-radius: 10rpx;
+  justify-content: space-evenly
 }
 
 .bulkImgCenter {
@@ -618,13 +618,14 @@ swiper image {
   flex-direction: column;
   text-align: center;
   width: 210rpx;
-  margin: 0 7.8rpx 10rpx;
+  /* margin: 0 7.8rpx 10rpx; */
+  margin-bottom: 10rpx;
 }
 
 .bulkImg image {
   width: 100%;
   height: 210rpx;
-  margin-bottom: 15rpx;
+  margin-bottom: 10rpx;
   border: 1rpx solid #eee;
 }
 

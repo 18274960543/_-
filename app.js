@@ -4,6 +4,7 @@ const App = require('./utils/ald-stat.js').App;
 let url = require('./utils/config.js')
 App({
   onLaunch: function() {
+    //判断有没有token  
     wx.login({
       success: res => {
         console.log(res)
@@ -45,7 +46,7 @@ App({
   token: '',
   tokenHeader: {}, 
   sst_secret: '0e506ed52bfade9ae29ebe3f312b90c1',
-  access_token: "19_IqrDQdM6o6bVRedOZcGTsWQXspoOBTa-K7xSV_IFJM81Kxo1MSybmR9EOTOsHn4f204juaaeDsCIkcjehf5q1sR7dxW3e3Q0hH_eLY-seF17I_RTts9ehXvREECc4Ip4rOkHr3xNrYg5c9SfGFOcAJACBK",
+access_token:"19_IqrDQdM6o6bVRedOZcGTsWQXspoOBTa-K7xSV_IFJM81Kxo1MSybmR9EOTOsHn4f204juaaeDsCIkcjehf5q1sR7dxW3e3Q0hH_eLY-seF17I_RTts9ehXvREECc4Ip4rOkHr3xNrYg5c9SfGFOcAJACBK",
   member_id: '',
   globalData: {
     userInfo: null,
