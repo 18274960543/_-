@@ -16,8 +16,8 @@ Page({
     is_varieties: true,
     choosingpets: '',
     submit: true,
-    remind: false
-  },
+    remind: false,
+  },  
   onLoad: function (options) {
     console.log(options)
     this.getDates()

@@ -1,8 +1,108 @@
+.mark{
+  background: #000;
+  opacity: .5;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1
+}
 .coupon{
-  font-size: 30rpx;
+  background: #EFEFEF;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 90%;
+  z-index: 2;
+  border-top-right-radius: 30rpx;
+  border-top-left-radius: 30rpx;
+}
+.top{
   background: #fff;
-  margin:0 20rpx;
+  border-top-right-radius: 30rpx;
+  border-top-left-radius: 30rpx;
+}
+.top image{
+  position: absolute;
+  height: 40rpx;
+  width: 40rpx;
+  left: 67rpx;
+  top:40rpx;
+}
+.top text{
+  display: block;
+  text-align: center;
+  padding-top:48rpx;
+  font-size: 32rpx;
+  color: #333;
+}
+.topNav{
+  display: flex;
+  justify-content: space-around;
+  font-size: 32rpx;
+  color: #333;
+  padding: 40rpx 0 30rpx;
+}
+.topNav .active{
+  color: #773ADF
+}
+.topNav .active::before{
+  position: absolute;
+  height: 5rpx;
+  width: 125rpx;
+}
+.scroll{
+  width: 690rpx;
+  margin:0 auto;
+  height:750rpx;
+  z-index: 3
+}
+.list{
+  margin-top: 30rpx;
+  background: #fff;
+  display: flex;
+  padding: 40rpx 0rpx;
   border-radius: 10rpx;
-  padding: 30rpx;
-  box-sizing: border-box
+  justify-content: space-evenly
+}
+.list>view{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.listLf{
+  width: 140rpx;
+  color: #FC4C4C;
+  font-size: 26rpx;
+}
+.listLf view{
+  font-size: 70rpx;
+}
+.listLf view text{
+  font-size: 32rpx;
+}
+.listCenter{
+  font-size: 26rpx;
+  color: #000;
+  width: 280rpx;
+}
+.listCenter text{
+  font-size: #999;
+}
+.listRt image{
+  height: 40rpx;
+  width: 40rpx;
+}
+.btn{
+  width: 630rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 100rpx;
+  text-align: center;
+  background: linear-gradient(to right,#D342FF,#7326EB);
+  margin:30rpx auto;
+  color: #fff;
+  font-size: 32rpx;
 }

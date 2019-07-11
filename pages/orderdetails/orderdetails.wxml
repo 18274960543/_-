@@ -105,8 +105,8 @@
     <view class='tatal-price-boc' 
     wx:if='{{detailsData.state==20||detailsData.state==30||detailsData.state==40||detailsData.state==50}}'
     >
-      <text class='actualpayment'>实付款：<text class='total-price' >￥<text class='big-total-price'>{{detailsData.cardExpense?detailsData.cardExpense.change_amount
-:detailsData.OrderPay.amount/100}}</text></text></text>
+      <text class='actualpayment'>实付款：<text class='total-price' >￥<text class='big-total-price'>{{detailsData.card_expense?detailsData.card_expense.change_amount
+:detailsData.order_pay.amount/100}}</text></text></text>
       <text class="actualpayment">优惠金额：{{detailsData.discount_amount}}</text>
     </view>
   </view>

@@ -54,7 +54,8 @@ Page({
         status: false
       }
     ],
-    index:0
+    index:0,
+    isShow:false
   },
   /**
    * 生命周期函数--监听页面加载
@@ -836,9 +837,12 @@ Page({
     return true;
   },
   showCouponModel(e) {
-    if(!this.checkAddress()) return;
+    // if(!this.checkAddress()) return;
+    // this.setData({
+    //   couponVisible: true
+    // })
     this.setData({
-      couponVisible: true
+      isShow:true
     })
   },
   /**

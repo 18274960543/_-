@@ -4,12 +4,8 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    title:{
-       type:String,
-       value:'我是优惠劵组件',
-       observer:function(newVal,oldVal){
-         console.log(newVal, oldVal)//一个返回的是新值 一个返回的是旧值
-       }
+    isShow:{
+       type:Boolean,
     },
   
   },

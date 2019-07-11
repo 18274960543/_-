@@ -1,9 +1,30 @@
 <!-- 优惠劵组件开发 -->
-<view class="coupon titleclass" bindtap='couponData'>
-   我的组件
-  {{title}}
-</view>
- <view>当前组件计数：{{total}}</view>
-<button bindtap='handerNmu' size='mini'>+</button>   
-
-<!-- slot -->
+ <view class="mark" isShow="{{isShow}}" wx:if="{{isShow}}"></view>
+ <view class="coupon" wx:if="{{isShow}}">
+     <view class="top">
+         <image src='/img/x.png'></image>
+          <text>优惠券</text>
+         <view class="topNav">
+             <view class="active">可用优惠券(2)</view>
+             <view>不可用优惠券(2)</view>
+         </view>
+     </view>
+   <scroll-view scroll-y class="scroll">
+       <view class="list">
+           <view class="listLf">
+               <view><text>¥</text>100</view>
+               <text>满30元可用</text>
+           </view>
+           <view class="listCenter">
+              <view>【全品类云券】商品无门 槛优惠券</view>
+              <text>2018.02.01-2018.03.05</text>
+           </view>
+           <view class="listRt">
+              <image src='/img/switch_dp-3.png' wx:if="{{true}}"></image>
+               <image src='/img/switch_dp-1.png' wx:if="{{false}}"></image>
+           </view>
+       </view>
+       
+   </scroll-view>
+   <view class="btn">确定</view>
+ </view>

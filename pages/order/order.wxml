@@ -1,5 +1,6 @@
 <wxs src="../../filter/formatFr.wxs" module="formatFr"/>
-
+<!-- 优惠劵组件 -->
+<my-coupon isShow="{{isShow}}"></my-coupon>
 <view class="content">
   <view class="top"  wx:if="{{spec.mername=='托运'}}">
   <block>

@@ -1,7 +1,3 @@
 {
-  "navigationBarTitleText": "优惠券",
-  "usingComponents": {
-    "my-coupon":"/components/my-coupon/my-coupon",
-    "my-slot":"/components/my-slot/my-slot"
-  }
+  "navigationBarTitleText": "优惠券"
 }

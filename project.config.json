@@ -42,7 +42,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 19,
+			"current": 20,
 			"list": [
 				{
 					"id": -1,
@@ -181,6 +181,13 @@
 					"id": -1,
 					"name": "优惠劵",
 					"pathName": "pages/coupon/coupon",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "订单支付页面",
+					"pathName": "pages/order/order",
 					"scene": null
 				}
 			]
