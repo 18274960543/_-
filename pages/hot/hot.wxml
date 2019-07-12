@@ -19,6 +19,7 @@
           <view>
             ￥
             <text>{{item.goods.price}}</text>
+              <text class="ot_price_rmb" style='font-size:22rpx;'>¥{{item.goods.ot_price}}</text>
           </view>
         </view>
         <!-- <view class='mainList-store'>

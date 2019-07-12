@@ -22,7 +22,7 @@
              <text wx:if="{{item.use_way==0&&item.is_brain==1}}">【全品类云券】</text>
              <text wx:if="{{item.use_way==1&&item.is_brain==1}}">【服务类云券】</text>
              <text wx:if="{{item.use_way==2&&item.is_brain==1}}">【商品类云券】</text>
-             <text wx:if="{{item.use_way==1&&item.is_brain==0}}">【服务类店铺券】</text>
+             <text wx:if="{{item.use_way==1&&item.is_brain==2}}">【服务类店铺券】</text>
              {{item.name}}
            </view>
            <text class="rtBt">{{item.start_time +' - '+item.end_time}}</text>

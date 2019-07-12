@@ -2,7 +2,7 @@
 <view wx:if="{{!isToken}}">
   <!-- <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class="PhoneNumber"></button> -->
   <!-- <scroll-view class="home" scroll-y style='height:{{screenHeight}}px;' lower-threshold="150" bindscrolltolower="bindscrolltolower"> -->
-    <!-- 当前地址地位 -->
+    <!-- 当前地址地位 -->     
     <!-- <view class="position" wx:if="{{address}}">
     <image src='/img/position.png' class="position-dw"></image>
     <text bindtap='position'>{{address}}</text>

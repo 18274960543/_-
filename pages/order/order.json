@@ -1,6 +1,3 @@
 {
-  "navigationBarTitleText": "确定订单",
-  "usingComponents": {
-    "my-coupon": "/components/my-coupon/my-coupon"
-  }
+  "navigationBarTitleText": "确定订单"
 }

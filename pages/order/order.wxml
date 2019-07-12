@@ -1,19 +1,15 @@
 <wxs src="../../filter/formatFr.wxs" module="formatFr"/>
-<!-- 优惠劵组件 -->
-<my-coupon isShow="{{isShow}}"></my-coupon>
 <view class="content">
   <view class="top"  wx:if="{{spec.mername=='托运'}}">
   <block>
     <view class="top-xm">
       <text>寄宠人：{{checkAddress1.sender_name}} {{checkAddress1.sender_mobile}}</text>
-      <!-- <image src="/img/rt.png" mode='aspectFill' /> -->
     </view>
     <view class="top-text" style='padding-bottom:10rpx'>{{checkAddress1.sender_address}}</view>
     </block>
     <block wx:if="{{address}}">
     <view class="top-xm" style='border-top:1rpx solid #eee;padding-top:10rpx'>
       <text>收宠人：{{checkAddress1.recipient_name}} {{checkAddress1.recipient_mobile}}</text>
-      <!-- <image src="/img/rt.png" mode='aspectFill' /> -->
     </view>
     <view class="top-text">{{checkAddress1.recipient_address}}</view>
     </block>
@@ -99,25 +95,13 @@
     <view class='coupon-item clear-f' style='padding:0;'>
     <view class="house-bt clear-f" data-index="{{index}}" bindtap="showCouponModel" style='margin:0;padding:20rpx 20rpx;'>
       <view class="coupon-item-left">选择优惠券</view>
-      <view class="coupon-item-right" style='max-width:500rpx;display:block;text-align:right'>
-        <text class="coupon-text" wx:if="{{!selectCouponText}}">
-         请选择优惠券
-        </text>
-        <text wx:else class="coupon-text">
-          <!-- <text>{{selectCouponText}}</text> -->
-          <text wx:if="{{selectCouponDiscount}}" class="discount-price">优惠￥{{selectCouponDiscount}}</text>
-        </text>
+ <view class="coupon-item-right" style='max-width:500rpx;display:block;text-align:right'>
+        <text class="coupon-text" wx:if="{{!discount}}">请选择优惠券</text>
+        <text class="coupon-text" wx:else>优惠{{discount}}元</text>
         <image style='margin-left:-20rpx' src='/img/rt.png' mode='aspectFill'></image>
       </view>
     </view>
-    
   </view>
-  <!-- 选择接送服务 开关 -->
-  <!-- <view class="Shuttleservice" bindtap='isReceiveCost' wx:if="{{exes[0]=='bath/expenses'}}">
-    <image src='/img/switch_dp-3.png' mode='aspectFill' wx:if="{{isReceiveCost}}"></image>
-    <image src='/img/switch_dp-1.png' mode='aspectFill' wx:else></image>
-    <text>选择接送费用</text>
-  </view> -->
   <!-- 法律声明 -->
   <view class="statement" wx:if="{{spec.mername=='托运'}}">
         <image src='/img/switch_dp-3.png' wx:if="{{ismername}}" bindtap='ismername'></image>
@@ -126,36 +110,43 @@
     </view>
     <!-- 优惠券选择 -->
   <view catchtouchmove='stopPageScroll'>
-    <view class='coupon-select-wraper' hidden="{{!couponVisible}}">
-      <view class='coupon-wraper' bindtap="clickCouponWrapper"></view>
-      <view class='coupon-content'>
-        <view class='coupon-title'>选择优惠</view>
-        <view wx:for="{{couponList}}" wx:key="{{index}}" wx:for-item="coupon">
-          <view class='coupon-item counponBt' bindtap="choseCouponAction" data-index="{{index}}" >
-            <view>{{coupon.name}}
-              <text wx:if="{{coupon.type==1}}">(减{{coupon.discount}})</text>
-              <text wx:if="{{coupon.type==2||coupon.type==5}}">(满{{coupon.condition}}减{{coupon.discount}})</text>
-              <text wx:if="{{coupon.type==3}}">(<text wx:for="{{coupon.condition}}" wx:key="{{index}}">{{item.condition}}件{{item.discount}}折;</text>
-              <text>减{{coupon.discount}}</text>)</text>
-              <text wx:if="{{coupon.type==4}}">(减{{coupon.discount}})</text>
-               
+    <view class='coupon-select-wraper' wx:if='{{couponWrapper}}'>
+      <view class='coupon-wraper' bindtap="clickCouponWrapper"  ></view>
+   <view class="coupon">
+     <view class="couponTop">
+         <image src='/img/x.png' bindtap='clickCouponWrapper'></image>
+          <text>优惠券</text>
+         <view class="topNav">
+             <view class="{{couponIndex==index?'activeOne':''}}" wx:for="{{couponTop}}" wx:key="index" data-index='{{index}}' bindtap='couponTop'>{{item}}</view>
+         </view>
+     </view>
+      <scroll-view scroll-y class="scroll">
+       <view class="list {{couponIndex?'listActive':''}}" wx:for="{{!couponIndex?couponList.available:couponList.disabled}}" wx:key="index" wx:if="{{!couponIndex?couponList.available.length>0:couponList.disabled.length>0}}" bindtap="{{!couponIndex?'couponListXuanzhe':''}}" data-index="{{index}}">
+           <view class="listLf">
+               <view><text>¥</text>{{item.discount}}</view>
+               <text>满{{item.condition}}元可用</text>
+           </view>
+           <view class="listCenter">
+            <view>
+             <text wx:if="{{item.coupon.use_way==0&&item.coupon.is_brain==1}}">【全品类云券】</text>
+             <text wx:if="{{item.coupon.use_way==1&&item.coupon.is_brain==1}}">【服务类云券】</text>
+             <text wx:if="{{item.coupon.use_way==1&&item.coupon.is_brain==2}}">【服务类店铺券】</text>
+              {{item.name}}
             </view>
-            <view  class='select-action' >
-              <image src="/img/switch_dp-3.png" mode='aspectFill' wx:if="{{selectCouponIndex!=='' && index==selectCouponIndex}}"></image>
-              <image src="/img/switch_dp-1.png" mode='aspectFill' wx:else></image>
-            </view>
-          </view>
-        </view>
-      </view>
+              <text>{{item.coupon.start_time}}至{{item.coupon.end_time}}</text>
+           </view>
+           <view class="listRt">
+              <image src='/img/switch_dp-3.png' wx:if="{{item.status}}"></image>
+               <image src='/img/switch_dp-1.png' wx:else></image>
+           </view>
+       </view>
+   </scroll-view>
+   <view class="btn" bindtap='btn'>确定</view>
+ </view>
     </view>
   </view>
-
   <!-- 底部定位 -->
   <view class="footer">
-    <!-- <view class="footer-top" wx:if="{{!show}}">
-             不在服务范围内，<text bindtap='switch_dp'>切换店铺</text>
-             <image src='/img/bt2.png'></image>
-          </view> -->
     <view class="footer-bt">
       <view class="footer-left">￥{{formatFr.fixed2(totalpriceAfterDiscount)}}</view>
       <view class="footer-rt replaceBackground" bindtap='payment' wx:if="{{isReceiveCost1}}">立即付款</view>
@@ -202,7 +193,6 @@
     <text>门店智慧平台已为您匹配附近最优店铺</text>
 </view>
 </view>
-
 <!-- 微信和会员卡支付 -->
 <view catchtouchmove='stopPageScroll' wx:if="{{is_varieties}}">
  <!--遮罩层弹框 -->

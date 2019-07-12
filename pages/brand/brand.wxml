@@ -18,6 +18,7 @@
           <view>
             ￥
             <text>{{item.price}}</text>
+            <text class="ot_price_rmb" style='font-size:22rpx;'>¥{{item.ot_price}}</text>
           </view>
         </view>
       </view>

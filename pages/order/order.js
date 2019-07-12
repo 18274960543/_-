@@ -32,13 +32,7 @@ Page({
     isReceiveCost:false,//选择接送费用的开关
     isReceiveCost1:true,
     //lida
-    couponVisible: false,
-    couponList: [],
-    selectCouponId: '',
-    selectCouponIndex:'',
-    selectCouponText: '',
-    selectCouponDiscount: '',
-    totalpriceAfterDiscount:'',
+    couponWrapper:false,
     ismername:true,
     switchImg:true,
     is_varieties:false,
@@ -54,8 +48,12 @@ Page({
         status: false
       }
     ],
+    couponTop: ["可用优惠券","不可用优惠券"],
     index:0,
-    isShow:false
+    isShow:false,
+    couponIndex:0,
+    coupons:[],
+    totalpriceAfterDiscount:'',
   },
   /**
    * 生命周期函数--监听页面加载
@@ -75,8 +73,9 @@ Page({
     let order_id = this.data.order_id;
     let pay_info = this.data.pay_info;
     let pay_sn = this.data.pay_sn;
-    console.log(pay_sn)
+    console.log(pay_sn, pay_info)
     if (this.data.index == 0) {
+      console.log("微信支付")
       wx.requestPayment({
         timeStamp: pay_info.timestamp,
         nonceStr: pay_info.nonceStr,
@@ -84,6 +83,7 @@ Page({
         signType: pay_info.signType,
         paySign: pay_info.paySign,
         success: res => {
+          console.log(res)
           wx.redirectTo({
             url: '/pages/orderdetails/orderdetails?pay_sn=' + pay_sn
           })
@@ -157,7 +157,8 @@ Page({
       dis_img: wx.getStorageSync('dis_img'),
       checkAddress1: wx.getStorageSync('checkAddress'),
       is_distribution: options.is_distribution,
-      deal_store: options.shop_id
+      deal_store: options.shop_id,
+      totalpriceAfterDiscount: options.price ? options.price : options.grain_price
     })
    console.log(url.store_id)
     if (wx.getStorageSync('setmeal').shop_id != wx.getStorageSync('shop_id')){
@@ -202,18 +203,6 @@ Page({
     console.log(1111111111, this.data.checkAddress1, wx.getStorageSync('checkAddress'))
   },
   onHide(){
-    // this.setData({
-    //   // address: app.globalData.address,
-    //   isReceiveCost: false,
-    //   isReceiveCost1: true,
-    // })
-  },
-  // 点击接送费用弹出接送费用计算
-  is_show(){
-    this.setData({
-      isclose:true,
-      isshuttle:true
-    })
   },
   // 点击阴影
   shadow(){
@@ -458,7 +447,7 @@ Page({
           charges: wx.getStorageSync('setmeal').charges,
           service_product_name: wx.getStorageSync('setmeal').service_product_name,
           day: this.data.spec.day,
-          coupon_id: this.data.selectCouponId,//优惠券
+          coupons: this.data.coupons,//优惠券
           address,
         },
         method: "post",
@@ -511,7 +500,6 @@ Page({
     }else{
       // 判断是不是周边服务下单支付
       if (b =='periphery'){
-      
         //周边服务没有service_specs_id
         console.log(this.data.spec.service_specs_id, this.data.checkAddress1.id)
         wx.request({
@@ -521,12 +509,10 @@ Page({
             member_name: this.data.spec.member_name,
             shop_id: url.store_id,
             service_product_id: this.data.spec.service_product_id,
-
             price: this.data.spec.price,
             wholesale_price: this.data.spec.price,
             retail_price: this.data.spec.retail_price,
             total_fee: this.data.total_fee ? this.data.total_fee : this.data.spec.price,
-            
             date_time: this.data.spec.date_time,
             address_id: this.data.address.id,
             pay_type: 'WeChat',
@@ -536,7 +522,7 @@ Page({
             service_product_name: wx.getStorageSync('setmeal').service_product_name,
             address,
             convey_address_id: this.data.checkAddress1.id,
-            coupon_id: this.data.selectCouponId,//优惠券
+            coupons: this.data.coupons,//优惠券
           },
           method: "post",
           header: {
@@ -611,7 +597,6 @@ Page({
             price: this.data.spec.price1 ? this.data.spec.price1 : 0,
             wholesale_price: this.data.spec.price ? this.data.spec.price : 0,//零售价
             retail_price: this.data.spec.price1 ? this.data.spec.price1 : 0,//批发价
-
             pay_type: 'WeChat',
             service_id: this.data.spec.service_id,
             service_product_id: this.data.spec.service_product_id,
@@ -621,7 +606,7 @@ Page({
             distance: this.data.distance ? this.data.distance:'',
             service_product_name: wx.getStorageSync('setmeal').service_product_name,
             address,
-            coupon_id: this.data.selectCouponId,//优惠券
+            coupons: this.data.coupons,//优惠券
           },
           method: "post",
           header: {
@@ -629,7 +614,7 @@ Page({
             "Authorization": app.token
           },
           success: (res) => {
-            console.log(res.data)
+            console.log(res)
             if (res.data.code == 200) {
               var pay_info = res.data.pay_info;
               let pay_sn = res.data.pay_sn;
@@ -693,7 +678,6 @@ Page({
   },
   // lida
   getCounponList(){ 
-    if (!this.checkAddress()) return;
     let params={};
     let address1 = this.data.address
     let address = address1.province + '' + address1.city + '' + address1.area + '' + address1.address
@@ -719,7 +703,6 @@ Page({
         charges: wx.getStorageSync('setmeal').charges,
         service_product_name: wx.getStorageSync('setmeal').service_product_name,
         day: this.data.spec.day,
-        coupon_id: this.data.selectCouponId,//优惠券
         address,
         expenses: this.data.expenses ? this.data.expenses : 0
       }
@@ -743,7 +726,6 @@ Page({
           deal_store: this.data.deal_store ? this.data.deal_store : url.store_id,
           service_product_name: wx.getStorageSync('setmeal').service_product_name,
           address,
-          coupon_id: this.data.selectCouponId,//优惠券
         };
       } else { 
         console.log(this.data.spec.service_specs_id)
@@ -768,13 +750,12 @@ Page({
           distance: this.data.distance ? this.data.distance : '',
           service_product_name: wx.getStorageSync('setmeal').service_product_name,
           address,
-          coupon_id: this.data.selectCouponId,//优惠券
         };
       }
 
     }
     wx.request({
-      url: url.api + `/ucs/v1/service/order/coupon`, // 仅为示例，并非真实的接口地址
+      url: url.api + `/ucs/v1/service/order/coupon`,
       data: params,
       method: "post",
       header: {
@@ -785,105 +766,79 @@ Page({
       success: (res) => {
         console.log(res.data)
         if (res.data.code == 200) {
-          let couponList = res.data.data;
-          couponList.push({
-            empty: true,
-            name: "不使用优惠"
-          });
-          this.setData({
-            couponList: couponList,
+          let couponList = res.data.data
+          couponList.available.map(item=>{
+            item.status=false
           })
-          //模拟选中最高优惠
-          if (couponList.length > 1) {
-            let maxIndex = 0;
-            let maxDiscount = 0;
-            // discount  优惠的钱 condition 满足这个价格才能优惠
-            for (let i = 0; i < couponList.length - 1; i++) {
-              if (parseFloat(couponList[i].discount) > maxDiscount) {
-                maxDiscount = parseFloat(couponList[i].discount);
-                maxIndex = i;
-              }
-            }
-            this.choseCouponAction({
-              currentTarget: {
-                dataset: {
-                  index: maxIndex
-                }
-              }
-            })
-          } else {
-            this.choseCouponAction({
-              currentTarget: {
-                dataset: {
-                  index: 0
-                }
-              }
-            })
-          }
+          this.setData({
+            couponList
+          })
         }
       }
     }) 
   },
-  checkAddress(){
-    if (!this.data.address) {
-      console.log(666)
-      wx.showToast({
-        title: '请先添加地址',
-        icon: 'none',
-        duration: 2000
-      })
-      return false;
-    }
-    return true;
-  },
   showCouponModel(e) {
-    // if(!this.checkAddress()) return;
-    // this.setData({
-    //   couponVisible: true
-    // })
     this.setData({
-      isShow:true
+      couponWrapper:true,
     })
   },
-  /**
- * 选择模态部分隐藏优惠券选择
- */
-  clickCouponWrapper(e) {
+  clickCouponWrapper(){
     this.setData({
-      couponVisible: false,
+      couponWrapper: false,
     })
   },
-  choseCouponAction(e) {
-    let index = e.currentTarget.dataset.index;
-    console.log("//",index)
-    let selectCouponText = '';
-    let selectCouponDiscount = "";
-    if (this.data.couponList[index].empty) {
-      selectCouponText = "不使用优惠券";
-      selectCouponDiscount = "";
-    } else {
-      // selectCouponText = this.data.couponList[index].name; fa
-      selectCouponText = true;
-      selectCouponDiscount = this.data.couponList[index].discount;
+//  优惠劵可用 和不可用切换
+couponTop(e){
+  let index = e.currentTarget.dataset.index;
+  this.setData({
+    couponIndex:index
+  })
+},
+
+// 优惠劵选择
+couponListXuanzhe(e){
+  let index = e.currentTarget.dataset.index;
+  console.log(e,index)
+  let couponList = this.data.couponList;
+  couponList.available.map((item,i)=>{
+    if (item.status && (item.coupon.is_brain == couponList.available[index].coupon.is_brain)){
+      item.status = false
     }
-    var totalpriceAfterDiscount = this.data.total_fee ? this.data.total_fee : this.data.price ? this.data.price : this.data.grain_price;
-    if (this.data.couponList[index] && !this.data.couponList[index].empty) {
-      totalpriceAfterDiscount = (totalpriceAfterDiscount - this.data.couponList[index].discount);
-      totalpriceAfterDiscount = totalpriceAfterDiscount ? totalpriceAfterDiscount.toFixed(2) : ''
-      
-      if (totalpriceAfterDiscount <= 0) { totalpriceAfterDiscount = 0
+  })
+  couponList.available[index].status = !couponList.available[index].status;
+  this.setData({
+    couponList
+  })
+  console.log(this.data.couponList)
+},
+// 优惠劵使用确定
+btn(){
+  //价格
+  var totalpriceAfterDiscount = this.data.total_fee ? this.data.total_fee : this.data.price ? this.data.price : this.data.grain_price;
+  //优惠的
+  let discount = 0;
+  let couponList = this.data.couponList;
+  let coupons = [];
+  couponList.available.map((item,index)=>{
+    if (item.status){
+      let item1 = {};
+      item1.type = item.coupon.type;
      
-       }
-    } else {
+      item1.coupon_id = item.coupon.id;
+      discount = discount+item.discount
+      totalpriceAfterDiscount = totalpriceAfterDiscount - item.discount;
+      if(totalpriceAfterDiscount<=0){
+        totalpriceAfterDiscount=0.1
+      }
+      coupons.push(item1)
     }
-    this.setData({
-      selectCouponIndex: index,
-      selectCouponId: this.data.couponList[index].couponId,
-      selectCouponText: selectCouponText,
-      couponVisible: false,
-      totalpriceAfterDiscount: totalpriceAfterDiscount,
-      selectCouponDiscount: selectCouponDiscount,
-    })
-  },
-  
+  })
+  console.log(coupons, discount)
+  this.setData({
+    couponWrapper: false,
+    coupons,
+    totalpriceAfterDiscount,
+    discount
+  })
+}
 })

@@ -452,7 +452,7 @@
 .coupon-text{
   display: inline-block;
   line-height: 0rpx;
-  color: #999;
+  color: red;
   margin-right:35rpx;
 }
 .coupon-select-wraper{
@@ -469,32 +469,112 @@
   height:100%; 
   z-index: 999; 
 }
-.coupon-content{
-  padding-bottom:30rpx;
-  width: 100%;
-  position: absolute;
+/* 优惠劵样式修改 */
+.coupon{
+  background: #EFEFEF;
+  position: fixed;
   bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 90%;
+  z-index: 2;
+  border-top-right-radius: 30rpx;
+  border-top-left-radius: 30rpx;
+}
+.listActive .listLf{
+color: #999!important;
+}
+.listActive .listCenter{
+color: #999!important;
+}
+.couponTop{
   background: #fff;
-  /* height: 586rpx; */
-  overflow: auto;
+  border-top-right-radius: 30rpx;
+  border-top-left-radius: 30rpx;
 }
-.coupon-title{
-  text-align: center;
-  line-height: 80rpx;
-}
-.select-action image{
-  width: 40rpx;
-  height: 40rpx;
-}
-.coupon-item{
-  position: relative;
-  padding: 0 20rpx;
-}
-.select-action{
+.couponTop image{
   position: absolute;
-  right: 20rpx;
-  top: 10rpx;
+  height: 40rpx;
+  width: 40rpx;
+  left: 67rpx;
+  top:40rpx;
 }
+.couponTop text{
+  display: block;
+  text-align: center;
+  padding-top:48rpx;
+  font-size: 32rpx;
+  color: #333;
+}
+.topNav{
+  display: flex;
+  justify-content: space-around;
+  font-size: 32rpx;
+  color: #333;
+  padding: 40rpx 0 30rpx;
+}
+.topNav .activeOne{
+  color: #773ADF
+}
+.topNav .activeOne::before{
+  position: absolute;
+  height: 5rpx;
+  width: 125rpx;
+}
+.scroll{
+  width: 690rpx;
+  margin:0 auto;
+  height:750rpx;
+  z-index: 3
+}
+.list{
+  margin-top: 30rpx;
+  background: #fff;
+  display: flex;
+  padding: 40rpx 0rpx;
+  border-radius: 10rpx;
+  justify-content: space-evenly
+}
+.list>view{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.listLf{
+  width: 155rpx;
+  color: #FC4C4C;
+  font-size: 26rpx;
+}
+.listLf view{
+  font-size: 70rpx;
+}
+.listLf view text{
+  font-size: 32rpx;
+}
+.listCenter{
+  font-size: 26rpx;
+  color: #000;
+  width:320rpx;
+}
+.listCenter>text{
+  color: #999;
+}
+.listRt image{
+  height: 40rpx;
+  width: 40rpx;
+}
+.btn{
+  width: 630rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 100rpx;
+  text-align: center;
+  background: linear-gradient(to right,#D342FF,#7326EB);
+  margin:30rpx auto;
+  color: #fff;
+  font-size: 32rpx;
+}
+/* 优惠劵样式修改结束 */
 .discount-price{
   color: red;
   margin-left: 20rpx;
@@ -511,9 +591,7 @@
 .coupon-item-right image{
   width: 24rpx;
   height: 24rpx;
-  position: absolute;
-  right: 20rpx;
-  top: 26rpx;
+ 
 }
 .memberPayment{
  margin-top:10rpx;

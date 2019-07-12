@@ -21,6 +21,9 @@ Page({
     })
   },
  servicelist(){
+   wx.showLoading({
+     title: '加载中',
+   })
    wx.request({
      url: url.api + `/ucs/v1/service/coupon/list`,  
      method: "get",
@@ -30,7 +33,7 @@ Page({
      },
      success: (res) => {
         console.log(res.data);
-   
+       wx.hideLoading()
        this.setData({
           list:res.data.data
        })
