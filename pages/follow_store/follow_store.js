@@ -10,11 +10,11 @@ Page({
   },
   requestList: function() {
     var that = this;
-    // console.log("111",app.token);
+    console.log("111",app.token);
     wx.request({
       url: url.api + '/ucs/v1/member/follow',
       header: {
-        "Authorization": app.token,
+        "Authorization": wx.getStorageSync('token'),
         "Accept": 'application/json'
       },
       method: 'get',
@@ -40,7 +40,7 @@ Page({
         "shop_id": shop_id
       },
       header: {
-        "Authorization": app.token,
+        "Authorization": wx.getStorageSync('token'),
         "Accept": 'application/json'
       },
       method: 'delete',

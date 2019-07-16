@@ -464,22 +464,18 @@ Page({
         })
         return
       }
-
       let completeAddress = region[0] + region[1] + region[2] + input3 //寄宠人完整地址；
       let completeAddress1 = region1[0] + region1[1] + region1[2] + input6 //收宠人完整地址；
-      let data = {
-        convey_product_id: this.data.setmeal[this.data.indexI].id, //托运产品id
-        sender_name: input1, //	寄件人姓名
-        sender_mobile: input2, //寄件人电话
-        sender_address: completeAddress, //寄件人地址
-        recipient_name: input4, //收件人姓名
-        recipient_mobile: input5, //收件人电话
-        recipient_address: completeAddress1, //收件人地址
-      }
-      
-      wx.setStorageSync('checkAddress', data);
+      // let data = {
+      //   convey_product_id: this.data.setmeal[this.data.indexI].id, //托运产品id
+      //   sender_name: input1, //	寄件人姓名
+      //   sender_mobile: input2, //寄件人电话
+      //   sender_address: completeAddress, //寄件人地址
+      //   recipient_name: input4, //收件人姓名
+      //   recipient_mobile: input5, //收件人电话
+      //   recipient_address: completeAddress1, //收件人地址
+      // }
       console.log(this.data.setmeal[this.data.indexI].service[0].img)
-    
       wx.request({
         url: url.api + `/ucs/v1/service/convey/address`, // 仅为示例，并非真实的接口地址
         data: {
@@ -497,13 +493,14 @@ Page({
           "Authorization": app.token
         },
         success: (res) => {
-          console.log(res.data)
+          console.log(res)
           if (res.data.code == 200) {
-           
+            let checkAddress=res.data.data
+            wx.setStorageSync('checkAddress', checkAddress);
             // wx.setStorageSync('checkAddress', checkAddress)
           }
         }
-      })
+      }) 
     }
     if (!this.data.submit) {
       this.setData({
@@ -525,9 +522,17 @@ Page({
       return
     }
      
-    let price = this.data.setmeal[this.data.indexI].wholesale_price ? this.data.setmeal[this.data.indexI].wholesale_price : this.data.setmeal[this.data.indexI].grain_price ? this.data.setmeal[this.data.indexI].grain_price :this.data.setmeal[this.data.indexI].price
+    let price = this.data.setmeal[this.data.indexI].wholesale_price ? this.data.setmeal[this.data.indexI].wholesale_price : this.data.setmeal[this.data.indexI].grain_price ? this.data.setmeal[this.data.indexI].grain_price :this.data.setmeal[this.data.indexI].price;
+    console.log(this.data.setmeal[this.data.indexI].wholesale_price, this.data.setmeal[this.data.indexI].retail_price)
+   var retail_price = this.data.setmeal[this.data.indexI].retail_price
+  //  判断是不是殡葬 
+    if (this.data.service_id=='6'){
+       retail_price = (this.data.setmeal[this.data.indexI].wholesale_price * this.data.setmeal[this.data.indexI].retail_price) / 100 
+    }
+     
+
     wx.navigateTo({
-      url: '/pages/order/order?price=' + price + '&service_id=' + this.data.service_id + '&date_time=' + this.data.date + '&member_pets_id=' + this.data.pet_list[this.data.index].id + '&service_product_id=' + this.data.setmeal[this.data.indexI].id + '&exes=' + ['bath/expenses11', bb, 'bath/store'] + '&name=' + this.data.pet_list[this.data.index].name + '&weight=' + this.data.pet_list[this.data.index].weight + '&specs=' + this.data.pet_list[this.data.index].specs + '&mername=' + this.data.mername + '&member_name=' + wx.getStorageSync('shop_info').name + '&is_distribution=' + this.data.is_distribution + '&shop_id=' + this.data.setmeal[this.data.indexI].shop_id + '&wholesale_price=' + this.data.setmeal[this.data.indexI].wholesale_price + '&retail_price=' + this.data.setmeal[this.data.indexI].retail_price + '&service_specs_id=' + this.data.setmeal[this.data.indexI].specs_id + '&grain_price=' + this.data.setmeal[this.data.indexI].grain_price +'&price1='+ this.data.setmeal[this.data.indexI].price
+      url: '/pages/order/order?price=' + price + '&service_id=' + this.data.service_id + '&date_time=' + this.data.date + '&member_pets_id=' + this.data.pet_list[this.data.index].id + '&service_product_id=' + this.data.setmeal[this.data.indexI].id + '&exes=' + ['bath/expenses11', bb, 'bath/store'] + '&name=' + this.data.pet_list[this.data.index].name + '&weight=' + this.data.pet_list[this.data.index].weight + '&specs=' + this.data.pet_list[this.data.index].specs + '&mername=' + this.data.mername + '&member_name=' + wx.getStorageSync('shop_info').name + '&is_distribution=' + this.data.is_distribution + '&shop_id=' + this.data.setmeal[this.data.indexI].shop_id + '&wholesale_price=' + this.data.setmeal[this.data.indexI].wholesale_price + '&retail_price=' + retail_price + '&service_specs_id=' + this.data.setmeal[this.data.indexI].specs_id + '&grain_price=' + this.data.setmeal[this.data.indexI].grain_price +'&price1='+ this.data.setmeal[this.data.indexI].price
     })
 
   },

@@ -75,8 +75,9 @@ Page({
   stopPageScroll: function () {
     return
   },
-  onLoad: function (options) {
+  
  
+  onLoad: function (options) {
     wx.playBackgroundAudio({
       dataUrl: '',
       title: '',
@@ -86,7 +87,12 @@ Page({
     console.log(options)
     // 如果扫码进来 有uuid 就显示扫码的店铺
     if (options.uuid) {
-      this.homeMergedata(options.uuid, 1)
+      let that=this;
+      // 延时一秒是 先拿到最新的token 在走这个方法
+     function gtToken(){
+        that.homeMergedata(options.uuid, 1)
+      }
+      setTimeout(gtToken,1000)
       this.setData({
         uuid: options.uuid,
       })

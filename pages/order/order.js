@@ -36,6 +36,7 @@ Page({
     ismername:true,
     switchImg:true,
     is_varieties:false,
+    checkAddress1:wx.getStorageSync('checkAddress'),
     memberPayment:[
       {
         img:'/img/WeChat.png',
@@ -510,8 +511,8 @@ Page({
             shop_id: url.store_id,
             service_product_id: this.data.spec.service_product_id,
             price: this.data.spec.price,
-            wholesale_price: this.data.spec.price,
-            retail_price: this.data.spec.retail_price,
+            wholesale_price: this.data.spec.price,//零售价
+            retail_price: this.data.spec.retail_price,//批发价
             total_fee: this.data.total_fee ? this.data.total_fee : this.data.spec.price,
             date_time: this.data.spec.date_time,
             address_id: this.data.address.id,
@@ -521,7 +522,7 @@ Page({
             deal_store: this.data.deal_store ? this.data.deal_store : url.store_id,
             service_product_name: wx.getStorageSync('setmeal').service_product_name,
             address,
-            convey_address_id: this.data.checkAddress1.id,
+            // convey_address_id: this.data.checkAddress1.id,
             coupons: this.data.coupons,//优惠券
           },
           method: "post",
@@ -592,14 +593,14 @@ Page({
             expenses: this.data.expenses ? this.data.expenses:0,
             date_time: this.data.spec.date_time,
             address_id: this.data.address.id,
-            convey_address_id: this.data.checkAddress1.convey_product_id ? this.data.checkAddress1.convey_product_id : 0,
+            convey_address_id: this.data.checkAddress1.id,
             total_fee: this.data.total_fee ? this.data.total_fee : this.data.spec.price,//零售价
             price: this.data.spec.price1 ? this.data.spec.price1 : 0,
             wholesale_price: this.data.spec.price ? this.data.spec.price : 0,//零售价
             retail_price: this.data.spec.price1 ? this.data.spec.price1 : 0,//批发价
             pay_type: 'WeChat',
             service_id: this.data.spec.service_id,
-            service_product_id: this.data.spec.service_product_id,
+            service_product_id: this.data.checkAddress1.convey_product_id ? this.data.checkAddress1.convey_product_id : 0,
             is_distribution: this.data.is_distribution ? this.data.is_distribution:0,
             deal_store: this.data.deal_store ? this.data.deal_store : url.store_id,
             charges: wx.getStorageSync('setmeal').charges,
@@ -736,14 +737,14 @@ Page({
           expenses: this.data.expenses ? this.data.expenses : 0,
           date_time: this.data.spec.date_time,
           address_id: this.data.address.id,
-          convey_address_id: this.data.checkAddress1.convey_product_id ? this.data.checkAddress1.convey_product_id : 0,
+          convey_address_id: this.data.checkAddress1.id,
           total_fee: this.data.total_fee ? this.data.total_fee : this.data.spec.price,//零售价
           price: this.data.spec.price1 ? this.data.spec.price1 : 0,
           wholesale_price: this.data.spec.price ? this.data.spec.price : 0,//零售价
           retail_price: this.data.spec.price1 ? this.data.spec.price1 : 0,//批发价
           pay_type: 'WeChat',
           service_id: this.data.spec.service_id,
-          service_product_id: this.data.spec.service_product_id,
+          service_product_id: this.data.checkAddress1.convey_product_id ? this.data.checkAddress1.convey_product_id : 0,
           is_distribution: this.data.is_distribution ? this.data.is_distribution : 0,
           deal_store: this.data.deal_store ? this.data.deal_store : url.store_id,
           charges: wx.getStorageSync('setmeal').charges,

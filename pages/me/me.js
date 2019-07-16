@@ -72,7 +72,6 @@ Page({
     })
   },
   onShow(){
-    this.queryUsreInfo()
     this.pet_list()
     this.newsNum()
     

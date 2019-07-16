@@ -4,7 +4,10 @@ const App = require('./utils/ald-stat.js').App;
 let url = require('./utils/config.js')
 App({
   onLaunch: function() {
-    //判断有没有token  
+     //判断有没有token  
+    // if (!wx.getStorageSync('token')){
+      
+    // }
     wx.login({
       success: res => {
         console.log(res)
