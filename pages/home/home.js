@@ -26,6 +26,7 @@ Page({
     address: '',
     ids: '',
     page: 1,
+    shop_info: wx.getStorageSync('shop_info'),
     isCoupon: false,
     isToken: false,
     hotData:null,//热卖专区数据
@@ -39,7 +40,6 @@ Page({
   },
   // 
   bindscrolltolower(e) {
-
     let self = this;
     // console.log(122222)
     //当长度不够
@@ -137,6 +137,7 @@ Page({
     }
     this.setData({
       address: wx.getStorageSync('address'),
+      shop_info: wx.getStorageSync('shop_info'),
     })
   },
   onShareAppMessage(res) {
@@ -225,6 +226,9 @@ Page({
           mergedata.broupbuy.map(item=>{
             item.goods_price = parseFloat(item.goods_price)
             item.origin_price = parseFloat(item.origin_price)
+          })
+          this.setData({
+            shop_info: res.data.info
           })
           wx.setStorageSync('shop_info', res.data.info)
           url.store_id = res.data.info.id

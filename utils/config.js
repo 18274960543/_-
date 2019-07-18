@@ -5,4 +5,3 @@ const config = {
   key:'J73BZ-TLPCX-BJ74R-7BMIU-I6V65-3YFLM'
 }
 module.exports = config    
-             

@@ -344,11 +344,11 @@ swiper image {
 }
 
 .position text {
-  /* width:20%; */
+  width:99%;
   padding-left: 6rpx;
-  /* overflow:hidden;
+  overflow:hidden;
   text-overflow:ellipsis;
-  white-space:nowrap; */
+  white-space:nowrap;
 }
 
 .position view {
