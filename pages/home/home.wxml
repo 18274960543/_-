@@ -53,7 +53,6 @@
     </view> -->
       <!-- 赠送服务 -->
       <view class="give" bindtap='goserviceOffer' wx:if="{{mergedata.servicecosts}}">
-          <!-- <view>赠送服务<text>满就送100元券</text></view> -->
           <image src='{{mergedata.servicecosts}}'></image>
       </view>
       <!-- 超值拼团-->
@@ -76,7 +75,6 @@
         </view>
         </view>
       </view>
-
       <!-- <view class="list1">
         <scroll-view class="nav_top" scroll-x="true">
           <block wx:for="{{mergedata.category}}" wx:key="index">
@@ -141,6 +139,8 @@
       </view>
       <!-- <button open-type='contact'>点击进入客服会话</button> -->
       <!-- 客服电话 -->
+      <!-- 拖欠 -->
+      <!-- <view  style='font-size:30rpx;margin:10rpx auto;'>程序员在想办法更新中</view> -->
       <image src='/img/kefut.png' mode="scaleToFill" class="kefu" bindtap='dianhua'></image>
     </view>
   <!-- </scroll-view> -->
