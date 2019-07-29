@@ -1,0 +1,73 @@
+<view class="content">
+  <view class="top">
+    <input type='text' placeholder='请输入宠物类别'></input>
+  </view>
+  <view class="list">
+    <view>
+      <image src='/img/proimg.png'></image>
+      <text>拉布拉多</text>
+    </view>
+    <view>
+      <image src='/img/proimg.png'></image>
+      <text>拉布拉多</text>
+    </view>
+    <view>
+      <image src='/img/proimg.png'></image>
+      <text>拉布拉多</text>
+    </view>
+    <view>
+      <image src='/img/proimg.png'></image>
+      <text>拉布拉多</text>
+    </view>
+    <view>
+      <image src='/img/proimg.png'></image>
+      <text>拉布拉多</text>
+    </view>
+    <view>
+      <image src='/img/proimg.png'></image>
+      <text>拉布拉多</text>
+    </view>
+  </view>
+  <view class="shopList">
+    <view class="shopListContent">
+      <image src='/img/abc.png'></image>
+      <view class="btText">
+        <text>英短3个月已绝育已驱虫已驱虫</text>
+        <view class="bt">
+          <view class="lf">
+            <text>¥</text>2300
+          </view>
+          <text>¥4000</text>
+          <view class="rt">销量 255</view>
+        </view>
+      </view>
+    </view>
+    <view class="shopListContent">
+      <image src='/img/abc.png'></image>
+      <view class="btText">
+        <text>英短3个月已绝育已驱虫已驱虫</text>
+        <view class="bt">
+          <view class="lf">
+            <text>¥</text>2300
+          </view>
+          <text>¥4000</text>
+          <view class="rt">销量 255</view>
+        </view>
+      </view>
+    </view>
+    <view class="shopListContent">
+      <image src='/img/abc.png'></image>
+      <view class="btText">
+        <text>英短3个月已绝育已驱虫已驱虫</text>
+        <view class="bt">
+          <view class="lf">
+            <text>¥</text>2300
+          </view>
+          <text>¥4000</text>
+          <view class="rt">销量 255</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+   

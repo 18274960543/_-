@@ -1,0 +1,90 @@
+.top{
+  background: #fff;
+  padding: 15rpx 45rpx;
+}
+.top input{
+  background: #EBEBEB;
+  border: 1rpx solid #F4F4F4;
+  border-radius: 100rpx;
+  width: 660rpx;
+  font-size: 30rpx;
+  color: #000;
+  text-align: left;
+  padding: 15rpx 90rpx;
+  box-sizing: border-box;
+  height:80rpx;
+  line-height:80rpx;
+  display: block;
+}
+.list{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.list view{
+  margin-top:30rpx;
+  display: flex;
+  flex-wrap: wrap;
+  width:25%;
+  font-size: 24rpx;
+  color: #333;
+}
+.list view text{
+  display: block;
+  text-align: center;
+  width: 100%;
+}
+.list view image{
+  margin:0 auto;
+  height: 110rpx;
+  width: 100rpx;
+}
+.shopList{
+  width: 100%;
+  background: #fff;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  padding: 20rpx 0;
+}  
+.shopListContent{
+  display: flex;
+ flex-direction:column;
+  width: 350rpx;
+  border-radius: 10rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 0 3rpx #666 inset;
+}
+.shopListContent image{
+  width: 350rpx;
+  height: 350rpx;
+  margin:0 auto;
+}
+.bt{
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 22rpx;
+  align-items: center;
+}
+.btText>text{
+  font-size: 28rpx;
+  color: #333;
+  display: block;
+  margin-bottom: 10rpx;
+}
+.bt>text{
+  padding: 0 20rpx;
+}
+.btText{
+  padding: 10rpx;
+}
+.lf{
+  font-size: 36rpx;
+  color:#FC4C4C;
+}
+.lf text{
+  font-size: 24rpx;
+}
+.rt{
+  font-size: 24rpx;
+}
